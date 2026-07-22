@@ -2,7 +2,7 @@
 <section>
   <h2><i class="fa-solid fa-box-archive highlight-htb"></i> İnteraktif Veri Kapsülleme (OSI Encapsulation)</h2>
   
-  <div style="display: flex; gap: 0.8rem; margin-bottom: 0.8rem; justify-content: flex-start;">
+  <div style="display: flex; gap: 0.8rem; margin-bottom: 0.6rem; justify-content: flex-start;">
     <button class="sim-btn" onclick="window.osiEncSim.prevStep()">
       <i class="fa-solid fa-chevron-left"></i> Önceki Katman
     </button>
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <!-- Right: Display Panel & PDU Visualizer -->
+    <!-- Right: Display Panel, PDU Visualizer & Live Data Inspector -->
     <div class="enc-display-panel">
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <div>
@@ -54,7 +54,7 @@
 
       <!-- Real-time PDU Packet Block Visualizer -->
       <div>
-        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.4rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.3rem;">
           <i class="fa-solid fa-cubes-stacked highlight-cyan"></i> Canlı Paket / PDU Yapısı (Protocol Data Unit):
         </div>
         <div id="enc-pdu-visualizer" class="enc-pdu-visualizer">
@@ -62,12 +62,24 @@
         </div>
       </div>
 
-      <!-- Details Box -->
-      <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.8rem 1rem;">
-        <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--htb-green); margin-bottom: 0.3rem;">
-          <i class="fa-solid fa-circle-info"></i> Katman Açıklaması & Kapsülleme Adımı:
+      <!-- Live HTTP Data Transformation Inspector -->
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--htb-green); margin-bottom: 0.3rem; display: flex; justify-content: space-between; align-items: center;">
+          <span><i class="fa-solid fa-code highlight-htb"></i> Canlı HTTP Veri Dönüşümü Önizlemesi (Live Payload Inspector):</span>
+          <span style="color: var(--text-muted); font-size: 0.7rem;">HTTP Data Transformation</span>
         </div>
-        <p id="enc-step-details" style="font-size: 0.88em; margin: 0; color: #e2e8f0;">
+        <div class="terminal-header" style="padding: 0.35rem 0.8rem;">
+          <span class="terminal-dot dot-red"></span>
+          <span class="terminal-dot dot-yellow"></span>
+          <span class="terminal-dot dot-green"></span>
+          <span class="terminal-title" style="font-size: 0.75rem;">osi-layer-inspector --live-stream</span>
+        </div>
+        <pre style="margin: 0; border-top-left-radius: 0; border-top-right-radius: 0; border: 1px solid var(--htb-border); border-top: none;"><code id="enc-raw-payload-code" class="language-http" style="font-size: 0.81em; padding: 0.7rem 0.9rem; min-height: 100px; max-height: 130px; overflow-y: auto; color: #9FEF00; white-space: pre-wrap; font-family: var(--font-mono);">GET /api/v1/user HTTP/1.1...</code></pre>
+      </div>
+
+      <!-- Details Box -->
+      <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.6rem 0.9rem;">
+        <p id="enc-step-details" style="font-size: 0.86em; margin: 0; color: #e2e8f0;">
           Kullanıcı verisi oluşturulur (HTTP GET isteği, SSH komutu veya dosya verisi).
         </p>
       </div>
