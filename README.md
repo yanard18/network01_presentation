@@ -1,89 +1,27 @@
-# 🟩 HTTP & Cybersecurity Architecture Presentation (Hack The Box Edition)
+# 🟩 HTTP & Protocol Evolution Presentation (Hack The Box Edition)
 
-An interactive, high-impact Cybersecurity slide presentation on **HTTP Protocol Fundamentals, Evolution (HTTP/0.9 to HTTP/3), Attack Vectors, and Protocol Hardening** built with [Reveal.js](https://revealjs.com/) and styled in the **Official Hack The Box (HTB)** visual brand identity.
-
----
-
-## 🎨 Hack The Box Design System
-- **Primary Brand Color**: Neon HTB Lime Green (`#9FEF00`)
-- **Background**: Deep Grey-Navy Canvas (`#0b121f`)
-- **Cards & Surfaces**: Dark Cobalt Surface (`#111d30`) with `#15243b` hover highlights and sharp 8px corners.
-- **Accents**: Cyber Cyan (`#2de2e6`), Critical Target Red (`#ff2e63`), Space Grotesk headings, and Fira Code monospace terminal output.
-- **Canvas Overlay**: Matrix Dot-Grid & HTB Green Neural Mesh ([js/cyber-bg.js](file:///home/mek/Documents/network01_slide/js/cyber-bg.js)).
+A simplified, high-impact presentation on **HTTP Protocol Architecture, 4 Blocks, Characteristics, and Version Evolution (0.9 to 3)** built with [Reveal.js](https://revealjs.com/) and styled in **Hack The Box (HTB)** visual brand identity.
 
 ---
 
-## 🛠️ How to Manually Add New Slides
+## 📋 Simplified Slide Structure
 
-In Reveal.js, every slide is wrapped in a `<section>` tag inside `<div class="slides">` in [index.html](file:///home/mek/Documents/network01_slide/index.html).
-
-### Template 1: Standard HTB 2-Column Card Slide
-```html
-<section>
-  <h2><i class="fa-solid fa-cube highlight-htb"></i> Your HTB Slide Title</h2>
-  <div class="grid-2">
-    <div class="cyber-card">
-      <div class="card-title"><span class="cyber-badge badge-htb">SECTION 01</span> Card Subtitle</div>
-      <p>Your description text goes here.</p>
-      <ul>
-        <li>Point 1 with [+] prompt bullet</li>
-        <li>Point 2 with [+] prompt bullet</li>
-      </ul>
-    </div>
-
-    <div class="cyber-card">
-      <div class="card-title"><span class="cyber-badge badge-cyan">SECTION 02</span> Card Subtitle</div>
-      <p>Second column text.</p>
-    </div>
-  </div>
-</section>
-```
+1. **Title Slide**: HTTP Protocol & Evolution (HTB Academy Style)
+2. **What is HTTP?**: Core definition, Client-Server model, TCP/TLS transport + **Embedded `http_overview.svg` Diagram**
+3. **The 4 Blocks of HTTP**: HTML, HTTP Protocol, Web Browser Client, httpd Server
+4. **HTTP Characteristics**: Stateless but NOT Sessionless (Cookies) & Extensible (HTTP Headers)
+5. **Origins & HTTP/0.9**: Tim Berners-Lee 1989 CERN proposal & The One-Line Protocol (`GET /my-page.html`)
+6. **HTTP/1.0 — Building Extensibility**: Versioning, status codes, headers, `Content-Type` & code snippet example
+7. **HTTP/1.1 — Parallel TCP Connections**: 6 TCP connections, fault tolerance & multi-connection bottleneck
+8. **HTTP/2 — Greater Performance**: SPDY origin, single TCP, binary framing, multiplexing, HPACK header compression & Head-of-Line blocking problem
+9. **HTTP/3 — HTTP over QUIC**: QUIC/UDP transport, lower latency, smart manager in browser code & independent lanes (streams)
+10. **Live Packet Loss Simulation**: Interactive HTTP/2 vs HTTP/3 packet loss simulator (Single TCP freeze vs independent QUIC streams flow)
+11. **Summary & Conclusion**: Overview recap
 
 ---
 
-### Template 2: Threat & Vulnerability Warning Slide
-```html
-<section>
-  <h2><i class="fa-solid fa-triangle-exclamation highlight-red"></i> Attack & Exploit Vector</h2>
-  <div class="grid-2">
-    <div class="cyber-card threat">
-      <div class="card-title"><span class="cyber-badge badge-red">CVE-2026-XXXX</span> Exploit Payload</div>
-      <p>Mechanism of the vulnerability.</p>
-      <ul class="threat-list">
-        <li>Impact detail 1</li>
-      </ul>
-    </div>
-
-    <div class="cyber-card secure">
-      <div class="card-title"><span class="cyber-badge badge-htb">MITIGATION</span> Protocol Hardening</div>
-      <p>Remediation steps.</p>
-      <ul class="secure-list">
-        <li>Defensive action 1</li>
-      </ul>
-    </div>
-  </div>
-</section>
-```
-
----
-
-### Template 3: HTB Terminal & Console Window Slide
-```html
-<section>
-  <h2><i class="fa-solid fa-terminal highlight-htb"></i> Command Line Analysis</h2>
-  <div>
-    <div class="terminal-header">
-      <span class="terminal-dot dot-red"></span>
-      <span class="terminal-dot dot-yellow"></span>
-      <span class="terminal-dot dot-green"></span>
-      <span class="terminal-title">root@htb:~# curl -iv -X POST target.htb</span>
-    </div>
-    <pre><code class="language-http">POST /api/v1/login HTTP/1.1
-Host: target.htb
-Authorization: Bearer secret_htb_token</code></pre>
-  </div>
-</section>
-```
+## 🖼️ Embedded Diagram
+- [http_overview.svg](file:///home/mek/Documents/network01_slide/http_overview.svg) is rendered cleanly on **Slide 2** in a card container.
 
 ---
 
