@@ -106,9 +106,9 @@ body {
 }
 
 .reveal p, .reveal li {
-  font-size: 0.88em;
-  line-height: 1.6;
-  color: #cbd5e1;
+  font-size: 0.96em;
+  line-height: 1.55;
+  color: #f1f5f9;
 }
 
 .reveal strong {
@@ -135,7 +135,7 @@ body {
   position: absolute;
   left: 0;
   color: var(--htb-green);
-  font-size: 0.85em;
+  font-size: 0.9em;
 }
 
 .reveal ul.secure-list li::before {
@@ -169,7 +169,7 @@ body {
   background: var(--htb-bg-card);
   border: 1px solid var(--htb-border);
   border-radius: 8px;
-  padding: 1.3rem;
+  padding: 1.3rem 1.4rem;
   box-shadow: 0 8px 24px rgba(4, 9, 20, 0.6);
   transition: all 0.25s ease;
   position: relative;
@@ -219,7 +219,7 @@ body {
 
 .card-title {
   font-family: var(--font-heading);
-  font-size: 1.12em;
+  font-size: 1.2em;
   font-weight: 700;
   margin-bottom: 0.6rem;
   display: flex;
@@ -230,10 +230,10 @@ body {
 /* HTB Badges */
 .cyber-badge {
   display: inline-block;
-  padding: 0.2rem 0.6rem;
+  padding: 0.25rem 0.65rem;
   border-radius: 4px;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.04em;
 }
@@ -321,7 +321,7 @@ body {
 
 .reveal pre code {
   font-family: var(--font-mono);
-  font-size: 0.78em;
+  font-size: 0.85em;
   line-height: 1.55;
   padding: 1.2rem;
   max-height: 420px;
@@ -351,7 +351,7 @@ body {
 
 .terminal-title {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   color: var(--htb-green);
   margin-left: 0.5rem;
   font-weight: 600;

@@ -6,14 +6,14 @@
     <div>
       <div class="cyber-card">
         <div class="card-title"><span class="cyber-badge badge-htb">SPDY FOUNDATION</span> Origin</div>
-        <p style="font-size: 0.85em;">
+        <p>
           Web pages became complex (more visuals, larger data, higher traffic). Google created <strong>SPDY</strong>, serving as the foundation for HTTP/2.
         </p>
       </div>
 
       <div class="cyber-card" style="margin-top: 1rem;">
         <div class="card-title"><span class="cyber-badge badge-cyan">FEATURES</span> Key Improvements</div>
-        <ul style="font-size: 0.82em;">
+        <ul>
           <li>Uses <strong>one single TCP connection</strong>.</li>
           <li><strong>Binary protocol</strong> rather than a text protocol.</li>
           <li><strong>Multiplexed</strong> parallel requests over the same connection.</li>
@@ -24,7 +24,7 @@
 
     <div class="cyber-card threat">
       <div class="card-title"><i class="fa-solid fa-skull-crossbones highlight-red"></i> HTTP/2 Drawbacks</div>
-      <ul class="threat-list" style="font-size: 0.84em;">
+      <ul class="threat-list">
         <li><strong>Head-of-Line (HOL) Blocking:</strong> Sending all data over one TCP connection means if 1 CSS packet drops, <em>all other packets wait for it</em>.</li>
         <li><strong>DoS Vulnerabilities:</strong> HTTP/2 suffers from DoS attacks because it relies on TCP stream management logic.</li>
       </ul>
