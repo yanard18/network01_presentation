@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTTP Protocol: Fundamentals & Evolution | Hack The Box Style</title>
-  <meta name="description" content="A simplified Hack The Box styled presentation on HTTP Protocol Architecture, 4 Blocks, Characteristics, and Evolution (HTTP/0.9 to HTTP/3)">
+  <title>Network Protokolleri: TCP/IP, Infrastructure & Application Layer Ecosystem</title>
+  <meta name="description" content="Hack The Box styled presentation on Network Protocols: TCP/IP, Link Layer, IP, TCP/UDP, ARP, DHCP, DNS, HTTP, SSH, SMB">
   
   <!-- Reveal.js & Plugins CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.css">
@@ -23,46 +23,60 @@
 <!-- SLIDE 1: Title Slide -->
 <section data-background-gradient="radial-gradient(circle, rgba(159,239,0,0.12) 0%, rgba(11,18,31,1) 100%)">
   <div style="text-align: center;">
-    <span class="cyber-badge badge-htb" style="margin-bottom: 1.2rem;">
-      <i class="fa-solid fa-cube"></i> HACK THE BOX ACADEMY // MODULE OVERVIEW
+    <span class="cyber-badge badge-htb" style="margin-bottom: 1.5rem; font-size: 0.9rem;">
+      <i class="fa-solid fa-network-wired"></i> NETWORK ARCHITECTURE // PROTOCOLS
     </span>
-    <h1>HTTP Protocol & <span class="htb-highlight">Evolution</span></h1>
-    <h3 style="color: var(--text-muted); font-weight: 400; margin-bottom: 2rem;">
-      Protocol Fundamentals, 4 Blocks, Characteristics & Versions (0.9 to 3)
+    <h1 style="font-size: 3.4em; margin-bottom: 0.4em;">Network <span class="htb-highlight">Protokolleri</span></h1>
+    <h3 style="color: var(--text-muted); font-weight: 400; margin-bottom: 2.5rem; font-size: 1.3em;">
+      TCP/IP, Infrastructure & Application Layer Ecosystem
     </h3>
     
-    <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
-      <div><i class="fa-solid fa-layer-group highlight-htb"></i> Application Layer</div>
-      <div><i class="fa-solid fa-code-compare highlight-cyan"></i> Client-Server Architecture</div>
-      <div><i class="fa-solid fa-diagram-project highlight-purple"></i> QUIC / UDP Streams</div>
+    <div style="display: flex; justify-content: center; gap: 1.8rem; font-family: var(--font-mono); font-size: 0.95rem;">
+      <span class="cyber-badge badge-htb"><i class="fa-solid fa-layer-group"></i> 1. Temel & Taşıma</span>
+      <span class="cyber-badge badge-cyan"><i class="fa-solid fa-diagram-project"></i> 2. Ağ & Keşif</span>
+      <span class="cyber-badge badge-purple"><i class="fa-solid fa-server"></i> 3. Uygulama</span>
     </div>
   </div>
 </section>
 
-      <!-- Loaded from slides/02_what_is_http.html -->
-<!-- SLIDE 2: What is HTTP? + Image Diagram -->
+      <!-- Loaded from slides/02_agenda.html -->
+<!-- SLIDE 2: Presentation Roadmap / Agenda -->
 <section>
-  <h2><i class="fa-solid fa-globe highlight-htb"></i> What is HTTP?</h2>
-  
-  <div class="grid-2" style="align-items: center;">
+  <h2><i class="fa-solid fa-list-check highlight-htb"></i> Sunum Akışı & Mantıksal Bloklar</h2>
+  <p style="text-align: left; margin-bottom: 1.5rem; color: var(--text-muted);">
+    Sunumumuz 3 temel mantıksal blok halinde ele alınacaktır:
+  </p>
+
+  <div class="grid-3" style="align-items: stretch; text-align: left;">
+    <!-- PART 1 -->
     <div class="cyber-card">
-      <div class="card-title"><span class="cyber-badge badge-htb">CORE DEFINITION</span> Application Layer Protocol</div>
-      <ul>
-        <li>HTTP is an <strong>application layer</strong> protocol for transmitting hypermedia documents.</li>
-        <li>Designed for communication between <strong>web browsers</strong> and <strong>web servers</strong>.</li>
-        <li>Also heavily used in <strong>APIs</strong> and <strong>machine-to-machine communication</strong>.</li>
-        <li>Uses <strong>TCP</strong> or <strong>TLS-encrypted TCP</strong> as its transport mechanism.</li>
-        <li>Transmits hypertext documents structured with <strong>hyperlinks</strong> via a <strong>Client-Server model</strong>.</li>
+      <div class="card-title"><span class="cyber-badge badge-htb">BLOK 1</span> Temel & Taşıma Katmanı</div>
+      <ul style="margin-bottom: 0;">
+        <li><strong>OSI & TCP/IP Modelleri</strong></li>
+        <li><strong>Link (Bağlantı) Katmanı:</strong> Ethernet & MAC</li>
+        <li><strong>IP Katmanı:</strong> Adresleme & Paket Yapısı</li>
+        <li><strong>TCP & UDP:</strong> Güvenli vs Hızlı Taşıma</li>
       </ul>
     </div>
 
-    <div style="text-align: center;">
-      <div style="background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid var(--htb-border); box-shadow: 0 0 20px var(--htb-green-glow); display: inline-block;">
-        <img src="media/http_overview.svg" alt="HTTP Page Overview Diagram" style="max-height: 380px; width: 100%; display: block; object-fit: contain;">
-      </div>
-      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">
-        <i class="fa-solid fa-diagram-next highlight-htb"></i> Figure 1: HTTP Document & Multi-Asset Transfer Architecture
-      </div>
+    <!-- PART 2 -->
+    <div class="cyber-card">
+      <div class="card-title"><span class="cyber-badge badge-cyan">BLOK 2</span> Ağ & Keşif Servisleri</div>
+      <ul style="margin-bottom: 0;">
+        <li><strong>ARP:</strong> IP - MAC Adres Çözümleme</li>
+        <li><strong>DHCP:</strong> Otomatik IP Yapılandırma</li>
+        <li><strong>DNS:</strong> Alan Adı - IP Çözümleme</li>
+      </ul>
+    </div>
+
+    <!-- PART 3 -->
+    <div class="cyber-card">
+      <div class="card-title"><span class="cyber-badge badge-purple">BLOK 3</span> Uygulama Katmanı</div>
+      <ul style="margin-bottom: 0;">
+        <li><strong>HTTP:</strong> Web Veri İletimi</li>
+        <li><strong>SSH:</strong> Güvenli Uzak Erişim & Shell</li>
+        <li><strong>SMB:</strong> Ağ Dosya & Kaynak Paylaşımı</li>
+      </ul>
     </div>
   </div>
 </section>
