@@ -1,0 +1,57 @@
+<!-- SLIDE 10: INTERACTIVE PROTOCOL SIMULATOR (HTTP/2 vs HTTP/3) -->
+<section>
+  <h2><i class="fa-solid fa-gamepad highlight-htb"></i> Live Packet Loss Simulation: HTTP/2 vs HTTP/3</h2>
+  <p style="font-size: 0.82em; text-align: left; margin-bottom: 0.6rem;">
+    Compare how single-channel TCP (HTTP/2) freezes on packet loss vs independent UDP/QUIC streams (HTTP/3):
+  </p>
+
+  <div style="display: flex; gap: 0.8rem; margin-bottom: 0.8rem; justify-content: flex-start;">
+    <button class="sim-btn btn-red" onclick="window.protoSim.triggerH2PacketLoss()">
+      <i class="fa-solid fa-triangle-exclamation"></i> Simulate Packet Loss (HTTP/2 TCP)
+    </button>
+    <button class="sim-btn" onclick="window.protoSim.triggerH3PacketLoss()">
+      <i class="fa-solid fa-bolt"></i> Simulate Packet Loss (HTTP/3 QUIC)
+    </button>
+    <button class="sim-btn" style="border-color: var(--text-muted); color: var(--text-muted);" onclick="window.protoSim.resetSimulation()">
+      <i class="fa-solid fa-rotate-right"></i> Reset Simulation
+    </button>
+  </div>
+
+  <div class="grid-2">
+    <!-- HTTP/2 Simulator Box -->
+    <div class="sim-container">
+      <div class="sim-header">
+        <div class="sim-title"><span class="cyber-badge badge-red">HTTP/2</span> Single TCP Pipe</div>
+        <div id="h2-status" class="sim-status normal"><i class="fa-solid fa-network-wire"></i> Single TCP Channel Operating Normally</div>
+      </div>
+      <div class="sim-track">
+        <div class="sim-endpoint"><i class="fa-solid fa-server highlight-htb"></i> Server</div>
+        <div id="h2-pipe" class="sim-pipe-wrapper"></div>
+        <div class="sim-endpoint"><i class="fa-solid fa-desktop highlight-cyan"></i> Client</div>
+      </div>
+      <p style="font-size: 0.74em; color: var(--text-muted); margin: 0.2rem 0 0 0;">
+        ⚠️ <strong>Head-of-Line Blocking:</strong> If 1 packet drops, all trailing packets in the single TCP socket freeze.
+      </p>
+    </div>
+
+    <!-- HTTP/3 Simulator Box -->
+    <div class="sim-container">
+      <div class="sim-header">
+        <div class="sim-title"><span class="cyber-badge badge-htb">HTTP/3</span> Independent QUIC Lanes</div>
+        <div id="h3-status" class="sim-status normal"><i class="fa-solid fa-diagram-project"></i> 3 QUIC UDP Lanes Operating Normally</div>
+      </div>
+      <div class="sim-track">
+        <div class="sim-endpoint"><i class="fa-solid fa-server highlight-htb"></i> Server</div>
+        <div class="sim-pipe-multi">
+          <div id="h3-lane-0" class="sim-lane"></div>
+          <div id="h3-lane-1" class="sim-lane"></div>
+          <div id="h3-lane-2" class="sim-lane"></div>
+        </div>
+        <div class="sim-endpoint"><i class="fa-solid fa-desktop highlight-cyan"></i> Client</div>
+      </div>
+      <p style="font-size: 0.74em; color: var(--text-muted); margin: 0.2rem 0 0 0;">
+        ⚡ <strong>Independent Streams:</strong> Packet drop on Stream 2 retransmits independently; Streams 1 & 3 continue flowing!
+      </p>
+    </div>
+  </div>
+</section>

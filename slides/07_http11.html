@@ -1,0 +1,26 @@
+<!-- SLIDE 7: HTTP/1.1 - Parallel Connections & Limitations -->
+<section>
+  <h2><i class="fa-solid fa-network-wired highlight-htb"></i> HTTP/1.1 — Parallel TCP Connections</h2>
+  
+  <div class="grid-2">
+    <div class="cyber-card">
+      <div class="card-title"><span class="cyber-badge badge-htb">HTTP/1.1</span> Multi-Connection Architecture</div>
+      <ul>
+        <li>Opens <strong>6 different TCP connections</strong> to the server simultaneously.</li>
+        <li><strong>Fault Tolerance:</strong> If 1 TCP connection is lost, the other 5 connections remain active.</li>
+        <li>Allowed parallel fetching of images, scripts, and stylesheets.</li>
+      </ul>
+    </div>
+
+    <div class="cyber-card threat">
+      <div class="card-title"><i class="fa-solid fa-triangle-exclamation highlight-red"></i> The Bottleneck / Problem</div>
+      <p style="font-size: 0.88em; margin-bottom: 0.8rem;">
+        <strong>Problem:</strong> Opening 6 separate TCP connections is slow and resource-heavy.
+      </p>
+      <ul>
+        <li>High TCP handshake overhead (SYN, SYN-ACK, ACK per connection).</li>
+        <li>Network congestion and server socket exhaustion.</li>
+      </ul>
+    </div>
+  </div>
+</section>

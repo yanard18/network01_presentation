@@ -1,24 +1,31 @@
-/* Hack The Box (HTB) Official Cyber Theme for Reveal.js */
+/* Hack The Box (HTB) Official Dark Blue Cyber Theme for Reveal.js */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
   --htb-green: #9FEF00;
   --htb-green-glow: rgba(159, 239, 0, 0.35);
   --htb-green-dim: rgba(159, 239, 0, 0.12);
-  --htb-bg-dark: #0b121f;
-  --htb-bg-card: #111d30;
-  --htb-bg-card-hover: #16253d;
-  --htb-bg-terminal: #070d18;
-  --htb-border: rgba(159, 239, 0, 0.2);
-  --htb-border-blue: rgba(43, 140, 255, 0.25);
-  --htb-border-red: rgba(255, 46, 99, 0.3);
+  
+  /* Deep HTB Dark Blueish Palette */
+  --htb-bg-dark: #0a1224;
+  --htb-bg-card: #132238;
+  --htb-bg-card-hover: #1b3252;
+  --htb-bg-terminal: #070e1b;
+  
+  --htb-border: rgba(159, 239, 0, 0.22);
+  --htb-border-blue: rgba(43, 140, 255, 0.3);
+  --htb-border-red: rgba(255, 46, 99, 0.35);
+  
   --accent-cyan: #2de2e6;
+  --accent-blue: #3b82f6;
   --accent-red: #ff2e63;
   --accent-purple: #9d4edd;
   --accent-yellow: #ffb703;
+  
   --text-white: #ffffff;
   --text-main: #e2e8f0;
   --text-muted: #94a3b8;
+  
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'Fira Code', monospace;
@@ -40,7 +47,7 @@ body {
   height: 100vh;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .reveal-viewport {
@@ -163,7 +170,7 @@ body {
   border: 1px solid var(--htb-border);
   border-radius: 8px;
   padding: 1.3rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 24px rgba(4, 9, 20, 0.6);
   transition: all 0.25s ease;
   position: relative;
 }
@@ -183,11 +190,13 @@ body {
 .cyber-card:hover {
   border-color: var(--htb-green);
   box-shadow: 0 0 20px var(--htb-green-glow);
+  background: var(--htb-bg-card-hover);
   transform: translateY(-2px);
 }
 
 .cyber-card.threat {
   border-color: var(--htb-border-red);
+  background: #251322;
 }
 
 .cyber-card.threat::before {
@@ -201,6 +210,7 @@ body {
 
 .cyber-card.secure {
   border-color: var(--htb-border);
+  background: #112838;
 }
 
 .cyber-card.secure::before {
@@ -273,6 +283,7 @@ body {
 
 .timeline-item:hover {
   border-color: var(--htb-green);
+  background: var(--htb-bg-card-hover);
   box-shadow: 0 0 15px var(--htb-green-glow);
 }
 
@@ -318,7 +329,7 @@ body {
 }
 
 .terminal-header {
-  background: #080d18;
+  background: #050b16;
   padding: 0.45rem 1rem;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -346,9 +357,7 @@ body {
   font-weight: 600;
 }
 
-/* ================================================================= */
-/* INTERACTIVE PACKET SIMULATOR STYLES */
-/* ================================================================= */
+/* Interactive Simulator Styles */
 .sim-container {
   display: flex;
   flex-direction: column;
@@ -412,7 +421,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  background: #080e1a;
+  background: #060c18;
   border: 1px dashed var(--htb-border);
   border-radius: 6px;
   padding: 0.5rem 0.8rem;

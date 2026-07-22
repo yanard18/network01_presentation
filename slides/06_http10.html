@@ -1,0 +1,37 @@
+<!-- SLIDE 6: HTTP/1.0 - Building Extensibility -->
+<section>
+  <h2><i class="fa-solid fa-code-branch highlight-htb"></i> HTTP/1.0 — Building Extensibility</h2>
+  
+  <div class="grid-2">
+    <div class="cyber-card">
+      <div class="card-title"><span class="cyber-badge badge-htb">HTTP/1.0</span> Key Features</div>
+      <ul>
+        <li>Introduced <strong>protocol versioning</strong> in requests (e.g. <code>HTTP/1.0</code>).</li>
+        <li>Sent a <strong>status code line</strong> in responses (e.g. <code>200 OK</code>).</li>
+        <li>Added the concept of <strong>HTTP Headers</strong> to both requests and responses.</li>
+        <li>Enabled transmission of non-HTML documents thanks to the <code>Content-Type</code> header.</li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="terminal-header">
+        <span class="terminal-dot dot-red"></span>
+        <span class="terminal-dot dot-yellow"></span>
+        <span class="terminal-dot dot-green"></span>
+        <span class="terminal-title">HTTP/1.0 Request & Response Exchange</span>
+      </div>
+      <pre><code class="language-http">GET /my-page.html HTTP/1.0
+User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)
+
+HTTP/1.0 200 OK
+Date: Tue, 15 Nov 1994 08:12:31 GMT
+Server: CERN/3.0 libwww/2.17
+Content-Type: text/html
+
+<HTML>
+A page with an image
+  <IMG SRC="/my-image.gif">
+</HTML></code></pre>
+    </div>
+  </div>
+</section>

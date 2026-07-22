@@ -1,0 +1,25 @@
+<!-- SLIDE 9: HTTP/3 - HTTP over QUIC -->
+<section>
+  <h2><i class="fa-solid fa-rocket highlight-htb"></i> HTTP/3 — HTTP over QUIC</h2>
+  
+  <div class="grid-2">
+    <div class="cyber-card secure">
+      <div class="card-title"><span class="cyber-badge badge-htb">QUIC & UDP</span> Transport Evolution</div>
+      <ul>
+        <li>Uses <strong>QUIC</strong> instead of TCP.</li>
+        <li>QUIC is designed for <strong>lower latency</strong> for HTTP connections.</li>
+        <li>Operates on top of <strong>UDP</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="cyber-card secure">
+      <div class="card-title"><span class="cyber-badge badge-cyan">SMART MANAGER</span> How QUIC Works</div>
+      <ul>
+        <li>QUIC makes UDP streams <strong>reliable</strong>.</li>
+        <li>It does not alter UDP itself; it creates a <strong>"smart manager"</strong> on top of it.</li>
+        <li>Lives directly in the <strong>web browser code</strong>.</li>
+        <li>Opens 1 connection, but builds <strong>completely different lanes (streams)</strong>.</li>
+      </ul>
+    </div>
+  </div>
+</section>

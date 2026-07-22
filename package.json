@@ -1,20 +1,21 @@
 {
   "name": "http-cybersecurity-revealjs-presentation",
-  "version": "1.0.0",
-  "description": "Cybersecurity presentation on HTTP protocol fundamentals, evolution, versions (0.9 to 3), threats, and hardening using Reveal.js",
+  "version": "1.1.0",
+  "description": "Modular Hack The Box styled presentation on HTTP Protocol Architecture & Evolution using Reveal.js",
   "main": "index.html",
   "scripts": {
-    "start": "npx -y serve . -l 3000",
-    "dev": "npx -y serve . -l 3000"
+    "build": "node scripts/build.js",
+    "start": "node scripts/build.js && npx -y serve . -l 3000",
+    "dev": "node scripts/build.js && npx -y serve . -l 3000"
   },
   "keywords": [
     "revealjs",
     "http",
     "cybersecurity",
+    "htb",
+    "hackthebox",
     "presentation",
     "slides",
-    "http2",
-    "http3",
     "quic"
   ],
   "author": "Antigravity AI",
