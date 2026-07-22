@@ -1,0 +1,35 @@
+<!-- SLIDE: What is a Collision Domain? (Centered Spotlight Hero GIF) -->
+<section>
+  <h2><i class="fa-solid fa-triangle-exclamation highlight-red"></i> What is a Collision Domain?</h2>
+  
+  <div style="display: flex; flex-direction: column; gap: 0.8rem; align-items: center; margin-top: 0.3rem;">
+    <!-- Centered Spotlight Animated GIF -->
+    <div style="background: rgba(255, 255, 255, 0.95); padding: 12px; border-radius: 12px; border: 1px solid var(--accent-red); box-shadow: 0 0 30px rgba(255,46,99,0.4); text-align: center; max-width: 850px; width: 100%;">
+      <img src="media/network-collision.gif" alt="Network Packet Collision Animation" style="max-height: 240px; width: 100%; object-fit: contain;">
+    </div>
+
+    <!-- 3 Bottom Feature Badges / Highlights -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; width: 100%; max-width: 950px; text-align: left;">
+      <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.7rem 0.9rem;">
+        <span class="cyber-badge badge-red" style="margin-bottom: 0.3rem;">SHARED MEDIUM</span>
+        <div style="font-size: 0.83em; color: #e2e8f0; line-height: 1.4;">
+          All devices connected to a Hub share a single electrical collision domain.
+        </div>
+      </div>
+
+      <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.7rem 0.9rem;">
+        <span class="cyber-badge badge-yellow" style="margin-bottom: 0.3rem;">DATA CORRUPTION</span>
+        <div style="font-size: 0.83em; color: #e2e8f0; line-height: 1.4;">
+          Simultaneous transmissions collide, destroying electrical data pulses.
+        </div>
+      </div>
+
+      <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.7rem 0.9rem;">
+        <span class="cyber-badge badge-htb" style="margin-bottom: 0.3rem;">CSMA / CD PROTOCOL</span>
+        <div style="font-size: 0.83em; color: #e2e8f0; line-height: 1.4;">
+          Hosts detect collisions, abort transmission, and wait a random backoff time.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

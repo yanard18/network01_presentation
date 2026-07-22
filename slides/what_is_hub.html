@@ -1,0 +1,49 @@
+<!-- SLIDE: What is a Network Hub? (Horizontal Step Process Flow) -->
+<section>
+  <h2><i class="fa-solid fa-microchip highlight-red"></i> What is a Network Hub (Repeater)?</h2>
+  
+  <div style="display: flex; flex-direction: column; gap: 0.9rem; margin-top: 0.4rem;">
+    <!-- 3 Horizontal Process Step Pills -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; text-align: left;">
+      <div style="background: rgba(255,46,99,0.08); border: 1px solid var(--accent-red); border-radius: 8px; padding: 0.8rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-red); font-weight: 700; margin-bottom: 0.3rem;">
+          01. PORT INGRESS
+        </div>
+        <div style="font-size: 0.88em; color: #fff; font-weight: 600;">Electrical Bit Arrival</div>
+        <p style="font-size: 0.8em; color: var(--text-muted); margin: 0.3rem 0 0 0;">
+          Raw electrical pulses enter a single physical port from Host A.
+        </p>
+      </div>
+
+      <div style="background: rgba(255,183,3,0.08); border: 1px solid var(--accent-yellow); border-radius: 8px; padding: 0.8rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-yellow); font-weight: 700; margin-bottom: 0.3rem;">
+          02. SIGNAL REPEATER
+        </div>
+        <div style="font-size: 0.88em; color: #fff; font-weight: 600;">Layer 1 Amplification</div>
+        <p style="font-size: 0.8em; color: var(--text-muted); margin: 0.3rem 0 0 0;">
+          Hub amplifies voltage without inspecting MAC addresses or IP headers.
+        </p>
+      </div>
+
+      <div style="background: rgba(159,239,0,0.08); border: 1px solid var(--htb-green); border-radius: 8px; padding: 0.8rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--htb-green); font-weight: 700; margin-bottom: 0.3rem;">
+          03. ALL-PORT BROADCAST
+        </div>
+        <div style="font-size: 0.88em; color: #fff; font-weight: 600;">Multiport Flooding</div>
+        <p style="font-size: 0.8em; color: var(--text-muted); margin: 0.3rem 0 0 0;">
+          Signal floods out to every other port simultaneously (Hosts B, C, D).
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Showcase: Layer 1 Diagram Stack -->
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 0.8rem; align-items: center;">
+      <div style="background: rgba(255, 255, 255, 0.95); padding: 10px; border-radius: 8px; border: 1px solid var(--htb-border); text-align: center;">
+        <img src="media/hub-connecting-multiple-devices.svg" alt="Hub Connecting Devices" style="max-height: 160px; width: 100%; object-fit: contain;">
+      </div>
+      <div style="background: rgba(255, 255, 255, 0.95); padding: 10px; border-radius: 8px; border: 1px solid var(--htb-border); text-align: center;">
+        <img src="media/network-hub-osi-model.svg" alt="Hub OSI L1 Position" style="max-height: 160px; width: 100%; object-fit: contain;">
+      </div>
+    </div>
+  </div>
+</section>

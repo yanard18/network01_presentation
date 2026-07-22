@@ -1,0 +1,39 @@
+<!-- SLIDE: Why Do We Need a Network Switch? (Versus VS Comparison Matrix) -->
+<section>
+  <h2><i class="fa-solid fa-server highlight-htb"></i> Why Do We Need a Network Switch?</h2>
+  
+  <div style="position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 0.5rem; text-align: left;">
+    <!-- Central Glowing VS Badge -->
+    <div style="position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); z-index: 10; background: var(--htb-bg-main); border: 2px solid var(--htb-green); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 900; font-size: 0.9rem; color: var(--htb-green); box-shadow: 0 0 15px var(--htb-green-glow);">
+      VS
+    </div>
+
+    <!-- Left Column: Legacy Bridges (Red Accent) -->
+    <div style="background: rgba(255,46,99,0.05); border: 1px solid var(--accent-red); border-radius: 10px; padding: 1.2rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+        <strong style="color: var(--accent-red); font-size: 1.15em;"><i class="fa-solid fa-filter"></i> BRIDGES (Legacy)</strong>
+        <span class="cyber-badge badge-red">SOFTWARE</span>
+      </div>
+
+      <ul class="threat-list" style="font-size: 0.88em;">
+        <li style="margin-bottom: 0.8rem;"><strong>CPU Software Processing:</strong> Frame inspection done via software code, causing packet latency.</li>
+        <li style="margin-bottom: 0.8rem;"><strong>2–4 Port Limit:</strong> Low port density required hubs to connect clusters of computers behind each port.</li>
+        <li><strong>Half-Duplex Shared Links:</strong> Collision risk persisted within the hubs attached to bridge ports.</li>
+      </ul>
+    </div>
+
+    <!-- Right Column: Modern Switches (Green Accent) -->
+    <div style="background: rgba(159,239,0,0.05); border: 1px solid var(--htb-green); border-radius: 10px; padding: 1.2rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+        <strong style="color: var(--htb-green); font-size: 1.15em;"><i class="fa-solid fa-server"></i> SWITCHES (Modern)</strong>
+        <span class="cyber-badge badge-htb">ASIC SILICON</span>
+      </div>
+
+      <ul class="secure-list" style="font-size: 0.88em;">
+        <li style="margin-bottom: 0.8rem;"><strong>Hardware ASICs:</strong> Performs MAC table lookups in dedicated silicon chips at full wire speed.</li>
+        <li style="margin-bottom: 0.8rem;"><strong>Micro-Segmentation:</strong> Every single port becomes its own dedicated collision domain.</li>
+        <li><strong>Full-Duplex Transmission:</strong> Simultaneous send and receive on every port with ZERO collisions.</li>
+      </ul>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+<!-- SLIDE: How Does a Router Work? -->
+<section>
+  <h2><i class="fa-solid fa-route highlight-purple"></i> How Does a Router Work?</h2>
+  
+  <div style="display: grid; grid-template-columns: 5fr 4fr; gap: 1rem; align-items: center; margin-top: 0.3rem; text-align: left;">
+    <!-- Left Column: How Does a Router Work Diagram -->
+    <div style="text-align: center;">
+      <div style="background: rgba(255, 255, 255, 0.95); padding: 10px; border-radius: 10px; border: 1px solid var(--htb-border); box-shadow: 0 0 20px rgba(168,85,247,0.3);">
+        <img src="media/how-does-router-work.svg" alt="How Does a Router Work Diagram" style="max-height: 240px; width: 100%; object-fit: contain;">
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-top: 0.4rem;">
+        Figure 2: Interfaces (0/0 LAN 10.1.1.1 & 0/1 WAN 39.1.1.1) & Routing Lookup
+      </div>
+    </div>
+
+    <!-- Right Column: 2 Main Components & 3 Processing Steps -->
+    <div style="display: flex; flex-direction: column; gap: 0.7rem;">
+      <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.7rem 0.9rem;">
+        <span class="cyber-badge badge-purple" style="margin-bottom: 0.3rem;">01. INTERFACES</span>
+        <div style="font-size: 0.81em; color: #e2e8f0; line-height: 1.4;">
+          Each interface connects to a different subnet. <em>Rule: A router can have only ONE interface per network.</em>
+        </div>
+      </div>
+
+      <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.7rem 0.9rem;">
+        <span class="cyber-badge badge-cyan" style="margin-bottom: 0.3rem;">02. ROUTING TABLE</span>
+        <div style="font-size: 0.81em; color: #e2e8f0; line-height: 1.4;">
+          Maps destination subnet \(\rightarrow\) next hop / exit interface \(\rightarrow\) metric. (Static or Dynamic OSPF/BGP).
+        </div>
+      </div>
+
+      <!-- Packet Processing Steps -->
+      <div class="terminal-header" style="padding: 0.3rem 0.7rem;">
+        <span class="terminal-dot dot-red"></span>
+        <span class="terminal-dot dot-yellow"></span>
+        <span class="terminal-dot dot-green"></span>
+        <span class="terminal-title" style="font-size: 0.72rem;">router-packet-forwarding-steps</span>
+      </div>
+      <pre style="margin: 0; border-top-left-radius: 0; border-top-right-radius: 0; border: 1px solid var(--htb-border); border-top: none;"><code class="language-text" style="font-size: 0.76em; padding: 0.5rem 0.7rem; color: var(--htb-green); font-family: var(--font-mono);">1. Strip Ingress L2 Frame ➔ Read L3 IP Header
+2. Compare Dst IP against Routing Table
+3. Encapsulate in NEW L2 Frame ➔ Next-Hop MAC</code></pre>
+    </div>
+  </div>
+</section>

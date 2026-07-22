@@ -1,0 +1,40 @@
+<!-- SLIDE: What is a Network Bridge? (Asymmetric 40/60 Split with Terminal) -->
+<section>
+  <h2><i class="fa-solid fa-filter highlight-cyan"></i> What is a Network Bridge?</h2>
+  
+  <div style="display: grid; grid-template-columns: 4fr 5fr; gap: 1.2rem; align-items: center; margin-top: 0.4rem; text-align: left;">
+    <!-- Left Column (40%): Vertical Diagram Stack -->
+    <div style="display: flex; flex-direction: column; gap: 0.8rem; text-align: center;">
+      <div style="background: rgba(255, 255, 255, 0.95); padding: 12px; border-radius: 10px; border: 1px solid var(--htb-border); box-shadow: 0 0 20px rgba(45,226,230,0.3);">
+        <img src="media/network-bridge.svg" alt="Network Bridge Segment Divider" style="max-height: 165px; width: 100%; object-fit: contain;">
+      </div>
+      <div style="background: rgba(255, 255, 255, 0.95); padding: 10px; border-radius: 10px; border: 1px solid var(--htb-border);">
+        <img src="media/network-bridge-osi-model.svg" alt="Network Bridge OSI Layer 2 Position" style="max-height: 110px; width: 100%; object-fit: contain;">
+      </div>
+    </div>
+
+    <!-- Right Column (60%): Inspection Console & Deep Dive -->
+    <div>
+      <div style="margin-bottom: 0.6rem;">
+        <span class="cyber-badge badge-cyan">LAYER 2 DATA LINK</span>
+        <span class="cyber-badge badge-htb" style="margin-left: 0.4rem;">SEGMENT ISOLATION</span>
+      </div>
+      <h3 style="font-size: 1.3em; color: #fff; margin-bottom: 0.6rem;">Software MAC Address Filtering</h3>
+      <p style="font-size: 0.88em; color: #e2e8f0; margin-bottom: 0.8rem;">
+        A <strong>Bridge</strong> operates at Layer 2 to divide one large, congested collision domain into two smaller, isolated segments.
+      </p>
+
+      <!-- Terminal Inspection Snippet -->
+      <div class="terminal-header" style="padding: 0.35rem 0.8rem;">
+        <span class="terminal-dot dot-red"></span>
+        <span class="terminal-dot dot-yellow"></span>
+        <span class="terminal-dot dot-green"></span>
+        <span class="terminal-title" style="font-size: 0.75rem;">bridge-mac-table --inspect</span>
+      </div>
+      <pre style="margin: 0; border-top-left-radius: 0; border-top-right-radius: 0; border: 1px solid var(--htb-border); border-top: none;"><code class="language-text" style="font-size: 0.81em; padding: 0.7rem 0.9rem; color: var(--accent-cyan); font-family: var(--font-mono);">[Bridge Logic] Ingress Frame on Port 1
+Destination MAC: 00:11:22:AA:BB (Segment 1)
+Action: FILTER (Do not forward across to Segment 2)
+✔ Segment 2 traffic remains 100% free of local noise!</code></pre>
+    </div>
+  </div>
+</section>

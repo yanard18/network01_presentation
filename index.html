@@ -216,6 +216,739 @@
   </div>
 </section>
 
+      <!-- Loaded from slides/why_need_hub.html -->
+<!-- SLIDE: Why Do We Need a HUB? (Hero Top-Bottom Layout) -->
+<section>
+  <h2><i class="fa-solid fa-circle-question highlight-htb"></i> Why Do We Need a HUB?</h2>
+  
+  <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 0.5rem;">
+    <!-- Top Half: Visual Point-to-Point Comparison Banner -->
+    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 1rem; border: 1px solid var(--htb-border); box-shadow: 0 0 25px var(--htb-green-glow); display: flex; align-items: center; justify-content: space-around; gap: 1rem;">
+      <div style="text-align: center; flex: 1;">
+        <img src="media/two-connected-devices.svg" alt="Two Connected Devices" style="max-height: 120px; width: auto; object-fit: contain;">
+        <div style="font-family: var(--font-mono); font-size: 0.78rem; color: #070e1b; font-weight: 700; margin-top: 0.4rem;">
+          2 Devices = 1 Cable
+        </div>
+      </div>
+
+      <div style="font-size: 1.6rem; color: var(--htb-bg); font-weight: 900;">➔</div>
+
+      <div style="text-align: center; flex: 1;">
+        <img src="media/multiple-connected-devices.svg" alt="Multiple Connected Devices" style="max-height: 120px; width: auto; object-fit: contain;">
+        <div style="font-family: var(--font-mono); font-size: 0.78rem; color: #990000; font-weight: 700; margin-top: 0.4rem;">
+          5 Devices = 10 Mesh Cables!
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Half: Centralized Callout Banner -->
+    <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-green); border-radius: 8px; padding: 0.9rem 1.4rem; text-align: left;">
+      <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem;">
+        <span class="cyber-badge badge-htb">SOLUTION</span>
+        <strong style="color: #fff; font-size: 1.1em;">Centralized Star Topology with HUB</strong>
+      </div>
+      <p style="margin: 0; font-size: 0.9em; color: #e2e8f0; line-height: 1.5;">
+        Connecting \(N\) devices directly requires \(\frac{N(N-1)}{2}\) cables and multiple NICs per computer. 
+        A <strong>HUB</strong> solves this cabling nightmare by serving as a single central junction—allowing every computer to join the network using just <strong>1 cable</strong>!
+      </p>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/what_is_hub.html -->
+<!-- SLIDE: What is a Network Hub? (Horizontal Step Process Flow) -->
+<section>
+  <h2><i class="fa-solid fa-microchip highlight-red"></i> What is a Network Hub (Repeater)?</h2>
+  
+  <div style="display: flex; flex-direction: column; gap: 0.9rem; margin-top: 0.4rem;">
+    <!-- 3 Horizontal Process Step Pills -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; text-align: left;">
+      <div style="background: rgba(255,46,99,0.08); border: 1px solid var(--accent-red); border-radius: 8px; padding: 0.8rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-red); font-weight: 700; margin-bottom: 0.3rem;">
+          01. PORT INGRESS
+        </div>
+        <div style="font-size: 0.88em; color: #fff; font-weight: 600;">Electrical Bit Arrival</div>
+        <p style="font-size: 0.8em; color: var(--text-muted); margin: 0.3rem 0 0 0;">
+          Raw electrical pulses enter a single physical port from Host A.
+        </p>
+      </div>
+
+      <div style="background: rgba(255,183,3,0.08); border: 1px solid var(--accent-yellow); border-radius: 8px; padding: 0.8rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-yellow); font-weight: 700; margin-bottom: 0.3rem;">
+          02. SIGNAL REPEATER
+        </div>
+        <div style="font-size: 0.88em; color: #fff; font-weight: 600;">Layer 1 Amplification</div>
+        <p style="font-size: 0.8em; color: var(--text-muted); margin: 0.3rem 0 0 0;">
+          Hub amplifies voltage without inspecting MAC addresses or IP headers.
+        </p>
+      </div>
+
+      <div style="background: rgba(159,239,0,0.08); border: 1px solid var(--htb-green); border-radius: 8px; padding: 0.8rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--htb-green); font-weight: 700; margin-bottom: 0.3rem;">
+          03. ALL-PORT BROADCAST
+        </div>
+        <div style="font-size: 0.88em; color: #fff; font-weight: 600;">Multiport Flooding</div>
+        <p style="font-size: 0.8em; color: var(--text-muted); margin: 0.3rem 0 0 0;">
+          Signal floods out to every other port simultaneously (Hosts B, C, D).
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Showcase: Layer 1 Diagram Stack -->
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 0.8rem; align-items: center;">
+      <div style="background: rgba(255, 255, 255, 0.95); padding: 10px; border-radius: 8px; border: 1px solid var(--htb-border); text-align: center;">
+        <img src="media/hub-connecting-multiple-devices.svg" alt="Hub Connecting Devices" style="max-height: 160px; width: 100%; object-fit: contain;">
+      </div>
+      <div style="background: rgba(255, 255, 255, 0.95); padding: 10px; border-radius: 8px; border: 1px solid var(--htb-border); text-align: center;">
+        <img src="media/network-hub-osi-model.svg" alt="Hub OSI L1 Position" style="max-height: 160px; width: 100%; object-fit: contain;">
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/collision_domain.html -->
+<!-- SLIDE: What is a Collision Domain? (Centered Spotlight Hero GIF) -->
+<section>
+  <h2><i class="fa-solid fa-triangle-exclamation highlight-red"></i> What is a Collision Domain?</h2>
+  
+  <div style="display: flex; flex-direction: column; gap: 0.8rem; align-items: center; margin-top: 0.3rem;">
+    <!-- Centered Spotlight Animated GIF -->
+    <div style="background: rgba(255, 255, 255, 0.95); padding: 12px; border-radius: 12px; border: 1px solid var(--accent-red); box-shadow: 0 0 30px rgba(255,46,99,0.4); text-align: center; max-width: 850px; width: 100%;">
+      <img src="media/network-collision.gif" alt="Network Packet Collision Animation" style="max-height: 240px; width: 100%; object-fit: contain;">
+    </div>
+
+    <!-- 3 Bottom Feature Badges / Highlights -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; width: 100%; max-width: 950px; text-align: left;">
+      <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.7rem 0.9rem;">
+        <span class="cyber-badge badge-red" style="margin-bottom: 0.3rem;">SHARED MEDIUM</span>
+        <div style="font-size: 0.83em; color: #e2e8f0; line-height: 1.4;">
+          All devices connected to a Hub share a single electrical collision domain.
+        </div>
+      </div>
+
+      <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.7rem 0.9rem;">
+        <span class="cyber-badge badge-yellow" style="margin-bottom: 0.3rem;">DATA CORRUPTION</span>
+        <div style="font-size: 0.83em; color: #e2e8f0; line-height: 1.4;">
+          Simultaneous transmissions collide, destroying electrical data pulses.
+        </div>
+      </div>
+
+      <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.7rem 0.9rem;">
+        <span class="cyber-badge badge-htb" style="margin-bottom: 0.3rem;">CSMA / CD PROTOCOL</span>
+        <div style="font-size: 0.83em; color: #e2e8f0; line-height: 1.4;">
+          Hosts detect collisions, abort transmission, and wait a random backoff time.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/what_is_bridge.html -->
+<!-- SLIDE: What is a Network Bridge? (Asymmetric 40/60 Split with Terminal) -->
+<section>
+  <h2><i class="fa-solid fa-filter highlight-cyan"></i> What is a Network Bridge?</h2>
+  
+  <div style="display: grid; grid-template-columns: 4fr 5fr; gap: 1.2rem; align-items: center; margin-top: 0.4rem; text-align: left;">
+    <!-- Left Column (40%): Vertical Diagram Stack -->
+    <div style="display: flex; flex-direction: column; gap: 0.8rem; text-align: center;">
+      <div style="background: rgba(255, 255, 255, 0.95); padding: 12px; border-radius: 10px; border: 1px solid var(--htb-border); box-shadow: 0 0 20px rgba(45,226,230,0.3);">
+        <img src="media/network-bridge.svg" alt="Network Bridge Segment Divider" style="max-height: 165px; width: 100%; object-fit: contain;">
+      </div>
+      <div style="background: rgba(255, 255, 255, 0.95); padding: 10px; border-radius: 10px; border: 1px solid var(--htb-border);">
+        <img src="media/network-bridge-osi-model.svg" alt="Network Bridge OSI Layer 2 Position" style="max-height: 110px; width: 100%; object-fit: contain;">
+      </div>
+    </div>
+
+    <!-- Right Column (60%): Inspection Console & Deep Dive -->
+    <div>
+      <div style="margin-bottom: 0.6rem;">
+        <span class="cyber-badge badge-cyan">LAYER 2 DATA LINK</span>
+        <span class="cyber-badge badge-htb" style="margin-left: 0.4rem;">SEGMENT ISOLATION</span>
+      </div>
+      <h3 style="font-size: 1.3em; color: #fff; margin-bottom: 0.6rem;">Software MAC Address Filtering</h3>
+      <p style="font-size: 0.88em; color: #e2e8f0; margin-bottom: 0.8rem;">
+        A <strong>Bridge</strong> operates at Layer 2 to divide one large, congested collision domain into two smaller, isolated segments.
+      </p>
+
+      <!-- Terminal Inspection Snippet -->
+      <div class="terminal-header" style="padding: 0.35rem 0.8rem;">
+        <span class="terminal-dot dot-red"></span>
+        <span class="terminal-dot dot-yellow"></span>
+        <span class="terminal-dot dot-green"></span>
+        <span class="terminal-title" style="font-size: 0.75rem;">bridge-mac-table --inspect</span>
+      </div>
+      <pre style="margin: 0; border-top-left-radius: 0; border-top-right-radius: 0; border: 1px solid var(--htb-border); border-top: none;"><code class="language-text" style="font-size: 0.81em; padding: 0.7rem 0.9rem; color: var(--accent-cyan); font-family: var(--font-mono);">[Bridge Logic] Ingress Frame on Port 1
+Destination MAC: 00:11:22:AA:BB (Segment 1)
+Action: FILTER (Do not forward across to Segment 2)
+✔ Segment 2 traffic remains 100% free of local noise!</code></pre>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/why_need_switch.html -->
+<!-- SLIDE: Why Do We Need a Network Switch? (Versus VS Comparison Matrix) -->
+<section>
+  <h2><i class="fa-solid fa-server highlight-htb"></i> Why Do We Need a Network Switch?</h2>
+  
+  <div style="position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 0.5rem; text-align: left;">
+    <!-- Central Glowing VS Badge -->
+    <div style="position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); z-index: 10; background: var(--htb-bg-main); border: 2px solid var(--htb-green); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 900; font-size: 0.9rem; color: var(--htb-green); box-shadow: 0 0 15px var(--htb-green-glow);">
+      VS
+    </div>
+
+    <!-- Left Column: Legacy Bridges (Red Accent) -->
+    <div style="background: rgba(255,46,99,0.05); border: 1px solid var(--accent-red); border-radius: 10px; padding: 1.2rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+        <strong style="color: var(--accent-red); font-size: 1.15em;"><i class="fa-solid fa-filter"></i> BRIDGES (Legacy)</strong>
+        <span class="cyber-badge badge-red">SOFTWARE</span>
+      </div>
+
+      <ul class="threat-list" style="font-size: 0.88em;">
+        <li style="margin-bottom: 0.8rem;"><strong>CPU Software Processing:</strong> Frame inspection done via software code, causing packet latency.</li>
+        <li style="margin-bottom: 0.8rem;"><strong>2–4 Port Limit:</strong> Low port density required hubs to connect clusters of computers behind each port.</li>
+        <li><strong>Half-Duplex Shared Links:</strong> Collision risk persisted within the hubs attached to bridge ports.</li>
+      </ul>
+    </div>
+
+    <!-- Right Column: Modern Switches (Green Accent) -->
+    <div style="background: rgba(159,239,0,0.05); border: 1px solid var(--htb-green); border-radius: 10px; padding: 1.2rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+        <strong style="color: var(--htb-green); font-size: 1.15em;"><i class="fa-solid fa-server"></i> SWITCHES (Modern)</strong>
+        <span class="cyber-badge badge-htb">ASIC SILICON</span>
+      </div>
+
+      <ul class="secure-list" style="font-size: 0.88em;">
+        <li style="margin-bottom: 0.8rem;"><strong>Hardware ASICs:</strong> Performs MAC table lookups in dedicated silicon chips at full wire speed.</li>
+        <li style="margin-bottom: 0.8rem;"><strong>Micro-Segmentation:</strong> Every single port becomes its own dedicated collision domain.</li>
+        <li><strong>Full-Duplex Transmission:</strong> Simultaneous send and receive on every port with ZERO collisions.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/device_hub.html -->
+<!-- SLIDE: Hub (Layer 1 Physical Device) -->
+<section>
+  <h2><i class="fa-solid fa-microchip highlight-red"></i> Hub — The "Dumb" Repeater</h2>
+  
+  <div class="grid-2">
+    <!-- Left Half: Theory & Architecture -->
+    <div>
+      <div class="cyber-card threat" style="height: 100%;">
+        <div class="card-title">
+          <span class="cyber-badge badge-red">LAYER 1 PHYSICAL</span>
+          <span class="cyber-badge badge-htb">OBSOLETE</span>
+        </div>
+        <p style="margin-bottom: 0.6rem;">
+          A <strong>Hub</strong> operates at <strong>Layer 1</strong> and has zero intelligence. When it receives electrical bits on one port, it simply repeats/amplifies that signal out to every attached port.
+        </p>
+        <ul class="threat-list" style="font-size: 0.9em;">
+          <li><strong>How it works:</strong> If Computer A sends data to Computer B, computers C, D, and E receive it too (and must manually ignore it in L2).</li>
+          <li><strong>Drawback:</strong> All devices share 1 wire electrically (<strong>Single Collision Domain</strong>)—only 1 device can transmit at a time without collisions.</li>
+          <li><strong>Status:</strong> Obsolete in modern networks.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Half: Visual Interactive Topology Diagram -->
+    <div class="sim-container" style="margin-top: 0; display: flex; flex-direction: column; justify-content: space-between;">
+      <div class="sim-header">
+        <div class="sim-title"><span class="cyber-badge badge-red">HUB INTERACTIVE TOPOLOGY</span> Broadcast Flooding</div>
+        <div id="hub-sim-status" class="sim-status normal"><i class="fa-solid fa-network-wire"></i> Click a button below to transmit from Comp A</div>
+      </div>
+
+      <!-- Visual Hub Topology Canvas -->
+      <div class="topo-canvas">
+        <svg class="topo-lines-svg">
+          <line x1="20%" y1="25%" x2="50%" y2="50%" class="topo-line active"></line>
+          <line x1="80%" y1="25%" x2="50%" y2="50%" class="topo-line"></line>
+          <line x1="80%" y1="75%" x2="50%" y2="50%" class="topo-line"></line>
+          <line x1="20%" y1="75%" x2="50%" y2="50%" class="topo-line"></line>
+        </svg>
+
+        <!-- Hub Center Node -->
+        <div class="topo-node center-dev" style="left: 50%; top: 50%;">
+          <div class="topo-node-icon" style="border-color: var(--accent-red); color: var(--accent-red);"><i class="fa-solid fa-microchip"></i></div>
+          <span class="topo-node-label">L1 HUB</span>
+        </div>
+
+        <!-- Attached Host Nodes -->
+        <div class="topo-node" style="left: 20%; top: 25%;">
+          <div class="topo-node-icon" style="border-color: var(--htb-green);"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp A (Sender)</span>
+        </div>
+
+        <div class="topo-node" style="left: 80%; top: 25%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp B</span>
+        </div>
+
+        <div class="topo-node" style="left: 80%; top: 75%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp C</span>
+        </div>
+
+        <div class="topo-node" style="left: 20%; top: 75%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp D</span>
+        </div>
+
+        <!-- Animated Packets -->
+        <div id="hub-pkt-main" class="topo-packet"></div>
+        <div id="hub-pkt-b" class="topo-packet"></div>
+        <div id="hub-pkt-c" class="topo-packet"></div>
+        <div id="hub-pkt-d" class="topo-packet"></div>
+      </div>
+
+      <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 0.4rem;">
+        <button class="sim-btn btn-red" onclick="window.netDevSim.testHub('b')"><i class="fa-solid fa-paper-plane"></i> Send A ➔ B</button>
+        <button class="sim-btn btn-red" onclick="window.netDevSim.testHub('c')"><i class="fa-solid fa-paper-plane"></i> Send A ➔ C</button>
+        <button class="sim-btn btn-red" onclick="window.netDevSim.testHub('d')"><i class="fa-solid fa-paper-plane"></i> Send A ➔ D</button>
+      </div>
+
+      <div id="hub-sim-log" style="background: var(--htb-bg-terminal); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 0.6rem 0.8rem; font-family: var(--font-mono); font-size: 0.78em; min-height: 80px;">
+        <div style="color: var(--text-muted);">Click a button to trigger live electrical bit duplication across all connected ports...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/device_bridge.html -->
+<!-- SLIDE: Bridge (Layer 2 Data Link Device) -->
+<section>
+  <h2><i class="fa-solid fa-filter highlight-cyan"></i> Bridge — Two-Port Traffic Cop</h2>
+  
+  <div class="grid-2">
+    <!-- Left Half: Theory & Architecture -->
+    <div>
+      <div class="cyber-card" style="height: 100%;">
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">LAYER 2 DATA LINK</span>
+          <span class="cyber-badge badge-htb">TRANSITIONAL</span>
+        </div>
+        <p style="margin-bottom: 0.6rem;">
+          A <strong>Bridge</strong> operates at <strong>Layer 2</strong> and was invented to divide one large, congested hub network into two smaller collision segments.
+        </p>
+        <ul style="font-size: 0.9em;">
+          <li><strong>How it works:</strong> Reads destination MAC address in software. If target device lives on the same side, blocks frame from crossing over; if on the other side, forwards it.</li>
+          <li><strong>Key Limitation:</strong> Mostly software-based with very few ports (usually 2 to 4), serving as a transitional technology before high-port switches took over.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Half: Visual Interactive Topology Diagram -->
+    <div class="sim-container" style="margin-top: 0; display: flex; flex-direction: column; justify-content: space-between;">
+      <div class="sim-header">
+        <div class="sim-title"><span class="cyber-badge badge-cyan">BRIDGE TOPOLOGY</span> Software MAC Filter</div>
+        <div id="bridge-sim-status" class="sim-status normal"><i class="fa-solid fa-filter"></i> Bridge Ready: Test Same vs Cross-Segment transmission</div>
+      </div>
+
+      <!-- Visual Bridge Topology Canvas with Segment Boxes & Dividing Boundary Wall -->
+      <div class="topo-canvas">
+        <!-- Visual Segment Zones -->
+        <div style="position: absolute; left: 5%; top: 5%; width: 38%; height: 90%; background: rgba(45,226,230,0.05); border: 1px dashed var(--accent-cyan); border-radius: 6px; pointer-events: none;"></div>
+        <div style="position: absolute; right: 5%; top: 5%; width: 38%; height: 90%; background: rgba(168,85,247,0.05); border: 1px dashed var(--accent-purple); border-radius: 6px; pointer-events: none;"></div>
+        <div style="position: absolute; left: 50%; top: 0; bottom: 0; border-left: 2px dashed rgba(255,255,255,0.15); transform: translateX(-50%); pointer-events: none;"></div>
+
+        <svg class="topo-lines-svg">
+          <line x1="20%" y1="30%" x2="50%" y2="50%" class="topo-line active"></line>
+          <line x1="20%" y1="70%" x2="50%" y2="50%" class="topo-line"></line>
+          <line x1="80%" y1="30%" x2="50%" y2="50%" class="topo-line"></line>
+          <line x1="80%" y1="70%" x2="50%" y2="50%" class="topo-line"></line>
+        </svg>
+
+        <!-- Segment Labels -->
+        <div style="position: absolute; left: 8%; top: 8%; font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-cyan); font-weight:700;">SEGMENT 1 (COLLISION DOMAIN 1)</div>
+        <div style="position: absolute; right: 8%; top: 8%; font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-purple); font-weight:700;">SEGMENT 2 (COLLISION DOMAIN 2)</div>
+
+        <!-- Bridge Center Node -->
+        <div class="topo-node center-dev" style="left: 50%; top: 50%;">
+          <div id="bridge-icon-dev" class="topo-node-icon" style="border-color: var(--accent-cyan); color: var(--accent-cyan);"><i class="fa-solid fa-filter"></i></div>
+          <span class="topo-node-label">L2 BRIDGE</span>
+        </div>
+
+        <!-- Attached Host Nodes -->
+        <div class="topo-node" style="left: 20%; top: 30%;">
+          <div class="topo-node-icon" style="border-color: var(--htb-green);"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp A (Seg 1)</span>
+        </div>
+
+        <div class="topo-node" style="left: 20%; top: 70%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp B (Seg 1)</span>
+        </div>
+
+        <div class="topo-node" style="left: 80%; top: 30%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp C (Seg 2)</span>
+        </div>
+
+        <div class="topo-node" style="left: 80%; top: 70%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp D (Seg 2)</span>
+        </div>
+
+        <!-- Animated Packet -->
+        <div id="bridge-pkt-main" class="topo-packet"></div>
+      </div>
+
+      <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 0.4rem;">
+        <button class="sim-btn" onclick="window.netDevSim.testBridge('same')"><i class="fa-solid fa-filter"></i> Send A ➔ B (Same Segment)</button>
+        <button class="sim-btn" onclick="window.netDevSim.testBridge('cross')"><i class="fa-solid fa-right-left"></i> Send A ➔ C (Cross Segment)</button>
+      </div>
+
+      <div id="bridge-sim-log" style="background: var(--htb-bg-terminal); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 0.6rem 0.8rem; font-family: var(--font-mono); font-size: 0.78em; min-height: 80px;">
+        <div style="color: var(--text-muted);">Click a button to test how Bridge filters frames in software by checking destination MAC...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/device_switch.html -->
+<!-- SLIDE: Switch (Layer 2 Data Link Device) -->
+<section>
+  <h2><i class="fa-solid fa-server highlight-htb"></i> Switch — Multi-Port Highway</h2>
+  
+  <div class="grid-2">
+    <!-- Left Half: Theory & Architecture -->
+    <div>
+      <div class="cyber-card secure" style="height: 100%;">
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">LAYER 2 DATA LINK</span>
+          <span class="cyber-badge badge-cyan">HARDWARE ASIC</span>
+        </div>
+        <p style="margin-bottom: 0.6rem;">
+          A <strong>Switch</strong> is an advanced, hardware-accelerated, multi-port bridge operating at <strong>Layer 2</strong>.
+        </p>
+        <ul class="secure-list" style="font-size: 0.9em;">
+          <li><strong>How it works:</strong> Maintains a MAC address table in specialized hardware (ASICs). When Comp A sends data to Comp B, delivers the frame <em>only</em> to Comp B's port.</li>
+          <li><strong>Key Advantage:</strong> Every single port gets its own dedicated bandwidth and collision domain, allowing <strong>Full-Duplex</strong> communication (simultaneous send/receive).</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Half: Visual Interactive Topology Diagram -->
+    <div class="sim-container" style="margin-top: 0; display: flex; flex-direction: column; justify-content: space-between;">
+      <div class="sim-header">
+        <div class="sim-title"><span class="cyber-badge badge-htb">SWITCH TOPOLOGY</span> Dedicated ASIC Routing</div>
+        <div id="switch-sim-status" class="sim-status normal"><i class="fa-solid fa-bolt"></i> Switch Ready: Select target port for dedicated hardware delivery</div>
+      </div>
+
+      <!-- Visual Switch Topology Canvas -->
+      <div class="topo-canvas">
+        <svg class="topo-lines-svg">
+          <line x1="15%" y1="50%" x2="50%" y2="50%" class="topo-line active"></line>
+          <line x1="50%" y1="20%" x2="50%" y2="50%" class="topo-line"></line>
+          <line x1="85%" y1="50%" x2="50%" y2="50%" class="topo-line"></line>
+          <line x1="50%" y1="80%" x2="50%" y2="50%" class="topo-line"></line>
+        </svg>
+
+        <!-- Switch Center Node -->
+        <div class="topo-node center-dev" style="left: 50%; top: 50%;">
+          <div class="topo-node-icon" style="border-color: var(--htb-green); color: var(--htb-green);"><i class="fa-solid fa-server"></i></div>
+          <span class="topo-node-label">ASIC SWITCH</span>
+        </div>
+
+        <!-- Attached Host Nodes -->
+        <div class="topo-node" style="left: 15%; top: 50%;">
+          <div class="topo-node-icon" style="border-color: var(--htb-green);"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp A</span>
+        </div>
+
+        <div class="topo-node" style="left: 50%; top: 20%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp B</span>
+        </div>
+
+        <div class="topo-node" style="left: 85%; top: 50%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp C</span>
+        </div>
+
+        <div class="topo-node" style="left: 50%; top: 80%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp D</span>
+        </div>
+
+        <!-- Animated Packet -->
+        <div id="switch-pkt-main" class="topo-packet"></div>
+      </div>
+
+      <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 0.4rem;">
+        <button class="sim-btn" onclick="window.netDevSim.testSwitch('b')"><i class="fa-solid fa-bolt"></i> Send A ➔ B</button>
+        <button class="sim-btn" onclick="window.netDevSim.testSwitch('c')"><i class="fa-solid fa-bolt"></i> Send A ➔ C</button>
+        <button class="sim-btn" onclick="window.netDevSim.testSwitch('d')"><i class="fa-solid fa-bolt"></i> Send A ➔ D</button>
+      </div>
+
+      <div id="switch-sim-log" style="background: var(--htb-bg-terminal); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 0.6rem 0.8rem; font-family: var(--font-mono); font-size: 0.78em; min-height: 80px;">
+        <div style="color: var(--text-muted);">Click a button to watch Switch lookup MAC ASIC table & route frame strictly to destination port...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/what_is_router.html -->
+<!-- SLIDE: What is a Router? -->
+<section>
+  <h2><i class="fa-solid fa-network-wired highlight-purple"></i> What is a Router?</h2>
+  
+  <div style="display: flex; flex-direction: column; gap: 0.9rem; margin-top: 0.4rem;">
+    <!-- Top Showcase: Router Connecting Two Networks Diagram -->
+    <div style="background: rgba(255, 255, 255, 0.95); padding: 12px; border-radius: 12px; border: 1px solid var(--htb-border); box-shadow: 0 0 25px rgba(168,85,247,0.3); text-align: center;">
+      <img src="media/router-connecting-two-ip-networks.svg" alt="Router Connecting Two IP Networks" style="max-height: 210px; width: 100%; object-fit: contain;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.3rem;">
+        Figure 1: Router Joining Network A (172.16.1.0/24) & Network B (10.1.1.0/24)
+      </div>
+    </div>
+
+    <!-- Bottom Split: Switch vs Router & Key Architectural Rule -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; text-align: left;">
+      <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 8px; padding: 0.8rem 1rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+          <span class="cyber-badge badge-purple">INTER-NETWORK</span>
+          <strong style="color: #fff; font-size: 0.95em;">Switch vs. Router Role</strong>
+        </div>
+        <p style="font-size: 0.82em; color: #e2e8f0; margin: 0; line-height: 1.4;">
+          A <strong>Switch</strong> handles communication <em>within</em> a local Ethernet network (LAN). A <strong>Router</strong> joins completely separate IP networks together (LAN to ISP WAN, or Enterprise branches to Cloud).
+        </p>
+      </div>
+
+      <div style="background: rgba(168,85,247,0.08); border: 1px solid var(--accent-purple); border-radius: 8px; padding: 0.8rem 1rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+          <span class="cyber-badge badge-htb">KEY ARCHITECTURE NOTE</span>
+        </div>
+        <p style="font-size: 0.82em; color: #fff; margin: 0; line-height: 1.4;">
+          End devices (PCs, servers) <strong>do not connect directly to a router</strong>. They connect to a switch, and the switch connects to a router interface!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/how_router_works.html -->
+<!-- SLIDE: How Does a Router Work? -->
+<section>
+  <h2><i class="fa-solid fa-route highlight-purple"></i> How Does a Router Work?</h2>
+  
+  <div style="display: grid; grid-template-columns: 5fr 4fr; gap: 1rem; align-items: center; margin-top: 0.3rem; text-align: left;">
+    <!-- Left Column: How Does a Router Work Diagram -->
+    <div style="text-align: center;">
+      <div style="background: rgba(255, 255, 255, 0.95); padding: 10px; border-radius: 10px; border: 1px solid var(--htb-border); box-shadow: 0 0 20px rgba(168,85,247,0.3);">
+        <img src="media/how-does-router-work.svg" alt="How Does a Router Work Diagram" style="max-height: 240px; width: 100%; object-fit: contain;">
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-top: 0.4rem;">
+        Figure 2: Interfaces (0/0 LAN 10.1.1.1 & 0/1 WAN 39.1.1.1) & Routing Lookup
+      </div>
+    </div>
+
+    <!-- Right Column: 2 Main Components & 3 Processing Steps -->
+    <div style="display: flex; flex-direction: column; gap: 0.7rem;">
+      <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.7rem 0.9rem;">
+        <span class="cyber-badge badge-purple" style="margin-bottom: 0.3rem;">01. INTERFACES</span>
+        <div style="font-size: 0.81em; color: #e2e8f0; line-height: 1.4;">
+          Each interface connects to a different subnet. <em>Rule: A router can have only ONE interface per network.</em>
+        </div>
+      </div>
+
+      <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.7rem 0.9rem;">
+        <span class="cyber-badge badge-cyan" style="margin-bottom: 0.3rem;">02. ROUTING TABLE</span>
+        <div style="font-size: 0.81em; color: #e2e8f0; line-height: 1.4;">
+          Maps destination subnet \(\rightarrow\) next hop / exit interface \(\rightarrow\) metric. (Static or Dynamic OSPF/BGP).
+        </div>
+      </div>
+
+      <!-- Packet Processing Steps -->
+      <div class="terminal-header" style="padding: 0.3rem 0.7rem;">
+        <span class="terminal-dot dot-red"></span>
+        <span class="terminal-dot dot-yellow"></span>
+        <span class="terminal-dot dot-green"></span>
+        <span class="terminal-title" style="font-size: 0.72rem;">router-packet-forwarding-steps</span>
+      </div>
+      <pre style="margin: 0; border-top-left-radius: 0; border-top-right-radius: 0; border: 1px solid var(--htb-border); border-top: none;"><code class="language-text" style="font-size: 0.76em; padding: 0.5rem 0.7rem; color: var(--htb-green); font-family: var(--font-mono);">1. Strip Ingress L2 Frame ➔ Read L3 IP Header
+2. Compare Dst IP against Routing Table
+3. Encapsulate in NEW L2 Frame ➔ Next-Hop MAC</code></pre>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/routing_table_lpm.html -->
+<!-- SLIDE: Routing Table & Longest Prefix Match (LPM) -->
+<section>
+  <h2><i class="fa-solid fa-table-list highlight-purple"></i> Routing Table & Longest Prefix Match (LPM)</h2>
+  
+  <div style="display: flex; flex-direction: column; gap: 0.9rem; align-items: center; margin-top: 0.3rem; text-align: left;">
+    <!-- Centered PNG Image (Dark Blended Frame) -->
+    <div style="text-align: center; width: 100%; max-width: 820px;">
+      <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--accent-purple); border-radius: 12px; padding: 0.8rem; box-shadow: 0 0 25px rgba(168,85,247,0.3); display: inline-block; width: 100%;">
+        <img src="media/ip_forwarding_table.png" alt="IP Forwarding Table Lookup Diagram" style="max-height: 210px; width: auto; max-width: 100%; object-fit: contain; filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));">
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); margin-top: 0.4rem;">
+        Destination IP \(D = 192.168.1.50\) Forwarding Table Search & Mask Calculation
+      </div>
+    </div>
+
+    <!-- Bottom 2-Step Breakdown Cards -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: 100%; max-width: 950px;">
+      <!-- Step 1 Card -->
+      <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 8px; padding: 0.8rem 1rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
+          <span class="cyber-badge badge-purple">STEP 1: FINDING MATCHES</span>
+          <span class="cyber-badge badge-htb">BITWISE AND</span>
+        </div>
+        <ul style="font-size: 0.8em; color: #e2e8f0; margin: 0; padding-left: 1.1rem; line-height: 1.45;">
+          <li><strong>Entry 1 (0.0.0.0/0):</strong> 192.168.1.50 AND 0.0.0.0 = 0.0.0.0 <span style="color: var(--accent-yellow);">(Matches: 0 bits)</span></li>
+          <li><strong>Entry 2 (192.168.0.0/16):</strong> 192.168.1.50 AND 255.255.0.0 = 192.168.0.0 <span style="color: var(--accent-cyan);">(Matches: 16 bits)</span></li>
+          <li><strong>Entry 3 (192.168.1.0/24):</strong> 192.168.1.50 AND 255.255.255.0 = 192.168.1.0 <span style="color: var(--htb-green); font-weight:700;">(Matches: 24 bits)</span></li>
+        </ul>
+      </div>
+
+      <!-- Step 2 Card -->
+      <div style="background: rgba(159,239,0,0.08); border: 1px solid var(--htb-green); border-radius: 8px; padding: 0.8rem 1rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;">
+          <span class="cyber-badge badge-htb">STEP 2: BEST ROUTE SELECTION</span>
+          <strong style="color: #fff; font-size: 0.9em;">Longest Prefix Match (LPM) Rule</strong>
+        </div>
+        <p style="font-size: 0.82em; color: #e2e8f0; margin: 0; line-height: 1.45;">
+          All three entries match, so the router compares matching bit counts: 
+          <strong style="color: var(--htb-green);">24 bits (\(m_3\)) > 16 bits (\(m_2\)) > 0 bits (\(m_1\))</strong>.
+          <br>
+          ✔ <strong>Winning Route:</strong> Entry 3 (<code>192.168.1.0/24</code>) is selected because it has the most specific network mask!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/routing_at_host.html -->
+<!-- SLIDE: IP Routing Starts at the Host -->
+<section>
+  <h2><i class="fa-solid fa-laptop-code highlight-htb"></i> IP Routing Starts at the Host</h2>
+  
+  <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.3rem;">
+    <!-- Key Concept Banner -->
+    <div style="background: rgba(159,239,0,0.08); border: 1px solid var(--htb-green); border-radius: 8px; padding: 0.8rem 1.2rem; text-align: left;">
+      <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.3rem;">
+        <span class="cyber-badge badge-htb">FIRST ROUTING DECISION</span>
+        <strong style="color: #fff; font-size: 1.05em;">The Host Decides Before Data Touches the Wire!</strong>
+      </div>
+      <p style="margin: 0; font-size: 0.85em; color: #e2e8f0; line-height: 1.4;">
+        PC1 wants to send data to Google (<code>8.8.8.8</code>). PC1 compares <code>8.8.8.8</code> against its own IP & Mask (<code>10.1.1.50 / 255.255.255.0</code>). 
+        Using subnetting logic, PC1 determines <code>8.8.8.8</code> is outside its local LAN!
+      </p>
+    </div>
+
+    <!-- 2 Host Scenario Decision Flow -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; text-align: left;">
+      <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 8px; padding: 0.9rem 1.1rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
+          <strong style="color: var(--accent-cyan); font-size: 0.95em;">SCENARIO A: SAME SUBNET</strong>
+          <span class="cyber-badge badge-cyan">DIRECT ARP</span>
+        </div>
+        <p style="font-size: 0.82em; color: #e2e8f0; margin: 0; line-height: 1.4;">
+          If destination IP is on the same local network, host sends packet directly to target using <strong>ARP</strong> to resolve destination MAC address. <strong>No router needed!</strong>
+        </p>
+      </div>
+
+      <div style="background: rgba(168,85,247,0.08); border: 1px solid var(--accent-purple); border-radius: 8px; padding: 0.9rem 1.1rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
+          <strong style="color: var(--accent-purple); font-size: 0.95em;">SCENARIO B: DIFFERENT SUBNET</strong>
+          <span class="cyber-badge badge-purple">DEFAULT GATEWAY</span>
+        </div>
+        <p style="font-size: 0.82em; color: #fff; margin: 0; line-height: 1.4;">
+          Destination is outside local LAN \(\rightarrow\) Host sends packet to <strong>Default Gateway Router (10.1.1.1)</strong>. Host sets Ethernet <strong>Destination MAC = Router R1 MAC (CCC)</strong>!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/device_router.html -->
+<!-- SLIDE: Router (Layer 3 Network Device) -->
+<section>
+  <h2><i class="fa-solid fa-network-wired highlight-purple"></i> Router — Gateway Between Networks</h2>
+  
+  <div class="grid-2">
+    <!-- Left Half: Theory & Architecture -->
+    <div>
+      <div class="cyber-card" style="height: 100%;">
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">LAYER 3 NETWORK</span>
+          <span class="cyber-badge badge-htb">INTER-NETWORK</span>
+        </div>
+        <p style="margin-bottom: 0.6rem;">
+          While hubs, bridges, and switches connect devices within a local network (LAN), a <strong>Router</strong> operates at <strong>Layer 3</strong> to join completely separate networks together (e.g. Home LAN to ISP WAN/Internet).
+        </p>
+        <ul style="font-size: 0.9em;">
+          <li><strong>How it works:</strong> Strips off Layer 2 frames, inspects IP addresses inside Layer 3 packets, and uses a routing table to determine the best path toward final destination.</li>
+          <li><strong>Key Advantage:</strong> Blocks Layer 2 broadcasts from leaking into other networks, keeping broad network traffic isolated and secure.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Half: Visual Interactive Topology Diagram -->
+    <div class="sim-container" style="margin-top: 0; display: flex; flex-direction: column; justify-content: space-between;">
+      <div class="sim-header">
+        <div class="sim-title"><span class="cyber-badge badge-purple">ROUTER TOPOLOGY</span> Inter-Network & Isolation</div>
+        <div id="router-sim-status" class="sim-status normal"><i class="fa-solid fa-network-wired"></i> Router Ready: Test IP Routing vs L2 Broadcast Isolation</div>
+      </div>
+
+      <!-- Visual Router Topology Canvas -->
+      <div class="topo-canvas">
+        <svg class="topo-lines-svg">
+          <line x1="15%" y1="30%" x2="35%" y2="50%" class="topo-line active"></line>
+          <line x1="15%" y1="70%" x2="35%" y2="50%" class="topo-line"></line>
+          <line x1="35%" y1="50%" x2="55%" y2="50%" class="topo-line active"></line>
+          <line x1="55%" y1="50%" x2="85%" y2="50%" class="topo-line active"></line>
+        </svg>
+
+        <!-- Network Domain Labels -->
+        <div style="position: absolute; left: 15%; top: 8%; font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-cyan); font-weight:700;">LAN A (192.168.1.0/24)</div>
+        <div style="position: absolute; right: 10%; top: 8%; font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-purple); font-weight:700;">WAN Internet (10.0.0.0/8)</div>
+
+        <!-- Router Center Node -->
+        <div class="topo-node center-dev" style="left: 55%; top: 50%;">
+          <div id="router-icon-dev" class="topo-node-icon" style="border-color: var(--accent-purple); color: var(--accent-purple);"><i class="fa-solid fa-network-wired"></i></div>
+          <span class="topo-node-label">L3 ROUTER</span>
+        </div>
+
+        <!-- LAN & WAN Nodes -->
+        <div class="topo-node" style="left: 15%; top: 30%;">
+          <div class="topo-node-icon" style="border-color: var(--htb-green);"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp A (LAN)</span>
+        </div>
+
+        <div class="topo-node" style="left: 15%; top: 70%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp B (LAN)</span>
+        </div>
+
+        <div class="topo-node" style="left: 35%; top: 50%;">
+          <div class="topo-node-icon" style="border-color: var(--accent-cyan);"><i class="fa-solid fa-server"></i></div>
+          <span class="topo-node-label">Switch A</span>
+        </div>
+
+        <div class="topo-node" style="left: 85%; top: 50%;">
+          <div class="topo-node-icon" style="border-color: var(--accent-purple);"><i class="fa-solid fa-globe"></i></div>
+          <span class="topo-node-label">Web Server (WAN)</span>
+        </div>
+
+        <!-- Animated Packets -->
+        <div id="router-pkt-main" class="topo-packet"></div>
+        <div id="router-pkt-sub" class="topo-packet"></div>
+      </div>
+
+      <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 0.4rem;">
+        <button class="sim-btn" onclick="window.netDevSim.testRouter('route')"><i class="fa-solid fa-route"></i> Route LAN ➔ WAN</button>
+        <button class="sim-btn btn-red" onclick="window.netDevSim.testRouter('broadcast')"><i class="fa-solid fa-shield-halved"></i> Send L2 Broadcast</button>
+      </div>
+
+      <div id="router-sim-log" style="background: var(--htb-bg-terminal); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 0.6rem 0.8rem; font-family: var(--font-mono); font-size: 0.78em; min-height: 80px;">
+        <div style="color: var(--text-muted);">Click a button to test Layer 3 IP routing across networks vs L2 broadcast isolation...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
       <!-- Loaded from slides/four_blocks.html -->
 <!-- SLIDE 3: The 4 Blocks of HTTP -->
 <section>
@@ -517,6 +1250,7 @@
   <script src="js/cyber-bg.js"></script>
   <script src="js/http-simulator.js"></script>
   <script src="js/osi-encapsulation.js"></script>
+  <script src="js/network-devices-sim.js"></script>
   <script>
     // Initialize Reveal.js
     Reveal.initialize({

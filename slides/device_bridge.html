@@ -1,0 +1,89 @@
+<!-- SLIDE: Bridge (Layer 2 Data Link Device) -->
+<section>
+  <h2><i class="fa-solid fa-filter highlight-cyan"></i> Bridge — Two-Port Traffic Cop</h2>
+  
+  <div class="grid-2">
+    <!-- Left Half: Theory & Architecture -->
+    <div>
+      <div class="cyber-card" style="height: 100%;">
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">LAYER 2 DATA LINK</span>
+          <span class="cyber-badge badge-htb">TRANSITIONAL</span>
+        </div>
+        <p style="margin-bottom: 0.6rem;">
+          A <strong>Bridge</strong> operates at <strong>Layer 2</strong> and was invented to divide one large, congested hub network into two smaller collision segments.
+        </p>
+        <ul style="font-size: 0.9em;">
+          <li><strong>How it works:</strong> Reads destination MAC address in software. If target device lives on the same side, blocks frame from crossing over; if on the other side, forwards it.</li>
+          <li><strong>Key Limitation:</strong> Mostly software-based with very few ports (usually 2 to 4), serving as a transitional technology before high-port switches took over.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Half: Visual Interactive Topology Diagram -->
+    <div class="sim-container" style="margin-top: 0; display: flex; flex-direction: column; justify-content: space-between;">
+      <div class="sim-header">
+        <div class="sim-title"><span class="cyber-badge badge-cyan">BRIDGE TOPOLOGY</span> Software MAC Filter</div>
+        <div id="bridge-sim-status" class="sim-status normal"><i class="fa-solid fa-filter"></i> Bridge Ready: Test Same vs Cross-Segment transmission</div>
+      </div>
+
+      <!-- Visual Bridge Topology Canvas with Segment Boxes & Dividing Boundary Wall -->
+      <div class="topo-canvas">
+        <!-- Visual Segment Zones -->
+        <div style="position: absolute; left: 5%; top: 5%; width: 38%; height: 90%; background: rgba(45,226,230,0.05); border: 1px dashed var(--accent-cyan); border-radius: 6px; pointer-events: none;"></div>
+        <div style="position: absolute; right: 5%; top: 5%; width: 38%; height: 90%; background: rgba(168,85,247,0.05); border: 1px dashed var(--accent-purple); border-radius: 6px; pointer-events: none;"></div>
+        <div style="position: absolute; left: 50%; top: 0; bottom: 0; border-left: 2px dashed rgba(255,255,255,0.15); transform: translateX(-50%); pointer-events: none;"></div>
+
+        <svg class="topo-lines-svg">
+          <line x1="20%" y1="30%" x2="50%" y2="50%" class="topo-line active"></line>
+          <line x1="20%" y1="70%" x2="50%" y2="50%" class="topo-line"></line>
+          <line x1="80%" y1="30%" x2="50%" y2="50%" class="topo-line"></line>
+          <line x1="80%" y1="70%" x2="50%" y2="50%" class="topo-line"></line>
+        </svg>
+
+        <!-- Segment Labels -->
+        <div style="position: absolute; left: 8%; top: 8%; font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-cyan); font-weight:700;">SEGMENT 1 (COLLISION DOMAIN 1)</div>
+        <div style="position: absolute; right: 8%; top: 8%; font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-purple); font-weight:700;">SEGMENT 2 (COLLISION DOMAIN 2)</div>
+
+        <!-- Bridge Center Node -->
+        <div class="topo-node center-dev" style="left: 50%; top: 50%;">
+          <div id="bridge-icon-dev" class="topo-node-icon" style="border-color: var(--accent-cyan); color: var(--accent-cyan);"><i class="fa-solid fa-filter"></i></div>
+          <span class="topo-node-label">L2 BRIDGE</span>
+        </div>
+
+        <!-- Attached Host Nodes -->
+        <div class="topo-node" style="left: 20%; top: 30%;">
+          <div class="topo-node-icon" style="border-color: var(--htb-green);"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp A (Seg 1)</span>
+        </div>
+
+        <div class="topo-node" style="left: 20%; top: 70%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp B (Seg 1)</span>
+        </div>
+
+        <div class="topo-node" style="left: 80%; top: 30%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp C (Seg 2)</span>
+        </div>
+
+        <div class="topo-node" style="left: 80%; top: 70%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp D (Seg 2)</span>
+        </div>
+
+        <!-- Animated Packet -->
+        <div id="bridge-pkt-main" class="topo-packet"></div>
+      </div>
+
+      <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 0.4rem;">
+        <button class="sim-btn" onclick="window.netDevSim.testBridge('same')"><i class="fa-solid fa-filter"></i> Send A ➔ B (Same Segment)</button>
+        <button class="sim-btn" onclick="window.netDevSim.testBridge('cross')"><i class="fa-solid fa-right-left"></i> Send A ➔ C (Cross Segment)</button>
+      </div>
+
+      <div id="bridge-sim-log" style="background: var(--htb-bg-terminal); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 0.6rem 0.8rem; font-family: var(--font-mono); font-size: 0.78em; min-height: 80px;">
+        <div style="color: var(--text-muted);">Click a button to test how Bridge filters frames in software by checking destination MAC...</div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,81 @@
+<!-- SLIDE: Switch (Layer 2 Data Link Device) -->
+<section>
+  <h2><i class="fa-solid fa-server highlight-htb"></i> Switch — Multi-Port Highway</h2>
+  
+  <div class="grid-2">
+    <!-- Left Half: Theory & Architecture -->
+    <div>
+      <div class="cyber-card secure" style="height: 100%;">
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">LAYER 2 DATA LINK</span>
+          <span class="cyber-badge badge-cyan">HARDWARE ASIC</span>
+        </div>
+        <p style="margin-bottom: 0.6rem;">
+          A <strong>Switch</strong> is an advanced, hardware-accelerated, multi-port bridge operating at <strong>Layer 2</strong>.
+        </p>
+        <ul class="secure-list" style="font-size: 0.9em;">
+          <li><strong>How it works:</strong> Maintains a MAC address table in specialized hardware (ASICs). When Comp A sends data to Comp B, delivers the frame <em>only</em> to Comp B's port.</li>
+          <li><strong>Key Advantage:</strong> Every single port gets its own dedicated bandwidth and collision domain, allowing <strong>Full-Duplex</strong> communication (simultaneous send/receive).</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Half: Visual Interactive Topology Diagram -->
+    <div class="sim-container" style="margin-top: 0; display: flex; flex-direction: column; justify-content: space-between;">
+      <div class="sim-header">
+        <div class="sim-title"><span class="cyber-badge badge-htb">SWITCH TOPOLOGY</span> Dedicated ASIC Routing</div>
+        <div id="switch-sim-status" class="sim-status normal"><i class="fa-solid fa-bolt"></i> Switch Ready: Select target port for dedicated hardware delivery</div>
+      </div>
+
+      <!-- Visual Switch Topology Canvas -->
+      <div class="topo-canvas">
+        <svg class="topo-lines-svg">
+          <line x1="15%" y1="50%" x2="50%" y2="50%" class="topo-line active"></line>
+          <line x1="50%" y1="20%" x2="50%" y2="50%" class="topo-line"></line>
+          <line x1="85%" y1="50%" x2="50%" y2="50%" class="topo-line"></line>
+          <line x1="50%" y1="80%" x2="50%" y2="50%" class="topo-line"></line>
+        </svg>
+
+        <!-- Switch Center Node -->
+        <div class="topo-node center-dev" style="left: 50%; top: 50%;">
+          <div class="topo-node-icon" style="border-color: var(--htb-green); color: var(--htb-green);"><i class="fa-solid fa-server"></i></div>
+          <span class="topo-node-label">ASIC SWITCH</span>
+        </div>
+
+        <!-- Attached Host Nodes -->
+        <div class="topo-node" style="left: 15%; top: 50%;">
+          <div class="topo-node-icon" style="border-color: var(--htb-green);"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp A</span>
+        </div>
+
+        <div class="topo-node" style="left: 50%; top: 20%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp B</span>
+        </div>
+
+        <div class="topo-node" style="left: 85%; top: 50%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp C</span>
+        </div>
+
+        <div class="topo-node" style="left: 50%; top: 80%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp D</span>
+        </div>
+
+        <!-- Animated Packet -->
+        <div id="switch-pkt-main" class="topo-packet"></div>
+      </div>
+
+      <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 0.4rem;">
+        <button class="sim-btn" onclick="window.netDevSim.testSwitch('b')"><i class="fa-solid fa-bolt"></i> Send A ➔ B</button>
+        <button class="sim-btn" onclick="window.netDevSim.testSwitch('c')"><i class="fa-solid fa-bolt"></i> Send A ➔ C</button>
+        <button class="sim-btn" onclick="window.netDevSim.testSwitch('d')"><i class="fa-solid fa-bolt"></i> Send A ➔ D</button>
+      </div>
+
+      <div id="switch-sim-log" style="background: var(--htb-bg-terminal); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 0.6rem 0.8rem; font-family: var(--font-mono); font-size: 0.78em; min-height: 80px;">
+        <div style="color: var(--text-muted);">Click a button to watch Switch lookup MAC ASIC table & route frame strictly to destination port...</div>
+      </div>
+    </div>
+  </div>
+</section>

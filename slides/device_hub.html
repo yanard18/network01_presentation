@@ -1,0 +1,85 @@
+<!-- SLIDE: Hub (Layer 1 Physical Device) -->
+<section>
+  <h2><i class="fa-solid fa-microchip highlight-red"></i> Hub — The "Dumb" Repeater</h2>
+  
+  <div class="grid-2">
+    <!-- Left Half: Theory & Architecture -->
+    <div>
+      <div class="cyber-card threat" style="height: 100%;">
+        <div class="card-title">
+          <span class="cyber-badge badge-red">LAYER 1 PHYSICAL</span>
+          <span class="cyber-badge badge-htb">OBSOLETE</span>
+        </div>
+        <p style="margin-bottom: 0.6rem;">
+          A <strong>Hub</strong> operates at <strong>Layer 1</strong> and has zero intelligence. When it receives electrical bits on one port, it simply repeats/amplifies that signal out to every attached port.
+        </p>
+        <ul class="threat-list" style="font-size: 0.9em;">
+          <li><strong>How it works:</strong> If Computer A sends data to Computer B, computers C, D, and E receive it too (and must manually ignore it in L2).</li>
+          <li><strong>Drawback:</strong> All devices share 1 wire electrically (<strong>Single Collision Domain</strong>)—only 1 device can transmit at a time without collisions.</li>
+          <li><strong>Status:</strong> Obsolete in modern networks.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Half: Visual Interactive Topology Diagram -->
+    <div class="sim-container" style="margin-top: 0; display: flex; flex-direction: column; justify-content: space-between;">
+      <div class="sim-header">
+        <div class="sim-title"><span class="cyber-badge badge-red">HUB INTERACTIVE TOPOLOGY</span> Broadcast Flooding</div>
+        <div id="hub-sim-status" class="sim-status normal"><i class="fa-solid fa-network-wire"></i> Click a button below to transmit from Comp A</div>
+      </div>
+
+      <!-- Visual Hub Topology Canvas -->
+      <div class="topo-canvas">
+        <svg class="topo-lines-svg">
+          <line x1="20%" y1="25%" x2="50%" y2="50%" class="topo-line active"></line>
+          <line x1="80%" y1="25%" x2="50%" y2="50%" class="topo-line"></line>
+          <line x1="80%" y1="75%" x2="50%" y2="50%" class="topo-line"></line>
+          <line x1="20%" y1="75%" x2="50%" y2="50%" class="topo-line"></line>
+        </svg>
+
+        <!-- Hub Center Node -->
+        <div class="topo-node center-dev" style="left: 50%; top: 50%;">
+          <div class="topo-node-icon" style="border-color: var(--accent-red); color: var(--accent-red);"><i class="fa-solid fa-microchip"></i></div>
+          <span class="topo-node-label">L1 HUB</span>
+        </div>
+
+        <!-- Attached Host Nodes -->
+        <div class="topo-node" style="left: 20%; top: 25%;">
+          <div class="topo-node-icon" style="border-color: var(--htb-green);"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp A (Sender)</span>
+        </div>
+
+        <div class="topo-node" style="left: 80%; top: 25%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp B</span>
+        </div>
+
+        <div class="topo-node" style="left: 80%; top: 75%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp C</span>
+        </div>
+
+        <div class="topo-node" style="left: 20%; top: 75%;">
+          <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+          <span class="topo-node-label">Comp D</span>
+        </div>
+
+        <!-- Animated Packets -->
+        <div id="hub-pkt-main" class="topo-packet"></div>
+        <div id="hub-pkt-b" class="topo-packet"></div>
+        <div id="hub-pkt-c" class="topo-packet"></div>
+        <div id="hub-pkt-d" class="topo-packet"></div>
+      </div>
+
+      <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 0.4rem;">
+        <button class="sim-btn btn-red" onclick="window.netDevSim.testHub('b')"><i class="fa-solid fa-paper-plane"></i> Send A ➔ B</button>
+        <button class="sim-btn btn-red" onclick="window.netDevSim.testHub('c')"><i class="fa-solid fa-paper-plane"></i> Send A ➔ C</button>
+        <button class="sim-btn btn-red" onclick="window.netDevSim.testHub('d')"><i class="fa-solid fa-paper-plane"></i> Send A ➔ D</button>
+      </div>
+
+      <div id="hub-sim-log" style="background: var(--htb-bg-terminal); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 0.6rem 0.8rem; font-family: var(--font-mono); font-size: 0.78em; min-height: 80px;">
+        <div style="color: var(--text-muted);">Click a button to trigger live electrical bit duplication across all connected ports...</div>
+      </div>
+    </div>
+  </div>
+</section>
