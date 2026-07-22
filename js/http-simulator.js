@@ -52,7 +52,10 @@ class ProtocolSimulator {
 
   spawnH3Packets() {
     for (let lane = 0; lane < 3; lane++) {
-      // If this specific lane is simulating loss, pause spawning briefly or handle loss
+      // Don't over-crowd lane if it's stalled and already has queued packets
+      if (this.h3BlockedLane === lane && this.h3Packets[lane].length >= 5) {
+        continue;
+      }
       const packet = {
         id: Date.now() + Math.random() + lane,
         lane,
@@ -107,31 +110,69 @@ class ProtocolSimulator {
   }
 
   triggerH3PacketLoss() {
-    // Simulate loss specifically on Lane 1 (CSS)
+    if (this.h3Timeout) {
+      clearTimeout(this.h3Timeout);
+      this.h3Timeout = null;
+    }
+
+    // Clear any previous lost flags on lane 1
+    this.h3Packets[1].forEach(p => {
+      if (p.isLost) {
+        p.isLost = false;
+        if (p.element) {
+          p.element.classList.remove('lost-packet');
+          p.element.innerHTML = '<span>S2</span>';
+        }
+      }
+    });
+
+    // Simulate loss specifically on Lane 1 (Stream 2 CSS)
     this.h3BlockedLane = 1;
     const statusEl = document.getElementById('h3-status');
     if (statusEl) {
       statusEl.className = 'sim-status active';
-      statusEl.innerHTML = '<i class="fa-solid fa-circle-check"></i> QUIC INDEPENDENCE: Packet dropped on Lane 2! Lanes 1 & 3 continue flowing!';
+      statusEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> QUIC INDEPENDENCE: Packet dropped on Stream 2! Streams 1 & 3 continue flowing!';
     }
 
-    // Find packet on lane 1 and mark as lost
-    const lanePackets = this.h3Packets[1];
-    if (lanePackets && lanePackets.length > 0) {
-      const midPacket = lanePackets[Math.floor(lanePackets.length / 2)] || lanePackets[0];
-      midPacket.isLost = true;
-      if (midPacket.element) {
-        midPacket.element.classList.add('lost-packet');
-        midPacket.element.innerHTML = '<span>❌ DROP</span>';
+    // Find packet on lane 1 near middle, or create one if none exists
+    let lanePackets = this.h3Packets[1];
+    let midPacket = lanePackets.find(p => p.pos >= 25 && p.pos <= 65);
+    if (!midPacket && lanePackets.length > 0) {
+      midPacket = lanePackets[Math.floor(lanePackets.length / 2)];
+    }
+
+    if (!midPacket) {
+      midPacket = {
+        id: Date.now() + Math.random(),
+        lane: 1,
+        pos: 40,
+        color: this.streamColors[1],
+        name: this.streamNames[1],
+        element: null,
+        isLost: false
+      };
+      this.h3Packets[1].push(midPacket);
+      this.renderH3Packet(midPacket);
+    }
+
+    midPacket.isLost = true;
+    if (midPacket.element) {
+      midPacket.element.classList.add('lost-packet');
+      midPacket.element.innerHTML = '<span>❌ DROP</span>';
+    }
+
+    // Automatically recover Stream 2 after 2.5 seconds
+    this.h3Timeout = setTimeout(() => {
+      if (midPacket && midPacket.element) {
+        midPacket.isLost = false;
+        midPacket.element.classList.remove('lost-packet');
+        midPacket.element.innerHTML = '<span>S2</span>';
       }
-    }
-
-    // Automatically recover lane 2 after 2.5 seconds
-    setTimeout(() => {
       this.h3BlockedLane = null;
+      this.h3Timeout = null;
       if (statusEl) {
         statusEl.className = 'sim-status normal';
-        statusEl.innerHTML = '<i class="fa-solid fa-circle-check"></i> HTTP/3 QUIC Streams Normal';
+        statusEl.innerHTML = '<i class="fa-solid fa-diagram-project"></i> 3 Independent QUIC UDP Lanes Operating Normally';
       }
     }, 2500);
   }
@@ -139,6 +180,10 @@ class ProtocolSimulator {
   resetSimulation() {
     this.h2Blocked = false;
     this.h3BlockedLane = null;
+    if (this.h3Timeout) {
+      clearTimeout(this.h3Timeout);
+      this.h3Timeout = null;
+    }
 
     // Clear H2
     this.h2Packets.forEach(p => p.element && p.element.remove());
@@ -163,6 +208,55 @@ class ProtocolSimulator {
     }
   }
 
+  updateH3Lane(lane) {
+    const isLaneStalled = (this.h3BlockedLane === lane);
+    const lanePackets = this.h3Packets[lane];
+    const minGap = 12; // percentage gap between queued packets
+
+    // Sort packets by position descending (front-most to back-most)
+    const sortedPackets = [...lanePackets].sort((a, b) => b.pos - a.pos);
+
+    for (let i = 0; i < sortedPackets.length; i++) {
+      const p = sortedPackets[i];
+      let canMove = true;
+      let targetMaxPos = 92;
+
+      if (isLaneStalled) {
+        if (p.isLost) {
+          canMove = false;
+        } else if (i > 0) {
+          // Check if any packet ahead of p is stalled or cannot reach 92
+          const aheadP = sortedPackets[i - 1];
+          if (aheadP.isLost || aheadP.pos < 90) {
+            targetMaxPos = aheadP.pos - minGap;
+          }
+        }
+      }
+
+      if (canMove) {
+        const nextPos = p.pos + this.speed * 0.4;
+        if (isLaneStalled && nextPos > targetMaxPos) {
+          p.pos = Math.max(p.pos, targetMaxPos);
+        } else {
+          p.pos = nextPos;
+        }
+      }
+
+      if (p.element) {
+        p.element.style.left = `${p.pos}%`;
+      }
+    }
+
+    // Remove packets that reached end (pos >= 92)
+    for (let i = lanePackets.length - 1; i >= 0; i--) {
+      const p = lanePackets[i];
+      if (p.pos >= 92) {
+        if (p.element) p.element.remove();
+        lanePackets.splice(i, 1);
+      }
+    }
+  }
+
   loop() {
     // Update HTTP/2
     if (!this.h2Blocked) {
@@ -181,25 +275,7 @@ class ProtocolSimulator {
 
     // Update HTTP/3
     for (let lane = 0; lane < 3; lane++) {
-      const isLaneStalled = (this.h3BlockedLane === lane);
-      const lanePackets = this.h3Packets[lane];
-
-      for (let i = lanePackets.length - 1; i >= 0; i--) {
-        const p = lanePackets[i];
-        // If this packet is lost, stall it briefly
-        if (p.isLost && isLaneStalled) {
-          continue; // Don't advance
-        }
-
-        p.pos += this.speed * 0.4;
-        if (p.element) {
-          p.element.style.left = `${p.pos}%`;
-        }
-        if (p.pos >= 92) {
-          p.element && p.element.remove();
-          lanePackets.splice(i, 1);
-        }
-      }
+      this.updateH3Lane(lane);
     }
 
     this.animFrame = requestAnimationFrame(() => this.loop());
