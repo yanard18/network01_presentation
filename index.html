@@ -81,6 +81,114 @@
   </div>
 </section>
 
+      <!-- Loaded from slides/osi_layers.html -->
+<!-- SLIDE: OSI 7-Layer Model Diagram -->
+<section>
+  <h2><i class="fa-solid fa-layer-group highlight-htb"></i> OSI Referans Modeli (7 Katman)</h2>
+  
+  <div style="text-align: center; margin-top: 1rem;">
+    <div style="background: #ffffff; padding: 14px; border-radius: 10px; border: 1px solid var(--htb-border); box-shadow: 0 0 25px var(--htb-green-glow); display: inline-block; max-width: 90%;">
+      <img src="media/osi_layers.png" alt="OSI 7 Layer Architecture Diagram" style="max-height: 510px; width: auto; max-width: 100%; display: block; margin: 0 auto; object-fit: contain;">
+    </div>
+    <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); margin-top: 0.8rem;">
+      <i class="fa-solid fa-diagram-project highlight-htb"></i> Şekil 1: OSI (Open Systems Interconnection) 7 Katmanlı Referans Modeli
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/tcp_ip_layers.html -->
+<!-- SLIDE: TCP/IP Model Diagram -->
+<section>
+  <h2><i class="fa-solid fa-network-wired highlight-htb"></i> TCP/IP Protokol Mimarisi</h2>
+  
+  <div style="text-align: center; margin-top: 1rem;">
+    <div style="background: #ffffff; padding: 14px; border-radius: 10px; border: 1px solid var(--htb-border); box-shadow: 0 0 25px rgba(45, 226, 230, 0.35); display: inline-block; max-width: 90%;">
+      <img src="media/tcp-ip_layers.png" alt="TCP/IP Protocol Stack Diagram" style="max-height: 510px; width: auto; max-width: 100%; display: block; margin: 0 auto; object-fit: contain;">
+    </div>
+    <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); margin-top: 0.8rem;">
+      <i class="fa-solid fa-diagram-project highlight-cyan"></i> Şekil 2: TCP/IP Mimari Katmanları & Protokol Hiyerarşisi
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/osi_encapsulation.html -->
+<!-- SLIDE: Interactive OSI Encapsulation Simulator -->
+<section>
+  <h2><i class="fa-solid fa-box-archive highlight-htb"></i> İnteraktif Veri Kapsülleme (OSI Encapsulation)</h2>
+  
+  <div style="display: flex; gap: 0.8rem; margin-bottom: 0.8rem; justify-content: flex-start;">
+    <button class="sim-btn" onclick="window.osiEncSim.prevStep()">
+      <i class="fa-solid fa-chevron-left"></i> Önceki Katman
+    </button>
+    <button class="sim-btn" onclick="window.osiEncSim.nextStep()">
+      <i class="fa-solid fa-chevron-right"></i> Sonraki Katman
+    </button>
+    <button id="enc-autoplay-btn" class="sim-btn btn-red" onclick="window.osiEncSim.toggleAutoPlay()">
+      <i class="fa-solid fa-play"></i> Otomatik Adımla
+    </button>
+  </div>
+
+  <div class="enc-container">
+    <!-- Left: 7 OSI Layer Stack -->
+    <div class="enc-stack-list">
+      <div id="enc-layer-7" class="enc-layer-row" onclick="window.osiEncSim.setStep(0)">
+        <span>7. Application</span><span class="cyber-badge badge-htb">Data</span>
+      </div>
+      <div id="enc-layer-6" class="enc-layer-row" onclick="window.osiEncSim.setStep(1)">
+        <span>6. Presentation</span><span class="cyber-badge badge-cyan">Data</span>
+      </div>
+      <div id="enc-layer-5" class="enc-layer-row" onclick="window.osiEncSim.setStep(2)">
+        <span>5. Session</span><span class="cyber-badge badge-cyan">Data</span>
+      </div>
+      <div id="enc-layer-4" class="enc-layer-row" onclick="window.osiEncSim.setStep(3)">
+        <span>4. Transport</span><span class="cyber-badge badge-purple">Segment</span>
+      </div>
+      <div id="enc-layer-3" class="enc-layer-row" onclick="window.osiEncSim.setStep(4)">
+        <span>3. Network</span><span class="cyber-badge badge-htb">Packet</span>
+      </div>
+      <div id="enc-layer-2" class="enc-layer-row" onclick="window.osiEncSim.setStep(5)">
+        <span>2. Data Link</span><span class="cyber-badge badge-red">Frame</span>
+      </div>
+      <div id="enc-layer-1" class="enc-layer-row" onclick="window.osiEncSim.setStep(6)">
+        <span>1. Physical</span><span class="cyber-badge badge-cyan">Bits</span>
+      </div>
+    </div>
+
+    <!-- Right: Display Panel & PDU Visualizer -->
+    <div class="enc-display-panel">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <span id="enc-step-badge" class="cyber-badge badge-htb">L7 DATA</span>
+          <strong id="enc-step-title" style="font-size: 1.15em; margin-left: 0.5rem; color: #fff;">Katman 7: Uygulama</strong>
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);">
+          <span id="enc-pdu-type">PDU: Data</span> | <span id="enc-step-counter">Adım 1 / 7</span>
+        </div>
+      </div>
+
+      <!-- Real-time PDU Packet Block Visualizer -->
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.4rem;">
+          <i class="fa-solid fa-cubes-stacked highlight-cyan"></i> Canlı Paket / PDU Yapısı (Protocol Data Unit):
+        </div>
+        <div id="enc-pdu-visualizer" class="enc-pdu-visualizer">
+          <!-- Dynamic PDU blocks inserted here via JS -->
+        </div>
+      </div>
+
+      <!-- Details Box -->
+      <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.8rem 1rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--htb-green); margin-bottom: 0.3rem;">
+          <i class="fa-solid fa-circle-info"></i> Katman Açıklaması & Kapsülleme Adımı:
+        </div>
+        <p id="enc-step-details" style="font-size: 0.88em; margin: 0; color: #e2e8f0;">
+          Kullanıcı verisi oluşturulur (HTTP GET isteği, SSH komutu veya dosya verisi).
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
       <!-- Loaded from slides/four_blocks.html -->
 <!-- SLIDE 3: The 4 Blocks of HTTP -->
 <section>
@@ -173,9 +281,9 @@
 </section>
 
       <!-- Loaded from slides/http10.html -->
-<!-- SLIDE 6: HTTP/1.0 - Building Extensibility -->
+<!-- SLIDE: HTTP/1.0 - Building Extensibility & Ephemeral Connections -->
 <section>
-  <h2><i class="fa-solid fa-code-branch highlight-htb"></i> HTTP/1.0 — Building Extensibility</h2>
+  <h2><i class="fa-solid fa-code-branch highlight-htb"></i> HTTP/1.0 — Extensibility & Short-Lived Connections</h2>
   
   <div class="grid-2">
     <div class="cyber-card">
@@ -183,57 +291,46 @@
       <ul>
         <li>Introduced <strong>protocol versioning</strong> in requests (e.g. <code>HTTP/1.0</code>).</li>
         <li>Sent a <strong>status code line</strong> in responses (e.g. <code>200 OK</code>).</li>
-        <li>Added the concept of <strong>HTTP Headers</strong> to both requests and responses.</li>
-        <li>Enabled transmission of non-HTML documents thanks to the <code>Content-Type</code> header.</li>
+        <li>Added <strong>HTTP Headers</strong> for metadata exchange.</li>
+        <li>Enabled non-HTML transmission via the <code>Content-Type</code> header.</li>
       </ul>
     </div>
 
-    <div>
-      <div class="terminal-header">
-        <span class="terminal-dot dot-red"></span>
-        <span class="terminal-dot dot-yellow"></span>
-        <span class="terminal-dot dot-green"></span>
-        <span class="terminal-title">HTTP/1.0 Request & Response Exchange</span>
-      </div>
-      <pre><code class="language-http">GET /my-page.html HTTP/1.0
-User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)
-
-HTTP/1.0 200 OK
-Date: Tue, 15 Nov 1994 08:12:31 GMT
-Server: CERN/3.0 libwww/2.17
-Content-Type: text/html
-
-<HTML>
-A page with an image
-  <IMG SRC="/my-image.gif">
-</HTML></code></pre>
+    <div class="cyber-card threat">
+      <div class="card-title"><i class="fa-solid fa-triangle-exclamation highlight-red"></i> Short-Lived Connections (The Flaw)</div>
+      <p style="margin-bottom: 0.8rem;">
+        <strong>Default Behavior:</strong> Connection closes after <em>every single request/response pair</em>.
+      </p>
+      <ul class="threat-list">
+        <li>Fetching an HTML page with 5 images required <strong>6 separate TCP handshakes</strong>.</li>
+        <li>Huge latency penalty due to repeated SYN / SYN-ACK setup & teardown.</li>
+      </ul>
     </div>
   </div>
 </section>
 
       <!-- Loaded from slides/http11.html -->
-<!-- SLIDE 7: HTTP/1.1 - Parallel Connections & Limitations -->
+<!-- SLIDE: HTTP/1.1 - Persistent Connections & Parallel Sockets -->
 <section>
-  <h2><i class="fa-solid fa-network-wired highlight-htb"></i> HTTP/1.1 — Parallel TCP Connections</h2>
+  <h2><i class="fa-solid fa-network-wired highlight-htb"></i> HTTP/1.1 — Persistent Connections & Parallel Sockets</h2>
   
   <div class="grid-2">
-    <div class="cyber-card">
-      <div class="card-title"><span class="cyber-badge badge-htb">HTTP/1.1</span> Multi-Connection Architecture</div>
+    <div class="cyber-card secure">
+      <div class="card-title"><span class="cyber-badge badge-htb">HTTP/1.1</span> Persistent Connections (Keep-Alive)</div>
       <ul>
-        <li>Opens <strong>6 different TCP connections</strong> to the server simultaneously.</li>
-        <li><strong>Fault Tolerance:</strong> If 1 TCP connection is lost, the other 5 connections remain active.</li>
-        <li>Allowed parallel fetching of images, scripts, and stylesheets.</li>
+        <li><strong>Keep-Alive by Default:</strong> Reuses a single TCP socket across multiple requests instead of closing it.</li>
+        <li><strong>Mandatory <code>Host</code> Header:</strong> Enables virtual hosting (multiple websites sharing 1 IP).</li>
+        <li>Introduced <strong>Chunked Transfer Encoding</strong> and <strong>Cache-Control</strong>.</li>
       </ul>
     </div>
 
     <div class="cyber-card threat">
-      <div class="card-title"><i class="fa-solid fa-triangle-exclamation highlight-red"></i> The Bottleneck / Problem</div>
+      <div class="card-title"><i class="fa-solid fa-bolt highlight-cyan"></i> The 6 Parallel Connections Workaround</div>
       <p style="margin-bottom: 0.8rem;">
-        <strong>Problem:</strong> Opening 6 separate TCP connections is slow and resource-heavy.
+        Because 1 TCP connection processes requests sequentially, browsers started opening <strong>up to 6 parallel TCP connections</strong> per origin to fetch assets concurrently.
       </p>
-      <ul>
-        <li>High TCP handshake overhead (SYN, SYN-ACK, ACK per connection).</li>
-        <li>Network congestion and server socket exhaustion.</li>
+      <ul class="threat-list">
+        <li><strong>Limitation:</strong> High overhead—6 parallel TCP handshakes per domain still caused server socket exhaustion and network congestion.</li>
       </ul>
     </div>
   </div>
@@ -392,6 +489,7 @@ A page with an image
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/plugin/highlight/highlight.min.js"></script>
   <script src="js/cyber-bg.js"></script>
   <script src="js/http-simulator.js"></script>
+  <script src="js/osi-encapsulation.js"></script>
   <script>
     // Initialize Reveal.js
     Reveal.initialize({

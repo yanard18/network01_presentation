@@ -576,3 +576,93 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* Interactive OSI Encapsulation Simulator */
+.enc-container {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 1.2rem;
+  align-items: stretch;
+  text-align: left;
+}
+
+.enc-stack-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.enc-layer-row {
+  background: var(--htb-bg-card);
+  border: 1px solid var(--htb-border);
+  border-radius: 6px;
+  padding: 0.45rem 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.enc-layer-row:hover {
+  background: var(--htb-bg-card-hover);
+  color: #fff;
+}
+
+.enc-layer-row.active {
+  background: var(--htb-bg-card-hover);
+  color: #fff;
+  font-weight: 700;
+}
+
+.enc-display-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  background: var(--htb-bg-card);
+  border: 1px solid var(--htb-border);
+  border-radius: 8px;
+  padding: 1.2rem;
+}
+
+.enc-pdu-visualizer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 75px;
+  background: var(--htb-bg-terminal);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 0.8rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+}
+
+.pdu-block {
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+  animation: fadeInPop 0.3s ease;
+}
+
+@keyframes fadeInPop {
+  0% { opacity: 0; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.pdu-data { background: rgba(159,239,0,0.2); border: 1px solid var(--htb-green); color: var(--htb-green); }
+.pdu-pres { background: rgba(45,226,230,0.2); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); }
+.pdu-sess { background: rgba(59,130,246,0.2); border: 1px solid var(--accent-blue); color: var(--accent-blue); }
+.pdu-tcp  { background: rgba(168,85,247,0.2); border: 1px solid var(--accent-purple); color: var(--accent-purple); }
+.pdu-ip   { background: rgba(255,183,3,0.2); border: 1px solid var(--accent-yellow); color: var(--accent-yellow); }
+.pdu-mac  { background: rgba(255,46,99,0.2); border: 1px solid var(--accent-red); color: var(--accent-red); }
+.pdu-fcs  { background: rgba(255,46,99,0.15); border: 1px dashed var(--accent-red); color: var(--accent-red); }
+.pdu-bits { background: rgba(0,245,212,0.15); border: 1px solid #00f5d4; color: #00f5d4; letter-spacing: 0.08em; }
+

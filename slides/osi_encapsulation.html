@@ -1,0 +1,76 @@
+<!-- SLIDE: Interactive OSI Encapsulation Simulator -->
+<section>
+  <h2><i class="fa-solid fa-box-archive highlight-htb"></i> İnteraktif Veri Kapsülleme (OSI Encapsulation)</h2>
+  
+  <div style="display: flex; gap: 0.8rem; margin-bottom: 0.8rem; justify-content: flex-start;">
+    <button class="sim-btn" onclick="window.osiEncSim.prevStep()">
+      <i class="fa-solid fa-chevron-left"></i> Önceki Katman
+    </button>
+    <button class="sim-btn" onclick="window.osiEncSim.nextStep()">
+      <i class="fa-solid fa-chevron-right"></i> Sonraki Katman
+    </button>
+    <button id="enc-autoplay-btn" class="sim-btn btn-red" onclick="window.osiEncSim.toggleAutoPlay()">
+      <i class="fa-solid fa-play"></i> Otomatik Adımla
+    </button>
+  </div>
+
+  <div class="enc-container">
+    <!-- Left: 7 OSI Layer Stack -->
+    <div class="enc-stack-list">
+      <div id="enc-layer-7" class="enc-layer-row" onclick="window.osiEncSim.setStep(0)">
+        <span>7. Application</span><span class="cyber-badge badge-htb">Data</span>
+      </div>
+      <div id="enc-layer-6" class="enc-layer-row" onclick="window.osiEncSim.setStep(1)">
+        <span>6. Presentation</span><span class="cyber-badge badge-cyan">Data</span>
+      </div>
+      <div id="enc-layer-5" class="enc-layer-row" onclick="window.osiEncSim.setStep(2)">
+        <span>5. Session</span><span class="cyber-badge badge-cyan">Data</span>
+      </div>
+      <div id="enc-layer-4" class="enc-layer-row" onclick="window.osiEncSim.setStep(3)">
+        <span>4. Transport</span><span class="cyber-badge badge-purple">Segment</span>
+      </div>
+      <div id="enc-layer-3" class="enc-layer-row" onclick="window.osiEncSim.setStep(4)">
+        <span>3. Network</span><span class="cyber-badge badge-htb">Packet</span>
+      </div>
+      <div id="enc-layer-2" class="enc-layer-row" onclick="window.osiEncSim.setStep(5)">
+        <span>2. Data Link</span><span class="cyber-badge badge-red">Frame</span>
+      </div>
+      <div id="enc-layer-1" class="enc-layer-row" onclick="window.osiEncSim.setStep(6)">
+        <span>1. Physical</span><span class="cyber-badge badge-cyan">Bits</span>
+      </div>
+    </div>
+
+    <!-- Right: Display Panel & PDU Visualizer -->
+    <div class="enc-display-panel">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <span id="enc-step-badge" class="cyber-badge badge-htb">L7 DATA</span>
+          <strong id="enc-step-title" style="font-size: 1.15em; margin-left: 0.5rem; color: #fff;">Katman 7: Uygulama</strong>
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);">
+          <span id="enc-pdu-type">PDU: Data</span> | <span id="enc-step-counter">Adım 1 / 7</span>
+        </div>
+      </div>
+
+      <!-- Real-time PDU Packet Block Visualizer -->
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.4rem;">
+          <i class="fa-solid fa-cubes-stacked highlight-cyan"></i> Canlı Paket / PDU Yapısı (Protocol Data Unit):
+        </div>
+        <div id="enc-pdu-visualizer" class="enc-pdu-visualizer">
+          <!-- Dynamic PDU blocks inserted here via JS -->
+        </div>
+      </div>
+
+      <!-- Details Box -->
+      <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.8rem 1rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--htb-green); margin-bottom: 0.3rem;">
+          <i class="fa-solid fa-circle-info"></i> Katman Açıklaması & Kapsülleme Adımı:
+        </div>
+        <p id="enc-step-details" style="font-size: 0.88em; margin: 0; color: #e2e8f0;">
+          Kullanıcı verisi oluşturulur (HTTP GET isteği, SSH komutu veya dosya verisi).
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
