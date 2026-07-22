@@ -9,6 +9,8 @@ This presentation repository is configured following **Reveal.js Best Practices*
 ```
 network01_slide/
 ├── index.html                   # Main compiled Reveal.js slide deck
+├── media/                       # 🖼️ MEDIA ASSETS (Images, GIFs, SVGs, Videos)
+│   └── http_overview.svg
 ├── slides/                      # 🧩 MODULAR SLIDES (Add your new slides here!)
 │   ├── 01_title.html
 │   ├── 02_what_is_http.html
@@ -28,9 +30,20 @@ network01_slide/
 ├── js/
 │   ├── cyber-bg.js              # HTB matrix background canvas
 │   └── http-simulator.js        # Interactive packet loss simulator
-├── http_overview.svg            # Architecture SVG diagram
 ├── package.json                 # npm scripts (start, build)
 └── README.md
+```
+
+---
+
+## 🖼️ Media Folder & Image Usage
+
+Place all images, GIFs, SVGs, and diagram assets inside the `media/` directory.
+
+In your slide HTML files (or templates), reference media using relative paths:
+```html
+<img src="media/your_image.png" alt="Description">
+<img src="media/http_overview.svg" alt="HTTP Overview Diagram">
 ```
 
 ---
