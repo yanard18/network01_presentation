@@ -48,24 +48,30 @@ In your slide HTML files (or templates), reference media using relative paths:
 
 ---
 
-## ⚡ How to Add New Slides (Workflow)
+## ⚡ How to Add & Re-order Slides (`slides/slides.json`)
 
-### Step 1: Copy a Template
-Choose a slide template from the `templates/` folder:
-- `templates/01_standard_card_slide.html` (General 2-column cards)
-- `templates/02_terminal_code_slide.html` (Code snippets & HTTP headers)
-- `templates/03_image_diagram_slide.html` (SVG/Image diagrams & text)
-- `templates/04_warning_threat_slide.html` (Security warnings & solutions)
-- `templates/05_vertical_nested_slides.html` (Deep-dive vertical slides)
+All slide filenames no longer require numeric prefixes (`01_`, `02_`). Presentation order is strictly managed by [slides/slides.json](file:///home/mek/Documents/network01_slide/slides/slides.json).
 
-### Step 2: Save in `slides/` Folder
-Create a new `.html` file inside the `slides/` directory with a prefix number to set its order:
+### Step 1: Copy a Template or Create a File
+Choose a template from `templates/` and create your slide file inside `slides/` with a descriptive name (e.g. `tcp_ip_overview.html`):
 ```
-slides/12_my_new_topic.html
+slides/tcp_ip_overview.html
+```
+
+### Step 2: Add to `slides/slides.json`
+Simply list your filename in the exact position you want it to appear in `slides/slides.json`:
+```json
+[
+  "title.html",
+  "agenda.html",
+  "tcp_ip_overview.html",
+  "four_blocks.html",
+  "..."
+]
 ```
 
 ### Step 3: Run the Build Command
-Compile your new slide into `index.html`:
+Compile your presentation into `index.html`:
 ```bash
 npm run build
 ```

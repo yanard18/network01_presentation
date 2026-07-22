@@ -1,28 +1,41 @@
 /**
  * Reveal.js Slide Builder Script
- * Automatically combines all modular slide files in slides/*.html into index.html
+ * Automatically combines modular slide files listed in slides/slides.json into index.html
  */
 
 const fs = require('fs');
 const path = require('path');
 
 const SLIDES_DIR = path.join(__dirname, '..', 'slides');
+const MANIFEST_PATH = path.join(SLIDES_DIR, 'slides.json');
 const INDEX_PATH = path.join(__dirname, '..', 'index.html');
 
-console.log('📦 Compiling modular slides from slides/ into index.html...');
+console.log('📦 Compiling modular slides into index.html...');
 
 try {
-  // Read and sort slide files alphabetically
-  const slideFiles = fs.readdirSync(SLIDES_DIR)
-    .filter(file => file.endsWith('.html'))
-    .sort();
+  let slideFiles = [];
 
-  console.log(`Found ${slideFiles.length} slide files:`, slideFiles);
+  if (fs.existsSync(MANIFEST_PATH)) {
+    console.log('📋 Reading slide order from slides/slides.json...');
+    const manifestContent = fs.readFileSync(MANIFEST_PATH, 'utf8');
+    slideFiles = JSON.parse(manifestContent);
+  } else {
+    console.log('⚠️ Warning: slides/slides.json not found. Falling back to alphabetical order.');
+    slideFiles = fs.readdirSync(SLIDES_DIR)
+      .filter(file => file.endsWith('.html'))
+      .sort();
+  }
+
+  console.log(`Loading ${slideFiles.length} slides in order:`, slideFiles);
 
   let combinedSlidesHTML = '';
 
   slideFiles.forEach(file => {
     const filePath = path.join(SLIDES_DIR, file);
+    if (!fs.existsSync(filePath)) {
+      console.warn(`⚠️ Warning: Slide file "${file}" listed in slides.json does not exist! Skipping...`);
+      return;
+    }
     const content = fs.readFileSync(filePath, 'utf8').trim();
     combinedSlidesHTML += `\n\n      <!-- Loaded from slides/${file} -->\n${content}`;
   });
