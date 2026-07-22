@@ -1,0 +1,22 @@
+{
+  "name": "http-cybersecurity-revealjs-presentation",
+  "version": "1.0.0",
+  "description": "Cybersecurity presentation on HTTP protocol fundamentals, evolution, versions (0.9 to 3), threats, and hardening using Reveal.js",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx -y serve . -l 3000",
+    "dev": "npx -y serve . -l 3000"
+  },
+  "keywords": [
+    "revealjs",
+    "http",
+    "cybersecurity",
+    "presentation",
+    "slides",
+    "http2",
+    "http3",
+    "quic"
+  ],
+  "author": "Antigravity AI",
+  "license": "MIT"
+}

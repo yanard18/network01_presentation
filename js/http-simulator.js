@@ -1,0 +1,213 @@
+/* HTTP/2 vs HTTP/3 Interactive Simulation Logic */
+
+class ProtocolSimulator {
+  constructor() {
+    this.h2Blocked = false;
+    this.h3BlockedLane = null; // 0, 1, or 2
+    this.h2Packets = [];
+    this.h3Packets = [[], [], []]; // 3 lanes
+    this.animFrame = null;
+    this.isRunning = true;
+    this.speed = 1.8;
+
+    this.streamColors = ['#9FEF00', '#2de2e6', '#a855f7']; // Green, Cyan, Purple
+    this.streamNames = ['Stream 1 (HTML)', 'Stream 2 (CSS)', 'Stream 3 (JS)'];
+  }
+
+  init() {
+    this.h2Container = document.getElementById('h2-pipe');
+    this.h3Lanes = [
+      document.getElementById('h3-lane-0'),
+      document.getElementById('h3-lane-1'),
+      document.getElementById('h3-lane-2')
+    ];
+
+    if (!this.h2Container || !this.h3Lanes[0]) return;
+
+    this.spawnInterval = setInterval(() => {
+      if (this.isRunning) {
+        this.spawnH2Packet();
+        this.spawnH3Packets();
+      }
+    }, 900);
+
+    this.loop();
+  }
+
+  spawnH2Packet() {
+    if (this.h2Blocked) return;
+    const typeIdx = Math.floor(Math.random() * 3);
+    const packet = {
+      id: Date.now() + Math.random(),
+      typeIdx,
+      pos: 0, // 0% to 100%
+      color: this.streamColors[typeIdx],
+      name: this.streamNames[typeIdx],
+      element: null,
+      isLost: false
+    };
+    this.h2Packets.push(packet);
+    this.renderH2Packet(packet);
+  }
+
+  spawnH3Packets() {
+    for (let lane = 0; lane < 3; lane++) {
+      // If this specific lane is simulating loss, pause spawning briefly or handle loss
+      const packet = {
+        id: Date.now() + Math.random() + lane,
+        lane,
+        pos: 0,
+        color: this.streamColors[lane],
+        name: this.streamNames[lane],
+        element: null,
+        isLost: false
+      };
+      this.h3Packets[lane].push(packet);
+      this.renderH3Packet(packet);
+    }
+  }
+
+  renderH2Packet(packet) {
+    const el = document.createElement('div');
+    el.className = 'sim-packet';
+    el.style.backgroundColor = packet.color;
+    el.style.left = '0%';
+    el.innerHTML = `<span>S${packet.typeIdx + 1}</span>`;
+    this.h2Container.appendChild(el);
+    packet.element = el;
+  }
+
+  renderH3Packet(packet) {
+    const el = document.createElement('div');
+    el.className = 'sim-packet';
+    el.style.backgroundColor = packet.color;
+    el.style.left = '0%';
+    el.innerHTML = `<span>S${packet.lane + 1}</span>`;
+    this.h3Lanes[packet.lane].appendChild(el);
+    packet.element = el;
+  }
+
+  triggerH2PacketLoss() {
+    this.h2Blocked = true;
+    const statusEl = document.getElementById('h2-status');
+    if (statusEl) {
+      statusEl.className = 'sim-status blocked';
+      statusEl.innerHTML = '<i class="fa-solid fa-lock"></i> TCP HOL BLOCKING: Packet #3 Dropped! Entire TCP Connection Frozen!';
+    }
+
+    // Mark front-most packet as lost (Red)
+    if (this.h2Packets.length > 0) {
+      const midPacket = this.h2Packets[Math.floor(this.h2Packets.length / 2)] || this.h2Packets[0];
+      midPacket.isLost = true;
+      if (midPacket.element) {
+        midPacket.element.classList.add('lost-packet');
+        midPacket.element.innerHTML = '<span>❌ DROP</span>';
+      }
+    }
+  }
+
+  triggerH3PacketLoss() {
+    // Simulate loss specifically on Lane 1 (CSS)
+    this.h3BlockedLane = 1;
+    const statusEl = document.getElementById('h3-status');
+    if (statusEl) {
+      statusEl.className = 'sim-status active';
+      statusEl.innerHTML = '<i class="fa-solid fa-circle-check"></i> QUIC INDEPENDENCE: Packet dropped on Lane 2! Lanes 1 & 3 continue flowing!';
+    }
+
+    // Find packet on lane 1 and mark as lost
+    const lanePackets = this.h3Packets[1];
+    if (lanePackets && lanePackets.length > 0) {
+      const midPacket = lanePackets[Math.floor(lanePackets.length / 2)] || lanePackets[0];
+      midPacket.isLost = true;
+      if (midPacket.element) {
+        midPacket.element.classList.add('lost-packet');
+        midPacket.element.innerHTML = '<span>❌ DROP</span>';
+      }
+    }
+
+    // Automatically recover lane 2 after 2.5 seconds
+    setTimeout(() => {
+      this.h3BlockedLane = null;
+      if (statusEl) {
+        statusEl.className = 'sim-status normal';
+        statusEl.innerHTML = '<i class="fa-solid fa-circle-check"></i> HTTP/3 QUIC Streams Normal';
+      }
+    }, 2500);
+  }
+
+  resetSimulation() {
+    this.h2Blocked = false;
+    this.h3BlockedLane = null;
+
+    // Clear H2
+    this.h2Packets.forEach(p => p.element && p.element.remove());
+    this.h2Packets = [];
+
+    // Clear H3
+    for (let lane = 0; lane < 3; lane++) {
+      this.h3Packets[lane].forEach(p => p.element && p.element.remove());
+      this.h3Packets[lane] = [];
+    }
+
+    const h2Status = document.getElementById('h2-status');
+    if (h2Status) {
+      h2Status.className = 'sim-status normal';
+      h2Status.innerHTML = '<i class="fa-solid fa-network-wire"></i> Single TCP Channel Operating Normally';
+    }
+
+    const h3Status = document.getElementById('h3-status');
+    if (h3Status) {
+      h3Status.className = 'sim-status normal';
+      h3Status.innerHTML = '<i class="fa-solid fa-diagram-project"></i> 3 Independent QUIC UDP Lanes Operating Normally';
+    }
+  }
+
+  loop() {
+    // Update HTTP/2
+    if (!this.h2Blocked) {
+      for (let i = this.h2Packets.length - 1; i >= 0; i--) {
+        const p = this.h2Packets[i];
+        p.pos += this.speed * 0.4;
+        if (p.element) {
+          p.element.style.left = `${p.pos}%`;
+        }
+        if (p.pos >= 92) {
+          p.element && p.element.remove();
+          this.h2Packets.splice(i, 1);
+        }
+      }
+    }
+
+    // Update HTTP/3
+    for (let lane = 0; lane < 3; lane++) {
+      const isLaneStalled = (this.h3BlockedLane === lane);
+      const lanePackets = this.h3Packets[lane];
+
+      for (let i = lanePackets.length - 1; i >= 0; i--) {
+        const p = lanePackets[i];
+        // If this packet is lost, stall it briefly
+        if (p.isLost && isLaneStalled) {
+          continue; // Don't advance
+        }
+
+        p.pos += this.speed * 0.4;
+        if (p.element) {
+          p.element.style.left = `${p.pos}%`;
+        }
+        if (p.pos >= 92) {
+          p.element && p.element.remove();
+          lanePackets.splice(i, 1);
+        }
+      }
+    }
+
+    this.animFrame = requestAnimationFrame(() => this.loop());
+  }
+}
+
+// Global instance
+window.protoSim = new ProtocolSimulator();
+document.addEventListener('DOMContentLoaded', () => {
+  window.protoSim.init();
+});

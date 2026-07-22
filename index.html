@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTP Protocol & Cybersecurity Architecture | Hack The Box Style</title>
+  <meta name="description" content="Hack The Box Styled Cybersecurity Presentation on HTTP Protocol Fundamentals, Evolution (0.9 to 3), Vulnerabilities, and Hardening using Reveal.js">
+  
+  <!-- Reveal.js & Plugins CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tokyo-night-dark.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Hack The Box Cyber Theme -->
+  <link rel="stylesheet" href="css/cyber-theme.css">
+</head>
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 1: Title Slide (Hack The Box Style) -->
+      <!-- ================================================================= -->
+      <section data-background-gradient="radial-gradient(circle, rgba(159,239,0,0.12) 0%, rgba(11,18,31,1) 100%)">
+        <div style="text-align: center;">
+          <span class="cyber-badge badge-htb" style="margin-bottom: 1.2rem;">
+            <i class="fa-solid fa-cube"></i> HACK THE BOX ACADEMY // NETWORK SECURITY
+          </span>
+          <h1>HTTP & Web <span class="htb-highlight">Security Architecture</span></h1>
+          <h3 style="color: var(--text-muted); font-weight: 400; margin-bottom: 2rem;">
+            Protocol Anatomy, Evolution (HTTP/0.9 to HTTP/3), Vulnerabilities & Hardening
+          </h3>
+          
+          <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
+            <div><i class="fa-solid fa-layer-group highlight-htb"></i> Application Layer</div>
+            <div><i class="fa-solid fa-lock highlight-cyan"></i> TLS / Transport Security</div>
+            <div><i class="fa-solid fa-bug highlight-red"></i> Exploit Vectors</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 2: Executive Agenda -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-list-check highlight-htb"></i> Module Syllabus & Agenda</h2>
+        <div class="grid-2" style="margin-top: 1.5rem;">
+          <div class="cyber-card">
+            <div class="card-title"><span class="cyber-badge badge-htb">SECTION 01</span> Core Foundations</div>
+            <ul>
+              <li>What is HTTP? Client-Server Model</li>
+              <li>Stateless Protocol Architecture</li>
+              <li>Anatomy of Requests & Responses</li>
+              <li>HTTP Verbs, Headers & Status Codes</li>
+            </ul>
+          </div>
+          
+          <div class="cyber-card">
+            <div class="card-title"><span class="cyber-badge badge-purple">SECTION 02</span> Protocol Evolution</div>
+            <ul>
+              <li><strong>HTTP/0.9 & 1.0</strong>: The ASCII Era</li>
+              <li><strong>HTTP/1.1</strong>: Keep-Alive & Head-of-Line Blocking</li>
+              <li><strong>HTTP/2</strong>: Binary Framing & Multiplexing</li>
+              <li><strong>HTTP/3</strong>: QUIC & Mandatory Encryption</li>
+            </ul>
+          </div>
+
+          <div class="cyber-card threat">
+            <div class="card-title"><span class="cyber-badge badge-red">SECTION 03</span> Attack & Exploitation</div>
+            <ul>
+              <li>Plaintext Eavesdropping & MITM Sniffing</li>
+              <li>HTTP Request Smuggling (CL.TE / TE.CL)</li>
+              <li>CRLF Header Injection & Session Hijacking</li>
+              <li>HTTP/2 Rapid Reset DDoS (CVE-2023-44487)</li>
+            </ul>
+          </div>
+
+          <div class="cyber-card secure">
+            <div class="card-title"><span class="cyber-badge badge-htb">SECTION 04</span> Protocol Hardening</div>
+            <ul>
+              <li>HTTPS Layer & TLS 1.3 Handshake</li>
+              <li>Essential HTTP Security Headers (HSTS, CSP)</li>
+              <li>Secure Cookie Directives (HttpOnly, SameSite)</li>
+              <li>Zero Trust HTTP Defense Matrix</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 3: What is HTTP? -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-globe highlight-htb"></i> What is HTTP?</h2>
+        <p style="text-align: left; margin-bottom: 1.5rem;">
+          <strong>HTTP (Hypertext Transfer Protocol)</strong> is an application-layer protocol designed to transfer hypermedia documents (HTML, JSON, binary streams) across distributed networks.
+        </p>
+
+        <div class="grid-3">
+          <div class="cyber-card">
+            <div class="card-title"><i class="fa-solid fa-server highlight-htb"></i> Client-Server</div>
+            <p>Operates via request-response cycles. Clients initiate HTTP requests; servers evaluate and return responses.</p>
+          </div>
+          
+          <div class="cyber-card">
+            <div class="card-title"><i class="fa-solid fa-memory highlight-purple"></i> Stateless Design</div>
+            <p>Each request is processed independently. Servers do not natively retain client state without session tokens.</p>
+          </div>
+
+          <div class="cyber-card">
+            <div class="card-title"><i class="fa-solid fa-layer-group highlight-cyan"></i> Layer 7 Protocol</div>
+            <p>Sits at Layer 7 of the OSI Model. Traditionally relies on TCP (Port 80/443), and modernly on UDP (QUIC Port 443).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 4: Anatomy of HTTP Messages -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-code highlight-htb"></i> Anatomy of HTTP Messages</h2>
+        <div class="grid-2">
+          <div>
+            <div class="terminal-header">
+              <span class="terminal-dot dot-red"></span>
+              <span class="terminal-dot dot-yellow"></span>
+              <span class="terminal-dot dot-green"></span>
+              <span class="terminal-title">root@htb:~# curl -i -X POST target.htb</span>
+            </div>
+            <pre><code class="language-http">POST /api/v1/login HTTP/1.1
+Host: target-system.htb
+User-Agent: HTB-Scanner/2.4
+Content-Type: application/json
+Content-Length: 48
+Authorization: Bearer eyJhbGciOiJIUzI1...
+
+{
+  "username": "admin",
+  "auth_token": "secret_key"
+}</code></pre>
+          </div>
+
+          <div>
+            <div class="terminal-header">
+              <span class="terminal-dot dot-red"></span>
+              <span class="terminal-dot dot-yellow"></span>
+              <span class="terminal-dot dot-green"></span>
+              <span class="terminal-title">HTTP/1.1 200 OK (Server Response)</span>
+            </div>
+            <pre><code class="language-http">HTTP/1.1 200 OK
+Date: Wed, 22 Jul 2026 14:18:00 GMT
+Server: nginx/1.24.0 (HTB Hardened)
+Content-Type: application/json; charset=utf-8
+Set-Cookie: htb_session=xyz987; Secure; HttpOnly
+
+{
+  "status": "authenticated",
+  "role": "system_administrator"
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 5: Interactive HTTP Packet Inspector -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-microscope highlight-htb"></i> Interactive Packet Inspector</h2>
+        <p style="text-align: left; font-size: 0.85em; margin-bottom: 1rem;">Click tabs to inspect protocol primitives from a security perspective:</p>
+        
+        <div class="http-inspector">
+          <div class="inspector-tabs">
+            <button class="tab-btn active" onclick="switchTab('tab-verbs')">HTTP Verbs</button>
+            <button class="tab-btn" onclick="switchTab('tab-status')">Status Codes</button>
+            <button class="tab-btn" onclick="switchTab('tab-headers')">Headers</button>
+          </div>
+
+          <div id="tab-verbs" class="inspector-pane active">
+            <ul>
+              <li><strong class="highlight-htb">GET / HEAD:</strong> Read-only operations. Should never alter backend state (Risk: CSRF via GET).</li>
+              <li><strong class="highlight-cyan">POST / PUT / PATCH:</strong> State-changing operations. Require Strict CSRF Tokens & Input Validation.</li>
+              <li><strong class="highlight-red">DELETE / OPTIONS / TRACE:</strong> High risk if misconfigured! TRACE enables Cross-Site Tracing (XST).</li>
+            </ul>
+          </div>
+
+          <div id="tab-status" class="inspector-pane">
+            <ul>
+              <li><strong class="highlight-htb">2xx Success (200 OK, 201 Created):</strong> Operational success.</li>
+              <li><strong class="highlight-yellow">3xx Redirection (301 Moved, 302 Found):</strong> Target for Open Redirect vulnerabilities!</li>
+              <li><strong class="highlight-purple">4xx Client Errors (401 Unauthorized, 403 Forbidden, 404 Not Found):</strong> Must not leak sensitive stack debug info.</li>
+              <li><strong class="highlight-red">5xx Server Errors (500 Internal, 502 Bad Gateway):</strong> Stack traces reveal code structure to attackers.</li>
+            </ul>
+          </div>
+
+          <div id="tab-headers" class="inspector-pane">
+            <ul>
+              <li><strong class="highlight-htb">Host:</strong> Mandatory header in HTTP/1.1 (Target for Host Header Injection / Cache Poisoning).</li>
+              <li><strong class="highlight-purple">Content-Length vs Transfer-Encoding:</strong> Used for payload sizing (Mismatches trigger HTTP Request Smuggling).</li>
+              <li><strong class="highlight-cyan">User-Agent & X-Forwarded-For:</strong> Client footprint headers (Easily spoofed in attacks).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 6: HTTP Evolution Timeline Overview -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-timeline highlight-htb"></i> Evolution of HTTP Versions</h2>
+        
+        <div class="timeline-container">
+          <div class="timeline-item">
+            <div class="timeline-year">1991</div>
+            <div class="timeline-content">
+              <h4>HTTP / 0.9 (Raw ASCII)</h4>
+              <p>One-line protocol: <code>GET /index.html</code>. No headers, no status codes, no encryption.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1996</div>
+            <div class="timeline-content">
+              <h4>HTTP / 1.0 (RFC 1945)</h4>
+              <p>Introduced Key-Value Headers, Verbs (POST/HEAD), Status Codes, and Content-Types.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1997-2014</div>
+            <div class="timeline-content">
+              <h4>HTTP / 1.1 (RFC 2616 / 7230)</h4>
+              <p>Persistent Connections (Keep-Alive), Chunked Transfer, Host Header (Virtual Hosting).</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2015</div>
+            <div class="timeline-content">
+              <h4>HTTP / 2.0 (RFC 7540)</h4>
+              <p>Binary Framing layer, Multiplexing over single TCP socket, HPACK Header Compression.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item" style="border-color: var(--htb-green);">
+            <div class="timeline-year" style="color: var(--htb-green);">2022+</div>
+            <div class="timeline-content">
+              <h4>HTTP / 3.0 (RFC 9114)</h4>
+              <p>QUIC Transport Protocol (UDP), Native TLS 1.3 Encryption, 0-RTT Connection Setup.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 7: Deep Dive HTTP 0.9 & 1.0 -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-history highlight-htb"></i> HTTP/0.9 & HTTP/1.0 Mechanics</h2>
+        <div class="grid-2">
+          <div class="cyber-card">
+            <div class="card-title"><span class="cyber-badge badge-htb">HTTP/0.9</span> The Monolithic Beginning</div>
+            <ul>
+              <li>Simple request format: <code>GET /filename</code></li>
+              <li>Server returned raw HTML text and immediately closed connection.</li>
+              <li>No headers, no POST data, no status error reporting.</li>
+              <li><strong class="highlight-red">Security Impact:</strong> Zero authentication or integrity validation.</li>
+            </ul>
+          </div>
+
+          <div class="cyber-card">
+            <div class="card-title"><span class="cyber-badge badge-purple">HTTP/1.0</span> Expandable Standard</div>
+            <ul>
+              <li>Introduced Key-Value Metadata via <strong>Headers</strong>.</li>
+              <li>Added Status Codes (200, 404, 500) and MIME types.</li>
+              <li><strong>Connection Overhead:</strong> Every single asset required a brand new TCP 3-Way Handshake (SYN, SYN-ACK, ACK).</li>
+              <li>Extremely slow for multi-asset web applications.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 8: Deep Dive HTTP 1.1 -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-bolt highlight-htb"></i> HTTP/1.1 & Head-of-Line Blocking</h2>
+        <div class="grid-2">
+          <div class="cyber-card">
+            <div class="card-title"><i class="fa-solid fa-plug highlight-htb"></i> Key Innovations in HTTP/1.1</div>
+            <ul>
+              <li><strong>Keep-Alive Connections:</strong> Reuses a single TCP connection for multiple requests.</li>
+              <li><strong>Virtual Hosting:</strong> Mandatory <code>Host:</code> header allowed multiple domains on 1 IP.</li>
+              <li><strong>Chunked Transfer Encoding:</strong> Dynamic streaming without pre-calculating length.</li>
+            </ul>
+          </div>
+
+          <div class="cyber-card threat">
+            <div class="card-title"><i class="fa-solid fa-triangle-exclamation highlight-red"></i> Head-of-Line (HOL) Blocking</div>
+            <p style="font-size:0.85em; margin-bottom:0.8rem;">
+              HTTP/1.1 serializes requests over TCP. If Request #1 stalls on the server (e.g. database lock), Request #2 and #3 are completely blocked!
+            </p>
+            <div style="background: #070d18; padding: 0.8rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-red); border: 1px solid var(--htb-border-red);">
+              REQ #1 [Slow DB Query] -------> (Blocks Socket)<br>
+              REQ #2 [CSS File] -----------> [WAITING...]<br>
+              REQ #3 [JS File] ------------> [WAITING...]
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 9: Deep Dive HTTP 2 -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-network-wired highlight-htb"></i> HTTP/2: Binary Framing & Multiplexing</h2>
+        <div class="grid-2">
+          <div>
+            <div class="cyber-card">
+              <div class="card-title"><i class="fa-solid fa-boxes-stacked highlight-htb"></i> Binary Framing Protocol</div>
+              <p style="font-size:0.85em;">Replaces textual ASCII HTTP messages with discrete binary frames (HEADERS frame, DATA frame, RST_STREAM frame).</p>
+            </div>
+            
+            <div class="cyber-card" style="margin-top: 1rem;">
+              <div class="card-title"><i class="fa-solid fa-diagram-project highlight-cyan"></i> Multiplexed Streams</div>
+              <p style="font-size:0.85em;">Multiple requests and responses are interleaved simultaneously over a single TCP connection, eliminating Application-layer HOL blocking!</p>
+            </div>
+          </div>
+
+          <div class="cyber-card">
+            <div class="card-title"><i class="fa-solid fa-compress highlight-purple"></i> HPACK Header Compression</div>
+            <p style="font-size:0.85em; margin-bottom: 0.5rem;">Compresses redundant HTTP headers using indexed Huffman tables.</p>
+            <pre><code class="language-plaintext">HTTP/1.1: 500-1000 Bytes per request header
+HTTP/2 HPACK: ~20-50 Bytes per request header</code></pre>
+            <p style="font-size:0.8em; color: var(--text-muted);">
+              <i class="fa-solid fa-shield-virus highlight-red"></i> <strong>Security Vulnerability:</strong> Shared compression state enabled attacks like CRIME & BREACH if TLS compression was misconfigured.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 10: Deep Dive HTTP 3 & QUIC -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-rocket highlight-htb"></i> HTTP/3 & QUIC Transport Architecture</h2>
+        <div class="grid-2">
+          <div class="cyber-card secure">
+            <div class="card-title"><span class="cyber-badge badge-htb">UDP + QUIC</span> Transport Revolution</div>
+            <ul>
+              <li>HTTP/3 drops TCP entirely in favor of <strong>QUIC</strong> over UDP (Port 443).</li>
+              <li>Eliminates <strong>TCP Transport-layer Head-of-Line Blocking</strong> (Packet loss on one stream does not freeze other streams).</li>
+              <li><strong>Connection IDs:</strong> Allows seamless IP network roaming (e.g. WiFi to 5G without connection drops).</li>
+            </ul>
+          </div>
+
+          <div class="cyber-card secure">
+            <div class="card-title"><span class="cyber-badge badge-cyan">TLS 1.3</span> Native Security</div>
+            <ul>
+              <li>TLS 1.3 is <strong>built directly into the QUIC handshake</strong>!</li>
+              <li>Encryption is mandatory — unencrypted HTTP/3 does not exist.</li>
+              <li><strong>0-RTT Connection Establishment:</strong> Allows instant resume of cryptographic sessions.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 11: NEW INTERACTIVE PROTOCOL SIMULATOR (HTTP/2 vs HTTP/3) -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-gamepad highlight-htb"></i> Live Packet Loss Simulation: HTTP/2 vs HTTP/3</h2>
+        <p style="font-size: 0.82em; text-align: left; margin-bottom: 0.6rem;">
+          Compare how single-channel TCP (HTTP/2) freezes on packet loss vs independent UDP/QUIC streams (HTTP/3):
+        </p>
+
+        <div style="display: flex; gap: 0.8rem; margin-bottom: 0.8rem; justify-content: flex-start;">
+          <button class="sim-btn btn-red" onclick="window.protoSim.triggerH2PacketLoss()">
+            <i class="fa-solid fa-triangle-exclamation"></i> Simulate Packet Loss (HTTP/2 TCP)
+          </button>
+          <button class="sim-btn" onclick="window.protoSim.triggerH3PacketLoss()">
+            <i class="fa-solid fa-bolt"></i> Simulate Packet Loss (HTTP/3 QUIC)
+          </button>
+          <button class="sim-btn" style="border-color: var(--text-muted); color: var(--text-muted);" onclick="window.protoSim.resetSimulation()">
+            <i class="fa-solid fa-rotate-right"></i> Reset Simulation
+          </button>
+        </div>
+
+        <div class="grid-2">
+          <!-- HTTP/2 Simulator Box -->
+          <div class="sim-container">
+            <div class="sim-header">
+              <div class="sim-title"><span class="cyber-badge badge-red">HTTP/2</span> Single TCP Pipe</div>
+              <div id="h2-status" class="sim-status normal"><i class="fa-solid fa-network-wire"></i> Single TCP Channel Operating Normally</div>
+            </div>
+            <div class="sim-track">
+              <div class="sim-endpoint"><i class="fa-solid fa-server highlight-htb"></i> Server</div>
+              <div id="h2-pipe" class="sim-pipe-wrapper"></div>
+              <div class="sim-endpoint"><i class="fa-solid fa-desktop highlight-cyan"></i> Client</div>
+            </div>
+            <p style="font-size: 0.74em; color: var(--text-muted); margin: 0.2rem 0 0 0;">
+              ⚠️ <strong>Head-of-Line Blocking:</strong> If 1 packet drops, all trailing packets in the single TCP socket freeze.
+            </p>
+          </div>
+
+          <!-- HTTP/3 Simulator Box -->
+          <div class="sim-container">
+            <div class="sim-header">
+              <div class="sim-title"><span class="cyber-badge badge-htb">HTTP/3</span> Independent QUIC Lanes</div>
+              <div id="h3-status" class="sim-status normal"><i class="fa-solid fa-diagram-project"></i> 3 QUIC UDP Lanes Operating Normally</div>
+            </div>
+            <div class="sim-track">
+              <div class="sim-endpoint"><i class="fa-solid fa-server highlight-htb"></i> Server</div>
+              <div class="sim-pipe-multi">
+                <div id="h3-lane-0" class="sim-lane"></div>
+                <div id="h3-lane-1" class="sim-lane"></div>
+                <div id="h3-lane-2" class="sim-lane"></div>
+              </div>
+              <div class="sim-endpoint"><i class="fa-solid fa-desktop highlight-cyan"></i> Client</div>
+            </div>
+            <p style="font-size: 0.74em; color: var(--text-muted); margin: 0.2rem 0 0 0;">
+              ⚡ <strong>Independent Streams:</strong> Packet drop on Stream 2 retransmits independently; Streams 1 & 3 continue flowing!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 12: Protocol Comparison Matrix -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-table-columns highlight-htb"></i> Protocol Version Comparison Matrix</h2>
+        <table style="width: 100%; font-size: 0.72em; border-collapse: collapse; margin-top: 1rem; text-align: left;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--htb-green); color: #fff;">
+              <th style="padding: 10px;">Feature</th>
+              <th style="padding: 10px;">HTTP/1.1</th>
+              <th style="padding: 10px;">HTTP/2</th>
+              <th style="padding: 10px;">HTTP/3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--htb-border);">
+              <td style="padding: 10px; font-weight: bold; color: var(--htb-green);">Transport Protocol</td>
+              <td>TCP</td>
+              <td>TCP</td>
+              <td>UDP (QUIC)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--htb-border);">
+              <td style="padding: 10px; font-weight: bold; color: var(--htb-green);">Format</td>
+              <td>Text (ASCII)</td>
+              <td>Binary Frames</td>
+              <td>Binary Frames</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--htb-border);">
+              <td style="padding: 10px; font-weight: bold; color: var(--htb-green);">Multiplexing</td>
+              <td>No (Sequential)</td>
+              <td>Yes (Single TCP)</td>
+              <td>Yes (Independent QUIC streams)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--htb-border);">
+              <td style="padding: 10px; font-weight: bold; color: var(--htb-green);">HOL Blocking</td>
+              <td>App Layer & TCP Layer</td>
+              <td>TCP Layer Only</td>
+              <td><span class="highlight-htb">Fully Solved</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--htb-border);">
+              <td style="padding: 10px; font-weight: bold; color: var(--htb-green);">Encryption</td>
+              <td>Optional (HTTPS)</td>
+              <td>De-facto Mandatory</td>
+              <td><span class="highlight-htb">Mandatory (Built-in TLS 1.3)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 13: Cybersecurity Threat Vectors -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-user-ninja highlight-red"></i> HTTP Cybersecurity Threat Vectors</h2>
+        <div class="grid-3">
+          <div class="cyber-card threat">
+            <div class="card-title"><i class="fa-solid fa-eye highlight-red"></i> Plaintext Sniffing</div>
+            <p>Standard HTTP transmits credentials, cookies, and tokens in cleartext over port 80. Susceptible to Wi-Fi sniffing and ARP Spoofing MITM attacks.</p>
+          </div>
+
+          <div class="cyber-card threat">
+            <div class="card-title"><i class="fa-solid fa-vial highlight-red"></i> CRLF Injection</div>
+            <p>Inserting <code>\r\n</code> characters into user input breaks HTTP header boundaries, leading to HTTP Response Splitting & malicious header injection.</p>
+          </div>
+
+          <div class="cyber-card threat">
+            <div class="card-title"><i class="fa-solid fa-cookie-bite highlight-red"></i> Session Hijacking</div>
+            <p>Missing cookie protection flags (<code>HttpOnly</code>, <code>Secure</code>) allows Cross-Site Scripting (XSS) to steal user session identifiers.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 14: Advanced Attack: HTTP Request Smuggling -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-skull-crossbones highlight-red"></i> HTTP Request Smuggling (Desync)</h2>
+        <p style="text-align: left; font-size: 0.85em;">Occurs when Front-End Proxies and Back-End Servers interpret HTTP request boundaries differently.</p>
+        
+        <div class="grid-2" style="margin-top: 1rem;">
+          <div>
+            <div class="terminal-header">
+              <span class="terminal-dot dot-red"></span>
+              <span class="terminal-title">CL.TE Attack Payload Example</span>
+            </div>
+            <pre><code class="language-http">POST / HTTP/1.1
+Host: target.htb
+Content-Length: 13
+Transfer-Encoding: chunked
+
+0
+
+SMUGGLED POST /admin HTTP/1.1
+Host: target.htb</code></pre>
+          </div>
+
+          <div class="cyber-card threat">
+            <div class="card-title"><i class="fa-solid fa-bug highlight-red"></i> Mechanism & Exploit Impact</div>
+            <ul>
+              <li><strong>CL.TE:</strong> Front-end uses <code>Content-Length</code>; Back-end uses <code>Transfer-Encoding</code>.</li>
+              <li><strong>TE.CL:</strong> Front-end uses <code>Transfer-Encoding</code>; Back-end uses <code>Content-Length</code>.</li>
+              <li><strong>Consequences:</strong> Bypass WAF controls, poison front-end web caches, steal victim request headers, or gain unauthorized admin privileges!</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 15: HTTP/2 Rapid Reset Attack (CVE-2023-44487) -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-burst highlight-red"></i> Protocol-Level Attack: HTTP/2 Rapid Reset</h2>
+        <div class="grid-2">
+          <div class="cyber-card threat">
+            <div class="card-title"><span class="cyber-badge badge-red">CVE-2023-44487</span> Record DDoS Vulnerability</div>
+            <p style="font-size: 0.85em; margin-bottom: 0.8rem;">Exploited HTTP/2 stream management logic to generate record-breaking DDoS attacks (>390 Million Requests Per Second).</p>
+            <ul>
+              <li>Attacker sends <code>HEADERS</code> frame to open a stream.</li>
+              <li>Immediately sends <code>RST_STREAM</code> frame to cancel the stream.</li>
+              <li>Repeats billions of times in a tight loop over a single TCP socket.</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="terminal-header">
+              <span class="terminal-dot dot-red"></span>
+              <span class="terminal-title">root@htb:~# ./rapid_reset_exploit.py</span>
+            </div>
+            <pre><code class="language-plaintext">[Client] ---> HEADERS (Stream 1)   ---> [Server: Allocate Memory]
+[Client] ---> RST_STREAM (Stream 1) ---> [Server: Cancel Processing]
+[Client] ---> HEADERS (Stream 3)   ---> [Server: Allocate Memory]
+[Client] ---> RST_STREAM (Stream 3) ---> [Server: Cancel Processing]
+... (Repeat x 1,000,000 requests per socket)
+Result: Server CPU & Thread Pool Exhaustion (DoS)</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 16: Defending HTTP: HTTPS & TLS Layer -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-shield-halved highlight-htb"></i> Securing Transport: HTTPS & TLS 1.3</h2>
+        <div class="grid-2">
+          <div class="cyber-card secure">
+            <div class="card-title"><i class="fa-solid fa-key highlight-htb"></i> TLS Cryptographic Protections</div>
+            <ul>
+              <li><strong>Confidentiality:</strong> Symmetric Encryption (AES-GCM, ChaCha20-Poly1305) prevents sniffing.</li>
+              <li><strong>Integrity:</strong> HMAC / AEAD tags detect payload tampering.</li>
+              <li><strong>Authentication:</strong> X.509 Certificates verify server identity.</li>
+              <li><strong>Forward Secrecy:</strong> Ephemeral Diffie-Hellman (ECDHE) ensures compromised long-term keys cannot decrypt past traffic.</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="terminal-header">
+              <span class="terminal-dot dot-green"></span>
+              <span class="terminal-title">TLS 1.3 Handshake (1-RTT)</span>
+            </div>
+            <pre><code class="language-plaintext">Client                               Server
+  |                                     |
+  |--- ClientHello + Key Share -------->|  (Key Exchange Start)
+  |                                     |
+  |<-- ServerHello + Encrypted Cert ----|  (Key Exchange Finish)
+  |<-- Finished ------------------------|
+  |                                     |
+  [====== Encrypted HTTP Data ======]</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 17: Essential HTTP Security Headers -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-file-shield highlight-htb"></i> Essential Security Headers Hardening</h2>
+        <div class="grid-2">
+          <div class="cyber-card secure">
+            <div class="card-title"><span class="cyber-badge badge-htb">HSTS</span> Strict Transport Security</div>
+            <pre><code class="language-http">Strict-Transport-Security: max-age=31536000; includeSubDomains; preload</code></pre>
+            <p style="font-size:0.8em;">Forces browsers to interact with the domain exclusively over HTTPS, mitigating SSL Strip attacks.</p>
+          </div>
+
+          <div class="cyber-card secure">
+            <div class="card-title"><span class="cyber-badge badge-htb">CSP</span> Content Security Policy</div>
+            <pre><code class="language-http">Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.trusted.com</code></pre>
+            <p style="font-size:0.8em;">Restricts script execution sources to neutralize Cross-Site Scripting (XSS) and injection attacks.</p>
+          </div>
+
+          <div class="cyber-card secure">
+            <div class="card-title"><span class="cyber-badge badge-htb">Frame Options</span> X-Frame-Options</div>
+            <pre><code class="language-http">X-Frame-Options: DENY</code></pre>
+            <p style="font-size:0.8em;">Prevents site embedding inside iframe tags to eliminate Clickjacking threats.</p>
+          </div>
+
+          <div class="cyber-card secure">
+            <div class="card-title"><span class="cyber-badge badge-htb">MIME Sniffing</span> X-Content-Type-Options</div>
+            <pre><code class="language-http">X-Content-Type-Options: nosniff</code></pre>
+            <p style="font-size:0.8em;">Blocks browser MIME-type sniffing to prevent drive-by malware execution.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 18: Secure Session Management & Cookies -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-cookie highlight-htb"></i> Secure Cookie Directives</h2>
+        <p style="text-align: left; font-size:0.85em; margin-bottom:1rem;">Cookies represent session state in HTTP. Hardening cookie flags is a baseline defense:</p>
+        
+        <div>
+          <div class="terminal-header">
+            <span class="terminal-dot dot-green"></span>
+            <span class="terminal-title">Hardened Set-Cookie Header</span>
+          </div>
+          <pre><code class="language-http">Set-Cookie: htb_token=s3cr3t_v4lu3; Secure; HttpOnly; SameSite=Strict; Path=/; Domain=secure.target.htb</code></pre>
+        </div>
+
+        <div class="grid-3" style="margin-top: 1rem;">
+          <div class="cyber-card secure">
+            <div class="card-title"><i class="fa-solid fa-lock highlight-htb"></i> Secure</div>
+            <p>Ensures cookie is ONLY transmitted over encrypted HTTPS connections.</p>
+          </div>
+
+          <div class="cyber-card secure">
+            <div class="card-title"><i class="fa-solid fa-ban highlight-htb"></i> HttpOnly</div>
+            <p>Blocks JavaScript access (<code>document.cookie</code>), protecting against XSS cookie theft.</p>
+          </div>
+
+          <div class="cyber-card secure">
+            <div class="card-title"><i class="fa-solid fa-shield-cat highlight-purple"></i> SameSite=Strict</div>
+            <p>Prevents browser from sending cookies in cross-site requests (Mitigates CSRF).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 19: Summary & Hardening Matrix -->
+      <!-- ================================================================= -->
+      <section>
+        <h2><i class="fa-solid fa-clipboard-check highlight-htb"></i> Cybersecurity Hardening Checklist</h2>
+        <div class="grid-2">
+          <div class="cyber-card secure">
+            <div class="card-title"><i class="fa-solid fa-check-double highlight-htb"></i> Recommended Hardening Actions</div>
+            <ul class="secure-list" style="font-size: 0.82em;">
+              <li>Enforce <strong>HTTPS Everywhere</strong> with TLS 1.3 and HSTS Preloading.</li>
+              <li>Disable legacy protocols (HTTP/0.9, HTTP/1.0, SSLv3, TLS 1.0/1.1).</li>
+              <li>Deploy robust <strong>HTTP Security Headers</strong> (CSP, X-Frame-Options, Permissions-Policy).</li>
+              <li>Sanitize and normalize HTTP headers at Reverse Proxies to prevent <strong>Request Smuggling</strong>.</li>
+              <li>Rate-limit HTTP/2 <code>RST_STREAM</code> frames to mitigate Rapid Reset DDoS.</li>
+            </ul>
+          </div>
+
+          <div class="cyber-card threat">
+            <div class="card-title"><i class="fa-solid fa-xmark highlight-red"></i> Common Anti-Patterns to Avoid</div>
+            <ul class="threat-list" style="font-size: 0.82em;">
+              <li>Transmitting sensitive credentials over unencrypted HTTP (Port 80).</li>
+              <li>Exposing server signature banners (e.g. <code>Server: Apache/2.2.15</code>).</li>
+              <li>Permitting wildcards in <code>Access-Control-Allow-Origin: *</code> with credentials.</li>
+              <li>Relying on client-side state without cryptographic signature verification.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SLIDE 20: Conclusion / Q&A -->
+      <!-- ================================================================= -->
+      <section data-background-gradient="radial-gradient(circle, rgba(159,239,0,0.15) 0%, rgba(11,18,31,1) 100%)">
+        <div style="text-align: center;">
+          <span class="cyber-badge badge-htb" style="margin-bottom: 1.2rem;"><i class="fa-solid fa-cube"></i> MODULE COMPLETE</span>
+          <h1 style="font-size: 3em;">Questions & Discussion</h1>
+          <p style="color: var(--text-muted); font-size: 1.1em; margin-bottom: 2.5rem;">
+            HTTP Protocol & Cybersecurity Architecture
+          </p>
+
+          <div class="cyber-card" style="display: inline-block; padding: 1.2rem 2.5rem; text-align: center;">
+            <div style="font-family: var(--font-mono); font-size: 0.9em; color: var(--htb-green);">
+              <i class="fa-solid fa-terminal"></i> Press <strong>'ESC'</strong> or <strong>'O'</strong> for Slide Overview | Press <strong>'F'</strong> for Fullscreen
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Custom Navigation Overlay -->
+  <div class="cyber-controls">
+    <button onclick="Reveal.prev()"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+    <button onclick="Reveal.toggleOverview()"><i class="fa-solid fa-grid-2"></i> Grid</button>
+    <button onclick="Reveal.next()">Next <i class="fa-solid fa-chevron-right"></i></button>
+  </div>
+
+  <!-- Reveal.js & Plugins JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/plugin/highlight/highlight.min.js"></script>
+  <script src="js/cyber-bg.js"></script>
+  <script src="js/http-simulator.js"></script>
+  <script>
+    // Initialize Reveal.js
+    Reveal.initialize({
+      hash: true,
+      controls: false,
+      progress: true,
+      center: true,
+      transition: 'slide',
+      backgroundTransition: 'fade',
+      plugins: [ RevealHighlight ]
+    });
+
+    // Tab switcher logic for Slide 5
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.inspector-pane').forEach(pane => pane.classList.remove('active'));
+
+      event.target.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+</body>
+</html>
