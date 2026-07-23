@@ -1,0 +1,48 @@
+<!-- SLIDE: Data Link Layer Overview -->
+<section>
+  <h2><i class="fa-solid fa-link highlight-htb"></i> Data Link Layer Overview</h2>
+
+  <!-- Top Hero Banner Card -->
+  <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 8px; padding: 0.9rem 1.2rem; margin-bottom: 1rem; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+      <span class="cyber-badge badge-htb">OSI LAYER 2</span>
+      <strong style="color: var(--text-white); font-size: 1.05em;">Direct Node-to-Node Communication</strong>
+    </div>
+    <p style="font-size: 0.92em; color: var(--text-main); margin: 0; line-height: 1.5;">
+      In this lesson, we examine the 2nd layer of the OSI model, called the <strong>Data Link Layer</strong>. Its main job is to move data between two devices that are directly connected at the physical layer.
+    </p>
+  </div>
+
+  <!-- Bottom 2-Column Split: Key Tasks Card vs OSI Diagram -->
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr; gap: 1.1rem; align-items: stretch;">
+    <!-- Left Card: Core Tasks -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.1rem 1.3rem;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">CORE TASKS</span> Primary Responsibilities
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 0.7rem; margin-top: 0.6rem; font-size: 0.88em; line-height: 1.45;">
+          <div style="background: rgba(159,239,0,0.1); border: 1px solid var(--htb-green); border-radius: 6px; padding: 0.6rem 0.8rem;">
+            <strong style="color: var(--htb-green);"><i class="fa-solid fa-box"></i> Framing &amp; Addressing:</strong> Encapsulates Layer 3 IP packets into frames with physical MAC addresses.
+          </div>
+          <div style="background: rgba(45,226,230,0.1); border: 1px solid var(--accent-cyan); border-radius: 6px; padding: 0.6rem 0.8rem;">
+            <strong style="color: var(--accent-cyan);"><i class="fa-solid fa-bolt"></i> Medium Transmission:</strong> Prepares frames so the physical layer can convert data into electrical, optical, or radio signals over the medium.
+          </div>
+        </div>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.6rem;">
+        <i class="fa-solid fa-microchip highlight-htb"></i> Error Detection &amp; Media Access Control
+      </div>
+    </div>
+
+    <!-- Right Image: Layer 2 OSI Diagram -->
+    <div style="background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid var(--htb-border); box-shadow: 0 0 25px var(--htb-green-glow); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+      <img src="media/the-data-link-layer-osi-model.svg" alt="The Data Link Layer OSI Model" style="max-height: 240px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.4rem;">
+        <i class="fa-solid fa-diagram-project highlight-htb"></i> Figure: Data Link Layer in the OSI Stack
+      </div>
+    </div>
+  </div>
+</section>

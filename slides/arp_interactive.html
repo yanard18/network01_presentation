@@ -1,0 +1,77 @@
+<!-- SLIDE: Interactive ARP Simulator -->
+<section>
+  <h2><i class="fa-solid fa-satellite-dish highlight-htb"></i> Interactive ARP Resolution Simulator</h2>
+
+  <!-- Top Compact Step-by-Step Summary Bar (No Cards, Minimal Space) -->
+  <div style="display: flex; justify-content: center; gap: 1.2rem; align-items: center; margin-bottom: 0.8rem; font-size: 0.85em; font-family: var(--font-mono); text-align: center;">
+    <span class="cyber-badge badge-cyan"><i class="fa-solid fa-bullhorn"></i> 1. Broadcast Request</span>
+    <span style="color: var(--text-muted);">➔</span>
+    <span class="cyber-badge badge-red"><i class="fa-solid fa-xmark"></i> 2. Mismatch Drop</span>
+    <span style="color: var(--text-muted);">➔</span>
+    <span class="cyber-badge badge-htb"><i class="fa-solid fa-reply"></i> 3. Target Unicast Reply</span>
+  </div>
+
+  <!-- Main Hero Interactive Topology Simulation Container -->
+  <div class="sim-container" style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; justify-content: space-between; padding: 1rem 1.2rem;">
+    <div class="sim-header">
+      <div class="sim-title"><span class="cyber-badge badge-htb">ARP TOPOLOGY</span> Broadcast Request ➔ Target Unicast Reply</div>
+      <div id="arp-sim-status" class="sim-status normal"><i class="fa-solid fa-satellite-dish"></i> Click a target button below to trigger ARP resolution</div>
+    </div>
+
+    <!-- Visual ARP Topology Canvas -->
+    <div class="topo-canvas" style="height: 270px; margin: 0.6rem 0;">
+      <svg class="topo-lines-svg">
+        <line x1="15%" y1="50%" x2="50%" y2="50%" class="topo-line active"></line>
+        <line x1="50%" y1="20%" x2="50%" y2="50%" class="topo-line"></line>
+        <line x1="85%" y1="50%" x2="50%" y2="50%" class="topo-line"></line>
+        <line x1="50%" y1="80%" x2="50%" y2="50%" class="topo-line"></line>
+      </svg>
+
+      <!-- Switch Center Node -->
+      <div class="topo-node center-dev" style="left: 50%; top: 50%;">
+        <div class="topo-node-icon" style="border-color: var(--accent-cyan); color: var(--accent-cyan);"><i class="fa-solid fa-server"></i></div>
+        <span class="topo-node-label">L2 SWITCH</span>
+      </div>
+
+      <!-- Attached Host Nodes -->
+      <div class="topo-node" style="left: 15%; top: 50%;">
+        <div class="topo-node-icon" style="border-color: var(--htb-green);"><i class="fa-solid fa-desktop"></i></div>
+        <span class="topo-node-label">Comp A (.10)</span>
+      </div>
+
+      <div class="topo-node" style="left: 50%; top: 20%;">
+        <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+        <span class="topo-node-label">Comp B (.20)</span>
+      </div>
+
+      <div class="topo-node" style="left: 85%; top: 50%;">
+        <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+        <span class="topo-node-label">Comp C (.30)</span>
+      </div>
+
+      <div class="topo-node" style="left: 50%; top: 80%;">
+        <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+        <span class="topo-node-label">Comp D (.40)</span>
+      </div>
+
+      <!-- Animated Packets -->
+      <div id="arp-pkt-req" class="topo-packet" style="background: var(--accent-cyan); box-shadow: 0 0 12px var(--accent-cyan);"></div>
+      <div id="arp-pkt-b" class="topo-packet" style="background: var(--accent-cyan); box-shadow: 0 0 12px var(--accent-cyan);"></div>
+      <div id="arp-pkt-c" class="topo-packet" style="background: var(--accent-cyan); box-shadow: 0 0 12px var(--accent-cyan);"></div>
+      <div id="arp-pkt-d" class="topo-packet" style="background: var(--accent-cyan); box-shadow: 0 0 12px var(--accent-cyan);"></div>
+      <div id="arp-pkt-reply" class="topo-packet" style="background: var(--htb-green); box-shadow: 0 0 12px var(--htb-green);"></div>
+    </div>
+
+    <!-- Action Trigger Buttons -->
+    <div style="display: flex; gap: 0.8rem; justify-content: center; margin-bottom: 0.5rem;">
+      <button class="sim-btn" onclick="window.netDevSim.testArp('c')"><i class="fa-solid fa-paper-plane"></i> Request Comp C (.30)</button>
+      <button class="sim-btn" onclick="window.netDevSim.testArp('b')"><i class="fa-solid fa-paper-plane"></i> Request Comp B (.20)</button>
+      <button class="sim-btn" onclick="window.netDevSim.testArp('d')"><i class="fa-solid fa-paper-plane"></i> Request Comp D (.40)</button>
+    </div>
+
+    <!-- Live Execution Console Log -->
+    <div id="arp-sim-log" style="background: var(--htb-bg-terminal); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 0.6rem 0.9rem; font-family: var(--font-mono); font-size: 0.8em; min-height: 75px; text-align: left;">
+      <div style="color: var(--text-muted);">Click a target button above to execute live ARP Broadcast request &amp; Unicast reply...</div>
+    </div>
+  </div>
+</section>

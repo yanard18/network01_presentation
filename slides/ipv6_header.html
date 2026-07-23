@@ -1,0 +1,36 @@
+<!-- SLIDE: IPv6 Header Structure -->
+<section>
+  <h2><i class="fa-solid fa-file-invoice highlight-purple"></i> IPv6 Header Structure</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1.1fr 0.9fr; gap: 1.2rem; align-items: center;">
+    <!-- Left: Image from /media -->
+    <div style="background: rgba(255, 255, 255, 0.98); padding: 14px; border-radius: 10px; border: 1px solid var(--accent-purple); box-shadow: 0 0 25px rgba(157, 78, 221, 0.35); text-align: center;">
+      <img src="media/ipv6_header.png" alt="IPv6 Header Structure Diagram" style="max-height: 380px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.4rem;">
+        <i class="fa-solid fa-diagram-project highlight-purple"></i> Figure: Simplified Fixed IPv6 Header (40 Bytes)
+      </div>
+    </div>
+
+    <!-- Right: Field Breakdown Notes -->
+    <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">IPV6 FIELDS</span> Key Explanations
+        </div>
+
+        <ul style="font-size: 0.83em; line-height: 1.48; margin-bottom: 0;">
+          <li><strong>Version (4b):</strong> Identifies IP version (set to <code>6</code> for IPv6).</li>
+          <li><strong>Traffic Class (8b):</strong> Equivalent to IPv4 ToS/DSCP for QoS packet prioritization.</li>
+          <li><strong>Flow Label (20b):</strong> Tags specific packet streams requiring special router handling (e.g. real-time media).</li>
+          <li><strong>Payload Length (16b):</strong> Size of payload + extension headers in bytes (excluding 40B base header).</li>
+          <li><strong>Next Header (8b):</strong> Specifies payload type (TCP/UDP) or chained IPv6 Extension Header.</li>
+          <li><strong>Hop Limit (8b):</strong> Replaces IPv4 TTL; decremented by 1 per router (drops packet at 0).</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.4rem;">
+        <i class="fa-solid fa-bolt highlight-purple"></i> Fixed 40B size &amp; no checksum enable faster hardware processing!
+      </div>
+    </div>
+  </div>
+</section>

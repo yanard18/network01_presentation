@@ -216,6 +216,176 @@
   </div>
 </section>
 
+      <!-- Loaded from slides/datalink_overview.html -->
+<!-- SLIDE: Data Link Layer Overview -->
+<section>
+  <h2><i class="fa-solid fa-link highlight-htb"></i> Data Link Layer Overview</h2>
+
+  <!-- Top Hero Banner Card -->
+  <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 8px; padding: 0.9rem 1.2rem; margin-bottom: 1rem; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+      <span class="cyber-badge badge-htb">OSI LAYER 2</span>
+      <strong style="color: var(--text-white); font-size: 1.05em;">Direct Node-to-Node Communication</strong>
+    </div>
+    <p style="font-size: 0.92em; color: var(--text-main); margin: 0; line-height: 1.5;">
+      In this lesson, we examine the 2nd layer of the OSI model, called the <strong>Data Link Layer</strong>. Its main job is to move data between two devices that are directly connected at the physical layer.
+    </p>
+  </div>
+
+  <!-- Bottom 2-Column Split: Key Tasks Card vs OSI Diagram -->
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr; gap: 1.1rem; align-items: stretch;">
+    <!-- Left Card: Core Tasks -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.1rem 1.3rem;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">CORE TASKS</span> Primary Responsibilities
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 0.7rem; margin-top: 0.6rem; font-size: 0.88em; line-height: 1.45;">
+          <div style="background: rgba(159,239,0,0.1); border: 1px solid var(--htb-green); border-radius: 6px; padding: 0.6rem 0.8rem;">
+            <strong style="color: var(--htb-green);"><i class="fa-solid fa-box"></i> Framing &amp; Addressing:</strong> Encapsulates Layer 3 IP packets into frames with physical MAC addresses.
+          </div>
+          <div style="background: rgba(45,226,230,0.1); border: 1px solid var(--accent-cyan); border-radius: 6px; padding: 0.6rem 0.8rem;">
+            <strong style="color: var(--accent-cyan);"><i class="fa-solid fa-bolt"></i> Medium Transmission:</strong> Prepares frames so the physical layer can convert data into electrical, optical, or radio signals over the medium.
+          </div>
+        </div>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.6rem;">
+        <i class="fa-solid fa-microchip highlight-htb"></i> Error Detection &amp; Media Access Control
+      </div>
+    </div>
+
+    <!-- Right Image: Layer 2 OSI Diagram -->
+    <div style="background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid var(--htb-border); box-shadow: 0 0 25px var(--htb-green-glow); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+      <img src="media/the-data-link-layer-osi-model.svg" alt="The Data Link Layer OSI Model" style="max-height: 240px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.4rem;">
+        <i class="fa-solid fa-diagram-project highlight-htb"></i> Figure: Data Link Layer in the OSI Stack
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/framing_overview.html -->
+<!-- SLIDE: Framing -->
+<section>
+  <h2><i class="fa-solid fa-box-archive highlight-cyan"></i> Framing</h2>
+
+  <div style="display: flex; flex-direction: column; gap: 0.9rem; margin-top: 0.3rem;">
+    <!-- Top Showcase: Frame Re-encapsulation Diagram -->
+    <div style="background: #ffffff; padding: 12px 18px; border-radius: 10px; border: 1px solid var(--accent-cyan); box-shadow: 0 0 25px rgba(45, 226, 230, 0.35); text-align: center;">
+      <img src="media/frame-re-encapsulation.svg" alt="Frame Re-Encapsulation Diagram" style="max-height: 210px; width: 100%; object-fit: contain; display: block; margin: 0 auto;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.3rem;">
+        <i class="fa-solid fa-diagram-project highlight-cyan"></i> Figure: Layer 2 Data Link Framing &amp; Hop-by-Hop Re-Encapsulation
+      </div>
+    </div>
+
+    <!-- Bottom 3-Column Grid: Header, Payload, Trailer -->
+    <div class="grid-3" style="gap: 0.9rem; text-align: left;">
+      <!-- Card 1: Header -->
+      <div class="cyber-card" style="padding: 0.9rem 1rem;">
+        <div class="card-title" style="font-size: 1rem; margin-bottom: 0.4rem;">
+          <span class="cyber-badge badge-cyan">1. HEADER</span> Addressing
+        </div>
+        <p style="font-size: 0.83em; color: var(--text-main); margin: 0; line-height: 1.45;">
+          Contains 48-bit <strong>Source &amp; Destination MAC addresses</strong> and protocol control metadata used for local network delivery.
+        </p>
+      </div>
+
+      <!-- Card 2: Payload -->
+      <div class="cyber-card" style="padding: 0.9rem 1rem;">
+        <div class="card-title" style="font-size: 1rem; margin-bottom: 0.4rem;">
+          <span class="cyber-badge badge-htb">2. PAYLOAD</span> Layer 3 Data
+        </div>
+        <p style="font-size: 0.83em; color: var(--text-main); margin: 0; line-height: 1.45;">
+          The actual encapsulated packet delivered from Layer 3 (e.g., the <strong>IPv4 or IPv6 packet</strong> carrying application data).
+        </p>
+      </div>
+
+      <!-- Card 3: Trailer -->
+      <div class="cyber-card" style="padding: 0.9rem 1rem;">
+        <div class="card-title" style="font-size: 1rem; margin-bottom: 0.4rem;">
+          <span class="cyber-badge badge-purple">3. TRAILER</span> Error Check
+        </div>
+        <p style="font-size: 0.83em; color: var(--text-main); margin: 0; line-height: 1.45;">
+          Contains <strong>error-checking information</strong> (Frame Check Sequence - FCS / CRC) to detect transmission errors.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/frame_header.html -->
+<!-- SLIDE: Frame Header Structure -->
+<section>
+  <h2><i class="fa-solid fa-file-code highlight-purple"></i> Frame Header Structure</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1.15fr 0.85fr; gap: 1.2rem; align-items: center;">
+    <!-- Left: Image from /media -->
+    <div style="background: rgba(255, 255, 255, 0.98); padding: 14px; border-radius: 10px; border: 1px solid var(--accent-purple); box-shadow: 0 0 25px rgba(157, 78, 221, 0.35); text-align: center;">
+      <img src="media/frame_header.png" alt="Frame Header Structure Diagram" style="max-height: 360px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.5rem;">
+        <i class="fa-solid fa-diagram-project highlight-purple"></i> Figure: Ethernet II Frame Header Format
+      </div>
+    </div>
+
+    <!-- Right: Very Brief Field Explanations -->
+    <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">FIELD BREAKDOWN</span> Key Explanations
+        </div>
+
+        <ul style="font-size: 0.83em; line-height: 1.48; margin-bottom: 0;">
+          <li><strong>Preamble &amp; SFD (8B):</strong> Clock synchronization and Start-of-Frame delimiter.</li>
+          <li><strong>Destination MAC (6B):</strong> 48-bit physical address of the receiving network interface.</li>
+          <li><strong>Source MAC (6B):</strong> 48-bit physical address of the sending network interface.</li>
+          <li><strong>Type / Length (2B):</strong> Identifies upper Layer 3 protocol (e.g. 0x0800 for IPv4, 0x86DD for IPv6).</li>
+          <li><strong>FCS Trailer (4B):</strong> 32-bit CRC checksum for Frame Check Sequence error detection.</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.4rem;">
+        <i class="fa-solid fa-microchip highlight-purple"></i> Standard Ethernet II Header Format (14 Bytes + 4B FCS)
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/datalink_sublayers.html -->
+<!-- SLIDE: Data Link Sublayers -->
+<section>
+  <h2><i class="fa-solid fa-layer-group highlight-yellow"></i> Data Link Sublayers</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1.1fr 0.9fr; gap: 1.2rem; align-items: center;">
+    <!-- Left: Image from /media -->
+    <div style="background: rgba(255, 255, 255, 0.98); padding: 14px; border-radius: 10px; border: 1px solid var(--accent-yellow); box-shadow: 0 0 25px rgba(255, 183, 3, 0.35); text-align: center;">
+      <img src="media/data-link-sublayers.svg" alt="Data Link Sublayers Diagram" style="max-height: 360px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.5rem;">
+        <i class="fa-solid fa-diagram-project highlight-yellow"></i> Figure: LLC and MAC Sublayer Architecture (IEEE 802)
+      </div>
+    </div>
+
+    <!-- Right: Sublayers Breakdown -->
+    <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-red" style="border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);">IEEE 802</span> Sublayer Breakdown
+        </div>
+
+        <ul style="font-size: 0.85em; line-height: 1.5; margin-bottom: 0;">
+          <li><strong>LLC (Logical Link Control - IEEE 802.2):</strong> Upper sublayer that interfaces with Layer 3 network protocols, handling protocol multiplexing and flow control.</li>
+          <li><strong>MAC (Media Access Control - IEEE 802.3 / 802.11):</strong> Lower sublayer responsible for physical MAC addressing, framing, and managing access to the physical transmission medium.</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-yellow); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.4rem;">
+        <i class="fa-solid fa-network-wired"></i> Bridges software protocol logic with physical hardware media!
+      </div>
+    </div>
+  </div>
+</section>
+
       <!-- Loaded from slides/ip_overview.html -->
 <!-- SLIDE: Internet Protocol (IP) -->
 <section>
@@ -265,6 +435,292 @@
     </div>
     <div style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); margin-top: 0.8rem;">
       <i class="fa-solid fa-diagram-project highlight-htb"></i> Figure: Network Layer as the Postal Service Analogy
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/ipv4_header.html -->
+<!-- SLIDE: IPv4 Header Structure -->
+<section>
+  <h2><i class="fa-solid fa-file-invoice highlight-cyan"></i> IPv4 Header Structure</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1.1fr 0.9fr; gap: 1.2rem; align-items: center;">
+    <!-- Left: Image from /media -->
+    <div style="background: rgba(255, 255, 255, 0.98); padding: 12px; border-radius: 10px; border: 1px solid var(--accent-cyan); box-shadow: 0 0 25px rgba(45, 226, 230, 0.35); text-align: center;">
+      <img src="media/ipv4_header.png" alt="IPv4 Header Structure Diagram" style="max-height: 380px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.4rem;">
+        <i class="fa-solid fa-diagram-project highlight-cyan"></i> Figure: IPv4 Datagram Header (20 to 60 Bytes)
+      </div>
+    </div>
+
+    <!-- Right: Field Breakdown Notes -->
+    <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">IPV4 FIELDS</span> Key Explanations
+        </div>
+
+        <ul style="font-size: 0.81em; line-height: 1.42; margin-bottom: 0;">
+          <li><strong>Version (4b):</strong> Identifies IP version (set to <code>4</code> for IPv4).</li>
+          <li><strong>IHL (4b):</strong> Internet Header Length in 32-bit words (Min: 5 = 20B, Max: 15 = 60B).</li>
+          <li><strong>Type of Service (8b):</strong> DSCP &amp; ECN bits for Quality of Service (QoS) prioritization.</li>
+          <li><strong>Ident &amp; Flags (3b):</strong> Controls fragmentation (DF = Don't Fragment, MF = More Fragments).</li>
+          <li><strong>Time-to-Live (TTL - 8b):</strong> Hop limit counter (default 64) decremented by routers to prevent loops.</li>
+          <li><strong>Protocol (8b):</strong> Payload type ID (e.g. 6 = TCP, 17 = UDP, or IPv4-in-IPv4).</li>
+          <li><strong>Header Checksum (16b):</strong> Validates <em>header only</em> integrity (removed in IPv6).</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.4rem;">
+        <i class="fa-solid fa-circle-info highlight-cyan"></i> Variable header size due to optional IHL padding.
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/ipv6_header.html -->
+<!-- SLIDE: IPv6 Header Structure -->
+<section>
+  <h2><i class="fa-solid fa-file-invoice highlight-purple"></i> IPv6 Header Structure</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1.1fr 0.9fr; gap: 1.2rem; align-items: center;">
+    <!-- Left: Image from /media -->
+    <div style="background: rgba(255, 255, 255, 0.98); padding: 14px; border-radius: 10px; border: 1px solid var(--accent-purple); box-shadow: 0 0 25px rgba(157, 78, 221, 0.35); text-align: center;">
+      <img src="media/ipv6_header.png" alt="IPv6 Header Structure Diagram" style="max-height: 380px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.4rem;">
+        <i class="fa-solid fa-diagram-project highlight-purple"></i> Figure: Simplified Fixed IPv6 Header (40 Bytes)
+      </div>
+    </div>
+
+    <!-- Right: Field Breakdown Notes -->
+    <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">IPV6 FIELDS</span> Key Explanations
+        </div>
+
+        <ul style="font-size: 0.83em; line-height: 1.48; margin-bottom: 0;">
+          <li><strong>Version (4b):</strong> Identifies IP version (set to <code>6</code> for IPv6).</li>
+          <li><strong>Traffic Class (8b):</strong> Equivalent to IPv4 ToS/DSCP for QoS packet prioritization.</li>
+          <li><strong>Flow Label (20b):</strong> Tags specific packet streams requiring special router handling (e.g. real-time media).</li>
+          <li><strong>Payload Length (16b):</strong> Size of payload + extension headers in bytes (excluding 40B base header).</li>
+          <li><strong>Next Header (8b):</strong> Specifies payload type (TCP/UDP) or chained IPv6 Extension Header.</li>
+          <li><strong>Hop Limit (8b):</strong> Replaces IPv4 TTL; decremented by 1 per router (drops packet at 0).</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.4rem;">
+        <i class="fa-solid fa-bolt highlight-purple"></i> Fixed 40B size &amp; no checksum enable faster hardware processing!
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/ipv4_vs_ipv6.html -->
+<!-- SLIDE: IPv4 vs IPv6 Comparison -->
+<section>
+  <h2><i class="fa-solid fa-code-compare highlight-cyan"></i> IPv4 vs. IPv6</h2>
+
+  <div style="max-width: 850px; margin: 1.5rem auto 0 auto; text-align: center;">
+    <!-- Centered Brief Comparison Table / Text Layout (No Cards) -->
+    <div style="font-size: 1.05em; line-height: 1.8; color: var(--text-main);">
+      <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 1.1em;">
+        <span class="cyber-badge badge-cyan" style="padding: 0.4rem 1rem;"><i class="fa-solid fa-network-wired"></i> IPv4</span>
+        <span style="color: var(--text-muted);">vs.</span>
+        <span class="cyber-badge badge-purple" style="padding: 0.4rem 1rem;"><i class="fa-solid fa-globe"></i> IPv6</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 1.1rem; text-align: left; font-size: 0.95em; max-width: 750px; margin: 0 auto;">
+        <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
+          <strong style="color: #fff;">• Address Size:</strong> <span style="color: var(--accent-cyan);">32-bit</span> (4.3 Billion IPs) vs. <span style="color: var(--accent-purple);">128-bit</span> (3.4 × 10³⁸ IPs)
+        </div>
+
+        <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
+          <strong style="color: #fff;">• Header Format:</strong> <span style="color: var(--accent-cyan);">Variable (20–60B)</span> with Checksum vs. <span style="color: var(--accent-purple);">Fixed (40B)</span> without Checksum
+        </div>
+
+        <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
+          <strong style="color: #fff;">• Address Assignment:</strong> <span style="color: var(--accent-cyan);">Manual / DHCP &amp; NAT</span> vs. <span style="color: var(--accent-purple);">Stateless Auto-Config (SLAAC)</span>
+        </div>
+
+        <div>
+          <strong style="color: #fff;">• Security:</strong> <span style="color: var(--accent-cyan);">Optional IPSec</span> vs. <span style="color: var(--accent-purple);">Built-in Native IPSec Support</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/arp_overview.html -->
+<!-- SLIDE: Address Resolution Protocol (ARP) -->
+<section>
+  <h2><i class="fa-solid fa-address-card highlight-htb"></i> Address Resolution Protocol (ARP)</h2>
+
+  <div style="text-align: left; margin-bottom: 1.1rem; color: var(--text-muted);">
+    <strong>ARP (Layer 2.5)</strong> resolves known 32-bit IPv4 addresses into 48-bit physical Ethernet MAC addresses for local delivery.
+  </div>
+
+  <div class="grid-3" style="gap: 1rem; align-items: stretch; text-align: left;">
+    <!-- Card 1: Layer 2.5 ARP Envelope -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">LAYER 2.5</span> ARP Envelope
+        </div>
+        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
+          Bridges Layer 2 physical framing and Layer 3 IP routing.
+        </p>
+        <div style="background: rgba(159,239,0,0.1); border: 1px solid var(--htb-green); border-radius: 6px; padding: 0.6rem; font-size: 0.8em; line-height: 1.45;">
+          <strong style="color: var(--htb-green);"><i class="fa-solid fa-triangle-exclamation"></i> Peer Identification:</strong> Leaking a MAC or IP address can tie specific network behavior to an identifiable peer in the lab.
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Broadcast Mechanism -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">BROADCAST</span> Resolution Mechanism
+        </div>
+        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
+          ARP Requests use Ethernet broadcast (<code>FF:FF:FF:FF:FF:FF</code>) to discover unknown MAC addresses.
+        </p>
+        <div style="background: rgba(45,226,230,0.1); border: 1px solid var(--accent-cyan); border-radius: 6px; padding: 0.6rem; font-size: 0.8em; line-height: 1.45;">
+          <strong style="color: var(--accent-cyan);"><i class="fa-solid fa-bullhorn"></i> Subnet Visibility:</strong> Broadcast traffic exposes MAC and IP bindings across the entire local broadcast domain.
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Security & Utility -->
+    <div class="cyber-card threat" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-red">SECURITY IMPACT</span> Risk Exposure
+        </div>
+        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
+          How can this information be useful to an attacker?
+        </p>
+        <div style="background: rgba(255,46,99,0.12); border: 1px solid var(--accent-red); border-radius: 6px; padding: 0.6rem; font-size: 0.8em; line-height: 1.45;">
+          <strong style="color: var(--accent-red);"><i class="fa-solid fa-shield-virus"></i> Network Risk:</strong> Exposing gateway or internal DNS configurations can pose a security risk to the local network infrastructure.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/arp_header.html -->
+<!-- SLIDE: ARP Header Structure -->
+<section>
+  <h2><i class="fa-solid fa-file-code highlight-cyan"></i> ARP Header Structure</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1.15fr 0.85fr; gap: 1.2rem; align-items: center;">
+    <!-- Left: Image from /media -->
+    <div style="background: rgba(255, 255, 255, 0.98); padding: 14px; border-radius: 10px; border: 1px solid var(--accent-cyan); box-shadow: 0 0 25px rgba(45, 226, 230, 0.35); text-align: center;">
+      <img src="media/arp_header.png" alt="ARP Header Structure Diagram" style="max-height: 360px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.5rem;">
+        <i class="fa-solid fa-diagram-project highlight-cyan"></i> Figure: ARP Packet Header Structure (28 Bytes for IPv4 over Ethernet)
+      </div>
+    </div>
+
+    <!-- Right: Brief Explanations of Fields -->
+    <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">ARP FIELDS</span> Brief Field Breakdown
+        </div>
+
+        <ul style="font-size: 0.82em; line-height: 1.48; margin-bottom: 0;">
+          <li><strong>Hardware Type (2B):</strong> Network protocol type (e.g. <code>1</code> for Ethernet).</li>
+          <li><strong>Protocol Type (2B):</strong> Upper protocol type (e.g. <code>0x0800</code> for IPv4).</li>
+          <li><strong>Hardware Size (1B):</strong> MAC address length in bytes (<code>6</code> for Ethernet).</li>
+          <li><strong>Protocol Size (1B):</strong> IP address length in bytes (<code>4</code> for IPv4).</li>
+          <li><strong>Opcode (2B):</strong> Operation code (<code>1</code> for Request, <code>2</code> for Reply).</li>
+          <li><strong>Sender / Target Addresses:</strong> Sender MAC (6B) &amp; IP (4B), Target MAC (6B) &amp; IP (4B).</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.4rem;">
+        <i class="fa-solid fa-microchip highlight-cyan"></i> Fixed 28-byte packet structure for IPv4-to-Ethernet resolution.
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/arp_interactive.html -->
+<!-- SLIDE: Interactive ARP Simulator -->
+<section>
+  <h2><i class="fa-solid fa-satellite-dish highlight-htb"></i> Interactive ARP Resolution Simulator</h2>
+
+  <!-- Top Compact Step-by-Step Summary Bar (No Cards, Minimal Space) -->
+  <div style="display: flex; justify-content: center; gap: 1.2rem; align-items: center; margin-bottom: 0.8rem; font-size: 0.85em; font-family: var(--font-mono); text-align: center;">
+    <span class="cyber-badge badge-cyan"><i class="fa-solid fa-bullhorn"></i> 1. Broadcast Request</span>
+    <span style="color: var(--text-muted);">➔</span>
+    <span class="cyber-badge badge-red"><i class="fa-solid fa-xmark"></i> 2. Mismatch Drop</span>
+    <span style="color: var(--text-muted);">➔</span>
+    <span class="cyber-badge badge-htb"><i class="fa-solid fa-reply"></i> 3. Target Unicast Reply</span>
+  </div>
+
+  <!-- Main Hero Interactive Topology Simulation Container -->
+  <div class="sim-container" style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; justify-content: space-between; padding: 1rem 1.2rem;">
+    <div class="sim-header">
+      <div class="sim-title"><span class="cyber-badge badge-htb">ARP TOPOLOGY</span> Broadcast Request ➔ Target Unicast Reply</div>
+      <div id="arp-sim-status" class="sim-status normal"><i class="fa-solid fa-satellite-dish"></i> Click a target button below to trigger ARP resolution</div>
+    </div>
+
+    <!-- Visual ARP Topology Canvas -->
+    <div class="topo-canvas" style="height: 270px; margin: 0.6rem 0;">
+      <svg class="topo-lines-svg">
+        <line x1="15%" y1="50%" x2="50%" y2="50%" class="topo-line active"></line>
+        <line x1="50%" y1="20%" x2="50%" y2="50%" class="topo-line"></line>
+        <line x1="85%" y1="50%" x2="50%" y2="50%" class="topo-line"></line>
+        <line x1="50%" y1="80%" x2="50%" y2="50%" class="topo-line"></line>
+      </svg>
+
+      <!-- Switch Center Node -->
+      <div class="topo-node center-dev" style="left: 50%; top: 50%;">
+        <div class="topo-node-icon" style="border-color: var(--accent-cyan); color: var(--accent-cyan);"><i class="fa-solid fa-server"></i></div>
+        <span class="topo-node-label">L2 SWITCH</span>
+      </div>
+
+      <!-- Attached Host Nodes -->
+      <div class="topo-node" style="left: 15%; top: 50%;">
+        <div class="topo-node-icon" style="border-color: var(--htb-green);"><i class="fa-solid fa-desktop"></i></div>
+        <span class="topo-node-label">Comp A (.10)</span>
+      </div>
+
+      <div class="topo-node" style="left: 50%; top: 20%;">
+        <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+        <span class="topo-node-label">Comp B (.20)</span>
+      </div>
+
+      <div class="topo-node" style="left: 85%; top: 50%;">
+        <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+        <span class="topo-node-label">Comp C (.30)</span>
+      </div>
+
+      <div class="topo-node" style="left: 50%; top: 80%;">
+        <div class="topo-node-icon"><i class="fa-solid fa-desktop"></i></div>
+        <span class="topo-node-label">Comp D (.40)</span>
+      </div>
+
+      <!-- Animated Packets -->
+      <div id="arp-pkt-req" class="topo-packet" style="background: var(--accent-cyan); box-shadow: 0 0 12px var(--accent-cyan);"></div>
+      <div id="arp-pkt-b" class="topo-packet" style="background: var(--accent-cyan); box-shadow: 0 0 12px var(--accent-cyan);"></div>
+      <div id="arp-pkt-c" class="topo-packet" style="background: var(--accent-cyan); box-shadow: 0 0 12px var(--accent-cyan);"></div>
+      <div id="arp-pkt-d" class="topo-packet" style="background: var(--accent-cyan); box-shadow: 0 0 12px var(--accent-cyan);"></div>
+      <div id="arp-pkt-reply" class="topo-packet" style="background: var(--htb-green); box-shadow: 0 0 12px var(--htb-green);"></div>
+    </div>
+
+    <!-- Action Trigger Buttons -->
+    <div style="display: flex; gap: 0.8rem; justify-content: center; margin-bottom: 0.5rem;">
+      <button class="sim-btn" onclick="window.netDevSim.testArp('c')"><i class="fa-solid fa-paper-plane"></i> Request Comp C (.30)</button>
+      <button class="sim-btn" onclick="window.netDevSim.testArp('b')"><i class="fa-solid fa-paper-plane"></i> Request Comp B (.20)</button>
+      <button class="sim-btn" onclick="window.netDevSim.testArp('d')"><i class="fa-solid fa-paper-plane"></i> Request Comp D (.40)</button>
+    </div>
+
+    <!-- Live Execution Console Log -->
+    <div id="arp-sim-log" style="background: var(--htb-bg-terminal); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 0.6rem 0.9rem; font-family: var(--font-mono); font-size: 0.8em; min-height: 75px; text-align: left;">
+      <div style="color: var(--text-muted);">Click a target button above to execute live ARP Broadcast request &amp; Unicast reply...</div>
     </div>
   </div>
 </section>
