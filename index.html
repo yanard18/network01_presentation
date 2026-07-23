@@ -216,6 +216,360 @@
   </div>
 </section>
 
+      <!-- Loaded from slides/ip_overview.html -->
+<!-- SLIDE: Internet Protocol (IP) -->
+<section>
+  <h2><i class="fa-solid fa-network-wired highlight-cyan"></i> Internet Protocol (IP)</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1.05fr 0.95fr; gap: 1.2rem; align-items: center;">
+    <!-- Left: Image from /media -->
+    <div style="background: rgba(255, 255, 255, 0.98); padding: 14px; border-radius: 10px; border: 1px solid var(--accent-cyan); box-shadow: 0 0 25px rgba(45, 226, 230, 0.35); text-align: center;">
+      <img src="media/the-network-layer-osi-model.svg" alt="The Network Layer OSI Model" style="max-height: 360px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.5rem;">
+        <i class="fa-solid fa-diagram-project highlight-cyan"></i> Figure: The Network Layer (OSI Layer 3)
+      </div>
+    </div>
+
+    <!-- Right: IP Overview & Versions -->
+    <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">LAYER 3</span> Network Layer Foundation
+        </div>
+
+        <p style="font-size: 0.88em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.8rem;">
+          In this lesson, we examine the 3rd layer of the OSI model called the <strong>Network Layer</strong>. Unlike the other OSI layers that have multiple protocols, layer 3 mostly depends on just one— the <strong>Internet Protocol (IP)</strong>, which has developed into two main versions:
+        </p>
+
+        <ul style="font-size: 0.86em; line-height: 1.5; margin-bottom: 0;">
+          <li><strong>IPv4:</strong> Uses 32-bit addresses and supports about 4.3 billion unique IPs.</li>
+          <li><strong>IPv6:</strong> Uses 128-bit addresses, allowing for a much larger number of IPs and improved network efficiency.</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.5rem; margin-top: 0.5rem;">
+        <i class="fa-solid fa-globe highlight-cyan"></i> Universal Addressing &amp; Packet Routing Protocol
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/postal_analogy.html -->
+<!-- SLIDE: Network Layer Postal Service Analogy -->
+<section>
+  <h2><i class="fa-solid fa-envelope-open-text highlight-htb"></i> Network Layer Postal Service Analogy</h2>
+
+  <div style="text-align: center; margin-top: 1rem;">
+    <div style="background: #ffffff; padding: 16px 24px; border-radius: 12px; border: 1px solid var(--htb-border); box-shadow: 0 0 30px var(--htb-green-glow); display: inline-block; width: 100%; box-sizing: border-box;">
+      <img src="media/network-layer-as-the-postal-service.svg" alt="Network Layer Postal Service Analogy" style="max-height: 460px; width: 100%; object-fit: contain; display: block; margin: 0 auto;">
+    </div>
+    <div style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); margin-top: 0.8rem;">
+      <i class="fa-solid fa-diagram-project highlight-htb"></i> Figure: Network Layer as the Postal Service Analogy
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/transport_layer.html -->
+<!-- SLIDE: Transport Layer Overview -->
+<section>
+  <h2><i class="fa-solid fa-layer-group highlight-htb"></i> Transport Layer Overview</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1.1fr 0.9fr; gap: 1.2rem; align-items: center;">
+    <!-- Left: Image from /media -->
+    <div style="background: rgba(255, 255, 255, 0.98); padding: 14px; border-radius: 10px; border: 1px solid var(--htb-border); box-shadow: 0 0 25px var(--htb-green-glow); text-align: center;">
+      <img src="media/the-transport-layer-4.svg" alt="The Transport Layer OSI 4 Diagram" style="max-height: 360px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.5rem;">
+        <i class="fa-solid fa-diagram-project highlight-htb"></i> Figure: Transport Layer (OSI Layer 4)
+      </div>
+    </div>
+
+    <!-- Right: Minimal & Clean Brief Info Card -->
+    <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">LAYER 4</span> Key Essentials
+        </div>
+
+        <ul style="font-size: 0.88em; line-height: 1.55; margin-bottom: 0;">
+          <li><strong>Application Boundary:</strong> Serves as the boundary between application processes and network infrastructure.</li>
+          <li><strong>Process-to-Process Delivery:</strong> While Layer 3 (IP) routes host-to-host, Layer 4 delivers data <strong>process-to-process</strong> via port numbers.</li>
+          <li><strong>Protocol Options:</strong> Primarily uses <strong>TCP</strong> (reliable) and <strong>UDP</strong> (fast), alongside other protocols (SCTP, QUIC).</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.5rem; margin-top: 0.5rem;">
+        <i class="fa-solid fa-arrows-split-up-and-left highlight-htb"></i> Host-to-Host (IP) ➔ Process-to-Process (Ports)
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/transport_functions.html -->
+<!-- SLIDE: Primary Functions of the Transport Layer -->
+<section>
+  <h2><i class="fa-solid fa-gears highlight-cyan"></i> Primary Functions of Transport Layer</h2>
+
+  <p style="text-align: left; margin-bottom: 1.2rem; font-size: 0.95em; color: var(--text-main); line-height: 1.55;">
+    The primary function of the transport layer is enabling multiple application processes (e.g. Web Browser, SSH terminal, DNS lookup) running on a single host to transmit and receive data concurrently over a single network connection.
+  </p>
+
+  <div style="text-align: center; margin-top: 0.5rem;">
+    <div style="background: #ffffff; padding: 16px 24px; border-radius: 12px; border: 1px solid var(--htb-border); box-shadow: 0 0 30px rgba(45, 226, 230, 0.35); display: inline-block; width: 100%; box-sizing: border-box;">
+      <img src="media/multiplexing-based-on-ports.svg" alt="Multiplexing Based on Ports" style="max-height: 420px; width: 100%; object-fit: contain; display: block; margin: 0 auto;">
+    </div>
+    <div style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); margin-top: 0.8rem;">
+      <i class="fa-solid fa-diagram-project highlight-cyan"></i> Figure: Port-Based Multiplexing & Concurrent Process Communication
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/tcp_overview.html -->
+<!-- SLIDE: What is TCP? -->
+<section>
+  <h2><i class="fa-solid fa-shield-halved highlight-purple"></i> What is TCP (Transmission Control Protocol)?</h2>
+
+  <div style="text-align: left; margin-bottom: 1rem; color: var(--text-muted);">
+    <strong>TCP</strong> is a core Layer 4 protocol that provides reliable, connection-oriented, and byte-stream-oriented data delivery between application processes.
+  </div>
+
+  <div class="grid-2">
+    <!-- Left Card: Core Characteristics -->
+    <div class="cyber-card">
+      <div class="card-title">
+        <span class="cyber-badge badge-purple">TCP ESSENTIALS</span> Core Characteristics
+      </div>
+      <ul class="secure-list" style="font-size: 0.88em; line-height: 1.5; margin-bottom: 0;">
+        <li><strong>Connection-Oriented:</strong> Requires an explicit session setup (3-Way Handshake) before transmitting user data.</li>
+        <li><strong>Byte-Stream Service:</strong> Treats data as a continuous stream of numbered bytes, not isolated messages.</li>
+        <li><strong>Full-Duplex:</strong> Enables simultaneous, bidirectional data flow between client and server.</li>
+        <li><strong>In-Order Delivery:</strong> Reorders out-of-sequence segments using Sequence Numbers before passing data to applications.</li>
+      </ul>
+    </div>
+
+    <!-- Right Card: Session Setup (Handshake) -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">SESSION ESTABLISHMENT</span> 3-Way Handshake
+        </div>
+        <p style="font-size: 0.86em; margin-bottom: 0.6rem;">
+          Before data transmission begins, client and server negotiate sequence numbers and buffer parameters:
+        </p>
+
+        <div style="font-family: var(--font-mono); font-size: 0.78em; background: var(--htb-bg-terminal); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.7rem; color: var(--htb-green); line-height: 1.6;">
+          1. <strong>SYN:</strong> Client requests connection (Seq = x)<br>
+          2. <strong>SYN-ACK:</strong> Server acknowledges &amp; requests (Seq = y, Ack = x+1)<br>
+          3. <strong>ACK:</strong> Client confirms connection (Ack = y+1)
+        </div>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); margin-top: 0.6rem;">
+        <i class="fa-solid fa-circle-check highlight-htb"></i> Guaranteed delivery comes at the cost of setup overhead &amp; state tracking.
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/tcp_header.html -->
+<!-- SLIDE: TCP Header Structure -->
+<section>
+  <h2><i class="fa-solid fa-file-shield highlight-purple"></i> TCP Header Structure</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1.15fr 0.85fr; gap: 1.2rem; align-items: center;">
+    <!-- Left: Image from /media -->
+    <div style="background: rgba(255, 255, 255, 0.98); padding: 12px; border-radius: 10px; border: 1px solid var(--accent-purple); box-shadow: 0 0 25px rgba(157, 78, 221, 0.35); text-align: center;">
+      <img src="media/tcp_header.png" alt="TCP Header Structure Diagram" style="max-height: 380px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.4rem;">
+        <i class="fa-solid fa-diagram-project highlight-purple"></i> Figure: TCP Header Format (20 to 60 Bytes)
+      </div>
+    </div>
+
+    <!-- Right: Brief Explanations of Header Parts -->
+    <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">HEADER FIELDS</span> Key Explanations
+        </div>
+        
+        <ul style="font-size: 0.84em; line-height: 1.45; margin-bottom: 0;">
+          <li><strong>Source & Dest Ports (16b):</strong> Identify originating and receiving application processes.</li>
+          <li><strong>Sequence Number (32b):</strong> Tracks byte ordering and detects missing bytes in data stream.</li>
+          <li><strong>Acknowledgment Number (32b):</strong> Specifies next expected byte from remote host for reliability.</li>
+          <li><strong>Data Offset (4b):</strong> Specifies total TCP header length in 32-bit words.</li>
+          <li><strong>Control Flags (9b):</strong> Session management bits (SYN, ACK, FIN, RST, PSH, URG).</li>
+          <li><strong>Window Size (16b):</strong> Flow control buffer space advertised by receiver.</li>
+          <li><strong>Checksum (16b):</strong> Ensures bit-level integrity of header and payload.</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-muted); margin-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem;">
+        <i class="fa-solid fa-info-circle highlight-purple"></i> Minimum size: 20 bytes (no options). Max: 60 bytes.
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/tcp_sliding_window.html -->
+<!-- SLIDE: Time Problems & Sliding Window -->
+<section>
+  <h2><i class="fa-solid fa-sliders highlight-htb"></i> Flow Control &amp; Sliding Window</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1.1fr 0.9fr; gap: 1.2rem; align-items: center;">
+    <!-- Left: Image from /media -->
+    <div style="background: rgba(255, 255, 255, 0.98); padding: 12px; border-radius: 10px; border: 1px solid var(--htb-border); box-shadow: 0 0 25px var(--htb-green-glow); text-align: center;">
+      <img src="media/tcp_sliding-window.png" alt="TCP Sliding Window Diagram" style="max-height: 360px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.4rem;">
+        <i class="fa-solid fa-diagram-project highlight-htb"></i> Figure: TCP Dynamic Sliding Window Mechanism
+      </div>
+    </div>
+
+    <!-- Right: Explanation of Timing Problems & Dynamic Window -->
+    <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">FLOW CONTROL</span> Preventing Buffer Overflow
+        </div>
+
+        <ul style="font-size: 0.84em; line-height: 1.48; margin-bottom: 0;">
+          <li><strong>Timing &amp; Speed Mismatch:</strong> Fast senders transmitting to slow receivers cause memory buffer exhaustion and packet drops.</li>
+          <li><strong>Advertised Window (rwnd):</strong> The receiver advertises its available buffer space in every ACK header (Window Size field).</li>
+          <li><strong>Sliding Window Range:</strong> Limits how many unacknowledged bytes the sender can transmit at any moment.</li>
+          <li><strong>Dynamic Window Slide:</strong> As receiver application reads data from buffer, the window slides forward, allowing new data transmission.</li>
+          <li><strong>Zero Window (Pause):</strong> If receiver buffer fills up, it advertises Window = 0, ordering the sender to pause until space frees up.</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--htb-green); margin-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem;">
+        <i class="fa-solid fa-gauge-high highlight-htb"></i> Balances transmission rate directly with receiver processing capacity.
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/udp_header.html -->
+<!-- SLIDE: The UDP Header -->
+<section>
+  <h2><i class="fa-solid fa-bolt highlight-yellow"></i> The UDP Header</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1.1fr 0.9fr; gap: 1.2rem; align-items: center;">
+    <!-- Left: Image from /media -->
+    <div style="background: rgba(255, 255, 255, 0.98); padding: 14px; border-radius: 10px; border: 1px solid var(--accent-yellow); box-shadow: 0 0 25px rgba(255, 183, 3, 0.35); text-align: center;">
+      <img src="media/udp_header.png" alt="UDP Header Structure Diagram" style="max-height: 350px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.5rem;">
+        <i class="fa-solid fa-diagram-project highlight-yellow"></i> Figure: Lightweight UDP Header Format (Fixed 8 Bytes)
+      </div>
+    </div>
+
+    <!-- Right: Brief Explanations of Header Parts -->
+    <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-red" style="border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);">UDP FIELDS</span> Brief Field Breakdown
+        </div>
+        
+        <ul style="font-size: 0.88em; line-height: 1.5; margin-bottom: 0;">
+          <li><strong>Source Port (16 Bits):</strong> Port of sending application process (optional; set to 0 if no reply expected).</li>
+          <li><strong>Destination Port (16 Bits):</strong> Target application process port on destination host.</li>
+          <li><strong>Length (16 Bits):</strong> Total size of UDP header plus application data in bytes (minimum value = 8).</li>
+          <li><strong>Checksum (16 Bits):</strong> Error detection covering header, payload, and pseudo-IP header.</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-yellow); margin-top: 0.6rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem;">
+        <i class="fa-solid fa-bolt"></i> Fixed 8-byte overhead with zero connection setup state!
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/tcp_vs_udp.html -->
+<!-- SLIDE: TCP vs. UDP Comparison Matrix -->
+<section>
+  <h2><i class="fa-solid fa-code-compare highlight-cyan"></i> TCP vs. UDP Comparison Matrix</h2>
+
+  <div class="grid-2">
+    <!-- Left Card: Protocol Overview & Selection Strategy -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">PROTOCOL SELECTION</span> Architectural Trade-Offs
+        </div>
+        <p style="font-size: 0.9em; line-height: 1.5; margin-bottom: 0.8rem;">
+          Transport protocol selection is guided by application requirements for <strong>guaranteed delivery</strong> versus <strong>minimal latency</strong>:
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 0.7rem; font-size: 0.86em;">
+          <div style="background: rgba(157,78,221,0.12); border: 1px solid var(--accent-purple); border-radius: 6px; padding: 0.7rem;">
+            <strong style="color: var(--accent-purple);"><i class="fa-solid fa-shield-halved"></i> TCP (Reliable Transmission):</strong> Use when every single byte must arrive accurately in exact sequence (Web pages, files, commands).
+          </div>
+          <div style="background: rgba(255,183,3,0.12); border: 1px solid var(--accent-yellow); border-radius: 6px; padding: 0.7rem;">
+            <strong style="color: var(--accent-yellow);"><i class="fa-solid fa-bolt"></i> UDP (Best-Effort Delivery):</strong> Use when low latency and real-time delivery are more critical than retransmitting lost packets (VoIP, video calls, gaming).
+          </div>
+        </div>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); margin-top: 0.6rem;">
+        <i class="fa-solid fa-circle-info highlight-cyan"></i> Both protocols rely on Port Numbers for Layer 4 multiplexing.
+      </div>
+    </div>
+
+    <!-- Right Card: TCP vs UDP Comparison Matrix Table -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">MATRIX</span> Feature Comparison
+        </div>
+
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.82em; margin-top: 0.4rem; font-family: var(--font-body);">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--htb-border); font-family: var(--font-mono); text-align: left;">
+              <th style="padding: 7px; color: var(--text-muted);">FEATURE</th>
+              <th style="padding: 7px; color: var(--accent-purple);">TCP</th>
+              <th style="padding: 7px; color: var(--accent-yellow);">UDP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+              <td style="padding: 7px; font-weight: 600;">Connection</td>
+              <td style="padding: 7px; color: var(--accent-purple);">Connection-Oriented</td>
+              <td style="padding: 7px; color: var(--accent-yellow);">Connectionless</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+              <td style="padding: 7px; font-weight: 600;">Header Size</td>
+              <td style="padding: 7px; color: var(--accent-purple);">20 – 60 Bytes</td>
+              <td style="padding: 7px; color: var(--accent-yellow);">Fixed 8 Bytes</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+              <td style="padding: 7px; font-weight: 600;">Reliability</td>
+              <td style="padding: 7px; color: var(--accent-purple);">Guaranteed (ACK/ARQ)</td>
+              <td style="padding: 7px; color: var(--accent-yellow);">Best-Effort (No ACK)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+              <td style="padding: 7px; font-weight: 600;">Data Order</td>
+              <td style="padding: 7px; color: var(--accent-purple);">Sequenced Stream</td>
+              <td style="padding: 7px; color: var(--accent-yellow);">Independent Datagrams</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+              <td style="padding: 7px; font-weight: 600;">Speed / Overhead</td>
+              <td style="padding: 7px; color: var(--accent-purple);">Lower Speed / High</td>
+              <td style="padding: 7px; color: var(--accent-yellow);">Ultra Fast / Minimal</td>
+            </tr>
+            <tr>
+              <td style="padding: 7px; font-weight: 600;">Use Cases</td>
+              <td style="padding: 7px; color: var(--accent-purple);">HTTP/S, SSH, FTP, Email</td>
+              <td style="padding: 7px; color: var(--accent-yellow);">DNS, DHCP, VoIP, Gaming</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--htb-green); margin-top: 0.6rem;">
+        <i class="fa-solid fa-check highlight-htb"></i> Summary: Reliability vs. Speed Trade-Off
+      </div>
+    </div>
+  </div>
+</section>
+
       <!-- Loaded from slides/why_need_hub.html -->
 <!-- SLIDE: Why Do We Need a HUB? (Hero Top-Bottom Layout) -->
 <section>
