@@ -1,0 +1,44 @@
+<!-- SLIDE: DNS Resolution Order -->
+<section>
+  <h2><i class="fa-solid fa-list-check highlight-cyan"></i> DNS Resolution Order</h2>
+
+  <div style="max-width: 850px; margin: 1.5rem auto 0 auto; text-align: center;">
+    <!-- Top Cyber Badges Flow Row -->
+    <div style="font-size: 1.05em; line-height: 1.8; color: var(--text-main);">
+      <div style="display: flex; justify-content: center; gap: 0.8rem; margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.9em; flex-wrap: wrap; align-items: center;">
+        <span class="cyber-badge badge-cyan" style="padding: 0.4rem 0.8rem;"><i class="fa-solid fa-memory"></i> 1. OS Cache</span>
+        <span style="color: var(--text-muted);">➔</span>
+        <span class="cyber-badge badge-htb" style="padding: 0.4rem 0.8rem;"><i class="fa-solid fa-file-lines"></i> 2. /etc/hosts</span>
+        <span style="color: var(--text-muted);">➔</span>
+        <span class="cyber-badge badge-yellow" style="padding: 0.4rem 0.8rem; border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);"><i class="fa-solid fa-network-wired"></i> 3. Internal DNS</span>
+        <span style="color: var(--text-muted);">➔</span>
+        <span class="cyber-badge badge-purple" style="padding: 0.4rem 0.8rem;"><i class="fa-solid fa-globe"></i> 4. External / ISP</span>
+      </div>
+
+      <!-- Clean Bordered List Items (Exact match to IPv4 vs IPv6 style) -->
+      <div style="display: flex; flex-direction: column; gap: 1rem; text-align: left; font-size: 0.92em; max-width: 800px; margin: 0 auto;">
+        
+        <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
+          <strong style="color: #fff;">1. OS &amp; Browser Cache:</strong> <span style="color: var(--accent-cyan);">Instant Memory Lookup.</span> Checks local RAM (`systemd-resolved`, browser cache). If found, returns IP immediately.
+        </div>
+
+        <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
+          <strong style="color: #fff;">2. Static Files (<code>/etc/hosts</code>):</strong> <span style="color: var(--htb-green);">Zero Network Traffic.</span> Governed by `/etc/nsswitch.conf` (`hosts: files dns`). Inspects local static file for domain mappings (e.g. `10.10.11.23 target.htb`).
+        </div>
+
+        <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
+          <strong style="color: #fff;">3. Internal DNS Server:</strong> <span style="color: var(--accent-yellow);">Local Network Query (UDP 53).</span> Client sends a recursive query to local router/corporate DNS (`192.168.1.1` or `10.0.0.2`) to check local network zones.
+        </div>
+
+        <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
+          <strong style="color: #fff;">4. External / ISP DNS Forwarding:</strong> <span style="color: var(--accent-purple);">Upstream Global Lookup.</span> If domain is public (e.g. `google.com`), Internal DNS forwards to ISP / Public DNS (`8.8.8.8`), performing Root ➔ TLD ➔ Authoritative iterative lookup.
+        </div>
+
+        <div>
+          <strong style="color: #fff;">5. Unresolved Domain Handling:</strong> <span style="color: var(--accent-red);">NXDOMAIN Error.</span> If no server holds the record, Authoritative server returns `NXDOMAIN` (Non-Existent Domain), propagating back to display `ERR_NAME_NOT_RESOLVED`.
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

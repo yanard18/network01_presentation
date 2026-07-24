@@ -1,0 +1,384 @@
+<!-- SLIDE: DNS Hierarchy & Right-to-Left Resolution (Star Topology Version) -->
+<section>
+  <h2><i class="fa-solid fa-sitemap highlight-cyan"></i> DNS Hierarchy: Star Topology Flow</h2>
+
+  <!-- Clean Main Container -->
+  <div style="max-width: 940px; margin: 0.4rem auto 0 auto; text-align: center;">
+    
+    <!-- Central FQDN Domain Display -->
+    <div style="margin-bottom: 0.4rem; text-align: center;">
+      <div style="font-size: 0.68rem; font-family: var(--font-mono); color: var(--text-muted); letter-spacing: 1.5px; margin-bottom: 0.15rem;">
+        FULLY QUALIFIED DOMAIN NAME (FQDN)
+      </div>
+      
+      <!-- Domain Interactive Pills -->
+      <div style="display: flex; justify-content: center; align-items: center; gap: 0.35rem; font-family: var(--font-mono); font-size: 1.6rem; font-weight: 700; margin: 0.15rem 0;">
+        <!-- Subdomain -->
+        <span id="dns2-part-www" class="dns-pill" style="padding: 0.2rem 0.65rem; border-radius: 8px; transition: all 0.3s ease; border: 1px solid transparent;">
+          www
+        </span>
+        <span style="color: var(--text-muted);">.</span>
+        
+        <!-- Authoritative Domain -->
+        <span id="dns2-part-sld" class="dns-pill" style="padding: 0.2rem 0.65rem; border-radius: 8px; transition: all 0.3s ease; border: 1px solid transparent;">
+          example
+        </span>
+        <span style="color: var(--text-muted);">.</span>
+        
+        <!-- TLD -->
+        <span id="dns2-part-tld" class="dns-pill" style="padding: 0.2rem 0.65rem; border-radius: 8px; transition: all 0.3s ease; border: 1px solid transparent;">
+          net
+        </span>
+        
+        <!-- Root Dot -->
+        <span id="dns2-part-root" class="dns-pill" style="padding: 0.2rem 0.65rem; border-radius: 8px; transition: all 0.3s ease; border: 1px solid transparent; color: var(--accent-yellow);">
+          .
+        </span>
+      </div>
+
+      <!-- Focus Indicator Label -->
+      <div id="dns2-arrow-indicator" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan); font-weight: 600;">
+        <i class="fa-solid fa-magnifying-glass highlight-cyan"></i> Focus: Initial Recursive Query for <code>www.example.net.</code>
+      </div>
+    </div>
+
+    <!-- Accurate Hub-and-Spoke (Star) DNS Topology Diagram -->
+    <div style="position: relative; width: 100%; max-width: 820px; height: 230px; margin: 0.4rem auto 0.6rem auto; background: rgba(10, 16, 26, 0.75); border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); overflow: hidden;">
+      
+      <!-- Central Hub: Recursive Resolver -->
+      <div id="dns2-node-resolver" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 140px; padding: 0.45rem 0.2rem; border-radius: 8px; border: 2px solid var(--htb-green); background: rgba(159, 239, 0, 0.1); text-align: center; z-index: 10; transition: all 0.3s ease;">
+        <div style="font-size: 1.15rem; color: var(--htb-green);"><i class="fa-solid fa-arrows-rotate"></i></div>
+        <div style="font-size: 0.74rem; font-weight: 700; color: var(--text-main); margin-top: 0.15rem;">Recursive Resolver</div>
+        <div style="font-size: 0.62rem; color: var(--htb-green); font-family: var(--font-mono); font-weight: 600;">(Central Hub)</div>
+      </div>
+
+      <!-- Left: Client -->
+      <div id="dns2-node-client" style="position: absolute; left: 5%; top: 50%; transform: translateY(-50%); width: 110px; padding: 0.4rem 0.2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.03); text-align: center; z-index: 10; transition: all 0.3s ease;">
+        <div style="font-size: 1.05rem; color: var(--accent-cyan);"><i class="fa-solid fa-desktop"></i></div>
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-main); margin-top: 0.15rem;">Client Browser</div>
+      </div>
+
+      <!-- Top: Root Server (.) -->
+      <div id="dns2-node-root" style="position: absolute; left: 50%; top: 6%; transform: translateX(-50%); width: 125px; padding: 0.35rem 0.2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.03); text-align: center; z-index: 10; transition: all 0.3s ease;">
+        <div style="font-size: 1.05rem; color: var(--accent-red);"><i class="fa-solid fa-database"></i></div>
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-main); margin-top: 0.15rem;">Root Server (.)</div>
+      </div>
+
+      <!-- Bottom: TLD Server (.net) -->
+      <div id="dns2-node-tld" style="position: absolute; left: 50%; bottom: 6%; transform: translateX(-50%); width: 125px; padding: 0.35rem 0.2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.03); text-align: center; z-index: 10; transition: all 0.3s ease;">
+        <div style="font-size: 1.05rem; color: var(--accent-purple);"><i class="fa-solid fa-server"></i></div>
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-main); margin-top: 0.15rem;">TLD Server (.net)</div>
+      </div>
+
+      <!-- Right: Authoritative Server (example.net) -->
+      <div id="dns2-node-auth" style="position: absolute; right: 5%; top: 50%; transform: translateY(-50%); width: 130px; padding: 0.4rem 0.2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.03); text-align: center; z-index: 10; transition: all 0.3s ease;">
+        <div style="font-size: 1.05rem; color: var(--accent-yellow);"><i class="fa-solid fa-shield-halved"></i></div>
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-main); margin-top: 0.15rem;">Auth Server (example)</div>
+      </div>
+
+      <!-- SVG Connection Lines -->
+      <svg style="position: absolute; top:0; left:0; width:100%; height:100%; z-index: 1; pointer-events: none;">
+        <!-- Client <-> Resolver -->
+        <line id="dns2-line-client" x1="18.5%" y1="50%" x2="41.5%" y2="50%" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-dasharray="4" />
+        
+        <!-- Resolver <-> Root -->
+        <line id="dns2-line-root" x1="50%" y1="36%" x2="50%" y2="24%" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-dasharray="4" />
+        
+        <!-- Resolver <-> TLD -->
+        <line id="dns2-line-tld" x1="50%" y1="64%" x2="50%" y2="76%" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-dasharray="4" />
+        
+        <!-- Resolver <-> Auth -->
+        <line id="dns2-line-auth" x1="58.5%" y1="50%" x2="81.5%" y2="50%" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-dasharray="4" />
+      </svg>
+
+      <!-- Active Connection Badge Overlay -->
+      <div id="dns2-star-badge" style="position: absolute; top: 10px; right: 12px; font-family: var(--font-mono); font-size: 0.72rem; z-index: 20;">
+        <!-- Dynamically updated by JS -->
+      </div>
+    </div>
+
+    <!-- Step Buttons Only -->
+    <div style="margin-bottom: 0.6rem; text-align: center;">
+      <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+        <button class="sim-btn step-btn" id="dns2-btn-0" onclick="window.dnsSimStar.setStep(0)">0. Recursive</button>
+        <button class="sim-btn step-btn" id="dns2-btn-1" onclick="window.dnsSimStar.setStep(1)">1. Root (.)</button>
+        <button class="sim-btn step-btn" id="dns2-btn-2" onclick="window.dnsSimStar.setStep(2)">2. TLD (.net)</button>
+        <button class="sim-btn step-btn" id="dns2-btn-3" onclick="window.dnsSimStar.setStep(3)">3. Auth (example)</button>
+        <button class="sim-btn step-btn" id="dns2-btn-4" onclick="window.dnsSimStar.setStep(4)">4. Host (www)</button>
+      </div>
+    </div>
+
+    <!-- Execution Step Details -->
+    <div id="dns2-card-detail" style="text-align: left; max-width: 860px; margin: 0 auto; min-height: 100px; font-size: 0.86rem;">
+      <!-- Content populated dynamically via JavaScript -->
+    </div>
+
+  </div>
+</section>
+
+<!-- Embedded Interactive Logic for Star Slide -->
+<script>
+(function() {
+  const dnsSteps = [
+    {
+      step: 0,
+      badge: "RECURSIVE QUERY",
+      badgeClass: "badge-cyan",
+      highlight: "all",
+      focusText: "Focus: Full FQDN Requested ➔ Client sends Recursive Query to Resolver",
+      activeNode: "client-res",
+      activeLine: "dns2-line-client",
+      lineColor: "var(--accent-cyan)",
+      server: "Client ➔ Local Recursive Resolver (e.g. 8.8.8.8)",
+      query: "WHERE IS www.example.net?",
+      response: "Recursive Resolver accepts job & starts Right-to-Left iterative queries starting at Root (.)",
+      note: "<strong>Recursive Query:</strong> Client delegates full resolution to local resolver."
+    },
+    {
+      step: 1,
+      badge: "ROOT SERVER (.)",
+      badgeClass: "badge-red",
+      highlight: "root",
+      focusText: "Focus: Trailing Root Dot [ . ] ➔ Resolver queries Root Server for .net TLD",
+      activeNode: "res-root",
+      activeLine: "dns2-line-root",
+      lineColor: "var(--accent-red)",
+      server: "Recursive Resolver ➔ Root Server (.)",
+      query: "Where is www.example.net?",
+      response: "Referral: 'I don't know the IP, but here is the IP for .net TLD server (192.5.6.30)'",
+      note: "<strong>Root Zone (.):</strong> Top of DNS hierarchy. Returns .net TLD server referral."
+    },
+    {
+      step: 2,
+      badge: "TLD SERVER (.net)",
+      badgeClass: "badge-purple",
+      highlight: "tld",
+      focusText: "Focus: Top-Level Domain [ .net ] ➔ Resolver queries TLD Server for example.net",
+      activeNode: "res-tld",
+      activeLine: "dns2-line-tld",
+      lineColor: "var(--accent-purple)",
+      server: "Recursive Resolver ➔ TLD Server (.net)",
+      query: "Where is www.example.net?",
+      response: "Referral: 'I don't know the IP, but here is example.net Authoritative server (192.0.2.1)'",
+      note: "<strong>TLD Server (.net):</strong> Manages .net domains. Returns Authoritative server referral."
+    },
+    {
+      step: 3,
+      badge: "AUTHORITATIVE SERVER",
+      badgeClass: "badge-htb",
+      highlight: "sld",
+      focusText: "Focus: Second-Level Domain [ example ] ➔ Resolver queries Auth Server for host www",
+      activeNode: "res-auth",
+      activeLine: "dns2-line-auth",
+      lineColor: "var(--accent-yellow)",
+      server: "Recursive Resolver ➔ Authoritative Server (example.net)",
+      query: "What is the IP address for host record 'www'?",
+      response: "Answer: 'A Record found: www.example.net = 93.184.216.34'",
+      note: "<strong>Authoritative Server:</strong> Holds official DNS zone records. Returns final A Record."
+    },
+    {
+      step: 4,
+      badge: "HOST RESOLVED (93.184.216.34)",
+      badgeClass: "badge-cyan",
+      highlight: "www",
+      focusText: "Focus: Subdomain / Host [ www ] ➔ Final IP returned to Client Browser",
+      activeNode: "res-client-reply",
+      activeLine: "dns2-line-client",
+      lineColor: "var(--accent-cyan)",
+      server: "Local Recursive Resolver ➔ Client Browser",
+      query: "Final A Record Answer delivered to Client",
+      response: "SUCCESS: www.example.net ➔ 93.184.216.34 (TTL 3600s cached in Resolver)",
+      note: "<strong>Completion:</strong> Client receives IP address 93.184.216.34 and connects over HTTP/TCP!"
+    }
+  ];
+
+  let currentStep = 0;
+  let autoTimer = null;
+
+  function updateUI() {
+    const data = dnsSteps[currentStep];
+
+    const slider = document.getElementById('dns2-slider');
+    if (slider) slider.value = currentStep;
+
+    const pills = {
+      root: document.getElementById('dns2-part-root'),
+      tld: document.getElementById('dns2-part-tld'),
+      sld: document.getElementById('dns2-part-sld'),
+      www: document.getElementById('dns2-part-www')
+    };
+
+    Object.keys(pills).forEach(key => {
+      const el = pills[key];
+      if (!el) return;
+      el.style.transform = 'scale(1)';
+      el.style.boxShadow = 'none';
+      el.style.opacity = '0.45';
+      el.style.border = '1px solid transparent';
+      el.style.background = 'transparent';
+      el.style.color = 'var(--text-main)';
+    });
+
+    if (data.highlight === 'all') {
+      Object.keys(pills).forEach(key => {
+        if (pills[key]) pills[key].style.opacity = '1';
+      });
+      if (pills.root) pills.root.style.color = 'var(--accent-yellow)';
+    } else if (pills[data.highlight]) {
+      const activeEl = pills[data.highlight];
+      activeEl.style.opacity = '1';
+      activeEl.style.transform = 'scale(1.22)';
+      
+      if (data.highlight === 'root') {
+        activeEl.style.background = 'rgba(255, 46, 99, 0.25)';
+        activeEl.style.borderColor = 'var(--accent-red)';
+        activeEl.style.color = '#fff';
+        activeEl.style.boxShadow = '0 0 20px var(--accent-red)';
+      } else if (data.highlight === 'tld') {
+        activeEl.style.background = 'rgba(189, 0, 255, 0.25)';
+        activeEl.style.borderColor = 'var(--accent-purple)';
+        activeEl.style.color = '#fff';
+        activeEl.style.boxShadow = '0 0 20px var(--accent-purple)';
+      } else if (data.highlight === 'sld') {
+        activeEl.style.background = 'rgba(159, 239, 0, 0.25)';
+        activeEl.style.borderColor = 'var(--htb-green)';
+        activeEl.style.color = '#fff';
+        activeEl.style.boxShadow = '0 0 20px var(--htb-green-glow)';
+      } else if (data.highlight === 'www') {
+        activeEl.style.background = 'rgba(45, 226, 230, 0.25)';
+        activeEl.style.borderColor = 'var(--accent-cyan)';
+        activeEl.style.color = '#fff';
+        activeEl.style.boxShadow = '0 0 20px var(--accent-cyan)';
+      }
+    }
+
+    const focusLabel = document.getElementById('dns2-arrow-indicator');
+    if (focusLabel) {
+      focusLabel.innerHTML = `<i class="fa-solid fa-magnifying-glass highlight-cyan"></i> ${data.focusText}`;
+    }
+
+    const nodes = {
+      client: document.getElementById('dns2-node-client'),
+      resolver: document.getElementById('dns2-node-resolver'),
+      root: document.getElementById('dns2-node-root'),
+      tld: document.getElementById('dns2-node-tld'),
+      auth: document.getElementById('dns2-node-auth')
+    };
+
+    const lines = {
+      'dns2-line-client': document.getElementById('dns2-line-client'),
+      'dns2-line-root': document.getElementById('dns2-line-root'),
+      'dns2-line-tld': document.getElementById('dns2-line-tld'),
+      'dns2-line-auth': document.getElementById('dns2-line-auth')
+    };
+
+    Object.keys(nodes).forEach(k => {
+      if (nodes[k]) {
+        nodes[k].style.borderColor = 'rgba(255,255,255,0.15)';
+        nodes[k].style.background = 'rgba(255,255,255,0.03)';
+        nodes[k].style.boxShadow = 'none';
+      }
+    });
+    if (nodes.resolver) {
+      nodes.resolver.style.borderColor = 'var(--htb-green)';
+      nodes.resolver.style.background = 'rgba(159, 239, 0, 0.08)';
+    }
+
+    Object.keys(lines).forEach(k => {
+      if (lines[k]) {
+        lines[k].setAttribute('stroke', 'rgba(255,255,255,0.12)');
+        lines[k].setAttribute('stroke-width', '2');
+      }
+    });
+
+    if (lines[data.activeLine]) {
+      lines[data.activeLine].setAttribute('stroke', data.lineColor);
+      lines[data.activeLine].setAttribute('stroke-width', '3.5');
+    }
+
+    if (data.activeNode === 'client-res' || data.activeNode === 'res-client-reply') {
+      if (nodes.client) { nodes.client.style.borderColor = 'var(--accent-cyan)'; nodes.client.style.boxShadow = '0 0 16px var(--accent-cyan)'; }
+      if (nodes.resolver) { nodes.resolver.style.boxShadow = '0 0 16px var(--accent-cyan)'; }
+    } else if (data.activeNode === 'res-root') {
+      if (nodes.root) { nodes.root.style.borderColor = 'var(--accent-red)'; nodes.root.style.boxShadow = '0 0 18px var(--accent-red)'; }
+      if (nodes.resolver) { nodes.resolver.style.boxShadow = '0 0 16px var(--accent-red)'; }
+    } else if (data.activeNode === 'res-tld') {
+      if (nodes.tld) { nodes.tld.style.borderColor = 'var(--accent-purple)'; nodes.tld.style.boxShadow = '0 0 18px var(--accent-purple)'; }
+      if (nodes.resolver) { nodes.resolver.style.boxShadow = '0 0 16px var(--accent-purple)'; }
+    } else if (data.activeNode === 'res-auth') {
+      if (nodes.auth) { nodes.auth.style.borderColor = 'var(--accent-yellow)'; nodes.auth.style.boxShadow = '0 0 18px var(--accent-yellow)'; }
+      if (nodes.resolver) { nodes.resolver.style.boxShadow = '0 0 16px var(--accent-yellow)'; }
+    }
+
+    const starBadge = document.getElementById('dns2-star-badge');
+    if (starBadge) {
+      starBadge.innerHTML = `<span class="cyber-badge ${data.badgeClass}">${data.badge}</span>`;
+    }
+
+    for (let i = 0; i <= 4; i++) {
+      const btn = document.getElementById(`dns2-btn-${i}`);
+      if (btn) {
+        if (i === currentStep) {
+          btn.style.borderColor = 'var(--accent-cyan)';
+          btn.style.background = 'rgba(45, 226, 230, 0.2)';
+          btn.style.color = 'var(--accent-cyan)';
+        } else {
+          btn.style.borderColor = 'rgba(255,255,255,0.15)';
+          btn.style.background = 'transparent';
+          btn.style.color = 'var(--text-muted)';
+        }
+      }
+    }
+
+    const cardDetail = document.getElementById('dns2-card-detail');
+    if (cardDetail) {
+      cardDetail.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.35rem;">
+          <div style="font-weight: 700; font-family: var(--font-mono); color: var(--text-main); font-size: 0.92rem;">
+            <i class="fa-solid fa-network-wired highlight-cyan"></i> ${data.server}
+          </div>
+          <span class="cyber-badge ${data.badgeClass}">${data.badge}</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--font-mono);">
+          <div style="color: var(--accent-yellow);"><strong style="color: var(--text-muted);">Query Sent:</strong> ${data.query}</div>
+          <div style="color: var(--htb-green);"><strong style="color: var(--text-muted);">Response:</strong> ${data.response}</div>
+          <div style="margin-top: 0.25rem; padding-top: 0.25rem; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-main); font-family: var(--font-sans); font-size: 0.86em;">
+            <i class="fa-solid fa-circle-info highlight-cyan"></i> ${data.note}
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  window.dnsSimStar = {
+    setStep: function(stepIndex) {
+      currentStep = Math.max(0, Math.min(4, stepIndex));
+      updateUI();
+    },
+    nextStep: function() {
+      currentStep = (currentStep + 1) % 5;
+      updateUI();
+    },
+    prevStep: function() {
+      currentStep = (currentStep - 1 + 5) % 5;
+      updateUI();
+    },
+    togglePlay: function() {
+      const playBtn = document.getElementById('dns2-play-btn');
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+        if (playBtn) playBtn.innerHTML = '<i class="fa-solid fa-play"></i> Auto Play';
+      } else {
+        if (playBtn) playBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Pause';
+        autoTimer = setInterval(() => {
+          currentStep = (currentStep + 1) % 5;
+          updateUI();
+        }, 2600);
+      }
+    }
+  };
+
+  setTimeout(updateUI, 100);
+})();
+</script>

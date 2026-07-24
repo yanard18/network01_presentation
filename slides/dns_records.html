@@ -1,0 +1,106 @@
+<!-- SLIDE: Common DNS Record Types -->
+<section>
+  <h2><i class="fa-solid fa-list-ol highlight-cyan"></i> Common DNS Record Types</h2>
+
+  <div style="max-width: 920px; margin: 0.6rem auto 0 auto; text-align: center;">
+    
+    <!-- Central Question Header -->
+    <div style="font-family: var(--font-mono); font-size: 1rem; color: var(--accent-cyan); font-weight: 600; margin-bottom: 0.6rem;">
+      <i class="fa-solid fa-circle-question highlight-cyan"></i> What are the most common types of DNS records?
+    </div>
+
+    <!-- 3-Column Grid of Records -->
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.55rem; text-align: left; margin-bottom: 0.7rem; font-size: 0.81rem; font-family: var(--font-sans);">
+      
+      <!-- A Record -->
+      <div style="background: rgba(10, 16, 26, 0.75); border: 1px solid rgba(45, 226, 230, 0.25); padding: 0.45rem 0.65rem; border-radius: 6px;">
+        <span class="cyber-badge badge-cyan" style="padding: 0.15rem 0.4rem; font-size: 0.7rem;">A</span>
+        <div style="margin-top: 0.25rem; color: var(--text-main); line-height: 1.35;">
+          The record that holds the IP address of a domain.
+        </div>
+      </div>
+
+      <!-- AAAA Record -->
+      <div style="background: rgba(10, 16, 26, 0.75); border: 1px solid rgba(189, 0, 255, 0.25); padding: 0.45rem 0.65rem; border-radius: 6px;">
+        <span class="cyber-badge badge-purple" style="padding: 0.15rem 0.4rem; font-size: 0.7rem;">AAAA</span>
+        <div style="margin-top: 0.25rem; color: var(--text-main); line-height: 1.35;">
+          Contains the IPv6 address for a domain (as opposed to A IPv4).
+        </div>
+      </div>
+
+      <!-- CNAME Record -->
+      <div style="background: rgba(10, 16, 26, 0.75); border: 1px solid rgba(159, 239, 0, 0.25); padding: 0.45rem 0.65rem; border-radius: 6px;">
+        <span class="cyber-badge badge-htb" style="padding: 0.15rem 0.4rem; font-size: 0.7rem;">CNAME</span>
+        <div style="margin-top: 0.25rem; color: var(--text-main); line-height: 1.35;">
+          Forwards one domain/subdomain to another (does NOT provide IP).
+        </div>
+      </div>
+
+      <!-- MX Record -->
+      <div style="background: rgba(10, 16, 26, 0.75); border: 1px solid rgba(255, 183, 3, 0.25); padding: 0.45rem 0.65rem; border-radius: 6px;">
+        <span class="cyber-badge badge-yellow" style="padding: 0.15rem 0.4rem; font-size: 0.7rem; border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);">MX</span>
+        <div style="margin-top: 0.25rem; color: var(--text-main); line-height: 1.35;">
+          Directs mail to an email server.
+        </div>
+      </div>
+
+      <!-- TXT Record -->
+      <div style="background: rgba(10, 16, 26, 0.75); border: 1px solid rgba(45, 226, 230, 0.25); padding: 0.45rem 0.65rem; border-radius: 6px;">
+        <span class="cyber-badge badge-cyan" style="padding: 0.15rem 0.4rem; font-size: 0.7rem;">TXT</span>
+        <div style="margin-top: 0.25rem; color: var(--text-main); line-height: 1.35;">
+          Lets an admin store text notes (used for email security).
+        </div>
+      </div>
+
+      <!-- NS Record -->
+      <div style="background: rgba(10, 16, 26, 0.75); border: 1px solid rgba(255, 46, 99, 0.25); padding: 0.45rem 0.65rem; border-radius: 6px;">
+        <span class="cyber-badge badge-red" style="padding: 0.15rem 0.4rem; font-size: 0.7rem;">NS</span>
+        <div style="margin-top: 0.25rem; color: var(--text-main); line-height: 1.35;">
+          Stores the name server for a DNS entry.
+        </div>
+      </div>
+
+      <!-- SOA Record -->
+      <div style="background: rgba(10, 16, 26, 0.75); border: 1px solid rgba(189, 0, 255, 0.25); padding: 0.45rem 0.65rem; border-radius: 6px;">
+        <span class="cyber-badge badge-purple" style="padding: 0.15rem 0.4rem; font-size: 0.7rem;">SOA</span>
+        <div style="margin-top: 0.25rem; color: var(--text-main); line-height: 1.35;">
+          Stores admin information about a domain zone.
+        </div>
+      </div>
+
+      <!-- SRV Record -->
+      <div style="background: rgba(10, 16, 26, 0.75); border: 1px solid rgba(159, 239, 0, 0.25); padding: 0.45rem 0.65rem; border-radius: 6px;">
+        <span class="cyber-badge badge-htb" style="padding: 0.15rem 0.4rem; font-size: 0.7rem;">SRV</span>
+        <div style="margin-top: 0.25rem; color: var(--text-main); line-height: 1.35;">
+          Specifies a port for specific services.
+        </div>
+      </div>
+
+      <!-- PTR Record -->
+      <div style="background: rgba(10, 16, 26, 0.75); border: 1px solid rgba(255, 183, 3, 0.25); padding: 0.45rem 0.65rem; border-radius: 6px;">
+        <span class="cyber-badge badge-yellow" style="padding: 0.15rem 0.4rem; font-size: 0.7rem; border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);">PTR</span>
+        <div style="margin-top: 0.25rem; color: var(--text-main); line-height: 1.35;">
+          Provides a domain name in reverse-lookups.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Live Testing Hint with dig Command -->
+    <div style="background: var(--htb-bg-terminal); border: 1px solid rgba(159, 239, 0, 0.25); border-radius: 6px; padding: 0.5rem 0.8rem; font-family: var(--font-mono); font-size: 0.78rem; text-align: left; margin-bottom: 0.5rem;">
+      <div style="color: var(--htb-green); font-weight: 700; margin-bottom: 0.15rem;">
+        <i class="fa-solid fa-terminal highlight-htb"></i> Testing Hint: Query All Records in Action via <code>dig</code>
+      </div>
+      <div style="color: var(--text-main);">
+        <span style="color: var(--accent-cyan);">root@htb:~#</span> <code>dig target.htb ANY +noall +answer</code>
+        <span style="color: var(--text-muted); font-size: 0.85em; margin-left: 0.5rem;"># Queries &amp; displays all records (A, MX, TXT, NS, SOA)</span>
+      </div>
+    </div>
+
+    <!-- Bottom Reference Link -->
+    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
+      <i class="fa-solid fa-link highlight-cyan"></i> Reference: <a href="https://www.cloudflare.com/learning/dns/dns-records/" target="_blank" style="color: var(--accent-cyan); text-decoration: underline;">https://www.cloudflare.com/learning/dns/dns-records/</a>
+    </div>
+
+  </div>
+</section>
