@@ -1783,6 +1783,225 @@ Action: FILTER (Do not forward across to Segment 2)
   </div>
 </section>
 
+      <!-- Loaded from slides/dhcp_overview.html -->
+<!-- SLIDE: DHCP Overview -->
+<section>
+  <h2><i class="fa-solid fa-network-wired highlight-cyan"></i> Dynamic Host Configuration Protocol (DHCP)</h2>
+
+  <div style="text-align: left; margin-bottom: 1.1rem; color: var(--text-muted);">
+    <strong>DHCP (Layer 7)</strong> automatically provisions IP addresses, subnet masks, default gateways, and DNS servers to network devices.
+  </div>
+
+  <div class="grid-3" style="gap: 1rem; align-items: stretch; text-align: left;">
+    <!-- Card 1: Client/Server Model -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">ARCHITECTURE</span> Client / Server Model
+        </div>
+        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
+          DHCP uses a client/server architecture. Home routers host an embedded DHCP server, while DHCP client daemons come pre-installed on all modern OSs.
+        </p>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-server highlight-cyan"></i> Centralized IP Administration
+      </div>
+    </div>
+
+    <!-- Card 2: Dynamic vs Static -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">CONFIGURATION</span> Dynamic vs. Static
+        </div>
+        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
+          IP parameters can be manually assigned (static) or dynamically allocated automatically via DHCP upon joining the network.
+        </p>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-bolt highlight-htb"></i> Zero-Touch Network Onboarding
+      </div>
+    </div>
+
+    <!-- Card 3: DHCP Lease System -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">LIFETIME</span> DHCP Lease System
+        </div>
+        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
+          The DHCP server assigns IP addresses to devices for a specified duration (lease time), preventing permanent address pool exhaustion.
+        </p>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-clock highlight-purple"></i> Dynamic Address Pool Recycling
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/dhcp_dora_process.html -->
+<!-- SLIDE: DHCP Protocol Operation (DORA Process) -->
+<section>
+  <h2><i class="fa-solid fa-diagram-project highlight-htb"></i> DHCP Protocol Operation (DORA Process)</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1.05fr 0.95fr; gap: 1.2rem; align-items: center;">
+    <!-- Left: Image from /media -->
+    <div style="background: rgba(255, 255, 255, 0.98); padding: 12px; border-radius: 10px; border: 1px solid var(--htb-border); box-shadow: 0 0 25px var(--htb-green-glow); text-align: center;">
+      <img src="media/80-dhcp-process.jpg" alt="DHCP DORA Process Diagram" style="max-height: 380px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.4rem;">
+        <i class="fa-solid fa-diagram-project highlight-htb"></i> Figure: The 4-Step DHCP DORA Handshake Process
+      </div>
+    </div>
+
+    <!-- Right: The 4 DORA Steps -->
+    <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">DORA STEPS</span> Handshake Sequence
+        </div>
+
+        <ul style="font-size: 0.81em; line-height: 1.45; margin-bottom: 0;">
+          <li><strong>1. DHCP_DISCOVER:</strong> Client broadcasts (Src: <code>0.0.0.0</code>, Dst: <code>255.255.255.255</code>) to locate available DHCP servers.</li>
+          <li><strong>2. DHCP_OFFER:</strong> Server reserves an IP &amp; responds with offer (IP, lease time, subnet mask, DNS IPs).</li>
+          <li><strong>3. DHCP_REQUEST:</strong> Client selects offer &amp; broadcasts request to finalize lease with chosen server and release other servers' reservations.</li>
+          <li><strong>4. DHCP_ACK:</strong> Selected server commits IP binding to persistent storage (sends <em>DHCPNAK</em> if address becomes unavailable).</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.4rem;">
+        <i class="fa-solid fa-check highlight-htb"></i> UDP Ports: Client (68) ➔ Server (67)
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/dhcp_post_allocation.html -->
+<!-- SLIDE: Post-Allocation & Conflict Resolution -->
+<section>
+  <h2><i class="fa-solid fa-shield-halved highlight-red"></i> Post-Allocation &amp; Conflict Resolution</h2>
+
+  <div style="text-align: left; margin-bottom: 1.1rem; color: var(--text-muted);">
+    After receiving a <strong>DHCP_ACK</strong>, the client verifies that the assigned IP address is not already in use on the local network.
+  </div>
+
+  <div class="grid-3" style="gap: 1rem; align-items: stretch; text-align: left;">
+    <!-- Card 1: Conflict Verification -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">1. VERIFICATION</span> Conflict Verification
+        </div>
+        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
+          The client sends an <strong>ARP Probe</strong> request across the local network to ensure no other active device is currently using the assigned IP address.
+        </p>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-magnifying-glass highlight-htb"></i> Pre-Assignment ARP Check
+      </div>
+    </div>
+
+    <!-- Card 2: DHCP_DECLINE -->
+    <div class="cyber-card threat" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-red">2. CONFLICT</span> DHCP_DECLINE
+        </div>
+        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
+          If an IP conflict is detected (an ARP response is received), the client abandons the IP address by sending a <strong>DHCP_DECLINE</strong> message and restarts discovery.
+        </p>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-red); border-top: 1px solid rgba(255,46,99,0.2); padding-top: 0.4rem;">
+        <i class="fa-solid fa-xmark highlight-red"></i> Abandons Conflicted IP Address
+      </div>
+    </div>
+
+    <!-- Card 3: DHCP_RELEASE -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">3. DEPARTURE</span> DHCP_RELEASE
+        </div>
+        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
+          When a client gracefully leaves the network or shuts down before lease expiration, it sends a <strong>DHCP_RELEASE</strong> message to immediately free the IP for other devices.
+        </p>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-arrow-right-from-bracket highlight-cyan"></i> Graceful Address De-allocation
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/dhcp_lease_timers.html -->
+<!-- SLIDE: DHCP Lease Timers & Renewal -->
+<section>
+  <h2><i class="fa-solid fa-clock highlight-yellow"></i> DHCP Lease System &amp; Timers (T, T1, T2)</h2>
+
+  <div class="grid-2" style="grid-template-columns: 0.95fr 1.05fr; gap: 1.2rem; align-items: stretch;">
+    <!-- Left Card: DHCP Lease Lifetime Concept -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">SYSTEM CONCEPT</span> DHCP Lease Lifetime
+        </div>
+        <p style="font-size: 0.88em; line-height: 1.55; color: var(--text-main); margin-bottom: 0.8rem;">
+          A <strong>DHCP Lease</strong> puts a lifetime on every assigned IP address. Active computers periodically request lease renewals to show they are still online and reset their expiration timer.
+        </p>
+
+        <div style="background: rgba(159,239,0,0.1); border: 1px solid var(--htb-green); border-radius: 6px; padding: 0.7rem; font-size: 0.82em; line-height: 1.45;">
+          <strong style="color: var(--htb-green);"><i class="fa-solid fa-recycle"></i> Automatic Reclamation:</strong> If a client goes offline or fails to send a renewal request, the lease expires and the server returns the IP address to the available pool.
+        </div>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.6rem;">
+        <i class="fa-solid fa-arrows-rotate highlight-htb"></i> Prevents IP Address Loss from Abandoned Connections
+      </div>
+    </div>
+
+    <!-- Right Card: The 3 Core Timers -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-red" style="border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);">LEASE TIMERS</span> T, T1, and T2 Details
+        </div>
+
+        <ul style="font-size: 0.83em; line-height: 1.48; margin-bottom: 0;">
+          <li><strong>Lease Time (T):</strong> The absolute maximum amount of time a client can use an IP address without renewing it.</li>
+          <li><strong>Renewal Time (T1 = 0.5 × T):</strong> Set to 50% of lease time (T/2). When T1 expires, the client sends a <em>unicast</em> renewal request to its original DHCP server.</li>
+          <li><strong>Rebinding Time (T2 = 0.875 × T):</strong> Set to 87.5% of lease time (7T/8). If the original server is unreachable, the client broadcasts a <em>rebind plea</em> to any available DHCP server.</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-yellow); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.6rem;">
+        <i class="fa-solid fa-hourglass-half highlight-yellow"></i> T1 Unicast Renewal ➔ T2 Broadcast Rebind ➔ T Expiry
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/dns_overview.html -->
+<!-- SLIDE: Domain Name System (DNS) -->
+<section>
+  <h2><i class="fa-solid fa-globe highlight-cyan"></i> Domain Name System (DNS)</h2>
+
+  <div style="max-width: 860px; margin: 1.2rem auto 0 auto; text-align: center;">
+    <!-- Responsive Centered YouTube Video Container -->
+    <div style="position: relative; padding-bottom: 52%; height: 0; overflow: hidden; max-width: 100%; border-radius: 12px; border: 1px solid var(--accent-cyan); box-shadow: 0 0 30px rgba(45, 226, 230, 0.35); background: #000;">
+      <iframe src="https://www.youtube.com/embed/2ZUxoi7YNgs" title="Domain Name System (DNS) Video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); margin-top: 0.8rem;">
+      <i class="fa-solid fa-circle-play highlight-cyan"></i> Video: How the Domain Name System (DNS) Works
+    </div>
+  </div>
+</section>
+
       <!-- Loaded from slides/four_blocks.html -->
 <!-- SLIDE 3: The 4 Blocks of HTTP -->
 <section>

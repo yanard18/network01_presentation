@@ -1,0 +1,58 @@
+<!-- SLIDE: Post-Allocation & Conflict Resolution -->
+<section>
+  <h2><i class="fa-solid fa-shield-halved highlight-red"></i> Post-Allocation &amp; Conflict Resolution</h2>
+
+  <div style="text-align: left; margin-bottom: 1.1rem; color: var(--text-muted);">
+    After receiving a <strong>DHCP_ACK</strong>, the client verifies that the assigned IP address is not already in use on the local network.
+  </div>
+
+  <div class="grid-3" style="gap: 1rem; align-items: stretch; text-align: left;">
+    <!-- Card 1: Conflict Verification -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">1. VERIFICATION</span> Conflict Verification
+        </div>
+        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
+          The client sends an <strong>ARP Probe</strong> request across the local network to ensure no other active device is currently using the assigned IP address.
+        </p>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-magnifying-glass highlight-htb"></i> Pre-Assignment ARP Check
+      </div>
+    </div>
+
+    <!-- Card 2: DHCP_DECLINE -->
+    <div class="cyber-card threat" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-red">2. CONFLICT</span> DHCP_DECLINE
+        </div>
+        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
+          If an IP conflict is detected (an ARP response is received), the client abandons the IP address by sending a <strong>DHCP_DECLINE</strong> message and restarts discovery.
+        </p>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-red); border-top: 1px solid rgba(255,46,99,0.2); padding-top: 0.4rem;">
+        <i class="fa-solid fa-xmark highlight-red"></i> Abandons Conflicted IP Address
+      </div>
+    </div>
+
+    <!-- Card 3: DHCP_RELEASE -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">3. DEPARTURE</span> DHCP_RELEASE
+        </div>
+        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
+          When a client gracefully leaves the network or shuts down before lease expiration, it sends a <strong>DHCP_RELEASE</strong> message to immediately free the IP for other devices.
+        </p>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-arrow-right-from-bracket highlight-cyan"></i> Graceful Address De-allocation
+      </div>
+    </div>
+  </div>
+</section>

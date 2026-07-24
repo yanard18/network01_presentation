@@ -1,0 +1,58 @@
+<!-- SLIDE: DHCP Overview -->
+<section>
+  <h2><i class="fa-solid fa-network-wired highlight-cyan"></i> Dynamic Host Configuration Protocol (DHCP)</h2>
+
+  <div style="text-align: left; margin-bottom: 1.1rem; color: var(--text-muted);">
+    <strong>DHCP (Layer 7)</strong> automatically provisions IP addresses, subnet masks, default gateways, and DNS servers to network devices.
+  </div>
+
+  <div class="grid-3" style="gap: 1rem; align-items: stretch; text-align: left;">
+    <!-- Card 1: Client/Server Model -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">ARCHITECTURE</span> Client / Server Model
+        </div>
+        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
+          DHCP uses a client/server architecture. Home routers host an embedded DHCP server, while DHCP client daemons come pre-installed on all modern OSs.
+        </p>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-server highlight-cyan"></i> Centralized IP Administration
+      </div>
+    </div>
+
+    <!-- Card 2: Dynamic vs Static -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">CONFIGURATION</span> Dynamic vs. Static
+        </div>
+        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
+          IP parameters can be manually assigned (static) or dynamically allocated automatically via DHCP upon joining the network.
+        </p>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-bolt highlight-htb"></i> Zero-Touch Network Onboarding
+      </div>
+    </div>
+
+    <!-- Card 3: DHCP Lease System -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">LIFETIME</span> DHCP Lease System
+        </div>
+        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
+          The DHCP server assigns IP addresses to devices for a specified duration (lease time), preventing permanent address pool exhaustion.
+        </p>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-clock highlight-purple"></i> Dynamic Address Pool Recycling
+      </div>
+    </div>
+  </div>
+</section>
