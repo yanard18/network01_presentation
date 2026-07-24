@@ -2,29 +2,14 @@
 <section>
   <h2><i class="fa-solid fa-clock highlight-yellow"></i> DHCP Lease System &amp; Timers (T, T1, T2)</h2>
 
-  <div class="grid-2" style="grid-template-columns: 0.95fr 1.05fr; gap: 1.2rem; align-items: stretch;">
-    <!-- Left Card: DHCP Lease Lifetime Concept -->
-    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-      <div>
-        <div class="card-title">
-          <span class="cyber-badge badge-htb">SYSTEM CONCEPT</span> DHCP Lease Lifetime
-        </div>
-        <p style="font-size: 0.88em; line-height: 1.55; color: var(--text-main); margin-bottom: 0.8rem;">
-          A <strong>DHCP Lease</strong> puts a lifetime on every assigned IP address. Active computers periodically request lease renewals to show they are still online and reset their expiration timer.
-        </p>
-
-        <div style="background: rgba(159,239,0,0.1); border: 1px solid var(--htb-green); border-radius: 6px; padding: 0.7rem; font-size: 0.82em; line-height: 1.45;">
-          <strong style="color: var(--htb-green);"><i class="fa-solid fa-recycle"></i> Automatic Reclamation:</strong> If a client goes offline or fails to send a renewal request, the lease expires and the server returns the IP address to the available pool.
-        </div>
-      </div>
-
-      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.6rem;">
-        <i class="fa-solid fa-arrows-rotate highlight-htb"></i> Prevents IP Address Loss from Abandoned Connections
-      </div>
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr; gap: 1.2rem; align-items: center;">
+    <!-- Left: DHCP Lease Time Image -->
+    <div style="text-align: center;">
+      <img src="media/dhcp_lease_time.png" alt="DHCP Lease Time" style="max-height: 360px; width: auto; max-width: 100%; display: block; margin: 0 auto; object-fit: contain;">
     </div>
 
-    <!-- Right Card: The 3 Core Timers -->
-    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+    <!-- Right Card: The 3 Core Timers Details -->
+    <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <div class="card-title">
           <span class="cyber-badge badge-red" style="border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);">LEASE TIMERS</span> T, T1, and T2 Details

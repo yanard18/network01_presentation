@@ -1,0 +1,287 @@
+<!-- SLIDE: DNS Hierarchy & Right-to-Left Resolution -->
+<section>
+  <h2><i class="fa-solid fa-sitemap highlight-cyan"></i> DNS Hierarchy: Right-to-Left Resolution</h2>
+
+  <!-- Top Right-to-Left Banner -->
+  <div style="display: flex; justify-content: space-between; align-items: center; max-width: 920px; margin: 0 auto 0.6rem auto; font-family: var(--font-mono); font-size: 0.82rem;">
+    <span class="cyber-badge badge-cyan"><i class="fa-solid fa-layer-group"></i> HIERARCHY MODEL</span>
+    <span style="color: var(--accent-yellow); font-weight: 600;">
+      <i class="fa-solid fa-arrow-left-long highlight-yellow"></i> DNS Resolution Flow: Right ➔ Left <i class="fa-solid fa-arrow-left-long highlight-yellow"></i>
+    </span>
+    <span class="cyber-badge badge-htb" id="dns-mode-badge">STEP 0 / 4</span>
+  </div>
+
+  <!-- Main Simulator Container -->
+  <div class="sim-container" style="max-width: 920px; margin: 0 auto; padding: 0.9rem 1.2rem; background: var(--bg-card); border: 1px solid var(--htb-border); border-radius: 10px; box-shadow: 0 0 25px rgba(0,0,0,0.5);">
+    
+    <!-- Central FQDN Domain Display Box -->
+    <div style="background: rgba(10, 16, 26, 0.95); border: 1px solid rgba(45, 226, 230, 0.3); border-radius: 8px; padding: 0.75rem 1rem; text-align: center; margin-bottom: 0.8rem; position: relative;">
+      <div style="font-size: 0.7rem; font-family: var(--font-mono); color: var(--text-muted); letter-spacing: 1.5px; margin-bottom: 0.3rem;">
+        FULLY QUALIFIED DOMAIN NAME (FQDN)
+      </div>
+
+      <!-- Domain Interactive Pills -->
+      <div style="display: flex; justify-content: center; align-items: center; gap: 0.35rem; font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; margin: 0.2rem 0;">
+        <!-- Subdomain -->
+        <span id="dns-part-www" class="dns-pill" style="padding: 0.2rem 0.65rem; border-radius: 6px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03);">
+          www
+        </span>
+        <span style="color: var(--text-muted);">.</span>
+        
+        <!-- Authoritative Domain -->
+        <span id="dns-part-sld" class="dns-pill" style="padding: 0.2rem 0.65rem; border-radius: 6px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03);">
+          example
+        </span>
+        <span style="color: var(--text-muted);">.</span>
+        
+        <!-- TLD -->
+        <span id="dns-part-tld" class="dns-pill" style="padding: 0.2rem 0.65rem; border-radius: 6px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03);">
+          net
+        </span>
+        
+        <!-- Root Dot -->
+        <span id="dns-part-root" class="dns-pill" style="padding: 0.2rem 0.65rem; border-radius: 6px; transition: all 0.3s ease; border: 1px solid rgba(255,183,3,0.3); color: var(--accent-yellow); background: rgba(255,183,3,0.08);">
+          .
+        </span>
+      </div>
+
+      <!-- Resolution Direction Arrow Indicator -->
+      <div id="dns-arrow-indicator" style="font-family: var(--font-mono); font-size: 0.78rem; margin-top: 0.4rem; color: var(--accent-cyan); font-weight: 600;">
+        <i class="fa-solid fa-magnifying-glass highlight-cyan"></i> Focus: Initial Recursive Query for <code>www.example.net.</code>
+      </div>
+    </div>
+
+    <!-- Progress Slider & Interactive Step Controls -->
+    <div style="margin-bottom: 0.8rem; text-align: center;">
+      <!-- Slider -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: 0.9rem; margin-bottom: 0.5rem;">
+        <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan);"><i class="fa-solid fa-user"></i> Client</span>
+        <input type="range" id="dns-slider" min="0" max="4" value="0" style="width: 55%; accent-color: var(--accent-cyan); cursor: pointer;" oninput="window.dnsSim.setStep(parseInt(this.value))">
+        <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-yellow);"><i class="fa-solid fa-database"></i> Authoritative</span>
+      </div>
+
+      <!-- Quick Step Buttons -->
+      <div style="display: flex; gap: 0.35rem; justify-content: center; flex-wrap: wrap;">
+        <button class="sim-btn" onclick="window.dnsSim.prevStep()"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+        <button class="sim-btn step-btn" id="dns-btn-0" onclick="window.dnsSim.setStep(0)">0. Recursive</button>
+        <button class="sim-btn step-btn" id="dns-btn-1" onclick="window.dnsSim.setStep(1)">1. Root (.)</button>
+        <button class="sim-btn step-btn" id="dns-btn-2" onclick="window.dnsSim.setStep(2)">2. TLD (.net)</button>
+        <button class="sim-btn step-btn" id="dns-btn-3" onclick="window.dnsSim.setStep(3)">3. Auth (example)</button>
+        <button class="sim-btn step-btn" id="dns-btn-4" onclick="window.dnsSim.setStep(4)">4. Host (www)</button>
+        <button class="sim-btn" onclick="window.dnsSim.nextStep()">Next <i class="fa-solid fa-chevron-right"></i></button>
+        <button class="sim-btn" id="dns-play-btn" style="background: rgba(159, 239, 0, 0.15); border-color: var(--htb-green); color: var(--htb-green);" onclick="window.dnsSim.togglePlay()"><i class="fa-solid fa-play"></i> Auto Play</button>
+      </div>
+    </div>
+
+    <!-- Live Execution Step Details Card -->
+    <div id="dns-card-detail" style="background: var(--htb-bg-terminal); border: 1px solid rgba(45, 226, 230, 0.25); border-radius: 8px; padding: 0.75rem 1rem; text-align: left; min-height: 115px; font-size: 0.84rem;">
+      <!-- Content populated dynamically via JavaScript -->
+    </div>
+
+  </div>
+</section>
+
+<!-- Embedded Interactive Logic -->
+<script>
+(function() {
+  const dnsSteps = [
+    {
+      step: 0,
+      badge: "RECURSIVE QUERY",
+      badgeClass: "badge-cyan",
+      highlight: "all",
+      focusText: "Focus: Full FQDN Requested by Client ➔ Sent to Recursive Resolver",
+      server: "Client ➔ Local Recursive Resolver (e.g. 8.8.8.8)",
+      query: "WHERE IS www.example.net?",
+      response: "Recursive Resolver accepts job & starts Right-to-Left iterative queries starting at Root (.)",
+      note: "<strong>Recursive Query:</strong> The client delegates the entire resolution task to the local resolver."
+    },
+    {
+      step: 1,
+      badge: "ROOT SERVER (.)",
+      badgeClass: "badge-red",
+      highlight: "root",
+      focusText: "Focus: Trailing Root Dot [ . ] ➔ Querying Root Name Server",
+      server: "Recursive Resolver ➔ Root Server (.)",
+      query: "Where is www.example.net?",
+      response: "Referral: 'I don't know the IP, but here is the IP for .net TLD server (192.5.6.30)'",
+      note: "<strong>Root Zone (.):</strong> The top of DNS hierarchy (13 root server clusters globally). Returns TLD referrals."
+    },
+    {
+      step: 2,
+      badge: "TLD SERVER (.net)",
+      badgeClass: "badge-purple",
+      highlight: "tld",
+      focusText: "Focus: Top-Level Domain [ .net ] ➔ Querying TLD Name Server",
+      server: "Recursive Resolver ➔ TLD Server (.net)",
+      query: "Where is www.example.net?",
+      response: "Referral: 'I don't know the IP, but here is example.net Authoritative server (192.0.2.1)'",
+      note: "<strong>TLD Server (.net):</strong> Manages domain extensions (.net, .com, .org). Returns Authoritative referrals."
+    },
+    {
+      step: 3,
+      badge: "AUTHORITATIVE SERVER",
+      badgeClass: "badge-htb",
+      highlight: "sld",
+      focusText: "Focus: Second-Level Domain [ example ] ➔ Querying Authoritative Name Server",
+      server: "Recursive Resolver ➔ Authoritative Server (example.net)",
+      query: "What is the IP address for host record 'www'?",
+      response: "Answer: 'A Record found: www.example.net = 93.184.216.34'",
+      note: "<strong>Authoritative Server:</strong> Holds official DNS zone records for the domain. Provides final answer."
+    },
+    {
+      step: 4,
+      badge: "HOST RESOLVED (93.184.216.34)",
+      badgeClass: "badge-cyan",
+      highlight: "www",
+      focusText: "Focus: Subdomain / Host [ www ] ➔ Final IP Returned & Cached",
+      server: "Local Recursive Resolver ➔ Client Browser",
+      query: "Final A Record Answer delivered to Client",
+      response: "SUCCESS: www.example.net ➔ 93.184.216.34 (TTL 3600s cached in Resolver)",
+      note: "<strong>Completion:</strong> Client browser receives IP address 93.184.216.34 and establishes HTTP/TCP session!"
+    }
+  ];
+
+  let currentStep = 0;
+  let autoTimer = null;
+
+  function updateUI() {
+    const data = dnsSteps[currentStep];
+
+    // Update Slider
+    const slider = document.getElementById('dns-slider');
+    if (slider) slider.value = currentStep;
+
+    // Update Mode Badge
+    const modeBadge = document.getElementById('dns-mode-badge');
+    if (modeBadge) modeBadge.textContent = `STEP ${currentStep} / 4`;
+
+    // Update Domain Pills Highlight (Right-to-Left focus)
+    const pills = {
+      root: document.getElementById('dns-part-root'),
+      tld: document.getElementById('dns-part-tld'),
+      sld: document.getElementById('dns-part-sld'),
+      www: document.getElementById('dns-part-www')
+    };
+
+    // Reset all pills
+    Object.keys(pills).forEach(key => {
+      const el = pills[key];
+      if (!el) return;
+      el.style.transform = 'scale(1)';
+      el.style.boxShadow = 'none';
+      el.style.opacity = '0.45';
+      el.style.border = '1px solid rgba(255,255,255,0.1)';
+      el.style.background = 'rgba(255,255,255,0.03)';
+      el.style.color = 'var(--text-main)';
+    });
+
+    if (data.highlight === 'all') {
+      Object.keys(pills).forEach(key => {
+        if (pills[key]) pills[key].style.opacity = '1';
+      });
+      if (pills.root) pills.root.style.color = 'var(--accent-yellow)';
+    } else if (pills[data.highlight]) {
+      const activeEl = pills[data.highlight];
+      activeEl.style.opacity = '1';
+      activeEl.style.transform = 'scale(1.18)';
+      
+      if (data.highlight === 'root') {
+        activeEl.style.background = 'rgba(255, 46, 99, 0.25)';
+        activeEl.style.borderColor = 'var(--accent-red)';
+        activeEl.style.color = '#fff';
+        activeEl.style.boxShadow = '0 0 18px var(--accent-red)';
+      } else if (data.highlight === 'tld') {
+        activeEl.style.background = 'rgba(189, 0, 255, 0.25)';
+        activeEl.style.borderColor = 'var(--accent-purple)';
+        activeEl.style.color = '#fff';
+        activeEl.style.boxShadow = '0 0 18px var(--accent-purple)';
+      } else if (data.highlight === 'sld') {
+        activeEl.style.background = 'rgba(159, 239, 0, 0.25)';
+        activeEl.style.borderColor = 'var(--htb-green)';
+        activeEl.style.color = '#fff';
+        activeEl.style.boxShadow = '0 0 18px var(--htb-green-glow)';
+      } else if (data.highlight === 'www') {
+        activeEl.style.background = 'rgba(45, 226, 230, 0.25)';
+        activeEl.style.borderColor = 'var(--accent-cyan)';
+        activeEl.style.color = '#fff';
+        activeEl.style.boxShadow = '0 0 18px var(--accent-cyan)';
+      }
+    }
+
+    // Update Focus Arrow Indicator
+    const focusLabel = document.getElementById('dns-arrow-indicator');
+    if (focusLabel) {
+      focusLabel.innerHTML = `<i class="fa-solid fa-magnifying-glass highlight-cyan"></i> ${data.focusText}`;
+    }
+
+    // Update Step Buttons styling
+    for (let i = 0; i <= 4; i++) {
+      const btn = document.getElementById(`dns-btn-${i}`);
+      if (btn) {
+        if (i === currentStep) {
+          btn.style.borderColor = 'var(--accent-cyan)';
+          btn.style.background = 'rgba(45, 226, 230, 0.2)';
+          btn.style.color = 'var(--accent-cyan)';
+        } else {
+          btn.style.borderColor = 'rgba(255,255,255,0.15)';
+          btn.style.background = 'transparent';
+          btn.style.color = 'var(--text-muted)';
+        }
+      }
+    }
+
+    // Update Detail Card
+    const cardDetail = document.getElementById('dns-card-detail');
+    if (cardDetail) {
+      cardDetail.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.4rem;">
+          <div style="font-weight: 700; font-family: var(--font-mono); color: var(--text-main);">
+            <i class="fa-solid fa-server highlight-cyan"></i> ${data.server}
+          </div>
+          <span class="cyber-badge ${data.badgeClass}">${data.badge}</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.35rem; font-family: var(--font-mono);">
+          <div style="color: var(--accent-yellow);"><strong style="color: var(--text-muted);">Query Sent:</strong> ${data.query}</div>
+          <div style="color: var(--htb-green);"><strong style="color: var(--text-muted);">Response:</strong> ${data.response}</div>
+          <div style="margin-top: 0.3rem; padding-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-main); font-family: var(--font-sans); font-size: 0.88em;">
+            <i class="fa-solid fa-circle-info highlight-cyan"></i> ${data.note}
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  window.dnsSim = {
+    setStep: function(stepIndex) {
+      currentStep = Math.max(0, Math.min(4, stepIndex));
+      updateUI();
+    },
+    nextStep: function() {
+      currentStep = (currentStep + 1) % 5;
+      updateUI();
+    },
+    prevStep: function() {
+      currentStep = (currentStep - 1 + 5) % 5;
+      updateUI();
+    },
+    togglePlay: function() {
+      const playBtn = document.getElementById('dns-play-btn');
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+        if (playBtn) playBtn.innerHTML = '<i class="fa-solid fa-play"></i> Auto Play';
+      } else {
+        if (playBtn) playBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Pause';
+        autoTimer = setInterval(() => {
+          currentStep = (currentStep + 1) % 5;
+          updateUI();
+        }, 2600);
+      }
+    }
+  };
+
+  // Initial setup after DOM load
+  setTimeout(updateUI, 100);
+})();
+</script>
