@@ -1,0 +1,54 @@
+<!-- SLIDE: Interactive Diffie-Hellman Color Analogy Visualizer -->
+<section>
+  <h2><i class="fa-solid fa-palette highlight-htb"></i> Diffie-Hellman Exchange (Color Analogy)</h2>
+
+  <!-- Top Step Selection Navigation Bar -->
+  <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+    <button id="dh-step-btn-0" class="sim-btn" onclick="window.dhColorSim.setStep(0)">1. Public Start</button>
+    <button id="dh-step-btn-1" class="sim-btn" onclick="window.dhColorSim.setStep(1)">2. Private Secrets</button>
+    <button id="dh-step-btn-2" class="sim-btn" onclick="window.dhColorSim.setStep(2)">3. Mix Paint</button>
+    <button id="dh-step-btn-3" class="sim-btn" onclick="window.dhColorSim.setStep(3)">4. Exchange</button>
+    <button id="dh-step-btn-4" class="sim-btn" onclick="window.dhColorSim.setStep(4)">5. Shared Secret</button>
+  </div>
+
+  <div style="max-width: 950px; margin: 0 auto; text-align: left;">
+    
+    <!-- Title & Badge -->
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; margin-bottom: 1rem;">
+      <h3 id="dh-os-step-title" style="font-size: 1.05rem; margin: 0; color: #fff;">Step 1: Public Agreement (Common Color)</h3>
+      <span id="dh-os-step-badge" class="cyber-badge badge-yellow">PUBLIC COLOR</span>
+    </div>
+
+    <!-- 3-Column Interactive Swatch Layout -->
+    <div class="grid-3" style="gap: 1.1rem; align-items: stretch; margin-bottom: 1rem;">
+      <!-- Alice (Client) -->
+      <div id="dh-alice-box" class="cyber-card" style="border: 1px solid var(--accent-cyan);">
+        <!-- Rendered dynamically by dh-color-sim.js -->
+      </div>
+
+      <!-- Eve (Eavesdropper / Network Wire) -->
+      <div id="dh-eve-box" class="cyber-card threat" style="border: 1px solid var(--accent-red); background: rgba(255, 46, 99, 0.04);">
+        <!-- Rendered dynamically by dh-color-sim.js -->
+      </div>
+
+      <!-- Bob (Server) -->
+      <div id="dh-bob-box" class="cyber-card" style="border: 1px solid var(--htb-green);">
+        <!-- Rendered dynamically by dh-color-sim.js -->
+      </div>
+    </div>
+
+    <!-- Explanation Details Box -->
+    <div style="background: var(--htb-bg-terminal); border: 1px solid var(--htb-border); border-radius: 8px; padding: 0.8rem 1.1rem; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.2rem;">
+        <i class="fa-solid fa-calculator highlight-htb"></i> How Paint Mixing Maps to Diffie-Hellman Cryptography
+      </div>
+      <p id="dh-step-details" style="font-size: 0.85rem; color: var(--text-main); margin: 0; line-height: 1.45;">
+        Alice and Bob publicly agree on a starting common color (Yellow). This number is completely public.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Include Interactive Simulator Logic -->
+<script src="js/dh-color-sim.js"></script>

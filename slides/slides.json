@@ -77,5 +77,11 @@
   "http2.html",
   "http3.html",
   "simulator.html",
+  "ssh_overview.html",
+  "ssh_command_example.html",
+  "ssh_features.html",
+  "ssh_handshake_sim.html",
+  "dh_color_analogy.html",
+  "ssh_vs_telnet.html",
   "summary.html"
 ]

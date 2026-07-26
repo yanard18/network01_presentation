@@ -1,0 +1,39 @@
+<!-- SLIDE: How SSH Works in Practice - Command Example -->
+<section>
+  <h2><i class="fa-solid fa-terminal highlight-htb"></i> How SSH Works in Practice</h2>
+
+  <div style="max-width: 880px; margin: 2rem auto 0 auto; text-align: center;">
+    
+    <!-- Headline Text requested by user -->
+    <p style="font-size: 1.25em; font-weight: 700; color: #ffffff; margin-bottom: 1.8rem; font-family: var(--font-body);">
+      SSH is a <span style="color: var(--htb-green);">Remote Command-Line / Terminal Control Tool</span>.
+    </p>
+
+    <!-- Centered Terminal Command Box -->
+    <div style="max-width: 650px; margin: 0 auto 2rem auto; background: var(--htb-bg-terminal); border: 2px solid var(--htb-border); border-radius: 10px; overflow: hidden; box-shadow: 0 0 30px rgba(0,0,0,0.6); text-align: left;">
+      <div class="terminal-header" style="padding: 0.6rem 1rem;">
+        <span class="terminal-dot dot-red"></span>
+        <span class="terminal-dot dot-yellow"></span>
+        <span class="terminal-dot dot-green"></span>
+        <span class="terminal-title">Terminal — Local Laptop</span>
+      </div>
+      <div style="padding: 1.2rem 1.4rem; font-family: var(--font-mono); font-size: 1.25em;">
+        <span style="color: var(--htb-green);">$</span> <span style="color: var(--accent-cyan); font-weight: 700;">ssh</span> <span style="color: #fff;">alice@192.168.1.50</span>
+      </div>
+    </div>
+
+    <!-- Command Structure Breakdown Callout -->
+    <div style="display: flex; justify-content: center; gap: 1.5rem; font-family: var(--font-mono); font-size: 0.85em; flex-wrap: wrap;">
+      <div style="background: rgba(45, 226, 230, 0.08); border: 1px solid var(--accent-cyan); border-radius: 6px; padding: 0.5rem 1rem; color: var(--accent-cyan);">
+        <strong>ssh</strong> ➔ SSH Protocol Client
+      </div>
+      <div style="background: rgba(159, 239, 0, 0.08); border: 1px solid var(--htb-green); border-radius: 6px; padding: 0.5rem 1rem; color: var(--htb-green);">
+        <strong>alice</strong> ➔ Remote User
+      </div>
+      <div style="background: rgba(157, 78, 221, 0.08); border: 1px solid var(--accent-purple); border-radius: 6px; padding: 0.5rem 1rem; color: var(--accent-purple);">
+        <strong>192.168.1.50</strong> ➔ Target Server IP
+      </div>
+    </div>
+
+  </div>
+</section>

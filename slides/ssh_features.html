@@ -1,0 +1,50 @@
+<!-- SLIDE: SSH Key Features -->
+<section>
+  <h2><i class="fa-solid fa-list-check highlight-htb"></i> SSH Key Features</h2>
+
+  <div style="max-width: 920px; margin: 1.5rem auto 0 auto; text-align: left;">
+    <div class="grid-2" style="gap: 1.2rem; align-items: stretch;">
+      
+      <!-- Feature 1: Authentication -->
+      <div class="cyber-card">
+        <div class="card-title">
+          <span class="cyber-badge badge-htb"><i class="fa-solid fa-user-shield"></i> AUTHENTICATION</span>
+        </div>
+        <p style="font-size: 0.85em; line-height: 1.5; color: var(--text-main); margin-bottom: 0;">
+          Supports encrypted password logins and secure <strong>Public Key Authentication</strong> (e.g., <code>Ed25519</code> and <code>RSA</code> keys).
+        </p>
+      </div>
+
+      <!-- Feature 2: Commands & Shell -->
+      <div class="cyber-card">
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan"><i class="fa-solid fa-terminal"></i> SHELL COMMANDS &amp; OUTPUT</span>
+        </div>
+        <p style="font-size: 0.85em; line-height: 1.5; color: var(--text-main); margin-bottom: 0;">
+          All interactive terminal keystrokes, remote commands, and server responses are protected by symmetric ciphers (e.g. <code>AES-256-GCM</code>).
+        </p>
+      </div>
+
+      <!-- Feature 3: File Transfers -->
+      <div class="cyber-card">
+        <div class="card-title">
+          <span class="cyber-badge badge-purple"><i class="fa-solid fa-file-arrow-up"></i> SECURE FILE TRANSFERS</span>
+        </div>
+        <p style="font-size: 0.85em; line-height: 1.5; color: var(--text-main); margin-bottom: 0;">
+          Integrated secure file transfer protocols — <strong>SFTP</strong> (SSH File Transfer Protocol) and <strong>SCP</strong> — run directly over port 22.
+        </p>
+      </div>
+
+      <!-- Feature 4: Integrity & Tunneling -->
+      <div class="cyber-card">
+        <div class="card-title">
+          <span class="cyber-badge badge-red"><i class="fa-solid fa-route"></i> INTEGRITY &amp; PORT FORWARDING</span>
+        </div>
+        <p style="font-size: 0.85em; line-height: 1.5; color: var(--text-main); margin-bottom: 0;">
+          Uses cryptographic HMACs to prevent tampering, and supports <strong>SSH Port Forwarding</strong> (Local, Remote, and Dynamic SOCKS Tunnels).
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>

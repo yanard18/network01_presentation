@@ -1,0 +1,36 @@
+<!-- SLIDE: SSH vs Telnet Comparison (Matching IPv4 vs IPv6 Design) -->
+<section>
+  <h2><i class="fa-solid fa-code-compare highlight-htb"></i> SSH vs. Telnet</h2>
+
+  <div style="max-width: 850px; margin: 1.5rem auto 0 auto; text-align: center;">
+    <!-- Centered Badge Headers -->
+    <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 1.1em;">
+      <span class="cyber-badge badge-htb" style="padding: 0.4rem 1.2rem;"><i class="fa-solid fa-lock"></i> SSH (Port 22)</span>
+      <span style="color: var(--text-muted);">vs.</span>
+      <span class="cyber-badge badge-red" style="padding: 0.4rem 1.2rem;"><i class="fa-solid fa-unlock"></i> Telnet (Port 23)</span>
+    </div>
+
+    <!-- Row-by-Row Comparison List (Matching IPv4 vs IPv6) -->
+    <div style="display: flex; flex-direction: column; gap: 1.1rem; text-align: left; font-size: 0.95em; max-width: 780px; margin: 0 auto; font-family: var(--font-body);">
+      <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
+        <strong style="color: #fff;">• Default Port:</strong> <span style="color: var(--htb-green); font-family: var(--font-mono);">TCP 22</span> vs. <span style="color: var(--accent-red); font-family: var(--font-mono);">TCP 23</span>
+      </div>
+
+      <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
+        <strong style="color: #fff;">• Channel Security:</strong> <span style="color: var(--htb-green);">Fully Encrypted (AES / ChaCha20)</span> vs. <span style="color: var(--accent-red);">Cleartext / Unencrypted</span>
+      </div>
+
+      <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
+        <strong style="color: #fff;">• Data Payload:</strong> <span style="color: var(--htb-green);">Ciphertext (Credentials &amp; Keystrokes protected)</span> vs. <span style="color: var(--accent-red);">Plaintext (Visible to Wireshark sniffing)</span>
+      </div>
+
+      <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
+        <strong style="color: #fff;">• Packet Integrity:</strong> <span style="color: var(--htb-green);">Cryptographic HMACs (Tamper-proof)</span> vs. <span style="color: var(--accent-red);">No Integrity Protection (MITM vulnerable)</span>
+      </div>
+
+      <div>
+        <strong style="color: #fff;">• Current Status:</strong> <span style="color: var(--htb-green);">Universal Secure Standard</span> vs. <span style="color: var(--accent-red);">Obsolete &amp; High-Risk Threat</span>
+      </div>
+    </div>
+  </div>
+</section>
