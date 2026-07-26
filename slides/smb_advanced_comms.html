@@ -1,0 +1,51 @@
+<!-- SLIDE: Advanced SMB Communications -->
+<section>
+  <h2><i class="fa-solid fa-bolt highlight-htb"></i> Advanced SMB Communications</h2>
+
+  <div class="grid-3" style="gap: 1.1rem; align-items: stretch; text-align: left;">
+    <!-- Communication 1: IPC & IOCTL -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">IPC &amp; IOCTL</span> Named Pipe Transact
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
+          Connects to <code>IPC$</code> and sends <code>SMB2 IOCTL</code> / <code>WRITE</code> requests to named pipes (e.g. <code>\pipe\srvsvc</code>) to carry MS-RPC remote execution data.
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-terminal"></i> Remote Procedure Execution
+      </div>
+    </div>
+
+    <!-- Communication 2: Compound Requests -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">PERFORMANCE</span> Compound Requests
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
+          Bundles multiple commands into a <strong>single TCP packet</strong> (e.g., <code>CREATE</code> + <code>WRITE</code> + <code>CLOSE</code> in 1 RTT instead of 3).
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-gauge-high"></i> Latency &amp; Overhead Reduction
+      </div>
+    </div>
+
+    <!-- Communication 3: Keep-Alive & Leasing -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">CONTROL</span> Heartbeat &amp; Leasing
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
+          <code>SMB2 ECHO</code> maintains idle TCP sockets across firewalls. <code>LEASE_BREAK</code> instructs clients to flush local cache when file conflicts occur.
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-heartbeat"></i> Socket &amp; Cache State Control
+      </div>
+    </div>
+  </div>
+</section>

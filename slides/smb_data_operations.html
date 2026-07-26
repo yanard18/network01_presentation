@@ -1,0 +1,70 @@
+<!-- SLIDE: SMB Data Operations & File Management -->
+<section>
+  <h2><i class="fa-solid fa-file-export highlight-htb"></i> Data Operations &amp; File Management</h2>
+
+  <div style="text-align: left; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.95em;">
+    Once a <code>FileId</code> (FID) handle is obtained, SMB uses specific opcodes for data transfer and metadata management:
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; text-align: left;">
+    <!-- Communication 1: Read & Write -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">DATA TRANSFER</span> <code>SMB2 READ</code> &amp; <code>WRITE</code>
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.45; color: var(--text-main); margin-bottom: 0.4rem;">
+          Transfers file contents or IPC payload bytes using <code>SessionId</code>, <code>TreeId</code>, <code>FileId</code>, Byte Offset, and Length.
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-right-left"></i> Direct Payload Byte Streaming
+      </div>
+    </div>
+
+    <!-- Communication 2: Directory Query -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">DIRECTORY LIST</span> <code>QUERY_DIRECTORY</code>
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.45; color: var(--text-main); margin-bottom: 0.4rem;">
+          Lists files and subdirectories (equivalent to <code>dir</code> / <code>ls</code>) matching search patterns (e.g. <code>*.docx</code>).
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-folder-tree"></i> Directory Tree Enumeration
+      </div>
+    </div>
+
+    <!-- Communication 3: Metadata Query & Set -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">METADATA</span> <code>QUERY_INFO</code> &amp; <code>SET_INFO</code>
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.45; color: var(--text-main); margin-bottom: 0.4rem;">
+          Retrieves or modifies file metadata, file sizes, creation timestamps, and NTFS Access Control Lists (ACLs).
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-shield-halved"></i> File Attributes &amp; ACL Security
+      </div>
+    </div>
+
+    <!-- Communication 4: Lock & Close -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-red">TEARDOWN</span> <code>SMB2 CLOSE</code> &amp; <code>LOCK</code>
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.45; color: var(--text-main); margin-bottom: 0.4rem;">
+          Locks specific file byte-ranges to prevent multi-user race conditions, and closes handles to free server memory.
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-red); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-lock"></i> Concurrency Control &amp; Cleanup
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+<!-- SLIDE: MS-RPC & Printers over SMB -->
+<section>
+  <h2><i class="fa-solid fa-terminal highlight-htb"></i> MS-RPC Execution &amp; Printing via SMB</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1.1fr 0.9fr; gap: 1.2rem; align-items: stretch;">
+    <!-- Left: MS-RPC over Named Pipes -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">REMOTE EXECUTION</span> MS-RPC over SMB (<code>ncacn_np</code>)
+        </div>
+        <p style="font-size: 0.85em; line-height: 1.45; color: var(--text-main); margin-bottom: 0.6rem;">
+          Tools like <code>PsExec</code> and <code>rpcclient</code> execute commands remotely via Microsoft RPC (MS-RPC). MS-RPC uses SMB Named Pipes as its transport layer.
+        </p>
+
+        <div style="background: var(--htb-bg-terminal); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 0.7rem 0.9rem; font-family: var(--font-mono); font-size: 0.78em;">
+          <div style="color: var(--htb-green); margin-bottom: 0.3rem;"><i class="fa-solid fa-folder-open"></i> 1. Open Named Pipe</div>
+          <div style="color: var(--text-muted); margin-left: 0.8rem; margin-bottom: 0.4rem;">SMB opens <code>\pipe\srvsvc</code> or <code>\pipe\samr</code></div>
+
+          <div style="color: var(--accent-cyan); margin-bottom: 0.3rem;"><i class="fa-solid fa-pen"></i> 2. Write RPC Request</div>
+          <div style="color: var(--text-muted); margin-left: 0.8rem; margin-bottom: 0.4rem;">SMB writes command execution payload</div>
+
+          <div style="color: var(--accent-purple); margin-bottom: 0.3rem;"><i class="fa-solid fa-reply"></i> 3. Read Execution Output</div>
+          <div style="color: var(--text-muted); margin-left: 0.8rem;">SMB reads result back from target service</div>
+        </div>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.6rem;">
+        <i class="fa-solid fa-code"></i> Transport Binding: <code>ncacn_np</code> (Named Pipe Transport)
+      </div>
+    </div>
+
+    <!-- Right: Network Printing as File I/O -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">SPOOLER SERVICE</span> Network Printing as File I/O
+        </div>
+        <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.8rem;">
+          To the Windows Print Spooler Service, a network printer is simply an <strong>I/O destination (File Object)</strong>.
+        </p>
+
+        <ul style="font-size: 0.83em; line-height: 1.5; margin-bottom: 0;">
+          <li>When SMB is used for network printing, it opens a handle to the printer object.</li>
+          <li>SMB streams raw print job bytes to the printer destination.</li>
+          <li>To SMB, printing a document is <strong>identical to saving a <code>.pdf</code> file</strong> to a folder.</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.6rem;">
+        <i class="fa-solid fa-print"></i> Printer Handle = I/O File Destination
+      </div>
+    </div>
+  </div>
+</section>

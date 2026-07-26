@@ -1,0 +1,43 @@
+<!-- SLIDE: RPC vs REST API Comparison -->
+<section>
+  <h2><i class="fa-solid fa-code-compare highlight-htb"></i> RPC vs. REST API</h2>
+
+  <div style="max-width: 920px; margin: 1.5rem auto 0 auto; text-align: left;">
+    <!-- Shared Purpose Statement -->
+    <div style="background: rgba(159, 239, 0, 0.08); border: 1px solid rgba(159, 239, 0, 0.25); border-radius: 8px; padding: 1rem 1.4rem; text-align: center; margin-bottom: 2rem;">
+      <p style="font-size: 1.02em; color: #ffffff; margin: 0; line-height: 1.5;">
+        <i class="fa-solid fa-network-wired highlight-htb" style="margin-right: 0.5rem;"></i>
+        Both <strong>RPC</strong> and <strong>REST API</strong> enable two computers to talk to each other across a network.
+      </p>
+    </div>
+
+    <!-- 2 Column Difference Breakdown -->
+    <div class="grid-2" style="gap: 1.8rem;">
+      <!-- RPC: Function Focus -->
+      <div style="border-left: 3px solid var(--accent-purple); padding-left: 1.2rem;">
+        <div style="margin-bottom: 0.6rem;">
+          <span class="cyber-badge badge-purple" style="font-size: 0.88rem;"><i class="fa-solid fa-terminal"></i> RPC: Focus on Functions</span>
+        </div>
+        <p style="font-size: 1.05em; color: var(--accent-purple); font-weight: 700; margin-bottom: 0.4rem; font-family: var(--font-mono);">
+          <code>ExecuteFunction(data)</code>
+        </p>
+        <p style="font-size: 0.9em; color: var(--text-main); line-height: 1.5; margin: 0;">
+          Focuses on <strong>calling remote functions and executing actions</strong> on another machine as if it were local.
+        </p>
+      </div>
+
+      <!-- REST: Resource Focus -->
+      <div style="border-left: 3px solid var(--accent-cyan); padding-left: 1.2rem;">
+        <div style="margin-bottom: 0.6rem;">
+          <span class="cyber-badge badge-cyan" style="font-size: 0.88rem;"><i class="fa-solid fa-globe"></i> REST: Focus on Resources</span>
+        </div>
+        <p style="font-size: 1.05em; color: var(--accent-cyan); font-weight: 700; margin-bottom: 0.4rem; font-family: var(--font-mono);">
+          <code>GET /api/v1/resources/42</code>
+        </p>
+        <p style="font-size: 0.9em; color: var(--text-main); line-height: 1.5; margin: 0;">
+          Focuses on <strong>accessing and manipulating resources</strong> (data entities) using standard HTTP operations.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

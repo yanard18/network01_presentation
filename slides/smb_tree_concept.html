@@ -1,0 +1,49 @@
+<!-- SLIDE: Understanding Trees & Tree Connect -->
+<section>
+  <h2><i class="fa-solid fa-sitemap highlight-htb"></i> Understanding "Trees" &amp; Tree Connect</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr; gap: 1.2rem; align-items: stretch; text-align: left;">
+    <!-- Left: What is a Tree? -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">FILE HIERARCHY</span> What is a "Tree"?
+        </div>
+        <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
+          In operating systems, file directories are structured as <strong>hierarchical trees</strong> branching from a root share.
+        </p>
+
+        <div style="background: var(--htb-bg-terminal); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 0.6rem 0.8rem; font-family: var(--font-mono); font-size: 0.78em; color: var(--htb-green);">
+          <div>Root (\SharedDocs)</div>
+          <div style="margin-left: 0.8rem; color: var(--accent-cyan);">├── 📁 Marketing</div>
+          <div style="margin-left: 1.6rem; color: var(--text-muted);">│ └── 📄 Budget.xlsx</div>
+          <div style="margin-left: 0.8rem; color: var(--accent-purple);">└── 📁 Reports</div>
+          <div style="margin-left: 1.6rem; color: var(--text-muted);">└── 📄 Q1.pdf</div>
+        </div>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.6rem;">
+        <i class="fa-solid fa-tree"></i> Share Root = Tree Handle Base
+      </div>
+    </div>
+
+    <!-- Right: SMB2 TREE_CONNECT -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">PROTOCOL STEP</span> SMB2 <code>TREE_CONNECT</code>
+        </div>
+        <ul style="font-size: 0.83em; line-height: 1.48; margin-bottom: 0.6rem;">
+          <li><strong>Request:</strong> Client asks to mount <code>\\SERVER\Share</code> or <code>\\SERVER\IPC$</code>.</li>
+          <li><strong>Permission Check:</strong> Server validates share &amp; NTFS permissions.</li>
+          <li><strong>Tree ID (TID):</strong> Server returns a unique <strong>TID handle</strong> required for all subsequent file I/O operations.</li>
+        </ul>
+      </div>
+
+      <div style="background: rgba(45, 226, 230, 0.08); border: 1px solid rgba(45, 226, 230, 0.25); border-radius: 6px; padding: 0.6rem 0.8rem; font-size: 0.82em; color: #fff;">
+        <strong style="color: var(--accent-cyan); font-family: var(--font-mono);">💡 Building Analogy:</strong>
+        Session Setup = Showing your ID at the gate. Tree Connect = Swiping into <strong>Building B</strong> &amp; getting a wristband (<strong>Tree ID</strong>) to open doors inside.
+      </div>
+    </div>
+  </div>
+</section>

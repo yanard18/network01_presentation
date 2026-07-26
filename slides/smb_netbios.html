@@ -1,0 +1,50 @@
+<!-- SLIDE: What is NetBIOS & Port 139 vs Port 445 -->
+<section>
+  <h2><i class="fa-solid fa-radio highlight-htb"></i> NetBIOS &amp; Port 139 vs. Port 445</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr; gap: 1.2rem; align-items: stretch; text-align: left; margin-bottom: 1.1rem;">
+    <!-- Left: What is NetBIOS? -->
+    <div class="cyber-card">
+      <div class="card-title">
+        <span class="cyber-badge badge-htb">IBM 1980s</span> What is NetBIOS?
+      </div>
+      <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.5rem;">
+        <strong>NetBIOS</strong> (Network Basic Input/Output System) was created by IBM for early local area networks before TCP/IP became standard.
+      </p>
+      <ul style="font-size: 0.82em; line-height: 1.45; margin-bottom: 0;">
+        <li><strong>Computer Naming:</strong> Locating machines using 15-character names (e.g. <code>OFFICE-PC1</code>).</li>
+        <li><strong>Session Management:</strong> Enabling inter-app data transfer over LANs.</li>
+      </ul>
+    </div>
+
+    <!-- Right: NBT vs Direct SMB -->
+    <div class="cyber-card">
+      <div class="card-title">
+        <span class="cyber-badge badge-cyan">EVOLUTION</span> NBT (139) ➔ Direct SMB (445)
+      </div>
+      <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.4rem;">
+        When TCP/IP won, Microsoft wrapped NetBIOS in TCP/IP (<strong>NBT</strong>) on <strong>Port 139</strong>.
+      </p>
+      <p style="font-size: 0.83em; line-height: 1.45; color: var(--text-muted); margin-bottom: 0;">
+        Starting with Windows 2000, Microsoft removed the noisy NetBIOS middleman entirely, moving to <strong>Direct SMB on TCP Port 445</strong>.
+      </p>
+    </div>
+  </div>
+
+  <!-- Architecture Flow Comparison Box -->
+  <div style="background: var(--htb-bg-terminal); border: 1px solid var(--htb-border); border-radius: 8px; padding: 0.8rem 1.2rem; font-family: var(--font-mono); font-size: 0.8em; margin-bottom: 0.9rem; text-align: left;">
+    <div style="margin-bottom: 0.4rem; color: var(--accent-red);">
+      <strong>OLD WAY (Port 139):</strong> [ SMB Protocol ] ➔ [ NetBIOS Layer (NBT) ] ➔ [ TCP/IP Port 139 ]
+    </div>
+    <div style="color: var(--htb-green);">
+      <strong>MODERN WAY (Port 445):</strong> [ SMB Protocol ] ---------------------------> [ Direct TCP Port 445 ]
+    </div>
+  </div>
+
+  <!-- Analogy Box -->
+  <div style="background: rgba(159, 239, 0, 0.08); border: 1px solid rgba(159, 239, 0, 0.25); border-radius: 6px; padding: 0.7rem 1rem; font-size: 0.82em; text-align: left; color: #ffffff;">
+    <strong style="color: var(--htb-green); font-family: var(--font-mono);">💡 Real-World Analogy:</strong>
+    <strong>NetBIOS (Port 139)</strong> is like calling through an old switchboard operator where you yell names into a room.<br>
+    <strong>Direct SMB (Port 445)</strong> is like dialing someone's direct phone number over a clean, high-speed fiber line.
+  </div>
+</section>

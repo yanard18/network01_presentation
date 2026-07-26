@@ -1,0 +1,36 @@
+<!-- SLIDE: MS-RPC Concept -->
+<section>
+  <h2><i class="fa-solid fa-code-branch highlight-htb"></i> MS-RPC &amp; The RPC Concept</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1.05fr 0.95fr; gap: 1.2rem; align-items: center;">
+    <!-- Left Column: RPC Diagram Image -->
+    <div style="display: flex; align-items: center; justify-content: center;">
+      <img src="media/rpc.webp" alt="RPC Architecture Diagram" style="max-height: 400px; width: 100%; object-fit: contain; display: block; border-radius: 8px;">
+    </div>
+
+    <!-- Right Column: Key RPC Concepts -->
+    <div style="display: flex; flex-direction: column; gap: 0.8rem; text-align: left;">
+      <div class="cyber-card">
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">WHAT IS RPC?</span> Action-Oriented Calls
+        </div>
+        <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
+          <strong>Remote Procedure Call (RPC)</strong> allows a computer program to execute a function on a remote machine as if it were a local function call.
+        </p>
+      </div>
+
+      <div class="cyber-card">
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">MS-RPC OVER SMB</span> <code>ncacn_np</code> Transport
+        </div>
+        <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.4rem;">
+          Microsoft RPC uses SMB Named Pipes (e.g. <code>\pipe\srvsvc</code>) as its transport layer, enabling tools like <code>PsExec</code> and <code>rpcclient</code>.
+        </p>
+      </div>
+
+      <div style="background: rgba(45, 226, 230, 0.08); border: 1px solid rgba(45, 226, 230, 0.25); border-radius: 6px; padding: 0.7rem 0.9rem; font-family: var(--font-mono); font-size: 0.78em; color: #fff;">
+        <span style="color: var(--accent-cyan);">Execution Flow:</span> Open Pipe ➔ Write RPC Request ➔ Read Execution Result.
+      </div>
+    </div>
+  </div>
+</section>

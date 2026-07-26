@@ -1,0 +1,50 @@
+<!-- SLIDE: UNC Path Syntax -->
+<section>
+  <h2><i class="fa-solid fa-folder-network highlight-htb"></i> UNC Path Syntax: <code>\\server\share</code></h2>
+
+  <div style="text-align: left; margin-bottom: 1.2rem; color: var(--text-muted); font-size: 0.95em;">
+    <strong>Universal Naming Convention (UNC)</strong> is the standard syntax Windows uses to identify files and printers across a network.
+  </div>
+
+  <!-- Syntax Breakdown Container -->
+  <div style="background: var(--htb-bg-terminal); border: 1px solid var(--htb-border); border-radius: 8px; padding: 1.2rem 1.5rem; margin-bottom: 1.4rem; text-align: center;">
+    <div style="font-family: var(--font-mono); font-size: 1.6em; font-weight: 700; color: #ffffff; letter-spacing: 0.05em; margin-bottom: 0.8rem;">
+      <span style="color: var(--accent-cyan);">\\</span><span style="color: var(--htb-green);">FILE-SERVER</span><span style="color: var(--accent-cyan);">\</span><span style="color: var(--accent-purple);">SharedDocs</span>
+    </div>
+
+    <!-- 3 Part Description Grid -->
+    <div style="display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 1rem; text-align: left; font-size: 0.85em;">
+      <div style="border-top: 2px solid var(--accent-cyan); padding-top: 0.5rem;">
+        <strong style="color: var(--accent-cyan); font-family: var(--font-mono);">\\ Network Trigger</strong>
+        <p style="color: var(--text-muted); margin: 0.2rem 0 0 0;">Tells Windows: <em>"Look outside this PC onto the network."</em></p>
+      </div>
+
+      <div style="border-top: 2px solid var(--htb-green); padding-top: 0.5rem;">
+        <strong style="color: var(--htb-green); font-family: var(--font-mono);">FILE-SERVER Target</strong>
+        <p style="color: var(--text-muted); margin: 0.2rem 0 0 0;">Hostname or IP address (e.g. <code>192.168.1.10</code>).</p>
+      </div>
+
+      <div style="border-top: 2px solid var(--accent-purple); padding-top: 0.5rem;">
+        <strong style="color: var(--accent-purple); font-family: var(--font-mono);">SharedDocs Share</strong>
+        <p style="color: var(--text-muted); margin: 0.2rem 0 0 0;">Exposed folder or resource on remote machine.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Local vs UNC Comparison Cards -->
+  <div class="grid-2" style="gap: 1.2rem; align-items: stretch; text-align: left;">
+    <div class="cyber-card">
+      <div class="card-title"><span class="cyber-badge badge-htb">LOCAL PATH</span> <code>C:\Documents</code></div>
+      <p style="font-size: 0.85em; color: var(--text-main); margin: 0; line-height: 1.48;">
+        Opening a file on your local disk is like opening your personal desk drawer in your office.
+      </p>
+    </div>
+
+    <div class="cyber-card">
+      <div class="card-title"><span class="cyber-badge badge-cyan">UNC NETWORK PATH</span> <code>\\SERVER\Share</code></div>
+      <p style="font-size: 0.85em; color: var(--text-main); margin: 0; line-height: 1.48;">
+        Asking the central receptionist (<code>SERVER</code>) for a document from the company filing room (<code>Share</code>).
+      </p>
+    </div>
+  </div>
+</section>

@@ -2781,6 +2781,1015 @@ Action: FILTER (Do not forward across to Segment 2)
   </div>
 </section>
 
+      <!-- Loaded from slides/smb_overview.html -->
+<!-- SLIDE: Server Message Block (SMB) Overview -->
+<section>
+  <h2><i class="fa-solid fa-folder-tree highlight-htb"></i> Server Message Block (SMB)</h2>
+
+  <div style="text-align: left; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.95em;">
+    The <strong style="color: var(--htb-green);">SMB protocol</strong> is a network file sharing protocol that allows clients to read and write to files over the network on top of TCP/IP or other protocols.
+  </div>
+
+  <div class="grid-2" style="grid-template-columns: 1.1fr 0.9fr; gap: 1.2rem; align-items: center;">
+    <!-- Left Column: What is SMB Infographic -->
+    <div style="display: flex; align-items: center; justify-content: center;">
+      <img src="media/what_is_smb.jpg" alt="SMB: Server Message Block Diagram" style="max-height: 380px; width: 100%; object-fit: contain; display: block; border-radius: 8px;">
+    </div>
+
+    <!-- Right Column: Key Characteristics & Functions -->
+    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+      <div class="cyber-card">
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">CORE FUNCTION</span> Remote File Access
+        </div>
+        <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
+          Transparently maps remote shared directories (e.g. <code>\\SERVER\SHARE</code>) to local drive letters (e.g. <code>Z:</code>), enabling direct read and write operations.
+        </p>
+      </div>
+
+      <div class="cyber-card">
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">TRANSPORT</span> Layer 7 over TCP/IP
+        </div>
+        <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
+          Runs directly over <strong>TCP Port 445</strong> in modern networks (or legacy NetBIOS over TCP/IP on Port 139) for reliable connection-oriented transport.
+        </p>
+      </div>
+
+      <div class="cyber-card">
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">CAPABILITIES</span> Shared Resources
+        </div>
+        <ul style="font-size: 0.82em; line-height: 1.4; margin-bottom: 0;">
+          <li><strong>File Operations:</strong> Open, read, write, lock, and delete remote files.</li>
+          <li><strong>Device Sharing:</strong> Network printer sharing &amp; serial port access.</li>
+          <li><strong>IPC Communications:</strong> Inter-Process Communication via Named Pipes.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_components.html -->
+<!-- SLIDE: SMB Components -->
+<section>
+  <h2><i class="fa-solid fa-cubes highlight-htb"></i> SMB Components</h2>
+
+  <div style="max-width: 920px; margin: 2.2rem auto 0 auto; text-align: left;">
+    <!-- 2 Column Side-by-Side Breakdown -->
+    <div class="grid-2" style="gap: 1.8rem; margin-bottom: 2.2rem;">
+      <!-- SMB Server -->
+      <div style="border-left: 3px solid var(--htb-green); padding-left: 1.2rem;">
+        <div style="margin-bottom: 0.6rem;">
+          <span class="cyber-badge badge-htb" style="font-size: 0.88rem;"><i class="fa-solid fa-server"></i> SMB Server</span>
+        </div>
+        <p style="font-size: 1.02em; color: var(--text-main); line-height: 1.55; margin: 0;">
+          The component that shares resources (files, printers, and named pipes) and responds to requests from SMB clients.
+        </p>
+      </div>
+
+      <!-- SMB Client -->
+      <div style="border-left: 3px solid var(--accent-cyan); padding-left: 1.2rem;">
+        <div style="margin-bottom: 0.6rem;">
+          <span class="cyber-badge badge-cyan" style="font-size: 0.88rem;"><i class="fa-solid fa-laptop"></i> SMB Client</span>
+        </div>
+        <p style="font-size: 1.02em; color: var(--text-main); line-height: 1.55; margin: 0;">
+          The component that connects to remote shares and sends requests to SMB servers.
+        </p>
+      </div>
+    </div>
+
+    <!-- Summary Banner -->
+    <div style="background: rgba(159, 239, 0, 0.07); border: 1px solid rgba(159, 239, 0, 0.22); border-radius: 8px; padding: 1.1rem 1.4rem; text-align: center;">
+      <p style="font-size: 0.98em; color: #ffffff; margin: 0; line-height: 1.5;">
+        <i class="fa-solid fa-circle-info highlight-htb" style="margin-right: 0.4rem;"></i>
+        Both <strong>Windows Server</strong> and <strong>Windows Client</strong> operating systems include both SMB client and server components.
+      </p>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_history.html -->
+<!-- SLIDE: SMB History & Evolution -->
+<section>
+  <h2><i class="fa-solid fa-clock-rotate-left highlight-htb"></i> History of SMB</h2>
+
+  <div style="max-width: 920px; margin: 2.2rem auto 0 auto; text-align: left;">
+    <!-- Step 1: IBM Origins -->
+    <div style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2.2rem; border-left: 2px solid var(--htb-green); padding-left: 1.2rem;">
+      <div style="min-width: 130px;">
+        <span class="cyber-badge badge-htb">1983</span>
+      </div>
+      <div>
+        <h3 style="font-size: 1.25em; margin: 0 0 0.3rem 0; color: #ffffff;">Developed by IBM</h3>
+        <p style="font-size: 0.95em; color: var(--text-muted); margin: 0; line-height: 1.5;">
+          Originally created by IBM for sharing files across networked personal computers.
+        </p>
+      </div>
+    </div>
+
+    <!-- Step 2: Microsoft & CIFS -->
+    <div style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2.2rem; border-left: 2px solid var(--accent-cyan); padding-left: 1.2rem;">
+      <div style="min-width: 130px;">
+        <span class="cyber-badge badge-cyan">1990s</span>
+      </div>
+      <div>
+        <h3 style="font-size: 1.25em; margin: 0 0 0.3rem 0; color: #ffffff;">Microsoft Adoption &amp; CIFS Rebrand</h3>
+        <p style="font-size: 0.95em; color: var(--text-muted); margin: 0; line-height: 1.5;">
+          Microsoft adopted the technology heavily for Windows and attempted to rebrand it as <strong>CIFS</strong> (Common Internet File System).
+        </p>
+      </div>
+    </div>
+
+    <!-- Step 3: Modern SMB2 & SMB3 -->
+    <div style="display: flex; align-items: flex-start; gap: 1.5rem; border-left: 2px solid var(--accent-purple); padding-left: 1.2rem;">
+      <div style="min-width: 130px;">
+        <span class="cyber-badge badge-purple">Modern Era</span>
+      </div>
+      <div>
+        <h3 style="font-size: 1.25em; margin: 0 0 0.3rem 0; color: #ffffff;">SMB 2.0, SMB 3.0 &amp; Core Windows System</h3>
+        <p style="font-size: 0.95em; color: var(--text-muted); margin: 0; line-height: 1.5;">
+          Evolved into <strong>SMB 2.0</strong> and <strong>SMB 3.0</strong>, now serving as a core networking subsystem in Windows today.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_dialect_smb1.html -->
+<!-- SLIDE: SMB Dialect - SMB 1.0 -->
+<section>
+  <h2><i class="fa-solid fa-triangle-exclamation highlight-red"></i> SMB 1.0 (Legacy &amp; Threats)</h2>
+
+  <div style="max-width: 900px; margin: 2rem auto 0 auto; text-align: left;">
+    <div style="margin-bottom: 1.4rem;">
+      <span class="cyber-badge badge-red" style="font-size: 0.9rem;">DIALECT CODE: 0x0000 / LEGACY</span>
+    </div>
+
+    <!-- Minimal Bullet List -->
+    <div class="cyber-card threat" style="margin-bottom: 1.2rem;">
+      <div class="card-title">
+        <span class="cyber-badge badge-red">SECURITY THREAT</span> Critical Architectural Vulnerabilities
+      </div>
+      <ul class="threat-list" style="font-size: 0.92em; line-height: 1.55; margin-bottom: 0;">
+        <li><strong>Null Sessions:</strong> Allowed unauthenticated users to enumerate domain accounts, shares, and policies.</li>
+        <li><strong>Famous Exploits:</strong> Primary vector for <strong>EternalBlue (MS17-010)</strong>, WannaCry, and NotPetya.</li>
+        <li><strong>Deprecation:</strong> Officially disabled and deprecated across all modern operating systems.</li>
+      </ul>
+    </div>
+
+    <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-red); background: rgba(255, 46, 99, 0.08); border: 1px solid var(--accent-red); border-radius: 6px; padding: 0.7rem 1rem;">
+      <i class="fa-solid fa-ban"></i> <strong>Cybersecurity Status:</strong> Hard-disabled by default in Windows 10/11 &amp; Server 2019+.
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_dialect_smb2.html -->
+<!-- SLIDE: SMB Dialect - SMB 2.0 / 2.1 -->
+<section>
+  <h2><i class="fa-solid fa-arrows-rotate highlight-cyan"></i> SMB 2.0 &amp; 2.1 (Protocol Redesign)</h2>
+
+  <div style="max-width: 900px; margin: 2rem auto 0 auto; text-align: left;">
+    <div style="margin-bottom: 1.4rem;">
+      <span class="cyber-badge badge-cyan" style="font-size: 0.9rem;">DIALECT CODES: 0x0202 / 0x0210</span>
+    </div>
+
+    <!-- Minimal Bullet List -->
+    <div class="cyber-card" style="margin-bottom: 1.2rem;">
+      <div class="card-title">
+        <span class="cyber-badge badge-cyan">PERFORMANCE &amp; STABILITY</span> Modern Architecture
+      </div>
+      <ul style="font-size: 0.92em; line-height: 1.55; margin-bottom: 0;">
+        <li><strong>Command Streamlining:</strong> Reduced 100+ legacy SMB1 commands down to just 19 core opcodes.</li>
+        <li><strong>Credit-Based Flow Control:</strong> Server regulates client request volume to prevent DoS flooding.</li>
+        <li><strong>File Leasing (SMB 2.1):</strong> Enhanced local client caching to dramatically reduce network round-trips (RTT).</li>
+      </ul>
+    </div>
+
+    <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-cyan); background: rgba(45, 226, 230, 0.08); border: 1px solid var(--accent-cyan); border-radius: 6px; padding: 0.7rem 1rem;">
+      <i class="fa-solid fa-microchip"></i> <strong>Key Advantage:</strong> Introduced compound requests (command chaining) for higher speed.
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_dialect_smb3.html -->
+<!-- SLIDE: SMB Dialect - SMB 3.0 / 3.0.2 -->
+<section>
+  <h2><i class="fa-solid fa-shield-halved highlight-purple"></i> SMB 3.0 &amp; 3.0.2 (Encryption &amp; Speed)</h2>
+
+  <div style="max-width: 900px; margin: 2rem auto 0 auto; text-align: left;">
+    <div style="margin-bottom: 1.4rem;">
+      <span class="cyber-badge badge-purple" style="font-size: 0.9rem;">DIALECT CODES: 0x0300 / 0x0302</span>
+    </div>
+
+    <!-- Minimal Bullet List -->
+    <div class="cyber-card" style="margin-bottom: 1.2rem;">
+      <div class="card-title">
+        <span class="cyber-badge badge-purple">SECURITY &amp; HIGH PERFORMANCE</span> Native Encryption
+      </div>
+      <ul style="font-size: 0.92em; line-height: 1.55; margin-bottom: 0;">
+        <li><strong>Native AES Encryption:</strong> Introduced end-to-end <strong>AES-128-CCM encryption</strong> without requiring IPsec.</li>
+        <li><strong>SMB Multichannel &amp; Direct:</strong> Aggregates multiple network cards and supports zero-CPU RDMA memory transfers.</li>
+        <li><strong>Secure Dialect Negotiation:</strong> Protects against Man-in-the-Middle (MitM) downgrade attacks.</li>
+      </ul>
+    </div>
+
+    <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-purple); background: rgba(157, 78, 221, 0.08); border: 1px solid var(--accent-purple); border-radius: 6px; padding: 0.7rem 1rem;">
+      <i class="fa-solid fa-lock"></i> <strong>Cybersecurity Benefit:</strong> Eavesdropping on wire data payloads is prevented by default.
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_dialect_smb311.html -->
+<!-- SLIDE: SMB Dialect - SMB 3.1.1 -->
+<section>
+  <h2><i class="fa-solid fa-lock highlight-htb"></i> SMB 3.1.1 (Preauth Integrity &amp; QUIC)</h2>
+
+  <div style="max-width: 900px; margin: 2rem auto 0 auto; text-align: left;">
+    <div style="margin-bottom: 1.4rem;">
+      <span class="cyber-badge badge-htb" style="font-size: 0.9rem;">DIALECT CODE: 0x0311 / MODERN DEFAULT</span>
+    </div>
+
+    <!-- Minimal Bullet List -->
+    <div class="cyber-card secure" style="margin-bottom: 1.2rem;">
+      <div class="card-title">
+        <span class="cyber-badge badge-htb">NEXT-GEN SECURITY</span> Modern Default Protocol
+      </div>
+      <ul class="secure-list" style="font-size: 0.92em; line-height: 1.55; margin-bottom: 0;">
+        <li><strong>Preauthentication Integrity (SHA-512):</strong> Hashes early handshake packets to prevent MitM tampering.</li>
+        <li><strong>Advanced GCM Ciphers:</strong> Upgraded encryption to <strong>AES-128-GCM</strong> and <strong>AES-256-GCM</strong>.</li>
+        <li><strong>SMB over QUIC (UDP 443):</strong> Wraps SMB inside TLS 1.3 QUIC for secure internet access without a VPN.</li>
+      </ul>
+    </div>
+
+    <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--htb-green); background: rgba(159, 239, 0, 0.08); border: 1px solid var(--htb-green); border-radius: 6px; padding: 0.7rem 1rem;">
+      <i class="fa-solid fa-shield-check"></i> <strong>Current Standard:</strong> Default protocol for Windows 10/11 and Windows Server 2016+.
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_features.html -->
+<!-- SLIDE: Modern SMB Features -->
+<section>
+  <h2><i class="fa-solid fa-layer-group highlight-htb"></i> Modern SMB Features</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1.05fr 0.95fr; gap: 1.2rem; align-items: center;">
+    <!-- Left Column: 4-Quadrant Features Infographic -->
+    <div style="display: flex; align-items: center; justify-content: center;">
+      <img src="media/smb_features.jpg" alt="Modern SMB Features Infographic" style="max-height: 430px; width: 100%; object-fit: contain; display: block; border-radius: 8px;">
+    </div>
+
+    <!-- Right Column: 4 Clean Feature Categories -->
+    <div style="display: flex; flex-direction: column; gap: 0.75rem; text-align: left;">
+      <!-- Category 1: Security & Auth -->
+      <div style="border-left: 2px solid var(--htb-green); padding-left: 0.8rem;">
+        <div style="margin-bottom: 0.25rem;">
+          <span class="cyber-badge badge-htb"><i class="fa-solid fa-shield-halved"></i> SECURITY &amp; AUTH</span>
+        </div>
+        <p style="font-size: 0.83em; color: var(--text-main); margin: 0; line-height: 1.45;">
+          End-to-end AES encryption, packet signing, NTLM blocking, and authentication rate limiting.
+        </p>
+      </div>
+
+      <!-- Category 2: Networking & Connectivity -->
+      <div style="border-left: 2px solid var(--accent-cyan); padding-left: 0.8rem;">
+        <div style="margin-bottom: 0.25rem;">
+          <span class="cyber-badge badge-cyan"><i class="fa-solid fa-network-wired"></i> CONNECTIVITY</span>
+        </div>
+        <p style="font-size: 0.83em; color: var(--text-main); margin: 0; line-height: 1.45;">
+          Standard TCP, <strong>SMB over QUIC</strong> (secure internet without VPN), and RDMA for high-performance datacenters.
+        </p>
+      </div>
+
+      <!-- Category 3: Performance -->
+      <div style="border-left: 2px solid var(--accent-purple); padding-left: 0.8rem;">
+        <div style="margin-bottom: 0.25rem;">
+          <span class="cyber-badge badge-purple"><i class="fa-solid fa-gauge-high"></i> PERFORMANCE</span>
+        </div>
+        <p style="font-size: 0.83em; color: var(--text-main); margin: 0; line-height: 1.45;">
+          Optimize transfer speeds and reduce network overhead via compression, bandwidth limits, directory caching, and WAN optimizations.
+        </p>
+      </div>
+
+      <!-- Category 4: Management & Monitoring -->
+      <div style="border-left: 2px solid var(--accent-red); padding-left: 0.8rem;">
+        <div style="margin-bottom: 0.25rem;">
+          <span class="cyber-badge badge-red"><i class="fa-solid fa-terminal"></i> MANAGEMENT</span>
+        </div>
+        <p style="font-size: 0.83em; color: var(--text-main); margin: 0; line-height: 1.45;">
+          Using PowerShell, admins can control <em>dialect versions</em> (SMB 2/3) and monitor real-time performance.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_netbios.html -->
+<!-- SLIDE: What is NetBIOS & Port 139 vs Port 445 -->
+<section>
+  <h2><i class="fa-solid fa-radio highlight-htb"></i> NetBIOS &amp; Port 139 vs. Port 445</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr; gap: 1.2rem; align-items: stretch; text-align: left; margin-bottom: 1.1rem;">
+    <!-- Left: What is NetBIOS? -->
+    <div class="cyber-card">
+      <div class="card-title">
+        <span class="cyber-badge badge-htb">IBM 1980s</span> What is NetBIOS?
+      </div>
+      <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.5rem;">
+        <strong>NetBIOS</strong> (Network Basic Input/Output System) was created by IBM for early local area networks before TCP/IP became standard.
+      </p>
+      <ul style="font-size: 0.82em; line-height: 1.45; margin-bottom: 0;">
+        <li><strong>Computer Naming:</strong> Locating machines using 15-character names (e.g. <code>OFFICE-PC1</code>).</li>
+        <li><strong>Session Management:</strong> Enabling inter-app data transfer over LANs.</li>
+      </ul>
+    </div>
+
+    <!-- Right: NBT vs Direct SMB -->
+    <div class="cyber-card">
+      <div class="card-title">
+        <span class="cyber-badge badge-cyan">EVOLUTION</span> NBT (139) ➔ Direct SMB (445)
+      </div>
+      <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.4rem;">
+        When TCP/IP won, Microsoft wrapped NetBIOS in TCP/IP (<strong>NBT</strong>) on <strong>Port 139</strong>.
+      </p>
+      <p style="font-size: 0.83em; line-height: 1.45; color: var(--text-muted); margin-bottom: 0;">
+        Starting with Windows 2000, Microsoft removed the noisy NetBIOS middleman entirely, moving to <strong>Direct SMB on TCP Port 445</strong>.
+      </p>
+    </div>
+  </div>
+
+  <!-- Architecture Flow Comparison Box -->
+  <div style="background: var(--htb-bg-terminal); border: 1px solid var(--htb-border); border-radius: 8px; padding: 0.8rem 1.2rem; font-family: var(--font-mono); font-size: 0.8em; margin-bottom: 0.9rem; text-align: left;">
+    <div style="margin-bottom: 0.4rem; color: var(--accent-red);">
+      <strong>OLD WAY (Port 139):</strong> [ SMB Protocol ] ➔ [ NetBIOS Layer (NBT) ] ➔ [ TCP/IP Port 139 ]
+    </div>
+    <div style="color: var(--htb-green);">
+      <strong>MODERN WAY (Port 445):</strong> [ SMB Protocol ] ---------------------------> [ Direct TCP Port 445 ]
+    </div>
+  </div>
+
+  <!-- Analogy Box -->
+  <div style="background: rgba(159, 239, 0, 0.08); border: 1px solid rgba(159, 239, 0, 0.25); border-radius: 6px; padding: 0.7rem 1rem; font-size: 0.82em; text-align: left; color: #ffffff;">
+    <strong style="color: var(--htb-green); font-family: var(--font-mono);">💡 Real-World Analogy:</strong>
+    <strong>NetBIOS (Port 139)</strong> is like calling through an old switchboard operator where you yell names into a room.<br>
+    <strong>Direct SMB (Port 445)</strong> is like dialing someone's direct phone number over a clean, high-speed fiber line.
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_transports.html -->
+<!-- SLIDE: SMB Transport Protocols -->
+<section>
+  <h2><i class="fa-solid fa-network-wired highlight-htb"></i> SMB Transport Protocols</h2>
+
+  <div style="text-align: left; margin-bottom: 1.1rem; color: var(--text-muted); font-size: 0.95em;">
+    The <strong>SMB 2 / SMB 3</strong> protocol suite supports 4 underlying transport mechanisms tailored for different network environments:
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; text-align: left;">
+    <!-- Transport 1: Direct TCP -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">TCP 445</span> Direct TCP
+        </div>
+        <p style="font-size: 0.84em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
+          The default standard transport for modern LAN file sharing, operating directly over reliable connection-oriented TCP.
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.5rem;">
+        <i class="fa-solid fa-server"></i> Standard LAN Protocol Default
+      </div>
+    </div>
+
+    <!-- Transport 2: NetBIOS over TCP -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-red">TCP 139</span> NetBIOS over TCP (NBT)
+        </div>
+        <p style="font-size: 0.84em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
+          Legacy transport layer providing backwards compatibility for older operating systems and NetBIOS name resolution.
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-red); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.5rem;">
+        <i class="fa-solid fa-clock-rotate-left"></i> Legacy Backward Compatibility
+      </div>
+    </div>
+
+    <!-- Transport 3: RDMA -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">SMB DIRECT</span> RDMA Transport
+        </div>
+        <p style="font-size: 0.84em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
+          <strong>Remote Direct Memory Access</strong> allows ultra-low latency, high-throughput memory transfers in enterprise datacenters with zero CPU overhead.
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.5rem;">
+        <i class="fa-solid fa-bolt"></i> Datacenter &amp; SAN Performance
+      </div>
+    </div>
+
+    <!-- Transport 4: SMB over QUIC -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">UDP 443</span> SMB over QUIC
+        </div>
+        <p style="font-size: 0.84em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
+          Operates over UDP 443 with TLS 1.3 encryption, enabling secure mobile file access over untrusted networks <strong>without requiring a VPN</strong>.
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.5rem;">
+        <i class="fa-solid fa-lock"></i> VPN-less Remote File Access
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_unc_syntax.html -->
+<!-- SLIDE: UNC Path Syntax -->
+<section>
+  <h2><i class="fa-solid fa-folder-network highlight-htb"></i> UNC Path Syntax: <code>\\server\share</code></h2>
+
+  <div style="text-align: left; margin-bottom: 1.2rem; color: var(--text-muted); font-size: 0.95em;">
+    <strong>Universal Naming Convention (UNC)</strong> is the standard syntax Windows uses to identify files and printers across a network.
+  </div>
+
+  <!-- Syntax Breakdown Container -->
+  <div style="background: var(--htb-bg-terminal); border: 1px solid var(--htb-border); border-radius: 8px; padding: 1.2rem 1.5rem; margin-bottom: 1.4rem; text-align: center;">
+    <div style="font-family: var(--font-mono); font-size: 1.6em; font-weight: 700; color: #ffffff; letter-spacing: 0.05em; margin-bottom: 0.8rem;">
+      <span style="color: var(--accent-cyan);">\\</span><span style="color: var(--htb-green);">FILE-SERVER</span><span style="color: var(--accent-cyan);">\</span><span style="color: var(--accent-purple);">SharedDocs</span>
+    </div>
+
+    <!-- 3 Part Description Grid -->
+    <div style="display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 1rem; text-align: left; font-size: 0.85em;">
+      <div style="border-top: 2px solid var(--accent-cyan); padding-top: 0.5rem;">
+        <strong style="color: var(--accent-cyan); font-family: var(--font-mono);">\\ Network Trigger</strong>
+        <p style="color: var(--text-muted); margin: 0.2rem 0 0 0;">Tells Windows: <em>"Look outside this PC onto the network."</em></p>
+      </div>
+
+      <div style="border-top: 2px solid var(--htb-green); padding-top: 0.5rem;">
+        <strong style="color: var(--htb-green); font-family: var(--font-mono);">FILE-SERVER Target</strong>
+        <p style="color: var(--text-muted); margin: 0.2rem 0 0 0;">Hostname or IP address (e.g. <code>192.168.1.10</code>).</p>
+      </div>
+
+      <div style="border-top: 2px solid var(--accent-purple); padding-top: 0.5rem;">
+        <strong style="color: var(--accent-purple); font-family: var(--font-mono);">SharedDocs Share</strong>
+        <p style="color: var(--text-muted); margin: 0.2rem 0 0 0;">Exposed folder or resource on remote machine.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Local vs UNC Comparison Cards -->
+  <div class="grid-2" style="gap: 1.2rem; align-items: stretch; text-align: left;">
+    <div class="cyber-card">
+      <div class="card-title"><span class="cyber-badge badge-htb">LOCAL PATH</span> <code>C:\Documents</code></div>
+      <p style="font-size: 0.85em; color: var(--text-main); margin: 0; line-height: 1.48;">
+        Opening a file on your local disk is like opening your personal desk drawer in your office.
+      </p>
+    </div>
+
+    <div class="cyber-card">
+      <div class="card-title"><span class="cyber-badge badge-cyan">UNC NETWORK PATH</span> <code>\\SERVER\Share</code></div>
+      <p style="font-size: 0.85em; color: var(--text-main); margin: 0; line-height: 1.48;">
+        Asking the central receptionist (<code>SERVER</code>) for a document from the company filing room (<code>Share</code>).
+      </p>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_tree_concept.html -->
+<!-- SLIDE: Understanding Trees & Tree Connect -->
+<section>
+  <h2><i class="fa-solid fa-sitemap highlight-htb"></i> Understanding "Trees" &amp; Tree Connect</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr; gap: 1.2rem; align-items: stretch; text-align: left;">
+    <!-- Left: What is a Tree? -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">FILE HIERARCHY</span> What is a "Tree"?
+        </div>
+        <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
+          In operating systems, file directories are structured as <strong>hierarchical trees</strong> branching from a root share.
+        </p>
+
+        <div style="background: var(--htb-bg-terminal); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 0.6rem 0.8rem; font-family: var(--font-mono); font-size: 0.78em; color: var(--htb-green);">
+          <div>Root (\SharedDocs)</div>
+          <div style="margin-left: 0.8rem; color: var(--accent-cyan);">├── 📁 Marketing</div>
+          <div style="margin-left: 1.6rem; color: var(--text-muted);">│ └── 📄 Budget.xlsx</div>
+          <div style="margin-left: 0.8rem; color: var(--accent-purple);">└── 📁 Reports</div>
+          <div style="margin-left: 1.6rem; color: var(--text-muted);">└── 📄 Q1.pdf</div>
+        </div>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.6rem;">
+        <i class="fa-solid fa-tree"></i> Share Root = Tree Handle Base
+      </div>
+    </div>
+
+    <!-- Right: SMB2 TREE_CONNECT -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">PROTOCOL STEP</span> SMB2 <code>TREE_CONNECT</code>
+        </div>
+        <ul style="font-size: 0.83em; line-height: 1.48; margin-bottom: 0.6rem;">
+          <li><strong>Request:</strong> Client asks to mount <code>\\SERVER\Share</code> or <code>\\SERVER\IPC$</code>.</li>
+          <li><strong>Permission Check:</strong> Server validates share &amp; NTFS permissions.</li>
+          <li><strong>Tree ID (TID):</strong> Server returns a unique <strong>TID handle</strong> required for all subsequent file I/O operations.</li>
+        </ul>
+      </div>
+
+      <div style="background: rgba(45, 226, 230, 0.08); border: 1px solid rgba(45, 226, 230, 0.25); border-radius: 6px; padding: 0.6rem 0.8rem; font-size: 0.82em; color: #fff;">
+        <strong style="color: var(--accent-cyan); font-family: var(--font-mono);">💡 Building Analogy:</strong>
+        Session Setup = Showing your ID at the gate. Tree Connect = Swiping into <strong>Building B</strong> &amp; getting a wristband (<strong>Tree ID</strong>) to open doors inside.
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_connection_lifecycle.html -->
+<!-- SLIDE: Interactive SMB Connection Lifecycle & Visual Windows OS Graphic Simulator -->
+<section>
+  <h2><i class="fa-solid fa-arrows-split-up-and-left highlight-htb"></i> SMB Lifecycle &amp; Windows OS State</h2>
+
+  <!-- Top Step Selection Navigation Bar -->
+  <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.8rem; flex-wrap: wrap;">
+    <button id="smb-step-btn-0" class="sim-btn" onclick="window.smblifecycleSim.setStep(0)">1. NEGOTIATE</button>
+    <button id="smb-step-btn-1" class="sim-btn" onclick="window.smblifecycleSim.setStep(1)">2. SESSION_SETUP</button>
+    <button id="smb-step-btn-2" class="sim-btn" onclick="window.smblifecycleSim.setStep(2)">3. TREE_CONNECT</button>
+    <button id="smb-step-btn-3" class="sim-btn" onclick="window.smblifecycleSim.setStep(3)">4. CREATE</button>
+    <button id="smb-step-btn-4" class="sim-btn" onclick="window.smblifecycleSim.setStep(4)">5. READ / WRITE</button>
+    <button id="smb-step-btn-5" class="sim-btn" onclick="window.smblifecycleSim.setStep(5)">6. CLOSE</button>
+  </div>
+
+  <div class="grid-2" style="grid-template-columns: 1.05fr 0.95fr; gap: 1.1rem; align-items: stretch; text-align: left;">
+    
+    <!-- Left Column: Interactive UML Sequence Diagram -->
+    <div style="background: var(--htb-bg-terminal); border: 1px solid var(--htb-border); border-radius: 8px; padding: 0.9rem 0.8rem; box-shadow: 0 0 20px rgba(0,0,0,0.6); display: flex; flex-direction: column; justify-content: space-between;">
+      
+      <svg viewBox="0 0 500 420" style="width: 100%; height: auto; display: block; font-family: var(--font-mono);">
+        <defs>
+          <marker id="arr-r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#2de2e6" />
+          </marker>
+          <marker id="arr-l" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#9FEF00" />
+          </marker>
+        </defs>
+
+        <!-- Lifeline Headers -->
+        <rect x="30" y="10" width="110" height="32" rx="4" fill="#132238" stroke="#2de2e6" stroke-width="1.5"/>
+        <text x="85" y="31" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">Client</text>
+
+        <rect x="360" y="10" width="110" height="32" rx="4" fill="#132238" stroke="#9FEF00" stroke-width="1.5"/>
+        <text x="415" y="31" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">Server</text>
+
+        <!-- Vertical Lifelines -->
+        <line x1="85" y1="42" x2="85" y2="400" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3" />
+        <line x1="415" y1="42" x2="415" y2="400" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3" />
+
+        <!-- SVG STEP 0: NEGOTIATE -->
+        <g id="smb-svg-step-0" style="cursor: pointer; transition: all 0.3s;" onclick="window.smblifecycleSim.setStep(0)">
+          <line x1="85" y1="65" x2="405" y2="75" stroke="#2de2e6" stroke-width="2" marker-end="url(#arr-r)" />
+          <text x="250" y="67" fill="#2de2e6" font-size="9.5" text-anchor="middle">1a. SMB2 NEGOTIATE Request</text>
+          <line x1="415" y1="88" x2="95" y2="98" stroke="#9FEF00" stroke-width="2" marker-end="url(#arr-l)" />
+          <text x="250" y="90" fill="#9FEF00" font-size="9.5" text-anchor="middle">1b. SMB2 NEGOTIATE Response</text>
+        </g>
+
+        <!-- SVG STEP 1: SESSION_SETUP -->
+        <g id="smb-svg-step-1" style="cursor: pointer; transition: all 0.3s;" onclick="window.smblifecycleSim.setStep(1)">
+          <line x1="85" y1="120" x2="405" y2="130" stroke="#2de2e6" stroke-width="2" marker-end="url(#arr-r)" />
+          <text x="250" y="122" fill="#2de2e6" font-size="9.5" text-anchor="middle">2a. SESSION_SETUP Request</text>
+          <line x1="415" y1="143" x2="95" y2="153" stroke="#9FEF00" stroke-width="2" marker-end="url(#arr-l)" />
+          <text x="250" y="145" fill="#9FEF00" font-size="9.5" text-anchor="middle">2b. SESSION_SETUP Resp (SessionId)</text>
+        </g>
+
+        <!-- SVG STEP 2: TREE_CONNECT -->
+        <g id="smb-svg-step-2" style="cursor: pointer; transition: all 0.3s;" onclick="window.smblifecycleSim.setStep(2)">
+          <line x1="85" y1="175" x2="405" y2="185" stroke="#2de2e6" stroke-width="2" marker-end="url(#arr-r)" />
+          <text x="250" y="177" fill="#2de2e6" font-size="9.5" text-anchor="middle">3a. TREE_CONNECT Request</text>
+          <line x1="415" y1="198" x2="95" y2="208" stroke="#9FEF00" stroke-width="2" marker-end="url(#arr-l)" />
+          <text x="250" y="200" fill="#9FEF00" font-size="9.5" text-anchor="middle">3b. TREE_CONNECT Resp (TreeId / TID)</text>
+        </g>
+
+        <!-- SVG STEP 3: CREATE -->
+        <g id="smb-svg-step-3" style="cursor: pointer; transition: all 0.3s;" onclick="window.smblifecycleSim.setStep(3)">
+          <line x1="85" y1="230" x2="405" y2="240" stroke="#2de2e6" stroke-width="2" marker-end="url(#arr-r)" />
+          <text x="250" y="232" fill="#2de2e6" font-size="9.5" text-anchor="middle">4a. CREATE Request (\Report.docx)</text>
+          <line x1="415" y1="253" x2="95" y2="263" stroke="#9FEF00" stroke-width="2" marker-end="url(#arr-l)" />
+          <text x="250" y="255" fill="#9FEF00" font-size="9.5" text-anchor="middle">4b. CREATE Response (FileId / FID)</text>
+        </g>
+
+        <!-- SVG STEP 4: READ / WRITE -->
+        <g id="smb-svg-step-4" style="cursor: pointer; transition: all 0.3s;" onclick="window.smblifecycleSim.setStep(4)">
+          <line x1="85" y1="285" x2="405" y2="295" stroke="#2de2e6" stroke-width="2" marker-end="url(#arr-r)" />
+          <text x="250" y="287" fill="#2de2e6" font-size="9.5" text-anchor="middle">5a. READ / WRITE Request</text>
+          <line x1="415" y1="308" x2="95" y2="318" stroke="#9FEF00" stroke-width="2" marker-end="url(#arr-l)" />
+          <text x="250" y="310" fill="#9FEF00" font-size="9.5" text-anchor="middle">5b. READ / WRITE Resp (Payload Data)</text>
+        </g>
+
+        <!-- SVG STEP 5: CLOSE -->
+        <g id="smb-svg-step-5" style="cursor: pointer; transition: all 0.3s;" onclick="window.smblifecycleSim.setStep(5)">
+          <line x1="85" y1="340" x2="405" y2="350" stroke="#2de2e6" stroke-width="2" marker-end="url(#arr-r)" />
+          <text x="250" y="342" fill="#2de2e6" font-size="9.5" text-anchor="middle">6a. CLOSE Request (FileId)</text>
+          <line x1="415" y1="363" x2="95" y2="373" stroke="#9FEF00" stroke-width="2" marker-end="url(#arr-l)" />
+          <text x="250" y="365" fill="#9FEF00" font-size="9.5" text-anchor="middle">6b. CLOSE Response (Handle Freed)</text>
+        </g>
+      </svg>
+
+      <!-- Dynamic Message Bar Below Diagram -->
+      <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 0.4rem 0.6rem; font-family: var(--font-mono); font-size: 0.72rem; margin-top: 0.4rem;">
+        <div id="smb-seq-client-msg" style="color: var(--accent-cyan); margin-bottom: 0.2rem;">Client Request: SMB2 NEGOTIATE Request</div>
+        <div id="smb-seq-server-msg" style="color: var(--htb-green);">Server Response: SMB2 NEGOTIATE Response</div>
+      </div>
+    </div>
+
+    <!-- Right Column: Interactive Visual Windows OS Graphics -->
+    <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 8px; padding: 1.1rem; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; margin-bottom: 0.8rem;">
+          <h3 id="smb-os-step-title" style="font-size: 1.05rem; margin: 0; color: #fff;">Step 1: SMB2 NEGOTIATE</h3>
+          <span id="smb-os-step-badge" class="cyber-badge badge-cyan">NEGOTIATION</span>
+        </div>
+
+        <!-- Visual Windows OS Graphic Component Container -->
+        <div id="smb-os-graphic-box" style="margin-bottom: 0.8rem;">
+          <!-- Rendered dynamically by smb-lifecycle-sim.js -->
+        </div>
+
+        <!-- OS Internal Component -->
+        <div style="margin-bottom: 0.6rem;">
+          <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Windows Subsystem / Kernel Driver</div>
+          <div id="smb-os-component" style="font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; color: var(--accent-cyan); margin-top: 0.15rem;">
+            mrxsmb.sys / rdbss.sys (Redirector Subsystem)
+          </div>
+        </div>
+
+        <!-- OS Description -->
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Windows OS Execution Details</div>
+          <p id="smb-os-details" style="font-size: 0.81rem; color: var(--text-main); margin: 0.2rem 0 0 0; line-height: 1.45;">
+            Windows kernel network redirector driver initiates TCP socket connection and negotiates SMB 3.1.1 features and encryption parameters.
+          </p>
+        </div>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.5rem; margin-top: 0.6rem;">
+        <i class="fa-solid fa-desktop highlight-htb"></i> Windows OS Graphical State Visualizer
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Include Interactive Simulator Logic -->
+<script src="js/smb-lifecycle-sim.js"></script>
+
+      <!-- Loaded from slides/smb_data_operations.html -->
+<!-- SLIDE: SMB Data Operations & File Management -->
+<section>
+  <h2><i class="fa-solid fa-file-export highlight-htb"></i> Data Operations &amp; File Management</h2>
+
+  <div style="text-align: left; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.95em;">
+    Once a <code>FileId</code> (FID) handle is obtained, SMB uses specific opcodes for data transfer and metadata management:
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; text-align: left;">
+    <!-- Communication 1: Read & Write -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">DATA TRANSFER</span> <code>SMB2 READ</code> &amp; <code>WRITE</code>
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.45; color: var(--text-main); margin-bottom: 0.4rem;">
+          Transfers file contents or IPC payload bytes using <code>SessionId</code>, <code>TreeId</code>, <code>FileId</code>, Byte Offset, and Length.
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-right-left"></i> Direct Payload Byte Streaming
+      </div>
+    </div>
+
+    <!-- Communication 2: Directory Query -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">DIRECTORY LIST</span> <code>QUERY_DIRECTORY</code>
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.45; color: var(--text-main); margin-bottom: 0.4rem;">
+          Lists files and subdirectories (equivalent to <code>dir</code> / <code>ls</code>) matching search patterns (e.g. <code>*.docx</code>).
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-folder-tree"></i> Directory Tree Enumeration
+      </div>
+    </div>
+
+    <!-- Communication 3: Metadata Query & Set -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">METADATA</span> <code>QUERY_INFO</code> &amp; <code>SET_INFO</code>
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.45; color: var(--text-main); margin-bottom: 0.4rem;">
+          Retrieves or modifies file metadata, file sizes, creation timestamps, and NTFS Access Control Lists (ACLs).
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-shield-halved"></i> File Attributes &amp; ACL Security
+      </div>
+    </div>
+
+    <!-- Communication 4: Lock & Close -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-red">TEARDOWN</span> <code>SMB2 CLOSE</code> &amp; <code>LOCK</code>
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.45; color: var(--text-main); margin-bottom: 0.4rem;">
+          Locks specific file byte-ranges to prevent multi-user race conditions, and closes handles to free server memory.
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-red); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-lock"></i> Concurrency Control &amp; Cleanup
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_advanced_comms.html -->
+<!-- SLIDE: Advanced SMB Communications -->
+<section>
+  <h2><i class="fa-solid fa-bolt highlight-htb"></i> Advanced SMB Communications</h2>
+
+  <div class="grid-3" style="gap: 1.1rem; align-items: stretch; text-align: left;">
+    <!-- Communication 1: IPC & IOCTL -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">IPC &amp; IOCTL</span> Named Pipe Transact
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
+          Connects to <code>IPC$</code> and sends <code>SMB2 IOCTL</code> / <code>WRITE</code> requests to named pipes (e.g. <code>\pipe\srvsvc</code>) to carry MS-RPC remote execution data.
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-terminal"></i> Remote Procedure Execution
+      </div>
+    </div>
+
+    <!-- Communication 2: Compound Requests -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">PERFORMANCE</span> Compound Requests
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
+          Bundles multiple commands into a <strong>single TCP packet</strong> (e.g., <code>CREATE</code> + <code>WRITE</code> + <code>CLOSE</code> in 1 RTT instead of 3).
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-gauge-high"></i> Latency &amp; Overhead Reduction
+      </div>
+    </div>
+
+    <!-- Communication 3: Keep-Alive & Leasing -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">CONTROL</span> Heartbeat &amp; Leasing
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
+          <code>SMB2 ECHO</code> maintains idle TCP sockets across firewalls. <code>LEASE_BREAK</code> instructs clients to flush local cache when file conflicts occur.
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
+        <i class="fa-solid fa-heartbeat"></i> Socket &amp; Cache State Control
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_io_abstraction.html -->
+<!-- SLIDE: Utilizing File Sharing for More Overview -->
+<section>
+  <h2><i class="fa-solid fa-layer-group highlight-htb"></i> Utilizing "File Sharing" for More</h2>
+
+  <div style="text-align: left; margin-bottom: 1.1rem; color: var(--text-muted); font-size: 0.95em;">
+    Because Windows abstracts memory streams, hardware devices, and authentication into <strong>File Objects</strong>, SMB is leveraged for far more than basic file storage:
+  </div>
+
+  <div class="grid-3" style="gap: 1.1rem; align-items: stretch; text-align: left;">
+    <!-- 1. IPC$ & Named Pipes -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">IPC$ SHARES</span> Named Pipes &amp; MS-RPC
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
+          Connecting to the <code>IPC$</code> share grants access to virtual <strong>Named Pipes</strong> (shared inter-process memory exposed as files).
+        </p>
+        <ul style="font-size: 0.8em; line-height: 1.4; color: var(--text-muted); margin-bottom: 0;">
+          <li>Carries <strong>MS-RPC</strong> requests across the network.</li>
+          <li>Powers remote execution tools like <code>PsExec</code> &amp; <code>rpcclient</code>.</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.6rem;">
+        <i class="fa-solid fa-terminal"></i> Inter-Process Communication
+      </div>
+    </div>
+
+    <!-- 2. Network Device Communication (Printers) -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">PERIPHERALS</span> Network Printers
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
+          To the Windows Print Spooler Service, a network printer is simply an <strong>I/O File Destination</strong>.
+        </p>
+        <ul style="font-size: 0.8em; line-height: 1.4; color: var(--text-muted); margin-bottom: 0;">
+          <li>SMB opens a handle to the printer object.</li>
+          <li>Streams raw print bytes identical to <strong>saving a <code>.pdf</code> file</strong> to disk.</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.6rem;">
+        <i class="fa-solid fa-print"></i> Hardware Device I/O Control
+      </div>
+    </div>
+
+    <!-- 3. Credential Testing -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">SECURITY</span> Credential Testing
+        </div>
+        <p style="font-size: 0.83em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
+          Validating user credentials or password brute-forcing takes place during the <code>SESSION_SETUP</code> state.
+        </p>
+        <ul style="font-size: 0.8em; line-height: 1.4; color: var(--text-muted); margin-bottom: 0;">
+          <li>Tests NTLMv2 or Kerberos hashes wrapped in SPNEGO.</li>
+          <li>Validates user identity without needing to mount a physical disk share.</li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.6rem;">
+        <i class="fa-solid fa-key"></i> Session Setup Authentication
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_rpc_concept.html -->
+<!-- SLIDE: MS-RPC Concept -->
+<section>
+  <h2><i class="fa-solid fa-code-branch highlight-htb"></i> MS-RPC &amp; The RPC Concept</h2>
+
+  <div class="grid-2" style="grid-template-columns: 1.05fr 0.95fr; gap: 1.2rem; align-items: center;">
+    <!-- Left Column: RPC Diagram Image -->
+    <div style="display: flex; align-items: center; justify-content: center;">
+      <img src="media/rpc.webp" alt="RPC Architecture Diagram" style="max-height: 400px; width: 100%; object-fit: contain; display: block; border-radius: 8px;">
+    </div>
+
+    <!-- Right Column: Key RPC Concepts -->
+    <div style="display: flex; flex-direction: column; gap: 0.8rem; text-align: left;">
+      <div class="cyber-card">
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">WHAT IS RPC?</span> Action-Oriented Calls
+        </div>
+        <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
+          <strong>Remote Procedure Call (RPC)</strong> allows a computer program to execute a function on a remote machine as if it were a local function call.
+        </p>
+      </div>
+
+      <div class="cyber-card">
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">MS-RPC OVER SMB</span> <code>ncacn_np</code> Transport
+        </div>
+        <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.4rem;">
+          Microsoft RPC uses SMB Named Pipes (e.g. <code>\pipe\srvsvc</code>) as its transport layer, enabling tools like <code>PsExec</code> and <code>rpcclient</code>.
+        </p>
+      </div>
+
+      <div style="background: rgba(45, 226, 230, 0.08); border: 1px solid rgba(45, 226, 230, 0.25); border-radius: 6px; padding: 0.7rem 0.9rem; font-family: var(--font-mono); font-size: 0.78em; color: #fff;">
+        <span style="color: var(--accent-cyan);">Execution Flow:</span> Open Pipe ➔ Write RPC Request ➔ Read Execution Result.
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_rpc_vs_rest.html -->
+<!-- SLIDE: RPC vs REST API Comparison -->
+<section>
+  <h2><i class="fa-solid fa-code-compare highlight-htb"></i> RPC vs. REST API</h2>
+
+  <div style="max-width: 920px; margin: 1.5rem auto 0 auto; text-align: left;">
+    <!-- Shared Purpose Statement -->
+    <div style="background: rgba(159, 239, 0, 0.08); border: 1px solid rgba(159, 239, 0, 0.25); border-radius: 8px; padding: 1rem 1.4rem; text-align: center; margin-bottom: 2rem;">
+      <p style="font-size: 1.02em; color: #ffffff; margin: 0; line-height: 1.5;">
+        <i class="fa-solid fa-network-wired highlight-htb" style="margin-right: 0.5rem;"></i>
+        Both <strong>RPC</strong> and <strong>REST API</strong> enable two computers to talk to each other across a network.
+      </p>
+    </div>
+
+    <!-- 2 Column Difference Breakdown -->
+    <div class="grid-2" style="gap: 1.8rem;">
+      <!-- RPC: Function Focus -->
+      <div style="border-left: 3px solid var(--accent-purple); padding-left: 1.2rem;">
+        <div style="margin-bottom: 0.6rem;">
+          <span class="cyber-badge badge-purple" style="font-size: 0.88rem;"><i class="fa-solid fa-terminal"></i> RPC: Focus on Functions</span>
+        </div>
+        <p style="font-size: 1.05em; color: var(--accent-purple); font-weight: 700; margin-bottom: 0.4rem; font-family: var(--font-mono);">
+          <code>ExecuteFunction(data)</code>
+        </p>
+        <p style="font-size: 0.9em; color: var(--text-main); line-height: 1.5; margin: 0;">
+          Focuses on <strong>calling remote functions and executing actions</strong> on another machine as if it were local.
+        </p>
+      </div>
+
+      <!-- REST: Resource Focus -->
+      <div style="border-left: 3px solid var(--accent-cyan); padding-left: 1.2rem;">
+        <div style="margin-bottom: 0.6rem;">
+          <span class="cyber-badge badge-cyan" style="font-size: 0.88rem;"><i class="fa-solid fa-globe"></i> REST: Focus on Resources</span>
+        </div>
+        <p style="font-size: 1.05em; color: var(--accent-cyan); font-weight: 700; margin-bottom: 0.4rem; font-family: var(--font-mono);">
+          <code>GET /api/v1/resources/42</code>
+        </p>
+        <p style="font-size: 0.9em; color: var(--text-main); line-height: 1.5; margin: 0;">
+          Focuses on <strong>accessing and manipulating resources</strong> (data entities) using standard HTTP operations.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_credential_testing.html -->
+<!-- SLIDE: Credential Testing & Session Setup -->
+<section>
+  <h2><i class="fa-solid fa-key highlight-htb"></i> Credential Testing &amp; State Machine</h2>
+
+  <div style="text-align: left; margin-bottom: 1.1rem; color: var(--text-muted); font-size: 0.95em;">
+    Credential testing (brute-forcing or validating user passwords) takes place purely during the <strong>Session Setup phase</strong> of the SMB state machine.
+  </div>
+
+  <!-- State Machine Step Flow -->
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin-bottom: 1.3rem; text-align: left;">
+    <!-- Step 1 -->
+    <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.8rem 0.9rem;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-cyan); font-weight: 700; margin-bottom: 0.3rem;">STEP 1</div>
+      <div style="font-weight: 700; font-size: 0.9em; color: #fff; margin-bottom: 0.3rem;"><i class="fa-solid fa-plug"></i> TCP Handshake</div>
+      <p style="font-size: 0.78em; color: var(--text-muted); margin: 0; line-height: 1.4;">
+        Client establishes raw TCP connection to <strong>Port 445</strong>.
+      </p>
+    </div>
+
+    <!-- Step 2 -->
+    <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.8rem 0.9rem;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-yellow); font-weight: 700; margin-bottom: 0.3rem;">STEP 2</div>
+      <div style="font-weight: 700; font-size: 0.9em; color: #fff; margin-bottom: 0.3rem;"><i class="fa-solid fa-handshake"></i> SMB Negotiate</div>
+      <p style="font-size: 0.78em; color: var(--text-muted); margin: 0; line-height: 1.4;">
+        Client &amp; Server agree on SMB dialect (e.g. SMB 2.1 / 3.1.1).
+      </p>
+    </div>
+
+    <!-- Step 3 -->
+    <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.8rem 0.9rem;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--htb-green); font-weight: 700; margin-bottom: 0.3rem;">STEP 3</div>
+      <div style="font-weight: 700; font-size: 0.9em; color: #fff; margin-bottom: 0.3rem;"><i class="fa-solid fa-id-card"></i> Session Setup</div>
+      <p style="font-size: 0.78em; color: var(--text-muted); margin: 0; line-height: 1.4;">
+        Sends <strong>NTLM</strong> or <strong>Kerberos</strong> auth wrapped in SPNEGO payload.
+      </p>
+    </div>
+
+    <!-- Step 4 -->
+    <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.8rem 0.9rem;">
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-purple); font-weight: 700; margin-bottom: 0.3rem;">STEP 4</div>
+      <div style="font-weight: 700; font-size: 0.9em; color: #fff; margin-bottom: 0.3rem;"><i class="fa-solid fa-shield-halved"></i> Auth Response</div>
+      <p style="font-size: 0.78em; color: var(--text-muted); margin: 0; line-height: 1.4;">
+        Returns <code>STATUS_SUCCESS</code> or <code>LOGON_FAILURE</code> response.
+      </p>
+    </div>
+  </div>
+
+  <!-- Terminal Snippet -->
+  <div class="terminal-header">
+    <span class="terminal-dot dot-red"></span>
+    <span class="terminal-dot dot-yellow"></span>
+    <span class="terminal-dot dot-green"></span>
+    <span class="terminal-title">root@htb:~# nmap --script smb-brute -p 445 target.htb</span>
+  </div>
+  <pre><code class="language-text">| smb-brute:
+|   Accounts:
+|     administrator:Password123! => Valid Credentials (STATUS_SUCCESS)
+|_    guest:guest => Account Disabled (STATUS_ACCOUNT_DISABLED)</code></pre>
+</section>
+
       <!-- Loaded from slides/four_blocks.html -->
 <!-- SLIDE 3: The 4 Blocks of HTTP -->
 <section>
