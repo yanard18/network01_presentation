@@ -1,0 +1,67 @@
+<!-- SLIDE: The 6 Parallel TCP Connections Workaround -->
+<section>
+  <h2><i class="fa-solid fa-network-wired highlight-htb"></i> 6 Parallel TCP Lanes &amp; Port Mapping</h2>
+
+  <div style="text-align: left; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.93em;">
+    To bypass sequential Head-of-Line blocking, web browsers open <strong>up to 6 parallel TCP connections</strong>. Each lane assigns a unique client ephemeral source port connecting to server <strong>Port 80/443</strong>.
+  </div>
+
+  <!-- 6 Parallel Lanes Visualizer Container -->
+  <div style="background: var(--htb-bg-terminal); border: 1px solid var(--htb-border); border-radius: 8px; padding: 1.1rem 1.3rem; margin-bottom: 1rem; text-align: left; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+    
+    <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.4rem; margin-bottom: 0.7rem;">
+      <span style="color: var(--accent-cyan);"><i class="fa-solid fa-laptop"></i> CLIENT BROWSER (192.168.1.50)</span>
+      <span style="color: var(--text-muted);">6 PARALLEL TCP SOCKETS</span>
+      <span style="color: var(--htb-green);"><i class="fa-solid fa-server"></i> WEB SERVER (10.0.0.1:80)</span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 0.45rem; font-family: var(--font-mono); font-size: 0.78rem;">
+      <!-- Lane 1 -->
+      <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(45, 226, 230, 0.05); padding: 0.35rem 0.7rem; border-radius: 4px; border-left: 3px solid var(--accent-cyan);">
+        <span><strong style="color: var(--accent-cyan);">Lane 1:</strong> Port 51234</span>
+        <span style="color: var(--text-muted);">━━━ GET /index.html ━━━►</span>
+        <span>Dest Port 80 <span class="cyber-badge badge-cyan" style="font-size: 0.65rem;">Asset 1</span></span>
+      </div>
+
+      <!-- Lane 2 -->
+      <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(159, 239, 0, 0.05); padding: 0.35rem 0.7rem; border-radius: 4px; border-left: 3px solid var(--htb-green);">
+        <span><strong style="color: var(--htb-green);">Lane 2:</strong> Port 51235</span>
+        <span style="color: var(--text-muted);">━━━ GET /style.css ━━━►</span>
+        <span>Dest Port 80 <span class="cyber-badge badge-htb" style="font-size: 0.65rem;">Asset 2</span></span>
+      </div>
+
+      <!-- Lane 3 -->
+      <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(157, 78, 221, 0.05); padding: 0.35rem 0.7rem; border-radius: 4px; border-left: 3px solid var(--accent-purple);">
+        <span><strong style="color: var(--accent-purple);">Lane 3:</strong> Port 51236</span>
+        <span style="color: var(--text-muted);">━━━ GET /app.js ━━━━━━►</span>
+        <span>Dest Port 80 <span class="cyber-badge badge-purple" style="font-size: 0.65rem;">Asset 3</span></span>
+      </div>
+
+      <!-- Lane 4 -->
+      <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255, 183, 3, 0.05); padding: 0.35rem 0.7rem; border-radius: 4px; border-left: 3px solid var(--accent-yellow);">
+        <span><strong style="color: var(--accent-yellow);">Lane 4:</strong> Port 51237</span>
+        <span style="color: var(--text-muted);">━━━ GET /logo.png ━━━━►</span>
+        <span>Dest Port 80 <span class="cyber-badge badge-cyan" style="font-size: 0.65rem;">Asset 4</span></span>
+      </div>
+
+      <!-- Lane 5 -->
+      <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255, 46, 99, 0.05); padding: 0.35rem 0.7rem; border-radius: 4px; border-left: 3px solid var(--accent-red);">
+        <span><strong style="color: var(--accent-red);">Lane 5:</strong> Port 51238</span>
+        <span style="color: var(--text-muted);">━━━ GET /hero.jpg ━━━━►</span>
+        <span>Dest Port 80 <span class="cyber-badge badge-red" style="font-size: 0.65rem;">Asset 5</span></span>
+      </div>
+
+      <!-- Lane 6 -->
+      <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0, 245, 212, 0.05); padding: 0.35rem 0.7rem; border-radius: 4px; border-left: 3px solid #00f5d4;">
+        <span><strong style="color: #00f5d4;">Lane 6:</strong> Port 51239</span>
+        <span style="color: var(--text-muted);">━━━ GET /font.woff2 ━━►</span>
+        <span>Dest Port 80 <span class="cyber-badge badge-htb" style="font-size: 0.65rem;">Asset 6</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary Callout -->
+  <div style="background: rgba(255, 46, 99, 0.08); border: 1px solid var(--accent-red); border-radius: 6px; padding: 0.7rem 1rem; font-family: var(--font-mono); font-size: 0.78rem; text-align: left;">
+    <i class="fa-solid fa-triangle-exclamation highlight-red"></i> <strong>Overhead Flaw:</strong> Opening 6 parallel lanes required <strong>6 separate TCP 3-Way Handshakes</strong> (18 TCP control packets), causing high latency and server socket exhaustion.
+  </div>
+</section>

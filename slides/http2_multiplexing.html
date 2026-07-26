@@ -1,0 +1,70 @@
+<!-- SLIDE: HTTP/2 Multiplexing & Binary Framing Visualizer -->
+<section>
+  <h2><i class="fa-solid fa-layer-group highlight-htb"></i> 1 Single TCP Socket &amp; Binary Streams</h2>
+
+  <div style="text-align: left; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.93em;">
+    Unlike HTTP/1.x, HTTP/2 breaks requests into <strong>binary frames</strong> and multiplexes multiple bidirectional streams concurrently over <strong>1 single TCP connection</strong>.
+  </div>
+
+  <!-- Single TCP Connection Pipe Visualizer -->
+  <div style="background: var(--htb-bg-terminal); border: 2px solid var(--accent-purple); border-radius: 10px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; text-align: left; box-shadow: 0 0 25px rgba(157, 78, 221, 0.25);">
+    
+    <!-- Pipe Header -->
+    <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; margin-bottom: 0.9rem;">
+      <span style="color: var(--accent-cyan);"><i class="fa-solid fa-laptop"></i> CLIENT (Port 51234)</span>
+      <span style="color: var(--accent-purple);"><i class="fa-solid fa-pipe"></i> 1 SINGLE TCP CONNECTION (TLS 1.2/1.3)</span>
+      <span style="color: var(--htb-green);"><i class="fa-solid fa-server"></i> SERVER (Port 443)</span>
+    </div>
+
+    <!-- Interleaved Binary Streams inside 1 Pipe -->
+    <div style="display: flex; flex-direction: column; gap: 0.6rem; font-family: var(--font-mono); font-size: 0.78rem;">
+      <!-- Stream 1 -->
+      <div style="background: rgba(45, 226, 230, 0.06); border: 1px solid var(--accent-cyan); border-radius: 6px; padding: 0.45rem 0.8rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="color: var(--accent-cyan); font-weight: 700;">Stream 1 (HTML)</span>
+          <div style="display: flex; gap: 0.4rem;">
+            <span class="cyber-badge badge-cyan" style="font-size: 0.65rem;">HEADERS Frame (0x01)</span>
+            <span class="cyber-badge badge-cyan" style="font-size: 0.65rem;">DATA Frame (0x00)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stream 3 -->
+      <div style="background: rgba(159, 239, 0, 0.06); border: 1px solid var(--htb-green); border-radius: 6px; padding: 0.45rem 0.8rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="color: var(--htb-green); font-weight: 700;">Stream 3 (CSS)</span>
+          <div style="display: flex; gap: 0.4rem;">
+            <span class="cyber-badge badge-htb" style="font-size: 0.65rem;">HEADERS Frame (0x01)</span>
+            <span class="cyber-badge badge-htb" style="font-size: 0.65rem;">DATA Frame (0x00)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stream 5 -->
+      <div style="background: rgba(157, 78, 221, 0.06); border: 1px solid var(--accent-purple); border-radius: 6px; padding: 0.45rem 0.8rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="color: var(--accent-purple); font-weight: 700;">Stream 5 (JS App)</span>
+          <div style="display: flex; gap: 0.4rem;">
+            <span class="cyber-badge badge-purple" style="font-size: 0.65rem;">HEADERS Frame (0x01)</span>
+            <span class="cyber-badge badge-purple" style="font-size: 0.65rem;">DATA Frame (0x00)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Binary Frame Structure Breakdown -->
+    <div style="margin-top: 0.9rem; background: rgba(0,0,0,0.4); border: 1px dashed rgba(255,255,255,0.15); border-radius: 6px; padding: 0.6rem; text-align: center; font-size: 0.72rem; color: var(--text-muted);">
+      <strong style="color: #fff;">Binary Frame Header Structure (9 Bytes):</strong>
+      <span style="color: var(--accent-cyan);">Length (24b)</span> | 
+      <span style="color: var(--htb-green);">Type (8b)</span> | 
+      <span style="color: var(--accent-yellow);">Flags (8b)</span> | 
+      <span style="color: var(--accent-purple);">Stream ID (31b)</span> | 
+      <span style="color: #fff;">Payload Data...</span>
+    </div>
+  </div>
+
+  <!-- Comparison Summary Callout -->
+  <div style="background: rgba(159, 239, 0, 0.08); border: 1px solid var(--htb-green); border-radius: 6px; padding: 0.65rem 1rem; font-family: var(--font-mono); font-size: 0.78rem; text-align: left;">
+    <i class="fa-solid fa-bolt highlight-htb"></i> <strong>HTTP/2 Advantage:</strong> Replaces 6 separate TCP handshakes with <strong>1 single TCP connection</strong> and compresses headers using HPACK algorithm.
+  </div>
+</section>
