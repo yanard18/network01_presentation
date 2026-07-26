@@ -1,9 +1,9 @@
 <!-- SLIDE: SMB Transport Protocols -->
 <section>
-  <h2><i class="fa-solid fa-network-wired highlight-htb"></i> SMB Transport Protocols</h2>
+  <h2><i class="fa-solid fa-network-wired highlight-htb"></i> SMB Taşıma Protokolleri (Transports)</h2>
 
   <div style="text-align: left; margin-bottom: 1.1rem; color: var(--text-muted); font-size: 0.95em;">
-    The <strong>SMB 2 / SMB 3</strong> protocol suite supports 4 underlying transport mechanisms tailored for different network environments:
+    <strong>SMB 2 / SMB 3</strong> protokol ailesi, farklı ağ senaryoları için 4 temel <strong>transport</strong> mekanizmasını destekler:
   </div>
 
   <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; text-align: left;">
@@ -14,7 +14,7 @@
           <span class="cyber-badge badge-htb">TCP 445</span> Direct TCP
         </div>
         <p style="font-size: 0.84em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
-          The default standard transport for modern LAN file sharing, operating directly over reliable connection-oriented TCP.
+          Modern LAN dosya paylaşımı için güvenilir bağlantı yönelimli TCP üzerinde çalışan standart varsayılan taşıma katmanıdır.
         </p>
       </div>
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.5rem;">
@@ -29,7 +29,7 @@
           <span class="cyber-badge badge-red">TCP 139</span> NetBIOS over TCP (NBT)
         </div>
         <p style="font-size: 0.84em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
-          Legacy transport layer providing backwards compatibility for older operating systems and NetBIOS name resolution.
+          Eski işletim sistemleri ve NetBIOS name resolution için geriye dönük uyumluluk sağlayan legacy katmandır.
         </p>
       </div>
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-red); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.5rem;">
@@ -44,7 +44,7 @@
           <span class="cyber-badge badge-purple">SMB DIRECT</span> RDMA Transport
         </div>
         <p style="font-size: 0.84em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
-          <strong>Remote Direct Memory Access</strong> allows ultra-low latency, high-throughput memory transfers in enterprise datacenters with zero CPU overhead.
+          <strong>Remote Direct Memory Access</strong>, veri merkezlerinde sıfır CPU yükü ile ultra düşük gecikmeli bellek transferine izin verir.
         </p>
       </div>
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.5rem;">
@@ -59,7 +59,7 @@
           <span class="cyber-badge badge-cyan">UDP 443</span> SMB over QUIC
         </div>
         <p style="font-size: 0.84em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
-          Operates over UDP 443 with TLS 1.3 encryption, enabling secure mobile file access over untrusted networks <strong>without requiring a VPN</strong>.
+          TLS 1.3 şifrelemesi ile UDP 443 üzerinden çalışarak <strong>VPN gerektirmeden</strong> internet üzerinden güvenli dosya erişimi sunar.
         </p>
       </div>
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.5rem;">

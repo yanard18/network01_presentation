@@ -1,26 +1,26 @@
 <!-- SLIDE: HTTP/1.0 - Building Extensibility & Ephemeral Connections -->
 <section>
-  <h2><i class="fa-solid fa-code-branch highlight-htb"></i> HTTP/1.0 — Extensibility & Short-Lived Connections</h2>
+  <h2><i class="fa-solid fa-code-branch highlight-htb"></i> HTTP/1.0 — Genişletilebilirlik &amp; Kısa Ömürlü Bağlantılar</h2>
   
   <div class="grid-2">
     <div class="cyber-card">
-      <div class="card-title"><span class="cyber-badge badge-htb">HTTP/1.0</span> Key Features</div>
+      <div class="card-title"><span class="cyber-badge badge-htb">HTTP/1.0</span> Temel Özellikler (Key Features)</div>
       <ul>
-        <li>Introduced <strong>protocol versioning</strong> in requests (e.g. <code>HTTP/1.0</code>).</li>
-        <li>Sent a <strong>status code line</strong> in responses (e.g. <code>200 OK</code>).</li>
-        <li>Added <strong>HTTP Headers</strong> for metadata exchange.</li>
-        <li>Enabled non-HTML transmission via the <code>Content-Type</code> header.</li>
+        <li>İsteklerde (requests) <strong>protokol versiyonlaması</strong> (protocol versioning) tanıtıldı (ör. <code>HTTP/1.0</code>).</li>
+        <li>Yanıtlarda (responses) bir <strong>durum kodu satırı</strong> (status code line) gönderilmeye başlandı (ör. <code>200 OK</code>).</li>
+        <li>Metadata değişimi için <strong>HTTP Headers</strong> eklendi.</li>
+        <li><code>Content-Type</code> header'ı kullanılarak HTML harici (non-HTML) verilerin iletimi sağlandı.</li>
       </ul>
     </div>
 
     <div class="cyber-card threat">
-      <div class="card-title"><i class="fa-solid fa-triangle-exclamation highlight-red"></i> Short-Lived Connections (The Flaw)</div>
+      <div class="card-title"><i class="fa-solid fa-triangle-exclamation highlight-red"></i> Kısa Ömürlü Bağlantılar (The Flaw)</div>
       <p style="margin-bottom: 0.8rem;">
-        <strong>Default Behavior:</strong> Connection closes after <em>every single request/response pair</em>.
+        <strong>Default Behavior:</strong> Bağlantı, <em>her bir istek/yanıt çiftinden (request/response pair) sonra</em> kapatılır.
       </p>
       <ul class="threat-list">
-        <li>Fetching an HTML page with 5 images required <strong>6 separate TCP handshakes</strong>.</li>
-        <li>Huge latency penalty due to repeated SYN / SYN-ACK setup & teardown.</li>
+        <li>5 resim içeren bir HTML sayfasını getirmek (fetch) için <strong>6 ayrı TCP handshake</strong> gerekiyordu.</li>
+        <li>Sürekli tekrarlanan SYN / SYN-ACK bağlantı kurulumu (setup) ve kapanışı (teardown) nedeniyle devasa bir gecikme (latency) cezası yaşanıyordu.</li>
       </ul>
     </div>
   </div>

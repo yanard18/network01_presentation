@@ -1,6 +1,6 @@
 <!-- SLIDE: Routing Table & Longest Prefix Match (LPM) -->
 <section>
-  <h2><i class="fa-solid fa-table-list highlight-purple"></i> Routing Table & Longest Prefix Match (LPM)</h2>
+  <h2><i class="fa-solid fa-table-list highlight-purple"></i> Routing Table &amp; Longest Prefix Match (LPM)</h2>
   
   <div style="display: flex; flex-direction: column; gap: 0.9rem; align-items: center; margin-top: 0.3rem; text-align: left;">
     <!-- Centered PNG Image (Dark Blended Frame) -->
@@ -9,7 +9,7 @@
         <img src="media/ip_forwarding_table.png" alt="IP Forwarding Table Lookup Diagram" style="max-height: 210px; width: auto; max-width: 100%; object-fit: contain; filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));">
       </div>
       <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); margin-top: 0.4rem;">
-        Destination IP \(D = 192.168.1.50\) Forwarding Table Search & Mask Calculation
+        Hedef (Destination) IP \(D = 192.168.1.50\) Forwarding Table Araması ve Mask Hesaplaması
       </div>
     </div>
 
@@ -18,27 +18,27 @@
       <!-- Step 1 Card -->
       <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 8px; padding: 0.8rem 1rem;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
-          <span class="cyber-badge badge-purple">STEP 1: FINDING MATCHES</span>
+          <span class="cyber-badge badge-purple">ADIM 1: EŞLEŞMELERİ BULMA</span>
           <span class="cyber-badge badge-htb">BITWISE AND</span>
         </div>
         <ul style="font-size: 0.8em; color: #e2e8f0; margin: 0; padding-left: 1.1rem; line-height: 1.45;">
-          <li><strong>Entry 1 (0.0.0.0/0):</strong> 192.168.1.50 AND 0.0.0.0 = 0.0.0.0 <span style="color: var(--accent-yellow);">(Matches: 0 bits)</span></li>
-          <li><strong>Entry 2 (192.168.0.0/16):</strong> 192.168.1.50 AND 255.255.0.0 = 192.168.0.0 <span style="color: var(--accent-cyan);">(Matches: 16 bits)</span></li>
-          <li><strong>Entry 3 (192.168.1.0/24):</strong> 192.168.1.50 AND 255.255.255.0 = 192.168.1.0 <span style="color: var(--htb-green); font-weight:700;">(Matches: 24 bits)</span></li>
+          <li><strong>Entry 1 (0.0.0.0/0):</strong> 192.168.1.50 AND 0.0.0.0 = 0.0.0.0 <span style="color: var(--accent-yellow);">(Eşleşen: 0 bit)</span></li>
+          <li><strong>Entry 2 (192.168.0.0/16):</strong> 192.168.1.50 AND 255.255.0.0 = 192.168.0.0 <span style="color: var(--accent-cyan);">(Eşleşen: 16 bit)</span></li>
+          <li><strong>Entry 3 (192.168.1.0/24):</strong> 192.168.1.50 AND 255.255.255.0 = 192.168.1.0 <span style="color: var(--htb-green); font-weight:700;">(Eşleşen: 24 bit)</span></li>
         </ul>
       </div>
 
       <!-- Step 2 Card -->
       <div style="background: rgba(159,239,0,0.08); border: 1px solid var(--htb-green); border-radius: 8px; padding: 0.8rem 1rem;">
         <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;">
-          <span class="cyber-badge badge-htb">STEP 2: BEST ROUTE SELECTION</span>
-          <strong style="color: #fff; font-size: 0.9em;">Longest Prefix Match (LPM) Rule</strong>
+          <span class="cyber-badge badge-htb">ADIM 2: EN İYİ ROTA (ROUTE) SEÇİMİ</span>
+          <strong style="color: #fff; font-size: 0.9em;">Longest Prefix Match (LPM) Kuralı</strong>
         </div>
         <p style="font-size: 0.82em; color: #e2e8f0; margin: 0; line-height: 1.45;">
-          All three entries match, so the router compares matching bit counts: 
-          <strong style="color: var(--htb-green);">24 bits (\(m_3\)) > 16 bits (\(m_2\)) > 0 bits (\(m_1\))</strong>.
+          Her üç kayıt da eşleşir, bu nedenle router eşleşen bit sayılarını karşılaştırır: 
+          <strong style="color: var(--htb-green);">24 bit (\(m_3\)) > 16 bit (\(m_2\)) > 0 bit (\(m_1\))</strong>.
           <br>
-          ✔ <strong>Winning Route:</strong> Entry 3 (<code>192.168.1.0/24</code>) is selected because it has the most specific network mask!
+          ✔ <strong>Kazanan Route:</strong> Entry 3 (<code>192.168.1.0/24</code>) en spesifik ağ maskesine (network mask) sahip olduğu için seçilir!
         </p>
       </div>
     </div>

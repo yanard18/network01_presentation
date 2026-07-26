@@ -1,13 +1,13 @@
 <!-- SLIDE: What is a Router? -->
 <section>
-  <h2><i class="fa-solid fa-network-wired highlight-purple"></i> What is a Router?</h2>
+  <h2><i class="fa-solid fa-network-wired highlight-purple"></i> Router (Yönlendirici) Nedir?</h2>
   
   <div style="display: flex; flex-direction: column; gap: 0.9rem; margin-top: 0.4rem;">
     <!-- Top Showcase: Router Connecting Two Networks Diagram -->
     <div style="background: rgba(255, 255, 255, 0.95); padding: 12px; border-radius: 12px; border: 1px solid var(--htb-border); box-shadow: 0 0 25px rgba(168,85,247,0.3); text-align: center;">
       <img src="media/router-connecting-two-ip-networks.svg" alt="Router Connecting Two IP Networks" style="max-height: 210px; width: 100%; object-fit: contain;">
       <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.3rem;">
-        Figure 1: Router Joining Network A (172.16.1.0/24) & Network B (10.1.1.0/24)
+        Şekil 1: Network A (172.16.1.0/24) ve Network B'yi (10.1.1.0/24) Birleştiren Router
       </div>
     </div>
 
@@ -16,19 +16,19 @@
       <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 8px; padding: 0.8rem 1rem;">
         <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
           <span class="cyber-badge badge-purple">INTER-NETWORK</span>
-          <strong style="color: #fff; font-size: 0.95em;">Switch vs. Router Role</strong>
+          <strong style="color: #fff; font-size: 0.95em;">Switch vs. Router Rolü</strong>
         </div>
         <p style="font-size: 0.82em; color: #e2e8f0; margin: 0; line-height: 1.4;">
-          A <strong>Switch</strong> handles communication <em>within</em> a local Ethernet network (LAN). A <strong>Router</strong> joins completely separate IP networks together (LAN to ISP WAN, or Enterprise branches to Cloud).
+          Bir <strong>Switch</strong>, yerel bir Ethernet ağı (LAN) <em>içindeki</em> (within) iletişimi yönetir. Bir <strong>Router</strong> ise tamamen ayrı IP ağlarını (networks) birbirine bağlar (LAN'dan ISP WAN'a veya Kurumsal şubelerden Cloud'a).
         </p>
       </div>
 
       <div style="background: rgba(168,85,247,0.08); border: 1px solid var(--accent-purple); border-radius: 8px; padding: 0.8rem 1rem;">
         <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
-          <span class="cyber-badge badge-htb">KEY ARCHITECTURE NOTE</span>
+          <span class="cyber-badge badge-htb">TEMEL MİMARİ NOTU</span>
         </div>
         <p style="font-size: 0.82em; color: #fff; margin: 0; line-height: 1.4;">
-          End devices (PCs, servers) <strong>do not connect directly to a router</strong>. They connect to a switch, and the switch connects to a router interface!
+          Uç cihazlar (uç noktalar, sunucular) <strong>doğrudan bir router'a bağlanmazlar</strong>. Onlar bir switch'e bağlanır ve switch de bir router arayüzüne (interface) bağlanır!
         </p>
       </div>
     </div>

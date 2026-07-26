@@ -95,7 +95,7 @@ class ProtocolSimulator {
     const statusEl = document.getElementById('h2-status');
     if (statusEl) {
       statusEl.className = 'sim-status blocked';
-      statusEl.innerHTML = '<i class="fa-solid fa-lock"></i> TCP HOL BLOCKING: Packet #3 Dropped! Entire TCP Connection Frozen!';
+      statusEl.innerHTML = '<i class="fa-solid fa-lock"></i> TCP HOL BLOCKING: 3. Paket Düştü (Dropped)! Tüm TCP Bağlantısı Dondu (Frozen)!';
     }
 
     // Mark front-most packet as lost (Red)
@@ -131,7 +131,7 @@ class ProtocolSimulator {
     const statusEl = document.getElementById('h3-status');
     if (statusEl) {
       statusEl.className = 'sim-status active';
-      statusEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> QUIC INDEPENDENCE: Packet dropped on Stream 2! Streams 1 & 3 continue flowing!';
+      statusEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> QUIC INDEPENDENCE: Stream 2 üzerinde paket düştü! Stream 1 &amp; 3 akışına devam ediyor!';
     }
 
     // Find packet on lane 1 near middle, or create one if none exists
@@ -172,7 +172,7 @@ class ProtocolSimulator {
       this.h3Timeout = null;
       if (statusEl) {
         statusEl.className = 'sim-status normal';
-        statusEl.innerHTML = '<i class="fa-solid fa-diagram-project"></i> 3 Independent QUIC UDP Lanes Operating Normally';
+        statusEl.innerHTML = '<i class="fa-solid fa-diagram-project"></i> 3 Bağımsız QUIC UDP Şeridi Normal Çalışıyor';
       }
     }, 2500);
   }
@@ -198,13 +198,13 @@ class ProtocolSimulator {
     const h2Status = document.getElementById('h2-status');
     if (h2Status) {
       h2Status.className = 'sim-status normal';
-      h2Status.innerHTML = '<i class="fa-solid fa-network-wire"></i> Single TCP Channel Operating Normally';
+      h2Status.innerHTML = '<i class="fa-solid fa-network-wire"></i> Tek TCP Kanalı Normal Çalışıyor';
     }
 
     const h3Status = document.getElementById('h3-status');
     if (h3Status) {
       h3Status.className = 'sim-status normal';
-      h3Status.innerHTML = '<i class="fa-solid fa-diagram-project"></i> 3 Independent QUIC UDP Lanes Operating Normally';
+      h3Status.innerHTML = '<i class="fa-solid fa-diagram-project"></i> 3 Bağımsız QUIC UDP Şeridi Normal Çalışıyor';
     }
   }
 
@@ -243,7 +243,7 @@ class ProtocolSimulator {
       }
 
       if (p.element) {
-        p.element.style.left = `${p.pos}%`;
+        p.element.style.left = \`\${p.pos}%\`;
       }
     }
 
@@ -264,7 +264,7 @@ class ProtocolSimulator {
         const p = this.h2Packets[i];
         p.pos += this.speed * 0.4;
         if (p.element) {
-          p.element.style.left = `${p.pos}%`;
+          p.element.style.left = \`\${p.pos}%\`;
         }
         if (p.pos >= 92) {
           p.element && p.element.remove();

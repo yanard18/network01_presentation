@@ -1,21 +1,21 @@
 <!-- SLIDE: Interactive ARP Simulator -->
 <section>
-  <h2><i class="fa-solid fa-satellite-dish highlight-htb"></i> Interactive ARP Resolution Simulator</h2>
+  <h2><i class="fa-solid fa-satellite-dish highlight-htb"></i> İnteraktif ARP Çözümleme (Resolution) Simülatörü</h2>
 
   <!-- Top Compact Step-by-Step Summary Bar (No Cards, Minimal Space) -->
   <div style="display: flex; justify-content: center; gap: 1.2rem; align-items: center; margin-bottom: 0.8rem; font-size: 0.85em; font-family: var(--font-mono); text-align: center;">
-    <span class="cyber-badge badge-cyan"><i class="fa-solid fa-bullhorn"></i> 1. Broadcast Request</span>
+    <span class="cyber-badge badge-cyan"><i class="fa-solid fa-bullhorn"></i> 1. Broadcast Request (İstek)</span>
     <span style="color: var(--text-muted);">➔</span>
-    <span class="cyber-badge badge-red"><i class="fa-solid fa-xmark"></i> 2. Mismatch Drop</span>
+    <span class="cyber-badge badge-red"><i class="fa-solid fa-xmark"></i> 2. Mismatch Drop (Uyuşmazlık Reddi)</span>
     <span style="color: var(--text-muted);">➔</span>
-    <span class="cyber-badge badge-htb"><i class="fa-solid fa-reply"></i> 3. Target Unicast Reply</span>
+    <span class="cyber-badge badge-htb"><i class="fa-solid fa-reply"></i> 3. Hedef Unicast Reply (Yanıt)</span>
   </div>
 
   <!-- Main Hero Interactive Topology Simulation Container -->
   <div class="sim-container" style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; justify-content: space-between; padding: 1rem 1.2rem;">
     <div class="sim-header">
-      <div class="sim-title"><span class="cyber-badge badge-htb">ARP TOPOLOGY</span> Broadcast Request ➔ Target Unicast Reply</div>
-      <div id="arp-sim-status" class="sim-status normal"><i class="fa-solid fa-satellite-dish"></i> Click a target button below to trigger ARP resolution</div>
+      <div class="sim-title"><span class="cyber-badge badge-htb">ARP TOPOLOGY</span> Broadcast Request ➔ Hedef Unicast Reply</div>
+      <div id="arp-sim-status" class="sim-status normal"><i class="fa-solid fa-satellite-dish"></i> ARP çözümlemesini (resolution) başlatmak için aşağıdaki bir hedef butonuna tıklayın</div>
     </div>
 
     <!-- Visual ARP Topology Canvas -->
@@ -64,14 +64,14 @@
 
     <!-- Action Trigger Buttons -->
     <div style="display: flex; gap: 0.8rem; justify-content: center; margin-bottom: 0.5rem;">
-      <button class="sim-btn" onclick="window.netDevSim.testArp('c')"><i class="fa-solid fa-paper-plane"></i> Request Comp C (.30)</button>
-      <button class="sim-btn" onclick="window.netDevSim.testArp('b')"><i class="fa-solid fa-paper-plane"></i> Request Comp B (.20)</button>
-      <button class="sim-btn" onclick="window.netDevSim.testArp('d')"><i class="fa-solid fa-paper-plane"></i> Request Comp D (.40)</button>
+      <button class="sim-btn" onclick="window.netDevSim.testArp('c')"><i class="fa-solid fa-paper-plane"></i> Comp C (.30) Request</button>
+      <button class="sim-btn" onclick="window.netDevSim.testArp('b')"><i class="fa-solid fa-paper-plane"></i> Comp B (.20) Request</button>
+      <button class="sim-btn" onclick="window.netDevSim.testArp('d')"><i class="fa-solid fa-paper-plane"></i> Comp D (.40) Request</button>
     </div>
 
     <!-- Live Execution Console Log -->
     <div id="arp-sim-log" style="background: var(--htb-bg-terminal); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 0.6rem 0.9rem; font-family: var(--font-mono); font-size: 0.8em; min-height: 75px; text-align: left;">
-      <div style="color: var(--text-muted);">Click a target button above to execute live ARP Broadcast request &amp; Unicast reply...</div>
+      <div style="color: var(--text-muted);">Canlı ARP Broadcast isteği (request) ve Unicast yanıtı (reply) gerçekleştirmek için yukarıdaki bir hedef butonuna tıklayın...</div>
     </div>
   </div>
 </section>

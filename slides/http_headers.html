@@ -1,9 +1,9 @@
 <!-- SLIDE: HTTP Headers Overview Reference -->
 <section>
-  <h2><i class="fa-solid fa-heading highlight-htb"></i> HTTP Headers Reference</h2>
+  <h2><i class="fa-solid fa-heading highlight-htb"></i> HTTP Headers Referansı</h2>
 
   <div style="text-align: left; margin-bottom: 1.1rem; color: var(--text-muted); font-size: 0.95em;">
-    <strong>HTTP Headers</strong> are key-value pairs (e.g. <code>Header-Name: Value</code>) sent in requests and responses to exchange metadata.
+    <strong>HTTP Headers</strong> (Başlıklar), request (istek) ve response'larda (yanıt) metadata alışverişi yapmak için gönderilen anahtar-değer (key-value) çiftleridir (ör. <code>Header-Name: Value</code>).
   </div>
 
   <div class="grid-2" style="grid-template-columns: 1fr 1fr; gap: 1rem; align-items: stretch; text-align: left;">
@@ -13,11 +13,11 @@
         <span class="cyber-badge badge-cyan"><i class="fa-solid fa-paper-plane"></i> REQUEST HEADERS</span>
       </div>
       <p style="font-size: 0.82em; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.45;">
-        Sent by the client to provide context about the request, client environment, or credentials:
+        İstek, istemci (client) ortamı veya credential bilgileri hakkında bağlam (context) sağlamak için client tarafından gönderilir:
       </p>
       <ul style="font-size: 0.8em; line-height: 1.45; font-family: var(--font-mono); color: var(--accent-cyan); margin-bottom: 0;">
-        <li><strong>Host:</strong> target.htb (Mandatory in HTTP/1.1)</li>
-        <li><strong>User-Agent:</strong> Client browser/tool signature</li>
+        <li><strong>Host:</strong> target.htb (HTTP/1.1'de Zorunludur)</li>
+        <li><strong>User-Agent:</strong> Client browser/tool imzası</li>
         <li><strong>Authorization:</strong> Bearer &lt;token&gt; / Basic</li>
         <li><strong>Accept:</strong> application/json, text/html</li>
       </ul>
@@ -29,12 +29,12 @@
         <span class="cyber-badge badge-htb"><i class="fa-solid fa-reply"></i> RESPONSE HEADERS</span>
       </div>
       <p style="font-size: 0.82em; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.45;">
-        Sent by the server to provide additional information about the response or server setup:
+        Yanıt (response) veya sunucu yapılandırması (server setup) hakkında ek bilgiler sağlamak için sunucu (server) tarafından gönderilir:
       </p>
       <ul style="font-size: 0.8em; line-height: 1.45; font-family: var(--font-mono); color: var(--htb-green); margin-bottom: 0;">
         <li><strong>Server:</strong> Apache/2.4.50 (Unix)</li>
         <li><strong>Set-Cookie:</strong> session=xyz123; Secure</li>
-        <li><strong>Location:</strong> /login.php (3xx Redirects)</li>
+        <li><strong>Location:</strong> /login.php (3xx Redirect)</li>
         <li><strong>Access-Control-Allow-Origin:</strong> CORS</li>
       </ul>
     </div>
@@ -45,11 +45,11 @@
         <span class="cyber-badge badge-purple"><i class="fa-solid fa-file-code"></i> REPRESENTATION HEADERS</span>
       </div>
       <p style="font-size: 0.82em; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.45;">
-        Describes the format, size, and encoding of the message payload body:
+        Message payload gövdesinin formatını, boyutunu ve kodlamasını (encoding) açıklar:
       </p>
       <ul style="font-size: 0.8em; line-height: 1.45; font-family: var(--font-mono); color: var(--accent-purple); margin-bottom: 0;">
         <li><strong>Content-Type:</strong> application/json</li>
-        <li><strong>Content-Length:</strong> 4096 (Payload size in B)</li>
+        <li><strong>Content-Length:</strong> 4096 (Byte cinsinden payload boyutu)</li>
         <li><strong>Content-Encoding:</strong> gzip / br (Compression)</li>
       </ul>
     </div>
@@ -60,7 +60,7 @@
         <span class="cyber-badge badge-red"><i class="fa-solid fa-sliders"></i> CONTROL &amp; CACHING</span>
       </div>
       <p style="font-size: 0.82em; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.45;">
-        Manages connection state and browser caching behaviors:
+        Bağlantı durumunu (connection state) ve tarayıcı cache davranışlarını yönetir:
       </p>
       <ul style="font-size: 0.8em; line-height: 1.45; font-family: var(--font-mono); color: var(--accent-red); margin-bottom: 0;">
         <li><strong>Cache-Control:</strong> no-cache, max-age=3600</li>

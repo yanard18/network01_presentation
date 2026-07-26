@@ -1,6 +1,6 @@
 <!-- SLIDE: Router (Layer 3 Network Device) -->
 <section>
-  <h2><i class="fa-solid fa-network-wired highlight-purple"></i> Router — Gateway Between Networks</h2>
+  <h2><i class="fa-solid fa-network-wired highlight-purple"></i> Router — Ağlar (Networks) Arası Ağ Geçidi (Gateway)</h2>
   
   <div class="grid-2">
     <!-- Left Half: Theory & Architecture -->
@@ -8,14 +8,14 @@
       <div class="cyber-card" style="height: 100%;">
         <div class="card-title">
           <span class="cyber-badge badge-purple">LAYER 3 NETWORK</span>
-          <span class="cyber-badge badge-htb">INTER-NETWORK</span>
+          <span class="cyber-badge badge-htb">AĞLAR ARASI (INTER-NETWORK)</span>
         </div>
         <p style="margin-bottom: 0.6rem;">
-          While hubs, bridges, and switches connect devices within a local network (LAN), a <strong>Router</strong> operates at <strong>Layer 3</strong> to join completely separate networks together (e.g. Home LAN to ISP WAN/Internet).
+          Hub'lar, bridge'ler ve switch'ler yerel bir ağ (LAN) içindeki cihazları birbirine bağlarken, bir <strong>Router</strong> tamamen farklı ağları birbirine bağlamak için <strong>Layer 3</strong>'te çalışır (örneğin, Ev LAN'ından ISP WAN/İnternet'e).
         </p>
         <ul style="font-size: 0.9em;">
-          <li><strong>How it works:</strong> Strips off Layer 2 frames, inspects IP addresses inside Layer 3 packets, and uses a routing table to determine the best path toward final destination.</li>
-          <li><strong>Key Advantage:</strong> Blocks Layer 2 broadcasts from leaking into other networks, keeping broad network traffic isolated and secure.</li>
+          <li><strong>Nasıl Çalışır:</strong> Layer 2 frame'lerini (çerçevelerini) ayırır, Layer 3 paketlerinin içindeki IP adreslerini inceler ve son hedefe doğru en iyi yolu (path) belirlemek için bir yönlendirme tablosu (routing table) kullanır.</li>
+          <li><strong>Temel Avantaj (Key Advantage):</strong> Layer 2 broadcast'lerinin (yayın) diğer ağlara sızmasını (leaking) engeller, böylece geniş ağ trafiğini izole edilmiş ve güvenli tutar.</li>
         </ul>
       </div>
     </div>
@@ -23,8 +23,8 @@
     <!-- Right Half: Visual Interactive Topology Diagram -->
     <div class="sim-container" style="margin-top: 0; display: flex; flex-direction: column; justify-content: space-between;">
       <div class="sim-header">
-        <div class="sim-title"><span class="cyber-badge badge-purple">ROUTER TOPOLOGY</span> Inter-Network & Isolation</div>
-        <div id="router-sim-status" class="sim-status normal"><i class="fa-solid fa-network-wired"></i> Router Ready: Test IP Routing vs L2 Broadcast Isolation</div>
+        <div class="sim-title"><span class="cyber-badge badge-purple">ROUTER TOPOLOGY</span> Inter-Network &amp; İzolasyon</div>
+        <div id="router-sim-status" class="sim-status normal"><i class="fa-solid fa-network-wired"></i> Router Hazır: IP Routing vs L2 Broadcast İzolasyonunu test edin</div>
       </div>
 
       <!-- Visual Router Topology Canvas -->
@@ -64,7 +64,7 @@
 
         <div class="topo-node" style="left: 85%; top: 50%;">
           <div class="topo-node-icon" style="border-color: var(--accent-purple);"><i class="fa-solid fa-globe"></i></div>
-          <span class="topo-node-label">Web Server (WAN)</span>
+          <span class="topo-node-label">Web Sunucusu (WAN)</span>
         </div>
 
         <!-- Animated Packets -->
@@ -74,11 +74,11 @@
 
       <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 0.4rem;">
         <button class="sim-btn" onclick="window.netDevSim.testRouter('route')"><i class="fa-solid fa-route"></i> Route LAN ➔ WAN</button>
-        <button class="sim-btn btn-red" onclick="window.netDevSim.testRouter('broadcast')"><i class="fa-solid fa-shield-halved"></i> Send L2 Broadcast</button>
+        <button class="sim-btn btn-red" onclick="window.netDevSim.testRouter('broadcast')"><i class="fa-solid fa-shield-halved"></i> L2 Broadcast Gönder</button>
       </div>
 
       <div id="router-sim-log" style="background: var(--htb-bg-terminal); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 0.6rem 0.8rem; font-family: var(--font-mono); font-size: 0.78em; min-height: 80px;">
-        <div style="color: var(--text-muted);">Click a button to test Layer 3 IP routing across networks vs L2 broadcast isolation...</div>
+        <div style="color: var(--text-muted);">Ağlar arası Layer 3 IP routing işlemini ve L2 broadcast izolasyonunu test etmek için bir butona tıklayın...</div>
       </div>
     </div>
   </div>

@@ -1,13 +1,13 @@
 <!-- SLIDE: Data Link Sublayers -->
 <section>
-  <h2><i class="fa-solid fa-layer-group highlight-yellow"></i> Data Link Sublayers</h2>
+  <h2><i class="fa-solid fa-layer-group highlight-yellow"></i> Data Link Alt Katmanları (Sublayers)</h2>
 
   <div class="grid-2" style="grid-template-columns: 1.1fr 0.9fr; gap: 1.2rem; align-items: center;">
     <!-- Left: Image from /media -->
     <div style="background: rgba(255, 255, 255, 0.98); padding: 14px; border-radius: 10px; border: 1px solid var(--accent-yellow); box-shadow: 0 0 25px rgba(255, 183, 3, 0.35); text-align: center;">
       <img src="media/data-link-sublayers.svg" alt="Data Link Sublayers Diagram" style="max-height: 360px; width: 100%; object-fit: contain; display: block;">
       <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.5rem;">
-        <i class="fa-solid fa-diagram-project highlight-yellow"></i> Figure: LLC and MAC Sublayer Architecture (IEEE 802)
+        <i class="fa-solid fa-diagram-project highlight-yellow"></i> Şekil: LLC ve MAC Alt Katman (Sublayer) Mimarisi (IEEE 802)
       </div>
     </div>
 
@@ -15,17 +15,17 @@
     <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <div class="card-title">
-          <span class="cyber-badge badge-red" style="border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);">IEEE 802</span> Sublayer Breakdown
+          <span class="cyber-badge badge-red" style="border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);">IEEE 802</span> Alt Katman (Sublayer) Dağılımı
         </div>
 
         <ul style="font-size: 0.85em; line-height: 1.5; margin-bottom: 0;">
-          <li><strong>LLC (Logical Link Control - IEEE 802.2):</strong> Upper sublayer that interfaces with Layer 3 network protocols, handling protocol multiplexing and flow control.</li>
-          <li><strong>MAC (Media Access Control - IEEE 802.3 / 802.11):</strong> Lower sublayer responsible for physical MAC addressing, framing, and managing access to the physical transmission medium.</li>
+          <li><strong>LLC (Logical Link Control - IEEE 802.2):</strong> Layer 3 ağ protokolleriyle arayüz oluşturan (interfaces), protokol çoklamayı (multiplexing) ve akış kontrolünü (flow control) idare eden üst alt katman (upper sublayer).</li>
+          <li><strong>MAC (Media Access Control - IEEE 802.3 / 802.11):</strong> Fiziksel MAC adreslemesi, çerçeveleme (framing) ve fiziksel iletim ortamına (transmission medium) erişimi yönetmekten sorumlu alt alt katman (lower sublayer).</li>
         </ul>
       </div>
 
       <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-yellow); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.4rem;">
-        <i class="fa-solid fa-network-wired"></i> Bridges software protocol logic with physical hardware media!
+        <i class="fa-solid fa-network-wired"></i> Yazılım protokol mantığını (logic) fiziksel donanım (hardware) ortamıyla birleştirir!
       </div>
     </div>
   </div>

@@ -1,13 +1,13 @@
 <!-- SLIDE: IPv4 Header Structure -->
 <section>
-  <h2><i class="fa-solid fa-file-invoice highlight-cyan"></i> IPv4 Header Structure</h2>
+  <h2><i class="fa-solid fa-file-invoice highlight-cyan"></i> IPv4 Başlık (Header) Yapısı</h2>
 
   <div class="grid-2" style="grid-template-columns: 1.1fr 0.9fr; gap: 1.2rem; align-items: center;">
     <!-- Left: Image from /media -->
     <div style="background: rgba(255, 255, 255, 0.98); padding: 12px; border-radius: 10px; border: 1px solid var(--accent-cyan); box-shadow: 0 0 25px rgba(45, 226, 230, 0.35); text-align: center;">
       <img src="media/ipv4_header.png" alt="IPv4 Header Structure Diagram" style="max-height: 380px; width: 100%; object-fit: contain; display: block;">
       <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.4rem;">
-        <i class="fa-solid fa-diagram-project highlight-cyan"></i> Figure: IPv4 Datagram Header (20 to 60 Bytes)
+        <i class="fa-solid fa-diagram-project highlight-cyan"></i> Şekil: IPv4 Datagram Başlığı (20 ila 60 Byte)
       </div>
     </div>
 
@@ -15,22 +15,22 @@
     <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <div class="card-title">
-          <span class="cyber-badge badge-cyan">IPV4 FIELDS</span> Key Explanations
+          <span class="cyber-badge badge-cyan">IPV4 ALANLARI</span> Temel Açıklamalar
         </div>
 
         <ul style="font-size: 0.81em; line-height: 1.42; margin-bottom: 0;">
-          <li><strong>Version (4b):</strong> Identifies IP version (set to <code>4</code> for IPv4).</li>
-          <li><strong>IHL (4b):</strong> Internet Header Length in 32-bit words (Min: 5 = 20B, Max: 15 = 60B).</li>
-          <li><strong>Type of Service (8b):</strong> DSCP &amp; ECN bits for Quality of Service (QoS) prioritization.</li>
-          <li><strong>Ident &amp; Flags (3b):</strong> Controls fragmentation (DF = Don't Fragment, MF = More Fragments).</li>
-          <li><strong>Time-to-Live (TTL - 8b):</strong> Hop limit counter (default 64) decremented by routers to prevent loops.</li>
-          <li><strong>Protocol (8b):</strong> Payload type ID (e.g. 6 = TCP, 17 = UDP, or IPv4-in-IPv4).</li>
-          <li><strong>Header Checksum (16b):</strong> Validates <em>header only</em> integrity (removed in IPv6).</li>
+          <li><strong>Versiyon (Version - 4b):</strong> IP versiyonunu tanımlar (IPv4 için <code>4</code> olarak ayarlanır).</li>
+          <li><strong>IHL (4b):</strong> 32-bit kelimeler cinsinden İnternet Başlık Uzunluğu (Internet Header Length) (Min: 5 = 20B, Maks: 15 = 60B).</li>
+          <li><strong>Type of Service (8b):</strong> Quality of Service (QoS - Hizmet Kalitesi) önceliklendirmesi için DSCP ve ECN bitleri.</li>
+          <li><strong>Ident &amp; Flags (3b):</strong> Fragmentation (parçalanma) kontrolü (DF = Don't Fragment, MF = More Fragments).</li>
+          <li><strong>Time-to-Live (TTL - 8b):</strong> Döngüleri (loops) önlemek için router'lar tarafından eksiltilen hop (atlama) limit sayacı (varsayılan 64).</li>
+          <li><strong>Protokol (8b):</strong> Payload türü kimliği (ör. 6 = TCP, 17 = UDP, veya IPv4-in-IPv4).</li>
+          <li><strong>Header Checksum (16b):</strong> <em>Yalnızca başlık (header only)</em> bütünlüğünü doğrular (IPv6'da kaldırılmıştır).</li>
         </ul>
       </div>
 
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.4rem;">
-        <i class="fa-solid fa-circle-info highlight-cyan"></i> Variable header size due to optional IHL padding.
+        <i class="fa-solid fa-circle-info highlight-cyan"></i> İsteğe bağlı IHL padding'i (dolgusu) nedeniyle değişken başlık boyutu.
       </div>
     </div>
   </div>

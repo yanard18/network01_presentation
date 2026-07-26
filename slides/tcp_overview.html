@@ -1,22 +1,22 @@
 <!-- SLIDE: What is TCP? -->
 <section>
-  <h2><i class="fa-solid fa-shield-halved highlight-purple"></i> What is TCP (Transmission Control Protocol)?</h2>
+  <h2><i class="fa-solid fa-shield-halved highlight-purple"></i> TCP (Transmission Control Protocol) Nedir?</h2>
 
   <div style="text-align: left; margin-bottom: 1rem; color: var(--text-muted);">
-    <strong>TCP</strong> is a core Layer 4 protocol that provides reliable, connection-oriented, and byte-stream-oriented data delivery between application processes.
+    <strong>TCP</strong>, uygulama süreçleri (application processes) arasında güvenilir (reliable), bağlantı odaklı (connection-oriented) ve bayt akışı odaklı (byte-stream-oriented) veri iletimi sağlayan temel bir Layer 4 protokolüdür.
   </div>
 
   <div class="grid-2">
     <!-- Left Card: Core Characteristics -->
     <div class="cyber-card">
       <div class="card-title">
-        <span class="cyber-badge badge-purple">TCP ESSENTIALS</span> Core Characteristics
+        <span class="cyber-badge badge-purple">TCP TEMELLERİ</span> Temel Özellikleri
       </div>
       <ul class="secure-list" style="font-size: 0.88em; line-height: 1.5; margin-bottom: 0;">
-        <li><strong>Connection-Oriented:</strong> Requires an explicit session setup (3-Way Handshake) before transmitting user data.</li>
-        <li><strong>Byte-Stream Service:</strong> Treats data as a continuous stream of numbered bytes, not isolated messages.</li>
-        <li><strong>Full-Duplex:</strong> Enables simultaneous, bidirectional data flow between client and server.</li>
-        <li><strong>In-Order Delivery:</strong> Reorders out-of-sequence segments using Sequence Numbers before passing data to applications.</li>
+        <li><strong>Bağlantı Odaklı (Connection-Oriented):</strong> Kullanıcı verilerini iletmeden önce açık bir oturum kurulumu (3-Way Handshake) gerektirir.</li>
+        <li><strong>Byte-Stream (Bayt Akışı) Hizmeti:</strong> Verileri izole mesajlar olarak değil, numaralandırılmış sürekli bir bayt akışı (stream) olarak işler.</li>
+        <li><strong>Full-Duplex:</strong> İstemci (client) ve sunucu (server) arasında eşzamanlı (simultaneous), iki yönlü (bidirectional) veri akışı sağlar.</li>
+        <li><strong>Sıralı İletim (In-Order Delivery):</strong> Verileri uygulamalara aktarmadan önce Sequence (Sıra) Numaralarını kullanarak sırasız (out-of-sequence) segmentleri yeniden sıralar.</li>
       </ul>
     </div>
 
@@ -24,21 +24,21 @@
     <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <div class="card-title">
-          <span class="cyber-badge badge-htb">SESSION ESTABLISHMENT</span> 3-Way Handshake
+          <span class="cyber-badge badge-htb">OTURUM KURULUMU</span> 3-Way Handshake
         </div>
         <p style="font-size: 0.86em; margin-bottom: 0.6rem;">
-          Before data transmission begins, client and server negotiate sequence numbers and buffer parameters:
+          Veri iletimi başlamadan önce, istemci ve sunucu sequence numaraları ve buffer parametreleri üzerinde anlaşır (negotiate):
         </p>
 
         <div style="font-family: var(--font-mono); font-size: 0.78em; background: var(--htb-bg-terminal); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.7rem; color: var(--htb-green); line-height: 1.6;">
-          1. <strong>SYN:</strong> Client requests connection (Seq = x)<br>
-          2. <strong>SYN-ACK:</strong> Server acknowledges &amp; requests (Seq = y, Ack = x+1)<br>
-          3. <strong>ACK:</strong> Client confirms connection (Ack = y+1)
+          1. <strong>SYN:</strong> İstemci bağlantı talep eder (Seq = x)<br>
+          2. <strong>SYN-ACK:</strong> Sunucu onaylar (acknowledges) &amp; talep eder (Seq = y, Ack = x+1)<br>
+          3. <strong>ACK:</strong> İstemci bağlantıyı onaylar (Ack = y+1)
         </div>
       </div>
 
       <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); margin-top: 0.6rem;">
-        <i class="fa-solid fa-circle-check highlight-htb"></i> Guaranteed delivery comes at the cost of setup overhead &amp; state tracking.
+        <i class="fa-solid fa-circle-check highlight-htb"></i> Garantili iletimin bedeli, kurulum ek yükü (setup overhead) ve durum takibidir (state tracking).
       </div>
     </div>
   </div>

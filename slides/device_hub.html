@@ -1,22 +1,22 @@
 <!-- SLIDE: Hub (Layer 1 Physical Device) -->
 <section>
-  <h2><i class="fa-solid fa-microchip highlight-red"></i> Hub — The "Dumb" Repeater</h2>
+  <h2><i class="fa-solid fa-microchip highlight-red"></i> Hub — "Akılsız" (Dumb) Tekrarlayıcı (Repeater)</h2>
   
   <div class="grid-2">
     <!-- Left Half: Theory & Architecture -->
     <div>
       <div class="cyber-card threat" style="height: 100%;">
         <div class="card-title">
-          <span class="cyber-badge badge-red">LAYER 1 PHYSICAL</span>
+          <span class="cyber-badge badge-red">LAYER 1 FİZİKSEL</span>
           <span class="cyber-badge badge-htb">OBSOLETE</span>
         </div>
         <p style="margin-bottom: 0.6rem;">
-          A <strong>Hub</strong> operates at <strong>Layer 1</strong> and has zero intelligence. When it receives electrical bits on one port, it simply repeats/amplifies that signal out to every attached port.
+          Bir <strong>Hub</strong>, <strong>Layer 1</strong>'de çalışır ve sıfır zekaya (zero intelligence) sahiptir. Bir porttan elektriksel bitleri aldığında, bu sinyali basitçe kopyalar/yükseltir ve bağlı olan diğer tüm portlara iletir (repeats).
         </p>
         <ul class="threat-list" style="font-size: 0.9em;">
-          <li><strong>How it works:</strong> If Computer A sends data to Computer B, computers C, D, and E receive it too (and must manually ignore it in L2).</li>
-          <li><strong>Drawback:</strong> All devices share 1 wire electrically (<strong>Single Collision Domain</strong>)—only 1 device can transmit at a time without collisions.</li>
-          <li><strong>Status:</strong> Obsolete in modern networks.</li>
+          <li><strong>Nasıl Çalışır:</strong> Eğer Bilgisayar A, Bilgisayar B'ye veri gönderirse, C, D ve E bilgisayarları da bunu alır (ve bunu Layer 2'de manuel olarak yok saymaları gerekir).</li>
+          <li><strong>Dezavantaj:</strong> Tüm cihazlar elektriksel olarak tek bir kabloyu paylaşır (<strong>Single Collision Domain</strong>) — aynı anda sadece 1 cihaz çarpışma olmadan veri iletebilir (transmit).</li>
+          <li><strong>Durum:</strong> Modern ağlarda kullanımdan kalkmıştır (Obsolete).</li>
         </ul>
       </div>
     </div>
@@ -25,7 +25,7 @@
     <div class="sim-container" style="margin-top: 0; display: flex; flex-direction: column; justify-content: space-between;">
       <div class="sim-header">
         <div class="sim-title"><span class="cyber-badge badge-red">HUB INTERACTIVE TOPOLOGY</span> Broadcast Flooding</div>
-        <div id="hub-sim-status" class="sim-status normal"><i class="fa-solid fa-network-wire"></i> Click a button below to transmit from Comp A</div>
+        <div id="hub-sim-status" class="sim-status normal"><i class="fa-solid fa-network-wire"></i> Comp A'dan veri iletmek için aşağıdaki bir butona tıklayın</div>
       </div>
 
       <!-- Visual Hub Topology Canvas -->
@@ -72,13 +72,13 @@
       </div>
 
       <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 0.4rem;">
-        <button class="sim-btn btn-red" onclick="window.netDevSim.testHub('b')"><i class="fa-solid fa-paper-plane"></i> Send A ➔ B</button>
-        <button class="sim-btn btn-red" onclick="window.netDevSim.testHub('c')"><i class="fa-solid fa-paper-plane"></i> Send A ➔ C</button>
-        <button class="sim-btn btn-red" onclick="window.netDevSim.testHub('d')"><i class="fa-solid fa-paper-plane"></i> Send A ➔ D</button>
+        <button class="sim-btn btn-red" onclick="window.netDevSim.testHub('b')"><i class="fa-solid fa-paper-plane"></i> Gönder A ➔ B</button>
+        <button class="sim-btn btn-red" onclick="window.netDevSim.testHub('c')"><i class="fa-solid fa-paper-plane"></i> Gönder A ➔ C</button>
+        <button class="sim-btn btn-red" onclick="window.netDevSim.testHub('d')"><i class="fa-solid fa-paper-plane"></i> Gönder A ➔ D</button>
       </div>
 
       <div id="hub-sim-log" style="background: var(--htb-bg-terminal); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 0.6rem 0.8rem; font-family: var(--font-mono); font-size: 0.78em; min-height: 80px;">
-        <div style="color: var(--text-muted);">Click a button to trigger live electrical bit duplication across all connected ports...</div>
+        <div style="color: var(--text-muted);">Tüm bağlı portlarda canlı elektriksel bit çoğaltmasını (duplication) tetiklemek için bir butona tıklayın...</div>
       </div>
     </div>
   </div>

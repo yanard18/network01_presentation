@@ -1,13 +1,13 @@
 <!-- SLIDE: Framing -->
 <section>
-  <h2><i class="fa-solid fa-box-archive highlight-cyan"></i> Framing</h2>
+  <h2><i class="fa-solid fa-box-archive highlight-cyan"></i> Framing (Çerçeveleme)</h2>
 
   <div style="display: flex; flex-direction: column; gap: 0.9rem; margin-top: 0.3rem;">
     <!-- Top Showcase: Frame Re-encapsulation Diagram -->
     <div style="background: #ffffff; padding: 12px 18px; border-radius: 10px; border: 1px solid var(--accent-cyan); box-shadow: 0 0 25px rgba(45, 226, 230, 0.35); text-align: center;">
       <img src="media/frame-re-encapsulation.svg" alt="Frame Re-Encapsulation Diagram" style="max-height: 210px; width: 100%; object-fit: contain; display: block; margin: 0 auto;">
       <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.3rem;">
-        <i class="fa-solid fa-diagram-project highlight-cyan"></i> Figure: Layer 2 Data Link Framing &amp; Hop-by-Hop Re-Encapsulation
+        <i class="fa-solid fa-diagram-project highlight-cyan"></i> Şekil: Layer 2 Data Link (Veri Bağı) Framing ve Hop-by-Hop Re-Encapsulation
       </div>
     </div>
 
@@ -16,30 +16,30 @@
       <!-- Card 1: Header -->
       <div class="cyber-card" style="padding: 0.9rem 1rem;">
         <div class="card-title" style="font-size: 1rem; margin-bottom: 0.4rem;">
-          <span class="cyber-badge badge-cyan">1. HEADER</span> Addressing
+          <span class="cyber-badge badge-cyan">1. HEADER (BAŞLIK)</span> Adresleme
         </div>
         <p style="font-size: 0.83em; color: var(--text-main); margin: 0; line-height: 1.45;">
-          Contains 48-bit <strong>Source &amp; Destination MAC addresses</strong> and protocol control metadata used for local network delivery.
+          Yerel ağ iletimi (local network delivery) için kullanılan 48-bit <strong>Kaynak (Source) ve Hedef (Destination) MAC adreslerini</strong> ve protokol kontrol meta verilerini içerir.
         </p>
       </div>
 
       <!-- Card 2: Payload -->
       <div class="cyber-card" style="padding: 0.9rem 1rem;">
         <div class="card-title" style="font-size: 1rem; margin-bottom: 0.4rem;">
-          <span class="cyber-badge badge-htb">2. PAYLOAD</span> Layer 3 Data
+          <span class="cyber-badge badge-htb">2. PAYLOAD (VERİ YÜKÜ)</span> Layer 3 Verisi
         </div>
         <p style="font-size: 0.83em; color: var(--text-main); margin: 0; line-height: 1.45;">
-          The actual encapsulated packet delivered from Layer 3 (e.g., the <strong>IPv4 or IPv6 packet</strong> carrying application data).
+          Layer 3'ten teslim edilen (delivered) asıl kapsüllenmiş paket (örneğin, uygulama verisini taşıyan <strong>IPv4 veya IPv6 paketi</strong>).
         </p>
       </div>
 
       <!-- Card 3: Trailer -->
       <div class="cyber-card" style="padding: 0.9rem 1rem;">
         <div class="card-title" style="font-size: 1rem; margin-bottom: 0.4rem;">
-          <span class="cyber-badge badge-purple">3. TRAILER</span> Error Check
+          <span class="cyber-badge badge-purple">3. TRAILER (KUYRUK)</span> Hata Kontrolü
         </div>
         <p style="font-size: 0.83em; color: var(--text-main); margin: 0; line-height: 1.45;">
-          Contains <strong>error-checking information</strong> (Frame Check Sequence - FCS / CRC) to detect transmission errors.
+          İletim hatalarını tespit etmek için <strong>hata kontrol bilgisi</strong> (Frame Check Sequence - FCS / CRC) içerir.
         </p>
       </div>
     </div>

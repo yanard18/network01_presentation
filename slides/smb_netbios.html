@@ -6,14 +6,14 @@
     <!-- Left: What is NetBIOS? -->
     <div class="cyber-card">
       <div class="card-title">
-        <span class="cyber-badge badge-htb">IBM 1980s</span> What is NetBIOS?
+        <span class="cyber-badge badge-htb">IBM 1980s</span> NetBIOS Nedir?
       </div>
       <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.5rem;">
-        <strong>NetBIOS</strong> (Network Basic Input/Output System) was created by IBM for early local area networks before TCP/IP became standard.
+        <strong>NetBIOS</strong> (Network Basic Input/Output System), TCP/IP henüz standartlaşmadan önce IBM tarafından ilk yerel ağlar (LAN) için geliştirilmiştir.
       </p>
       <ul style="font-size: 0.82em; line-height: 1.45; margin-bottom: 0;">
-        <li><strong>Computer Naming:</strong> Locating machines using 15-character names (e.g. <code>OFFICE-PC1</code>).</li>
-        <li><strong>Session Management:</strong> Enabling inter-app data transfer over LANs.</li>
+        <li><strong>Bilgisayar Adlandırma:</strong> Makineleri 15 karakterlik isimlerle bulma (ör. <code>OFFICE-PC1</code>).</li>
+        <li><strong>Session Yönetimi:</strong> LAN üzerinde uygulamalar arası veri transferini sağlama.</li>
       </ul>
     </div>
 
@@ -23,10 +23,10 @@
         <span class="cyber-badge badge-cyan">EVOLUTION</span> NBT (139) ➔ Direct SMB (445)
       </div>
       <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.4rem;">
-        When TCP/IP won, Microsoft wrapped NetBIOS in TCP/IP (<strong>NBT</strong>) on <strong>Port 139</strong>.
+        TCP/IP yaygınlaşınca Microsoft, NetBIOS'u TCP/IP içine sarmalayarak <strong>Port 139</strong> üzerinden <strong>NBT</strong> (NetBIOS over TCP/IP) protokolünü sundu.
       </p>
       <p style="font-size: 0.83em; line-height: 1.45; color: var(--text-muted); margin-bottom: 0;">
-        Starting with Windows 2000, Microsoft removed the noisy NetBIOS middleman entirely, moving to <strong>Direct SMB on TCP Port 445</strong>.
+        Windows 2000 ile birlikte gereksiz NetBIOS katmanı tamamen aradan çıkarılarak doğrudan <strong>TCP Port 445 üzerinde Direct SMB</strong> mimarisine geçildi.
       </p>
     </div>
   </div>
@@ -43,8 +43,8 @@
 
   <!-- Analogy Box -->
   <div style="background: rgba(159, 239, 0, 0.08); border: 1px solid rgba(159, 239, 0, 0.25); border-radius: 6px; padding: 0.7rem 1rem; font-size: 0.82em; text-align: left; color: #ffffff;">
-    <strong style="color: var(--htb-green); font-family: var(--font-mono);">💡 Real-World Analogy:</strong>
-    <strong>NetBIOS (Port 139)</strong> is like calling through an old switchboard operator where you yell names into a room.<br>
-    <strong>Direct SMB (Port 445)</strong> is like dialing someone's direct phone number over a clean, high-speed fiber line.
+    <strong style="color: var(--htb-green); font-family: var(--font-mono);">💡 Günlük Hayat Benzetmesi:</strong><br>
+    <strong>NetBIOS (Port 139)</strong> eski bir santral operatörüne bağlanıp isim bağırmaya benzer.<br>
+    <strong>Direct SMB (Port 445)</strong> yüksek hızlı fiber hat üzerinden doğrudan telefon numarasını aramaya benzer.
   </div>
 </section>

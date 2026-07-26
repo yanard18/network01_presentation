@@ -3,43 +3,43 @@
   <h2><i class="fa-solid fa-folder-tree highlight-htb"></i> Server Message Block (SMB)</h2>
 
   <div style="text-align: left; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.95em;">
-    The <strong style="color: var(--htb-green);">SMB protocol</strong> is a network file sharing protocol that allows clients to read and write to files over the network on top of TCP/IP or other protocols.
+    <strong style="color: var(--htb-green);">SMB Protokolü</strong> (Server Message Block), istemcilerin TCP/IP veya diğer katmanlar üzerinde ağ genelindeki dosyalara okuma ve yazma erişimi yapmasını sağlayan bir <strong>network file sharing protocol</strong>'üdür.
   </div>
 
   <div class="grid-2" style="grid-template-columns: 1.1fr 0.9fr; gap: 1.2rem; align-items: center;">
     <!-- Left Column: What is SMB Infographic -->
     <div style="display: flex; align-items: center; justify-content: center;">
-      <img src="media/what_is_smb.jpg" alt="SMB: Server Message Block Diagram" style="max-height: 380px; width: 100%; object-fit: contain; display: block; border-radius: 8px;">
+      <img src="media/what_is_smb.jpg" alt="SMB: Server Message Block Diyagramı" style="max-height: 380px; width: 100%; object-fit: contain; display: block; border-radius: 8px;">
     </div>
 
     <!-- Right Column: Key Characteristics & Functions -->
     <div style="display: flex; flex-direction: column; gap: 0.8rem;">
       <div class="cyber-card">
         <div class="card-title">
-          <span class="cyber-badge badge-htb">CORE FUNCTION</span> Remote File Access
+          <span class="cyber-badge badge-htb">CORE FUNCTION</span> Uzaktan Dosya Erişimi
         </div>
         <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
-          Transparently maps remote shared directories (e.g. <code>\\SERVER\SHARE</code>) to local drive letters (e.g. <code>Z:</code>), enabling direct read and write operations.
+          Uzak paylaşılan dizinleri (ör. <code>\\SERVER\SHARE</code>) yerel sürücü harflerine (ör. <code>Z:</code>) şeffaf biçimde eşleyerek doğrudan okuma ve yazma işlemlerini sağlar.
         </p>
       </div>
 
       <div class="cyber-card">
         <div class="card-title">
-          <span class="cyber-badge badge-cyan">TRANSPORT</span> Layer 7 over TCP/IP
+          <span class="cyber-badge badge-cyan">TRANSPORT</span> TCP/IP Üzerinde Layer 7
         </div>
         <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
-          Runs directly over <strong>TCP Port 445</strong> in modern networks (or legacy NetBIOS over TCP/IP on Port 139) for reliable connection-oriented transport.
+          Modern ağlarda güvenilir veri iletimi için doğrudan <strong>TCP Port 445</strong> (veya legacy NetBIOS over TCP/IP ile Port 139) üzerinde çalışır.
         </p>
       </div>
 
       <div class="cyber-card">
         <div class="card-title">
-          <span class="cyber-badge badge-purple">CAPABILITIES</span> Shared Resources
+          <span class="cyber-badge badge-purple">CAPABILITIES</span> Paylaşılan Kaynaklar
         </div>
         <ul style="font-size: 0.82em; line-height: 1.4; margin-bottom: 0;">
-          <li><strong>File Operations:</strong> Open, read, write, lock, and delete remote files.</li>
-          <li><strong>Device Sharing:</strong> Network printer sharing &amp; serial port access.</li>
-          <li><strong>IPC Communications:</strong> Inter-Process Communication via Named Pipes.</li>
+          <li><strong>Dosya İşlemleri:</strong> Uzak dosyaları açma, okuma, yazma, lock (kilitleme) ve silme.</li>
+          <li><strong>Cihaz Paylaşımı:</strong> Network Printer paylaşımı ve seri port erişimi.</li>
+          <li><strong>IPC İletişimi:</strong> Named Pipes aracılığıyla Inter-Process Communication.</li>
         </ul>
       </div>
     </div>

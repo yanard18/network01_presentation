@@ -1,24 +1,24 @@
 <!-- SLIDE: HTTP/1.1 - Persistent Connections & Parallel Sockets -->
 <section>
-  <h2><i class="fa-solid fa-network-wired highlight-htb"></i> HTTP/1.1 — Persistent Connections & Parallel Sockets</h2>
+  <h2><i class="fa-solid fa-network-wired highlight-htb"></i> HTTP/1.1 — Persistent Bağlantılar &amp; Paralel Soketler</h2>
   
   <div class="grid-2">
     <div class="cyber-card secure">
       <div class="card-title"><span class="cyber-badge badge-htb">HTTP/1.1</span> Persistent Connections (Keep-Alive)</div>
       <ul>
-        <li><strong>Keep-Alive by Default:</strong> Reuses a single TCP socket across multiple requests instead of closing it.</li>
-        <li><strong>Mandatory <code>Host</code> Header:</strong> Enables virtual hosting (multiple websites sharing 1 IP).</li>
-        <li>Introduced <strong>Chunked Transfer Encoding</strong> and <strong>Cache-Control</strong>.</li>
+        <li><strong>Varsayılan Keep-Alive:</strong> Tek bir TCP soketini her seferinde kapatmak yerine birden fazla istek (request) için yeniden kullanır.</li>
+        <li><strong>Zorunlu <code>Host</code> Header'ı:</strong> Sanal barındırmayı (virtual hosting - birden fazla sitenin 1 IP'yi paylaşmasını) mümkün kılar.</li>
+        <li><strong>Chunked Transfer Encoding</strong> ve <strong>Cache-Control</strong> mekanizmalarını tanıttı.</li>
       </ul>
     </div>
 
     <div class="cyber-card threat">
-      <div class="card-title"><i class="fa-solid fa-bolt highlight-cyan"></i> The 6 Parallel Connections Workaround</div>
+      <div class="card-title"><i class="fa-solid fa-bolt highlight-cyan"></i> 6 Paralel Bağlantı Çözümü (Workaround)</div>
       <p style="margin-bottom: 0.8rem;">
-        Because 1 TCP connection processes requests sequentially, browsers started opening <strong>up to 6 parallel TCP connections</strong> per origin to fetch assets concurrently.
+        Tek bir TCP bağlantısı istekleri sıralı (sequentially) işlediği için, tarayıcılar (browsers) asset'leri eşzamanlı (concurrently) indirebilmek adına her kaynak (origin) için <strong>aynı anda 6'ya kadar paralel TCP bağlantısı</strong> açmaya başladı.
       </p>
       <ul class="threat-list">
-        <li><strong>Limitation:</strong> High overhead—6 parallel TCP handshakes per domain still caused server socket exhaustion and network congestion.</li>
+        <li><strong>Sınırlama (Limitation):</strong> Yüksek ek yük (overhead) — domain başına yapılan 6 paralel TCP handshake, hala sunucu soketlerinin tükenmesine (socket exhaustion) ve ağ tıkanıklığına (network congestion) yol açıyordu.</li>
       </ul>
     </div>
   </div>

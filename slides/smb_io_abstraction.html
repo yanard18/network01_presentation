@@ -1,9 +1,9 @@
 <!-- SLIDE: Utilizing File Sharing for More Overview -->
 <section>
-  <h2><i class="fa-solid fa-layer-group highlight-htb"></i> Utilizing "File Sharing" for More</h2>
+  <h2><i class="fa-solid fa-layer-group highlight-htb"></i> "File Sharing"i Daha Fazlası İçin Kullanmak</h2>
 
   <div style="text-align: left; margin-bottom: 1.1rem; color: var(--text-muted); font-size: 0.95em;">
-    Because Windows abstracts memory streams, hardware devices, and authentication into <strong>File Objects</strong>, SMB is leveraged for far more than basic file storage:
+    Windows; bellek akışlarını (memory streams), donanım aygıtlarını ve kimlik doğrulamasını (authentication) <strong>File Objects</strong> (Dosya Nesneleri) olarak soyutladığından, SMB temel dosya depolamanın çok daha ötesinde işlemler için kullanılır:
   </div>
 
   <div class="grid-3" style="gap: 1.1rem; align-items: stretch; text-align: left;">
@@ -14,11 +14,11 @@
           <span class="cyber-badge badge-purple">IPC$ SHARES</span> Named Pipes &amp; MS-RPC
         </div>
         <p style="font-size: 0.83em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
-          Connecting to the <code>IPC$</code> share grants access to virtual <strong>Named Pipes</strong> (shared inter-process memory exposed as files).
+          <code>IPC$</code> paylaşımına bağlanmak, sanal <strong>Named Pipe</strong>'lara (dosya olarak dışa açılmış paylaşılan süreçler arası bellek) erişim sağlar.
         </p>
         <ul style="font-size: 0.8em; line-height: 1.4; color: var(--text-muted); margin-bottom: 0;">
-          <li>Carries <strong>MS-RPC</strong> requests across the network.</li>
-          <li>Powers remote execution tools like <code>PsExec</code> &amp; <code>rpcclient</code>.</li>
+          <li><strong>MS-RPC</strong> isteklerini ağ üzerinden taşır.</li>
+          <li><code>PsExec</code> ve <code>rpcclient</code> gibi remote execution araçlarına güç verir.</li>
         </ul>
       </div>
 
@@ -34,11 +34,11 @@
           <span class="cyber-badge badge-htb">PERIPHERALS</span> Network Printers
         </div>
         <p style="font-size: 0.83em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
-          To the Windows Print Spooler Service, a network printer is simply an <strong>I/O File Destination</strong>.
+          Windows Print Spooler Service açısından bir ağ yazıcısı (network printer) sadece bir <strong>I/O File Destination</strong>'dır.
         </p>
         <ul style="font-size: 0.8em; line-height: 1.4; color: var(--text-muted); margin-bottom: 0;">
-          <li>SMB opens a handle to the printer object.</li>
-          <li>Streams raw print bytes identical to <strong>saving a <code>.pdf</code> file</strong> to disk.</li>
+          <li>SMB, printer objesi için bir handle açar.</li>
+          <li>Diske <strong>bir <code>.pdf</code> dosyası kaydetmekle</strong> tamamen aynı şekilde ham yazdırma byte'larını stream eder.</li>
         </ul>
       </div>
 
@@ -54,11 +54,11 @@
           <span class="cyber-badge badge-cyan">SECURITY</span> Credential Testing
         </div>
         <p style="font-size: 0.83em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
-          Validating user credentials or password brute-forcing takes place during the <code>SESSION_SETUP</code> state.
+          Kullanıcı credential bilgilerini doğrulamak veya parola brute-force testleri yapmak <code>SESSION_SETUP</code> aşamasında gerçekleşir.
         </p>
         <ul style="font-size: 0.8em; line-height: 1.4; color: var(--text-muted); margin-bottom: 0;">
-          <li>Tests NTLMv2 or Kerberos hashes wrapped in SPNEGO.</li>
-          <li>Validates user identity without needing to mount a physical disk share.</li>
+          <li>SPNEGO içinde sarmalanmış NTLMv2 veya Kerberos hash'lerini test eder.</li>
+          <li>Fiziksel bir disk paylaşımını mount etmeye gerek kalmadan kullanıcı kimliğini doğrular.</li>
         </ul>
       </div>
 

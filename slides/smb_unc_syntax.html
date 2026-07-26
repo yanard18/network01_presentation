@@ -1,9 +1,9 @@
 <!-- SLIDE: UNC Path Syntax -->
 <section>
-  <h2><i class="fa-solid fa-folder-network highlight-htb"></i> UNC Path Syntax: <code>\\server\share</code></h2>
+  <h2><i class="fa-solid fa-folder-network highlight-htb"></i> UNC Path Sözdizimi: <code>\\server\share</code></h2>
 
   <div style="text-align: left; margin-bottom: 1.2rem; color: var(--text-muted); font-size: 0.95em;">
-    <strong>Universal Naming Convention (UNC)</strong> is the standard syntax Windows uses to identify files and printers across a network.
+    <strong>Universal Naming Convention (UNC)</strong>, Windows'un ağ üzerindeki dosya ve printer'ları bulmak için kullandığı standart sözdizimidir.
   </div>
 
   <!-- Syntax Breakdown Container -->
@@ -16,17 +16,17 @@
     <div style="display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 1rem; text-align: left; font-size: 0.85em;">
       <div style="border-top: 2px solid var(--accent-cyan); padding-top: 0.5rem;">
         <strong style="color: var(--accent-cyan); font-family: var(--font-mono);">\\ Network Trigger</strong>
-        <p style="color: var(--text-muted); margin: 0.2rem 0 0 0;">Tells Windows: <em>"Look outside this PC onto the network."</em></p>
+        <p style="color: var(--text-muted); margin: 0.2rem 0 0 0;">Windows'a şu mesajı verir: <em>"Bu PC'nin dışına çıkıp ağa (network) bak."</em></p>
       </div>
 
       <div style="border-top: 2px solid var(--htb-green); padding-top: 0.5rem;">
         <strong style="color: var(--htb-green); font-family: var(--font-mono);">FILE-SERVER Target</strong>
-        <p style="color: var(--text-muted); margin: 0.2rem 0 0 0;">Hostname or IP address (e.g. <code>192.168.1.10</code>).</p>
+        <p style="color: var(--text-muted); margin: 0.2rem 0 0 0;">Hedef makinenin Hostname'i veya IP adresi (ör. <code>192.168.1.10</code>).</p>
       </div>
 
       <div style="border-top: 2px solid var(--accent-purple); padding-top: 0.5rem;">
         <strong style="color: var(--accent-purple); font-family: var(--font-mono);">SharedDocs Share</strong>
-        <p style="color: var(--text-muted); margin: 0.2rem 0 0 0;">Exposed folder or resource on remote machine.</p>
+        <p style="color: var(--text-muted); margin: 0.2rem 0 0 0;">Uzak makinede dışarıya açılmış klasör veya paylaşılan kaynak.</p>
       </div>
     </div>
   </div>
@@ -36,14 +36,14 @@
     <div class="cyber-card">
       <div class="card-title"><span class="cyber-badge badge-htb">LOCAL PATH</span> <code>C:\Documents</code></div>
       <p style="font-size: 0.85em; color: var(--text-main); margin: 0; line-height: 1.48;">
-        Opening a file on your local disk is like opening your personal desk drawer in your office.
+        Yerel diskinizdeki bir dosyayı açmak, ofis masanızdaki kendi kişisel çekmecenizi açmaya benzer.
       </p>
     </div>
 
     <div class="cyber-card">
       <div class="card-title"><span class="cyber-badge badge-cyan">UNC NETWORK PATH</span> <code>\\SERVER\Share</code></div>
       <p style="font-size: 0.85em; color: var(--text-main); margin: 0; line-height: 1.48;">
-        Asking the central receptionist (<code>SERVER</code>) for a document from the company filing room (<code>Share</code>).
+        Merkezi bir sekreterden (<code>SERVER</code>) şirketin dosya arşivinden (<code>Share</code>) bir belge getirmesini istemeye benzer.
       </p>
     </div>
   </div>

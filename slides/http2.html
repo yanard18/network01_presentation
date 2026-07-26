@@ -1,32 +1,32 @@
 <!-- SLIDE 8: HTTP/2 - Greater Performance -->
 <section>
-  <h2><i class="fa-solid fa-bolt highlight-htb"></i> HTTP/2 — Greater Performance</h2>
+  <h2><i class="fa-solid fa-bolt highlight-htb"></i> HTTP/2 — Daha Yüksek Performans</h2>
   
   <div class="grid-2">
     <div>
       <div class="cyber-card">
-        <div class="card-title"><span class="cyber-badge badge-htb">SPDY FOUNDATION</span> Origin</div>
+        <div class="card-title"><span class="cyber-badge badge-htb">SPDY FOUNDATION</span> Köken (Origin)</div>
         <p>
-          Web pages became complex (more visuals, larger data, higher traffic). Google created <strong>SPDY</strong>, serving as the foundation for HTTP/2.
+          Web sayfaları giderek karmaşıklaştı (daha fazla görsel, büyük veriler, yüksek trafik). Google, HTTP/2'nin temelini (foundation) oluşturan <strong>SPDY</strong> protokolünü geliştirdi.
         </p>
       </div>
 
       <div class="cyber-card" style="margin-top: 1rem;">
-        <div class="card-title"><span class="cyber-badge badge-cyan">FEATURES</span> Key Improvements</div>
+        <div class="card-title"><span class="cyber-badge badge-cyan">FEATURES</span> Temel Geliştirmeler</div>
         <ul>
-          <li>Uses <strong>one single TCP connection</strong>.</li>
-          <li><strong>Binary protocol</strong> rather than a text protocol.</li>
-          <li><strong>Multiplexed</strong> parallel requests over the same connection.</li>
-          <li>Compresses headers to remove duplication (HPACK).</li>
+          <li>Sadece <strong>tek bir TCP bağlantısı (TCP connection)</strong> kullanır.</li>
+          <li>Metin (text) tabanlı değil, <strong>Binary protocol</strong>'dür (ikili format).</li>
+          <li>Aynı bağlantı üzerinden <strong>Multiplexed</strong> (çoklanmış) paralel istekler yapılmasını sağlar.</li>
+          <li>Tekrarları önlemek için header'ları sıkıştırır (HPACK).</li>
         </ul>
       </div>
     </div>
 
     <div class="cyber-card threat">
-      <div class="card-title"><i class="fa-solid fa-skull-crossbones highlight-red"></i> HTTP/2 Drawbacks</div>
+      <div class="card-title"><i class="fa-solid fa-skull-crossbones highlight-red"></i> HTTP/2 Dezavantajları (Drawbacks)</div>
       <ul class="threat-list">
-        <li><strong>Head-of-Line (HOL) Blocking:</strong> Sending all data over one TCP connection means if 1 CSS packet drops, <em>all other packets wait for it</em>.</li>
-        <li><strong>DoS Vulnerabilities:</strong> HTTP/2 suffers from DoS attacks because it relies on TCP stream management logic.</li>
+        <li><strong>Head-of-Line (HOL) Blocking:</strong> Tüm verilerin tek bir TCP bağlantısı üzerinden gönderilmesi, eğer 1 CSS paketi düşerse (drop), <em>diğer tüm paketlerin onu beklemesi</em> anlamına gelir.</li>
+        <li><strong>DoS Vulnerabilities:</strong> HTTP/2, TCP stream yönetim mantığına dayandığı için DoS saldırılarına karşı zafiyetler barındırır.</li>
       </ul>
     </div>
   </div>

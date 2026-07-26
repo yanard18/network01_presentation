@@ -1,6 +1,6 @@
 <!-- SLIDE: Advanced SMB Communications -->
 <section>
-  <h2><i class="fa-solid fa-bolt highlight-htb"></i> Advanced SMB Communications</h2>
+  <h2><i class="fa-solid fa-bolt highlight-htb"></i> Gelişmiş SMB İletişimleri (Advanced Comms)</h2>
 
   <div class="grid-3" style="gap: 1.1rem; align-items: stretch; text-align: left;">
     <!-- Communication 1: IPC & IOCTL -->
@@ -10,7 +10,7 @@
           <span class="cyber-badge badge-purple">IPC &amp; IOCTL</span> Named Pipe Transact
         </div>
         <p style="font-size: 0.83em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
-          Connects to <code>IPC$</code> and sends <code>SMB2 IOCTL</code> / <code>WRITE</code> requests to named pipes (e.g. <code>\pipe\srvsvc</code>) to carry MS-RPC remote execution data.
+          <code>IPC$</code> paylaşımına bağlanarak MS-RPC remote execution verilerini taşımak için <em>named pipe</em>'lara (ör. <code>\pipe\srvsvc</code>) <code>SMB2 IOCTL</code> / <code>WRITE</code> istekleri gönderir.
         </p>
       </div>
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
@@ -25,7 +25,7 @@
           <span class="cyber-badge badge-htb">PERFORMANCE</span> Compound Requests
         </div>
         <p style="font-size: 0.83em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
-          Bundles multiple commands into a <strong>single TCP packet</strong> (e.g., <code>CREATE</code> + <code>WRITE</code> + <code>CLOSE</code> in 1 RTT instead of 3).
+          Birden fazla komutu <strong>tek bir TCP paketinde</strong> birleştirir (örneğin; <code>CREATE</code> + <code>WRITE</code> + <code>CLOSE</code> isteklerini 3 RTT yerine 1 RTT'de işler).
         </p>
       </div>
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
@@ -40,7 +40,7 @@
           <span class="cyber-badge badge-cyan">CONTROL</span> Heartbeat &amp; Leasing
         </div>
         <p style="font-size: 0.83em; line-height: 1.48; color: var(--text-main); margin-bottom: 0.6rem;">
-          <code>SMB2 ECHO</code> maintains idle TCP sockets across firewalls. <code>LEASE_BREAK</code> instructs clients to flush local cache when file conflicts occur.
+          <code>SMB2 ECHO</code> komutu idle TCP soketlerini firewall üzerinde canlı tutar. <code>LEASE_BREAK</code> ise dosya çakışmaları olduğunda client'a local cache'i temizlemesini söyler.
         </p>
       </div>
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">

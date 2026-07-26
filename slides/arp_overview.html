@@ -3,7 +3,7 @@
   <h2><i class="fa-solid fa-address-card highlight-htb"></i> Address Resolution Protocol (ARP)</h2>
 
   <div style="text-align: left; margin-bottom: 1.1rem; color: var(--text-muted);">
-    <strong>ARP (Layer 2.5)</strong> resolves known 32-bit IPv4 addresses into 48-bit physical Ethernet MAC addresses for local delivery.
+    <strong>ARP (Layer 2.5)</strong>, yerel teslimat (local delivery) için bilinen 32-bit IPv4 adreslerini 48-bit fiziksel Ethernet MAC adreslerine çözümler (resolves).
   </div>
 
   <div class="grid-3" style="gap: 1rem; align-items: stretch; text-align: left;">
@@ -11,13 +11,13 @@
     <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <div class="card-title">
-          <span class="cyber-badge badge-htb">LAYER 2.5</span> ARP Envelope
+          <span class="cyber-badge badge-htb">LAYER 2.5</span> ARP Zarfı (Envelope)
         </div>
         <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
-          Bridges Layer 2 physical framing and Layer 3 IP routing.
+          Layer 2 fiziksel çerçeveleme (framing) ile Layer 3 IP yönlendirme (routing) arasında köprü kurar.
         </p>
         <div style="background: rgba(159,239,0,0.1); border: 1px solid var(--htb-green); border-radius: 6px; padding: 0.6rem; font-size: 0.8em; line-height: 1.45;">
-          <strong style="color: var(--htb-green);"><i class="fa-solid fa-triangle-exclamation"></i> Peer Identification:</strong> Leaking a MAC or IP address can tie specific network behavior to an identifiable peer in the lab.
+          <strong style="color: var(--htb-green);"><i class="fa-solid fa-triangle-exclamation"></i> Peer (Eş) Kimlik Tespiti:</strong> Bir MAC veya IP adresinin sızdırılması (leaking), belirli ağ davranışlarını laboratuvardaki tanımlanabilir bir eşe (peer) bağlayabilir.
         </div>
       </div>
     </div>
@@ -26,13 +26,13 @@
     <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <div class="card-title">
-          <span class="cyber-badge badge-cyan">BROADCAST</span> Resolution Mechanism
+          <span class="cyber-badge badge-cyan">BROADCAST</span> Çözümleme Mekanizması
         </div>
         <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
-          ARP Requests use Ethernet broadcast (<code>FF:FF:FF:FF:FF:FF</code>) to discover unknown MAC addresses.
+          ARP İstekleri (Requests), bilinmeyen MAC adreslerini keşfetmek için Ethernet broadcast (<code>FF:FF:FF:FF:FF:FF</code>) kullanır.
         </p>
         <div style="background: rgba(45,226,230,0.1); border: 1px solid var(--accent-cyan); border-radius: 6px; padding: 0.6rem; font-size: 0.8em; line-height: 1.45;">
-          <strong style="color: var(--accent-cyan);"><i class="fa-solid fa-bullhorn"></i> Subnet Visibility:</strong> Broadcast traffic exposes MAC and IP bindings across the entire local broadcast domain.
+          <strong style="color: var(--accent-cyan);"><i class="fa-solid fa-bullhorn"></i> Subnet Görünürlüğü (Visibility):</strong> Broadcast trafiği, MAC ve IP eşleşmelerini tüm yerel broadcast etki alanında (domain) açığa çıkarır.
         </div>
       </div>
     </div>
@@ -41,13 +41,13 @@
     <div class="cyber-card threat" style="display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <div class="card-title">
-          <span class="cyber-badge badge-red">SECURITY IMPACT</span> Risk Exposure
+          <span class="cyber-badge badge-red">GÜVENLİK ETKİSİ</span> Risk Maruziyeti (Exposure)
         </div>
         <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
-          How can this information be useful to an attacker?
+          Bu bilgi bir saldırgan (attacker) için nasıl faydalı olabilir?
         </p>
         <div style="background: rgba(255,46,99,0.12); border: 1px solid var(--accent-red); border-radius: 6px; padding: 0.6rem; font-size: 0.8em; line-height: 1.45;">
-          <strong style="color: var(--accent-red);"><i class="fa-solid fa-shield-virus"></i> Network Risk:</strong> Exposing gateway or internal DNS configurations can pose a security risk to the local network infrastructure.
+          <strong style="color: var(--accent-red);"><i class="fa-solid fa-shield-virus"></i> Ağ Riski (Network Risk):</strong> Ağ geçidi (gateway) veya dahili DNS yapılandırmalarının açığa çıkması, yerel ağ altyapısı için bir güvenlik riski oluşturabilir.
         </div>
       </div>
     </div>

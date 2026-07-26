@@ -1,6 +1,6 @@
 <!-- SLIDE: DHCP Lease Timers & Renewal -->
 <section>
-  <h2><i class="fa-solid fa-clock highlight-yellow"></i> DHCP Lease System &amp; Timers (T, T1, T2)</h2>
+  <h2><i class="fa-solid fa-clock highlight-yellow"></i> DHCP Kira Sistemi &amp; Zamanlayıcılar (T, T1, T2)</h2>
 
   <div class="grid-2" style="grid-template-columns: 1fr 1fr; gap: 1.2rem; align-items: center;">
     <!-- Left: DHCP Lease Time Image -->
@@ -12,18 +12,18 @@
     <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <div class="card-title">
-          <span class="cyber-badge badge-red" style="border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);">LEASE TIMERS</span> T, T1, and T2 Details
+          <span class="cyber-badge badge-red" style="border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);">KİRA SÜRELERİ (TIMERS)</span> T, T1 ve T2 Detayları
         </div>
 
         <ul style="font-size: 0.83em; line-height: 1.48; margin-bottom: 0;">
-          <li><strong>Lease Time (T):</strong> The absolute maximum amount of time a client can use an IP address without renewing it.</li>
-          <li><strong>Renewal Time (T1 = 0.5 × T):</strong> Set to 50% of lease time (T/2). When T1 expires, the client sends a <em>unicast</em> renewal request to its original DHCP server.</li>
-          <li><strong>Rebinding Time (T2 = 0.875 × T):</strong> Set to 87.5% of lease time (7T/8). If the original server is unreachable, the client broadcasts a <em>rebind plea</em> to any available DHCP server.</li>
+          <li><strong>Kira Süresi (Lease Time - T):</strong> Bir istemcinin IP adresini yenilemeden (renewing) kullanabileceği mutlak maksimum süre.</li>
+          <li><strong>Yenileme Süresi (Renewal Time - T1 = 0.5 × T):</strong> Kira süresinin %50'sine (T/2) ayarlanır. T1 dolduğunda (expires), istemci orijinal DHCP sunucusuna <em>unicast</em> yenileme isteği gönderir.</li>
+          <li><strong>Yeniden Bağlanma Süresi (Rebinding Time - T2 = 0.875 × T):</strong> Kira süresinin %87,5'ine (7T/8) ayarlanır. Orijinal sunucuya ulaşılamıyorsa, istemci mevcut herhangi bir DHCP sunucusuna yeniden bağlanma (rebind) isteği için <em>broadcast</em> yayını yapar.</li>
         </ul>
       </div>
 
       <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-yellow); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.6rem;">
-        <i class="fa-solid fa-hourglass-half highlight-yellow"></i> T1 Unicast Renewal ➔ T2 Broadcast Rebind ➔ T Expiry
+        <i class="fa-solid fa-hourglass-half highlight-yellow"></i> T1 Unicast Yenileme (Renewal) ➔ T2 Broadcast Rebind ➔ T Bitişi (Expiry)
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <!-- SLIDE: Bridge (Layer 2 Data Link Device) -->
 <section>
-  <h2><i class="fa-solid fa-filter highlight-cyan"></i> Bridge — Two-Port Traffic Cop</h2>
+  <h2><i class="fa-solid fa-filter highlight-cyan"></i> Bridge — İki Portlu Trafik Polisi</h2>
   
   <div class="grid-2">
     <!-- Left Half: Theory & Architecture -->
@@ -8,14 +8,14 @@
       <div class="cyber-card" style="height: 100%;">
         <div class="card-title">
           <span class="cyber-badge badge-cyan">LAYER 2 DATA LINK</span>
-          <span class="cyber-badge badge-htb">TRANSITIONAL</span>
+          <span class="cyber-badge badge-htb">GEÇİŞ (TRANSITIONAL)</span>
         </div>
         <p style="margin-bottom: 0.6rem;">
-          A <strong>Bridge</strong> operates at <strong>Layer 2</strong> and was invented to divide one large, congested hub network into two smaller collision segments.
+          Bir <strong>Bridge</strong> (Köprü), <strong>Layer 2</strong>'de çalışır ve büyük, yoğun (congested) bir hub ağını iki daha küçük çarpışma alanına (collision segments) bölmek için icat edilmiştir.
         </p>
         <ul style="font-size: 0.9em;">
-          <li><strong>How it works:</strong> Reads destination MAC address in software. If target device lives on the same side, blocks frame from crossing over; if on the other side, forwards it.</li>
-          <li><strong>Key Limitation:</strong> Mostly software-based with very few ports (usually 2 to 4), serving as a transitional technology before high-port switches took over.</li>
+          <li><strong>Nasıl Çalışır:</strong> Hedef MAC adresini yazılım (software) üzerinden okur. Eğer hedef cihaz aynı taraftaysa (same side), frame'in karşı tarafa geçmesini engeller (blocks); farklı taraftaysa, iletir (forwards).</li>
+          <li><strong>Temel Sınırlama (Limitation):</strong> Genellikle yazılım tabanlıdır ve çok az porta sahiptir (genelde 2 ila 4). Yüksek portlu switch'ler yerini almadan önce bir geçiş teknolojisi (transitional technology) olarak hizmet etmiştir.</li>
         </ul>
       </div>
     </div>
@@ -23,8 +23,8 @@
     <!-- Right Half: Visual Interactive Topology Diagram -->
     <div class="sim-container" style="margin-top: 0; display: flex; flex-direction: column; justify-content: space-between;">
       <div class="sim-header">
-        <div class="sim-title"><span class="cyber-badge badge-cyan">BRIDGE TOPOLOGY</span> Software MAC Filter</div>
-        <div id="bridge-sim-status" class="sim-status normal"><i class="fa-solid fa-filter"></i> Bridge Ready: Test Same vs Cross-Segment transmission</div>
+        <div class="sim-title"><span class="cyber-badge badge-cyan">BRIDGE TOPOLOGY</span> Yazılımsal (Software) MAC Filter</div>
+        <div id="bridge-sim-status" class="sim-status normal"><i class="fa-solid fa-filter"></i> Bridge Hazır: Same (Aynı) vs Cross-Segment iletimini test edin</div>
       </div>
 
       <!-- Visual Bridge Topology Canvas with Segment Boxes & Dividing Boundary Wall -->
@@ -77,12 +77,12 @@
       </div>
 
       <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 0.4rem;">
-        <button class="sim-btn" onclick="window.netDevSim.testBridge('same')"><i class="fa-solid fa-filter"></i> Send A ➔ B (Same Segment)</button>
-        <button class="sim-btn" onclick="window.netDevSim.testBridge('cross')"><i class="fa-solid fa-right-left"></i> Send A ➔ C (Cross Segment)</button>
+        <button class="sim-btn" onclick="window.netDevSim.testBridge('same')"><i class="fa-solid fa-filter"></i> Gönder A ➔ B (Aynı Segment)</button>
+        <button class="sim-btn" onclick="window.netDevSim.testBridge('cross')"><i class="fa-solid fa-right-left"></i> Gönder A ➔ C (Karşı - Cross Segment)</button>
       </div>
 
       <div id="bridge-sim-log" style="background: var(--htb-bg-terminal); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 0.6rem 0.8rem; font-family: var(--font-mono); font-size: 0.78em; min-height: 80px;">
-        <div style="color: var(--text-muted);">Click a button to test how Bridge filters frames in software by checking destination MAC...</div>
+        <div style="color: var(--text-muted);">Bridge'in hedef MAC'i kontrol ederek yazılım (software) seviyesinde frame'leri nasıl filtrelediğini test etmek için bir butona tıklayın...</div>
       </div>
     </div>
   </div>

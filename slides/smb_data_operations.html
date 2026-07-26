@@ -1,9 +1,9 @@
 <!-- SLIDE: SMB Data Operations & File Management -->
 <section>
-  <h2><i class="fa-solid fa-file-export highlight-htb"></i> Data Operations &amp; File Management</h2>
+  <h2><i class="fa-solid fa-file-export highlight-htb"></i> Veri İşlemleri &amp; Dosya Yönetimi</h2>
 
   <div style="text-align: left; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.95em;">
-    Once a <code>FileId</code> (FID) handle is obtained, SMB uses specific opcodes for data transfer and metadata management:
+    Bir <code>FileId</code> (FID) handle elde edildikten sonra SMB, veri transferi ve metadata yönetimi için özel opcode'lar kullanır:
   </div>
 
   <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; text-align: left;">
@@ -14,7 +14,7 @@
           <span class="cyber-badge badge-htb">DATA TRANSFER</span> <code>SMB2 READ</code> &amp; <code>WRITE</code>
         </div>
         <p style="font-size: 0.83em; line-height: 1.45; color: var(--text-main); margin-bottom: 0.4rem;">
-          Transfers file contents or IPC payload bytes using <code>SessionId</code>, <code>TreeId</code>, <code>FileId</code>, Byte Offset, and Length.
+          <code>SessionId</code>, <code>TreeId</code>, <code>FileId</code>, Byte Offset ve Length parametrelerini kullanarak dosya içeriklerini veya IPC payload'larını transfer eder.
         </p>
       </div>
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
@@ -29,7 +29,7 @@
           <span class="cyber-badge badge-cyan">DIRECTORY LIST</span> <code>QUERY_DIRECTORY</code>
         </div>
         <p style="font-size: 0.83em; line-height: 1.45; color: var(--text-main); margin-bottom: 0.4rem;">
-          Lists files and subdirectories (equivalent to <code>dir</code> / <code>ls</code>) matching search patterns (e.g. <code>*.docx</code>).
+          Arama pattern'leriyle (ör. <code>*.docx</code>) eşleşen dosya ve alt dizinleri (subdirectories) listeler (<code>dir</code> / <code>ls</code> ile eşdeğerdir).
         </p>
       </div>
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
@@ -44,7 +44,7 @@
           <span class="cyber-badge badge-purple">METADATA</span> <code>QUERY_INFO</code> &amp; <code>SET_INFO</code>
         </div>
         <p style="font-size: 0.83em; line-height: 1.45; color: var(--text-main); margin-bottom: 0.4rem;">
-          Retrieves or modifies file metadata, file sizes, creation timestamps, and NTFS Access Control Lists (ACLs).
+          Dosya metadata bilgilerini, boyutlarını, oluşturulma zamanlarını (timestamps) ve NTFS Erişim Kontrol Listelerini (ACLs) okur veya değiştirir.
         </p>
       </div>
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">
@@ -59,7 +59,7 @@
           <span class="cyber-badge badge-red">TEARDOWN</span> <code>SMB2 CLOSE</code> &amp; <code>LOCK</code>
         </div>
         <p style="font-size: 0.83em; line-height: 1.45; color: var(--text-main); margin-bottom: 0.4rem;">
-          Locks specific file byte-ranges to prevent multi-user race conditions, and closes handles to free server memory.
+          Çoklu kullanıcı senaryolarında çakışmaları (race conditions) önlemek için dosyanın belirli byte aralıklarını kilitler (lock) ve sunucu belleğini boşaltmak için handle'ları kapatır.
         </p>
       </div>
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-red); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem;">

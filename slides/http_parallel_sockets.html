@@ -1,9 +1,9 @@
 <!-- SLIDE: The 6 Parallel TCP Connections Workaround -->
 <section>
-  <h2><i class="fa-solid fa-network-wired highlight-htb"></i> 6 Parallel TCP Lanes &amp; Port Mapping</h2>
+  <h2><i class="fa-solid fa-network-wired highlight-htb"></i> 6 Paralel TCP Şeridi &amp; Port Mapping</h2>
 
   <div style="text-align: left; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.93em;">
-    To bypass sequential Head-of-Line blocking, web browsers open <strong>up to 6 parallel TCP connections</strong>. Each lane assigns a unique client ephemeral source port connecting to server <strong>Port 80/443</strong>.
+    Sıralı (sequential) Head-of-Line blocking (Hat Başı Tıkanması) sorununu aşmak için web tarayıcıları <strong>aynı anda 6'ya kadar paralel TCP bağlantısı</strong> açar. Her bir şerit, sunucunun <strong>Port 80/443</strong> adresine bağlanmak için benzersiz bir geçici (ephemeral) kaynak port atar.
   </div>
 
   <!-- 6 Parallel Lanes Visualizer Container -->
@@ -62,6 +62,6 @@
 
   <!-- Summary Callout -->
   <div style="background: rgba(255, 46, 99, 0.08); border: 1px solid var(--accent-red); border-radius: 6px; padding: 0.7rem 1rem; font-family: var(--font-mono); font-size: 0.78rem; text-align: left;">
-    <i class="fa-solid fa-triangle-exclamation highlight-red"></i> <strong>Overhead Flaw:</strong> Opening 6 parallel lanes required <strong>6 separate TCP 3-Way Handshakes</strong> (18 TCP control packets), causing high latency and server socket exhaustion.
+    <i class="fa-solid fa-triangle-exclamation highlight-red"></i> <strong>Overhead Kusuru:</strong> 6 paralel şerit açmak <strong>6 ayrı TCP 3-Way Handshake</strong> (18 TCP kontrol paketi) gerektiriyordu; bu da yüksek gecikmeye (latency) ve sunucu soketlerinin tükenmesine (socket exhaustion) neden oluyordu.
   </div>
 </section>

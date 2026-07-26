@@ -1,13 +1,13 @@
 <!-- SLIDE: DHCP Protocol Operation (DORA Process) -->
 <section>
-  <h2><i class="fa-solid fa-diagram-project highlight-htb"></i> DHCP Protocol Operation (DORA Process)</h2>
+  <h2><i class="fa-solid fa-diagram-project highlight-htb"></i> DHCP Protokol İşleyişi (DORA Süreci)</h2>
 
   <div class="grid-2" style="grid-template-columns: 1.05fr 0.95fr; gap: 1.2rem; align-items: center;">
     <!-- Left: Image from /media -->
     <div style="background: rgba(255, 255, 255, 0.98); padding: 12px; border-radius: 10px; border: 1px solid var(--htb-border); box-shadow: 0 0 25px var(--htb-green-glow); text-align: center;">
       <img src="media/80-dhcp-process.jpg" alt="DHCP DORA Process Diagram" style="max-height: 380px; width: 100%; object-fit: contain; display: block;">
       <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.4rem;">
-        <i class="fa-solid fa-diagram-project highlight-htb"></i> Figure: The 4-Step DHCP DORA Handshake Process
+        <i class="fa-solid fa-diagram-project highlight-htb"></i> Şekil: 4 Adımlı DHCP DORA Handshake (El Sıkışma) Süreci
       </div>
     </div>
 
@@ -15,19 +15,19 @@
     <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <div class="card-title">
-          <span class="cyber-badge badge-htb">DORA STEPS</span> Handshake Sequence
+          <span class="cyber-badge badge-htb">DORA ADIMLARI</span> Handshake (El Sıkışma) Sırası
         </div>
 
         <ul style="font-size: 0.81em; line-height: 1.45; margin-bottom: 0;">
-          <li><strong>1. DHCP_DISCOVER:</strong> Client broadcasts (Src: <code>0.0.0.0</code>, Dst: <code>255.255.255.255</code>) to locate available DHCP servers.</li>
-          <li><strong>2. DHCP_OFFER:</strong> Server reserves an IP &amp; responds with offer (IP, lease time, subnet mask, DNS IPs).</li>
-          <li><strong>3. DHCP_REQUEST:</strong> Client selects offer &amp; broadcasts request to finalize lease with chosen server and release other servers' reservations.</li>
-          <li><strong>4. DHCP_ACK:</strong> Selected server commits IP binding to persistent storage (sends <em>DHCPNAK</em> if address becomes unavailable).</li>
+          <li><strong>1. DHCP_DISCOVER:</strong> İstemci (Client), mevcut DHCP sunucularını bulmak için broadcast yayını yapar (Src: <code>0.0.0.0</code>, Dst: <code>255.255.255.255</code>).</li>
+          <li><strong>2. DHCP_OFFER:</strong> Sunucu (Server) bir IP rezerve eder ve teklifle (offer) yanıt verir (IP, lease time/kira süresi, subnet mask, DNS IP'leri).</li>
+          <li><strong>3. DHCP_REQUEST:</strong> İstemci teklifi seçer ve seçilen sunucuyla kiralamayı (lease) kesinleştirmek (finalize) ve diğer sunucuların rezervasyonlarını serbest bırakmak (release) için istek (request) yayını (broadcast) yapar.</li>
+          <li><strong>4. DHCP_ACK:</strong> Seçilen sunucu, IP eşleşmesini (binding) kalıcı depolamaya (persistent storage) kaydeder (adres kullanılamaz hale gelirse <em>DHCPNAK</em> gönderir).</li>
         </ul>
       </div>
 
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.4rem;">
-        <i class="fa-solid fa-check highlight-htb"></i> UDP Ports: Client (68) ➔ Server (67)
+        <i class="fa-solid fa-check highlight-htb"></i> UDP Portları: İstemci (68) ➔ Sunucu (67)
       </div>
     </div>
   </div>

@@ -1,17 +1,17 @@
 <!-- SLIDE: IP Routing Starts at the Host -->
 <section>
-  <h2><i class="fa-solid fa-laptop-code highlight-htb"></i> IP Routing Starts at the Host</h2>
+  <h2><i class="fa-solid fa-laptop-code highlight-htb"></i> IP Routing Host'ta Başlar</h2>
   
   <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.3rem;">
     <!-- Key Concept Banner -->
     <div style="background: rgba(159,239,0,0.08); border: 1px solid var(--htb-green); border-radius: 8px; padding: 0.8rem 1.2rem; text-align: left;">
       <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.3rem;">
-        <span class="cyber-badge badge-htb">FIRST ROUTING DECISION</span>
-        <strong style="color: #fff; font-size: 1.05em;">The Host Decides Before Data Touches the Wire!</strong>
+        <span class="cyber-badge badge-htb">İLK ROUTING KARARI</span>
+        <strong style="color: #fff; font-size: 1.05em;">Host, Veri Kabloya (Wire) İnmeden Önce Karar Verir!</strong>
       </div>
       <p style="margin: 0; font-size: 0.85em; color: #e2e8f0; line-height: 1.4;">
-        PC1 wants to send data to Google (<code>8.8.8.8</code>). PC1 compares <code>8.8.8.8</code> against its own IP & Mask (<code>10.1.1.50 / 255.255.255.0</code>). 
-        Using subnetting logic, PC1 determines <code>8.8.8.8</code> is outside its local LAN!
+        PC1, Google'a (<code>8.8.8.8</code>) veri göndermek istiyor. PC1, <code>8.8.8.8</code>'i kendi IP'si ve Mask'ı (<code>10.1.1.50 / 255.255.255.0</code>) ile karşılaştırır. 
+        Subnetting (alt ağ oluşturma) mantığını kullanarak, PC1 <code>8.8.8.8</code>'in kendi yerel LAN'ının dışında olduğunu belirler!
       </p>
     </div>
 
@@ -19,21 +19,21 @@
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; text-align: left;">
       <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 8px; padding: 0.9rem 1.1rem;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
-          <strong style="color: var(--accent-cyan); font-size: 0.95em;">SCENARIO A: SAME SUBNET</strong>
+          <strong style="color: var(--accent-cyan); font-size: 0.95em;">SENARYO A: AYNI SUBNET</strong>
           <span class="cyber-badge badge-cyan">DIRECT ARP</span>
         </div>
         <p style="font-size: 0.82em; color: #e2e8f0; margin: 0; line-height: 1.4;">
-          If destination IP is on the same local network, host sends packet directly to target using <strong>ARP</strong> to resolve destination MAC address. <strong>No router needed!</strong>
+          Eğer hedef IP aynı yerel ağdaysa (local network), host hedef MAC adresini çözümlemek (resolve) için <strong>ARP</strong> kullanarak paketi doğrudan hedefe gönderir. <strong>Router'a gerek yoktur!</strong>
         </p>
       </div>
 
       <div style="background: rgba(168,85,247,0.08); border: 1px solid var(--accent-purple); border-radius: 8px; padding: 0.9rem 1.1rem;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
-          <strong style="color: var(--accent-purple); font-size: 0.95em;">SCENARIO B: DIFFERENT SUBNET</strong>
+          <strong style="color: var(--accent-purple); font-size: 0.95em;">SENARYO B: FARKLI SUBNET</strong>
           <span class="cyber-badge badge-purple">DEFAULT GATEWAY</span>
         </div>
         <p style="font-size: 0.82em; color: #fff; margin: 0; line-height: 1.4;">
-          Destination is outside local LAN \(\rightarrow\) Host sends packet to <strong>Default Gateway Router (10.1.1.1)</strong>. Host sets Ethernet <strong>Destination MAC = Router R1 MAC (CCC)</strong>!
+          Hedef, yerel LAN'ın dışındadır \(\rightarrow\) Host, paketi <strong>Default Gateway (Varsayılan Ağ Geçidi) Router'a (10.1.1.1)</strong> gönderir. Host, Ethernet <strong>Hedef (Destination) MAC = Router R1 MAC (CCC)</strong> olarak ayarlar!
         </p>
       </div>
     </div>
