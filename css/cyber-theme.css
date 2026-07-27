@@ -173,6 +173,31 @@ body {
   box-shadow: 0 8px 24px rgba(4, 9, 20, 0.6);
   transition: all 0.25s ease;
   position: relative;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.cyber-card p {
+  font-size: 1.05em !important;
+  line-height: 1.6 !important;
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+}
+
+.cyber-card ul,
+.cyber-card ol {
+  font-size: 1.02em !important;
+  line-height: 1.6 !important;
+}
+
+.cyber-card li {
+  font-size: 1.02em !important;
+  line-height: 1.6 !important;
+  margin-bottom: 0.65rem;
+}
+
+.cyber-card li:last-child {
+  margin-bottom: 0;
 }
 
 .cyber-card::before {
@@ -219,12 +244,13 @@ body {
 
 .card-title {
   font-family: var(--font-heading);
-  font-size: 1.2em;
+  font-size: 1.22em;
   font-weight: 700;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.7rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 /* HTB Badges */

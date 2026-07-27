@@ -15,19 +15,19 @@
     <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <div class="card-title">
-          <span class="cyber-badge badge-red" style="border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);">UDP ALANLARI</span> Kısa Alan Dağılımı (Field Breakdown)
+          <span class="cyber-badge badge-red" style="border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);">UDP ALANLARI</span> Kısa Alan Dağılımı
         </div>
         
-        <ul style="font-size: 0.88em; line-height: 1.5; margin-bottom: 0;">
-          <li><strong>Kaynak (Source) Portu (16 Bit):</strong> Gönderen uygulama sürecinin portu (isteğe bağlıdır; eğer cevap beklenmiyorsa 0'a ayarlanır).</li>
-          <li><strong>Hedef (Destination) Portu (16 Bit):</strong> Hedef host üzerindeki hedef uygulama sürecinin portu.</li>
-          <li><strong>Uzunluk (Length - 16 Bit):</strong> Bayt cinsinden UDP başlığı (header) artı uygulama verisinin toplam boyutu (minimum değer = 8).</li>
-          <li><strong>Checksum (16 Bit):</strong> Başlık, veri yükü (payload) ve pseudo-IP başlığını kapsayan hata tespiti (error detection).</li>
+        <ul>
+          <li><strong>Source Port (16b):</strong> Gönderen uygulamanın port numarası.</li>
+          <li><strong>Destination Port (16b):</strong> Hedef uygulamanın port numarası.</li>
+          <li><strong>Length (16b):</strong> Başlık + Veri (Payload) toplam boyutu (Min: 8B).</li>
+          <li><strong>Checksum (16b):</strong> Veri bütünlüğü ve hata tespiti sağlar.</li>
         </ul>
       </div>
 
-      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-yellow); margin-top: 0.6rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem;">
-        <i class="fa-solid fa-bolt"></i> Sıfır bağlantı kurulum durumu (connection setup state) ile sabit 8 byte ek yük (overhead)!
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-yellow); margin-top: 0.6rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem;">
+        <i class="fa-solid fa-bolt"></i> Sıfır oturum el sıkışması ve sabit 8 byte ek yük!
       </div>
     </div>
   </div>

@@ -18,19 +18,18 @@
           <span class="cyber-badge badge-cyan">IPV4 ALANLARI</span> Temel Açıklamalar
         </div>
 
-        <ul style="font-size: 0.81em; line-height: 1.42; margin-bottom: 0;">
-          <li><strong>Versiyon (Version - 4b):</strong> IP versiyonunu tanımlar (IPv4 için <code>4</code> olarak ayarlanır).</li>
-          <li><strong>IHL (4b):</strong> 32-bit kelimeler cinsinden İnternet Başlık Uzunluğu (Internet Header Length) (Min: 5 = 20B, Maks: 15 = 60B).</li>
-          <li><strong>Type of Service (8b):</strong> Quality of Service (QoS - Hizmet Kalitesi) önceliklendirmesi için DSCP ve ECN bitleri.</li>
-          <li><strong>Ident &amp; Flags (3b):</strong> Fragmentation (parçalanma) kontrolü (DF = Don't Fragment, MF = More Fragments).</li>
-          <li><strong>Time-to-Live (TTL - 8b):</strong> Döngüleri (loops) önlemek için router'lar tarafından eksiltilen hop (atlama) limit sayacı (varsayılan 64).</li>
-          <li><strong>Protokol (8b):</strong> Payload türü kimliği (ör. 6 = TCP, 17 = UDP, veya IPv4-in-IPv4).</li>
-          <li><strong>Header Checksum (16b):</strong> <em>Yalnızca başlık (header only)</em> bütünlüğünü doğrular (IPv6'da kaldırılmıştır).</li>
+        <ul>
+          <li><strong>Version &amp; IHL (8b):</strong> IP sürümü (4) ve başlık uzunluğu (20-60B).</li>
+          <li><strong>TTL (8b):</strong> Sonsuz döngüleri önleyen atlama limit sayacı.</li>
+          <li><strong>Protocol (8b):</strong> Üst katman protokol kimliği (6 = TCP, 17 = UDP).</li>
+          <li><strong>IP Adresleri (64b):</strong> Kaynak ve hedef IPv4 adresleri.</li>
+          <li><strong>Flags &amp; Fragment (16b):</strong> Paket parçalanma (fragmentation) kontrolü.</li>
+          <li><strong>Checksum (16b):</strong> Yalnızca başlığın bütünlüğünü doğrular.</li>
         </ul>
       </div>
 
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.4rem;">
-        <i class="fa-solid fa-circle-info highlight-cyan"></i> İsteğe bağlı IHL padding'i (dolgusu) nedeniyle değişken başlık boyutu.
+        <i class="fa-solid fa-circle-info highlight-cyan"></i> IHL dolgusu nedeniyle değişken başlık boyutu (20-60 Byte).
       </div>
     </div>
   </div>

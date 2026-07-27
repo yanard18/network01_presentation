@@ -18,12 +18,10 @@
           <span class="cyber-badge badge-htb">FLOW CONTROL</span> Buffer Taşmasını (Overflow) Önleme
         </div>
 
-        <ul style="font-size: 0.84em; line-height: 1.48; margin-bottom: 0;">
-          <li><strong>Zamanlama (Timing) &amp; Hız Uyuşmazlığı:</strong> Hızlı göndericilerin yavaş alıcılara iletim yapması, bellek buffer'ının (tampon) tükenmesine ve paket kayıplarına (packet drops) neden olur.</li>
-          <li><strong>Advertised Window (Bildirilen Pencere - rwnd):</strong> Alıcı, her ACK başlığında (Window Size alanında) kullanılabilir buffer (tampon) alanını bildirir.</li>
-          <li><strong>Sliding Window (Kayan Pencere) Aralığı:</strong> Göndericinin (sender) herhangi bir anda onaylanmamış (unacknowledged) kaç bayt iletebileceğini (transmit) sınırlar.</li>
-          <li><strong>Dinamik Pencere Kaydırma (Dynamic Window Slide):</strong> Alıcı (receiver) uygulaması buffer'dan veri okudukça, pencere ileriye doğru kayar (slides forward) ve yeni veri iletimine izin verir.</li>
-          <li><strong>Zero Window (Sıfır Pencere - Duraklatma):</strong> Eğer alıcının buffer'ı dolarsa, Window = 0 bildirerek göndericiye alan boşalana kadar duraklamasını (pause) emreder.</li>
+        <ul>
+          <li><strong>Zamanlama &amp; Hız Uyuşmazlığı:</strong> Hızlı göndericilerin yavaş alıcılara iletim yapması, bellek buffer'ının tükenmesine ve paket kayıplarına neden olur.</li>
+          <li><strong>Dinamik Pencere Kaydırma (Dynamic Window Slide):</strong> Alıcı uygulaması buffer'dan veri okudukça, pencere ileriye doğru kayar ve yeni veri iletimine izin verir.</li>
+          <li><strong>Zero Window (Sıfır Pencere - Duraklatma):</strong> Eğer alıcının buffer'ı dolarsa, Window = 0 bildirerek göndericiye alan boşalana kadar duraklamasını emreder.</li>
         </ul>
       </div>
 

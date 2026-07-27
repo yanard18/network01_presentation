@@ -383,12 +383,12 @@
           <span class="cyber-badge badge-red">LAYER 1 FİZİKSEL</span>
           <span class="cyber-badge badge-htb">OBSOLETE</span>
         </div>
-        <p style="font-size: 1.08em; line-height: 1.65; margin-bottom: 1rem; color: #fff;">
+        <p style="color: #fff;">
           <strong>Hub</strong>, Layer 1'de çalışan mantıksal zekası olmayan bir sinyal tekrarlayıcıdır (repeater). Bir porttan aldığı elektriksel sinyalleri kopyalayarak tüm portlara yayınlar (flooding).
         </p>
-        <ul class="threat-list" style="font-size: 1.04em; line-height: 1.65;">
-          <li style="margin-bottom: 0.7rem;"><strong>Çalışma Mantığı:</strong> A cihazı B'ye veri gönderdiğinde C ve D cihazları da bu veriyi alır.</li>
-          <li style="margin-bottom: 0.7rem;"><strong>Dezavantaj:</strong> Tüm cihazlar tek bir <strong>Çarpışma Alanı (Collision Domain)</strong> paylaşır; aynı anda sadece 1 cihaz iletim yapabilir.</li>
+        <ul class="threat-list">
+          <li><strong>Çalışma Mantığı:</strong> A cihazı B'ye veri gönderdiğinde C ve D cihazları da bu veriyi alır.</li>
+          <li><strong>Dezavantaj:</strong> Tüm cihazlar tek bir <strong>Çarpışma Alanı (Collision Domain)</strong> paylaşır; aynı anda sadece 1 cihaz iletim yapabilir.</li>
           <li><strong>Durum:</strong> Çarpışma riski ve düşük performans nedeniyle modern ağlarda kullanımdan kalkmıştır.</li>
         </ul>
       </div>
@@ -470,12 +470,12 @@
           <span class="cyber-badge badge-cyan">LAYER 2 DATA LINK</span>
           <span class="cyber-badge badge-htb">GEÇİŞ (TRANSITIONAL)</span>
         </div>
-        <p style="font-size: 1.08em; line-height: 1.65; margin-bottom: 1rem; color: #fff;">
+        <p style="color: #fff;">
           <strong>Bridge (Köprü)</strong>, Layer 2'de çalışarak büyük bir Hub ağını iki izole çarpışma alanına (collision domain) bölmek için geliştirilmiştir.
         </p>
-        <ul style="font-size: 1.04em; line-height: 1.65;">
-          <li style="margin-bottom: 0.7rem;"><strong>Çalışma Mantığı:</strong> Gelen paketin hedef MAC adresini okur. Alıcı aynı segmentteyse paketi engeller (filter), karşı taraftaysa iletir (forward).</li>
-          <li style="margin-bottom: 0.7rem;"><strong>Sınırlama:</strong> Kontroller yazılımla yapıldığı için yavaştır ve az sayıda porta sahiptir (2-4 port).</li>
+        <ul>
+          <li><strong>Çalışma Mantığı:</strong> Gelen paketin hedef MAC adresini okur. Alıcı aynı segmentteyse paketi engeller (filter), karşı taraftaysa iletir (forward).</li>
+          <li><strong>Sınırlama:</strong> Kontroller yazılımla yapıldığı için yavaştır ve az sayıda porta sahiptir (2-4 port).</li>
           <li><strong>Rolü:</strong> Switch teknolojisine geçişi sağlayan tarihsel bir köprüdür.</li>
         </ul>
       </div>
@@ -562,12 +562,12 @@
           <span class="cyber-badge badge-htb">LAYER 2 DATA LINK</span>
           <span class="cyber-badge badge-cyan">HARDWARE ASIC</span>
         </div>
-        <p style="font-size: 1.08em; line-height: 1.65; margin-bottom: 1rem; color: #fff;">
+        <p style="color: #fff;">
           <strong>Switch</strong>, Layer 2'de çalışan donanım hızlandırmalı (ASIC) çok portlu gelişmiş bir köprüdür.
         </p>
-        <ul class="secure-list" style="font-size: 1.04em; line-height: 1.65;">
-          <li style="margin-bottom: 0.7rem;"><strong>Çalışma Mantığı:</strong> Özel çiplerde (ASIC) tuttuğu MAC tablosu sayesinde veriyi <em>yalnızca</em> hedef porttaki cihaza teslim eder.</li>
-          <li style="margin-bottom: 0.7rem;"><strong>Temel Avantaj:</strong> Her port kendi izole çarpışma alanına sahiptir; çarpışma (collision) riskini sıfıra indirir.</li>
+        <ul class="secure-list">
+          <li><strong>Çalışma Mantığı:</strong> Özel çiplerde (ASIC) tuttuğu MAC tablosu sayesinde veriyi <em>yalnızca</em> hedef porttaki cihaza teslim eder.</li>
+          <li><strong>Temel Avantaj:</strong> Her port kendi izole çarpışma alanına sahiptir; çarpışma (collision) riskini sıfıra indirir.</li>
           <li><strong>İletişim Modu:</strong> <strong>Full-Duplex</strong> desteği ile aynı anda kesintisiz veri gönderme ve alma sağlar.</li>
         </ul>
       </div>
@@ -821,10 +821,10 @@
           <span class="cyber-badge badge-purple">LAYER 3 NETWORK</span>
           <span class="cyber-badge badge-htb">AĞLAR ARASI (INTER-NETWORK)</span>
         </div>
-        <p style="margin-bottom: 0.6rem;">
+        <p style="color: #fff;">
           Hub'lar, bridge'ler ve switch'ler yerel bir ağ (LAN) içindeki cihazları birbirine bağlarken, bir <strong>Router</strong> tamamen farklı ağları birbirine bağlamak için <strong>Layer 3</strong>'te çalışır (örneğin, Ev LAN'ından ISP WAN/İnternet'e).
         </p>
-        <ul style="font-size: 0.9em;">
+        <ul>
           <li><strong>Nasıl Çalışır:</strong> Layer 2 frame'lerini (çerçevelerini) ayırır, Layer 3 paketlerinin içindeki IP adreslerini inceler ve son hedefe doğru en iyi yolu (path) belirlemek için bir yönlendirme tablosu (routing table) kullanır.</li>
           <li><strong>Temel Avantaj (Key Advantage):</strong> Layer 2 broadcast'lerinin (yayın) diğer ağlara sızmasını (leaking) engeller, böylece geniş ağ trafiğini izole edilmiş ve güvenli tutar.</li>
         </ul>
@@ -916,7 +916,7 @@
           <span class="cyber-badge badge-htb">LAYER 4</span> Temel Özellikleri (Key Essentials)
         </div>
 
-        <ul style="font-size: 0.88em; line-height: 1.55; margin-bottom: 0;">
+        <ul>
           <li><strong>Uygulama (Application) Sınırı:</strong> Uygulama süreçleri (application processes) ile ağ altyapısı (network infrastructure) arasındaki sınır görevi görür.</li>
           <li><strong>Process-to-Process İletim:</strong> Layer 3 (IP) host'tan host'a yönlendirme yaparken, Layer 4 verileri port numaraları aracılığıyla <strong>process-to-process</strong> iletir.</li>
           <li><strong>Protokol Seçenekleri:</strong> Temel olarak diğer protokollerle (SCTP, QUIC) birlikte <strong>TCP</strong> (güvenilir) ve <strong>UDP</strong> (hızlı) kullanır.</li>
@@ -1017,19 +1017,18 @@
           <span class="cyber-badge badge-purple">HEADER ALANLARI</span> Temel Açıklamalar
         </div>
         
-        <ul style="font-size: 0.84em; line-height: 1.45; margin-bottom: 0;">
-          <li><strong>Kaynak (Source) &amp; Hedef (Dest) Portları (16b):</strong> Gönderen ve alan uygulama süreçlerini tanımlar.</li>
-          <li><strong>Sequence Number (Sıra Numarası - 32b):</strong> Bayt sıralamasını takip eder ve veri akışındaki (data stream) eksik baytları tespit eder.</li>
-          <li><strong>Acknowledgment Number (Onay Numarası - 32b):</strong> Güvenilirlik için uzak host'tan beklenen bir sonraki baytı belirtir.</li>
-          <li><strong>Data Offset (4b):</strong> Toplam TCP başlık uzunluğunu 32 bitlik kelimeler halinde belirtir.</li>
-          <li><strong>Control Flags (Kontrol Bayrakları - 9b):</strong> Oturum yönetimi bitleri (SYN, ACK, FIN, RST, PSH, URG).</li>
-          <li><strong>Window Size (Pencere Boyutu - 16b):</strong> Alıcı tarafından bildirilen akış kontrolü (flow control) buffer alanı.</li>
-          <li><strong>Checksum (16b):</strong> Başlığın (header) ve veri yükünün (payload) bit düzeyinde bütünlüğünü sağlar.</li>
+        <ul>
+          <li><strong>Portlar (16b + 16b):</strong> Gönderen ve alıcı uygulama süreçlerini eşler.</li>
+          <li><strong>Sequence No (32b):</strong> Veri paketlerinin sırasını ve eksik baytları takip eder.</li>
+          <li><strong>Ack No (32b):</strong> Güvenilir iletim için beklenen sonraki baytı bildirir.</li>
+          <li><strong>Control Flags (9b):</strong> Oturum yönetimi bitleri (SYN, ACK, FIN, RST).</li>
+          <li><strong>Window Size (16b):</strong> Akış kontrolü (flow control) için buffer alanını yönetir.</li>
+          <li><strong>Checksum (16b):</strong> Başlık ve verinin bit düzeyinde bütünlüğünü doğrular.</li>
         </ul>
       </div>
 
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-muted); margin-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem;">
-        <i class="fa-solid fa-info-circle highlight-purple"></i> Minimum boyut: 20 byte (options yok). Maksimum: 60 byte.
+        <i class="fa-solid fa-info-circle highlight-purple"></i> Minimum boyut: 20 byte. Maksimum: 60 byte.
       </div>
     </div>
   </div>
@@ -1056,12 +1055,10 @@
           <span class="cyber-badge badge-htb">FLOW CONTROL</span> Buffer Taşmasını (Overflow) Önleme
         </div>
 
-        <ul style="font-size: 0.84em; line-height: 1.48; margin-bottom: 0;">
-          <li><strong>Zamanlama (Timing) &amp; Hız Uyuşmazlığı:</strong> Hızlı göndericilerin yavaş alıcılara iletim yapması, bellek buffer'ının (tampon) tükenmesine ve paket kayıplarına (packet drops) neden olur.</li>
-          <li><strong>Advertised Window (Bildirilen Pencere - rwnd):</strong> Alıcı, her ACK başlığında (Window Size alanında) kullanılabilir buffer (tampon) alanını bildirir.</li>
-          <li><strong>Sliding Window (Kayan Pencere) Aralığı:</strong> Göndericinin (sender) herhangi bir anda onaylanmamış (unacknowledged) kaç bayt iletebileceğini (transmit) sınırlar.</li>
-          <li><strong>Dinamik Pencere Kaydırma (Dynamic Window Slide):</strong> Alıcı (receiver) uygulaması buffer'dan veri okudukça, pencere ileriye doğru kayar (slides forward) ve yeni veri iletimine izin verir.</li>
-          <li><strong>Zero Window (Sıfır Pencere - Duraklatma):</strong> Eğer alıcının buffer'ı dolarsa, Window = 0 bildirerek göndericiye alan boşalana kadar duraklamasını (pause) emreder.</li>
+        <ul>
+          <li><strong>Zamanlama &amp; Hız Uyuşmazlığı:</strong> Hızlı göndericilerin yavaş alıcılara iletim yapması, bellek buffer'ının tükenmesine ve paket kayıplarına neden olur.</li>
+          <li><strong>Dinamik Pencere Kaydırma (Dynamic Window Slide):</strong> Alıcı uygulaması buffer'dan veri okudukça, pencere ileriye doğru kayar ve yeni veri iletimine izin verir.</li>
+          <li><strong>Zero Window (Sıfır Pencere - Duraklatma):</strong> Eğer alıcının buffer'ı dolarsa, Window = 0 bildirerek göndericiye alan boşalana kadar duraklamasını emreder.</li>
         </ul>
       </div>
 
@@ -1090,19 +1087,19 @@
     <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <div class="card-title">
-          <span class="cyber-badge badge-red" style="border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);">UDP ALANLARI</span> Kısa Alan Dağılımı (Field Breakdown)
+          <span class="cyber-badge badge-red" style="border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);">UDP ALANLARI</span> Kısa Alan Dağılımı
         </div>
         
-        <ul style="font-size: 0.88em; line-height: 1.5; margin-bottom: 0;">
-          <li><strong>Kaynak (Source) Portu (16 Bit):</strong> Gönderen uygulama sürecinin portu (isteğe bağlıdır; eğer cevap beklenmiyorsa 0'a ayarlanır).</li>
-          <li><strong>Hedef (Destination) Portu (16 Bit):</strong> Hedef host üzerindeki hedef uygulama sürecinin portu.</li>
-          <li><strong>Uzunluk (Length - 16 Bit):</strong> Bayt cinsinden UDP başlığı (header) artı uygulama verisinin toplam boyutu (minimum değer = 8).</li>
-          <li><strong>Checksum (16 Bit):</strong> Başlık, veri yükü (payload) ve pseudo-IP başlığını kapsayan hata tespiti (error detection).</li>
+        <ul>
+          <li><strong>Source Port (16b):</strong> Gönderen uygulamanın port numarası.</li>
+          <li><strong>Destination Port (16b):</strong> Hedef uygulamanın port numarası.</li>
+          <li><strong>Length (16b):</strong> Başlık + Veri (Payload) toplam boyutu (Min: 8B).</li>
+          <li><strong>Checksum (16b):</strong> Veri bütünlüğü ve hata tespiti sağlar.</li>
         </ul>
       </div>
 
-      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-yellow); margin-top: 0.6rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem;">
-        <i class="fa-solid fa-bolt"></i> Sıfır bağlantı kurulum durumu (connection setup state) ile sabit 8 byte ek yük (overhead)!
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-yellow); margin-top: 0.6rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem;">
+        <i class="fa-solid fa-bolt"></i> Sıfır oturum el sıkışması ve sabit 8 byte ek yük!
       </div>
     </div>
   </div>
@@ -1270,19 +1267,18 @@
           <span class="cyber-badge badge-cyan">IPV4 ALANLARI</span> Temel Açıklamalar
         </div>
 
-        <ul style="font-size: 0.81em; line-height: 1.42; margin-bottom: 0;">
-          <li><strong>Versiyon (Version - 4b):</strong> IP versiyonunu tanımlar (IPv4 için <code>4</code> olarak ayarlanır).</li>
-          <li><strong>IHL (4b):</strong> 32-bit kelimeler cinsinden İnternet Başlık Uzunluğu (Internet Header Length) (Min: 5 = 20B, Maks: 15 = 60B).</li>
-          <li><strong>Type of Service (8b):</strong> Quality of Service (QoS - Hizmet Kalitesi) önceliklendirmesi için DSCP ve ECN bitleri.</li>
-          <li><strong>Ident &amp; Flags (3b):</strong> Fragmentation (parçalanma) kontrolü (DF = Don't Fragment, MF = More Fragments).</li>
-          <li><strong>Time-to-Live (TTL - 8b):</strong> Döngüleri (loops) önlemek için router'lar tarafından eksiltilen hop (atlama) limit sayacı (varsayılan 64).</li>
-          <li><strong>Protokol (8b):</strong> Payload türü kimliği (ör. 6 = TCP, 17 = UDP, veya IPv4-in-IPv4).</li>
-          <li><strong>Header Checksum (16b):</strong> <em>Yalnızca başlık (header only)</em> bütünlüğünü doğrular (IPv6'da kaldırılmıştır).</li>
+        <ul>
+          <li><strong>Version &amp; IHL (8b):</strong> IP sürümü (4) ve başlık uzunluğu (20-60B).</li>
+          <li><strong>TTL (8b):</strong> Sonsuz döngüleri önleyen atlama limit sayacı.</li>
+          <li><strong>Protocol (8b):</strong> Üst katman protokol kimliği (6 = TCP, 17 = UDP).</li>
+          <li><strong>IP Adresleri (64b):</strong> Kaynak ve hedef IPv4 adresleri.</li>
+          <li><strong>Flags &amp; Fragment (16b):</strong> Paket parçalanma (fragmentation) kontrolü.</li>
+          <li><strong>Checksum (16b):</strong> Yalnızca başlığın bütünlüğünü doğrular.</li>
         </ul>
       </div>
 
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.4rem;">
-        <i class="fa-solid fa-circle-info highlight-cyan"></i> İsteğe bağlı IHL padding'i (dolgusu) nedeniyle değişken başlık boyutu.
+        <i class="fa-solid fa-circle-info highlight-cyan"></i> IHL dolgusu nedeniyle değişken başlık boyutu (20-60 Byte).
       </div>
     </div>
   </div>
@@ -1309,18 +1305,18 @@
           <span class="cyber-badge badge-purple">IPV6 ALANLARI</span> Temel Açıklamalar
         </div>
 
-        <ul style="font-size: 0.83em; line-height: 1.48; margin-bottom: 0;">
-          <li><strong>Versiyon (Version - 4b):</strong> IP versiyonunu tanımlar (IPv6 için <code>6</code> olarak ayarlanır).</li>
-          <li><strong>Traffic Class (Trafik Sınıfı - 8b):</strong> QoS paket önceliklendirmesi için IPv4 ToS/DSCP'ye eşdeğerdir.</li>
-          <li><strong>Flow Label (Akış Etiketi - 20b):</strong> Özel router işlemi (handling) gerektiren belirli paket akışlarını (streams) etiketler (ör. gerçek zamanlı medya).</li>
-          <li><strong>Payload Length (Veri Yükü Uzunluğu - 16b):</strong> Bayt cinsinden payload + eklenti başlıklarının (extension headers) boyutu (40B temel başlık hariç).</li>
-          <li><strong>Next Header (Sonraki Başlık - 8b):</strong> Payload türünü (TCP/UDP) veya zincirlenmiş IPv6 Eklenti Başlığını (Extension Header) belirtir.</li>
-          <li><strong>Hop Limit (Atlama Sınırı - 8b):</strong> IPv4 TTL'nin yerini alır; her router tarafından 1 azaltılır (0 olduğunda paketi düşürür - drops packet).</li>
+        <ul>
+          <li><strong>Version (4b):</strong> IP sürüm kimliği (IPv6 için 6).</li>
+          <li><strong>Traffic Class &amp; Flow Label (28b):</strong> Paket önceliği (QoS) ve akış etiketleme.</li>
+          <li><strong>Payload Length (16b):</strong> 40B başlık hariç veri boyutu.</li>
+          <li><strong>Next Header (8b):</strong> Üst katman protokol türü veya eklenti başlığı.</li>
+          <li><strong>Hop Limit (8b):</strong> Router atlama sınırı (IPv4 TTL karşılığı).</li>
+          <li><strong>IP Adresleri (256b):</strong> Kaynak ve hedef IPv6 adresleri (128 bit her biri).</li>
         </ul>
       </div>
 
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.4rem;">
-        <i class="fa-solid fa-bolt highlight-purple"></i> Sabit 40B boyut ve checksum (sağlama toplamı) olmaması, daha hızlı donanım (hardware) işlemesi sağlar!
+        <i class="fa-solid fa-bolt highlight-purple"></i> Sabit 40B başlık ve checksum olmaması donanım hızını artırır!
       </div>
     </div>
   </div>
@@ -1478,15 +1474,15 @@
     <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <div class="card-title">
-          <span class="cyber-badge badge-purple">ALAN DAĞILIMI (FIELD BREAKDOWN)</span> Temel Açıklamalar
+          <span class="cyber-badge badge-purple">FRAME ALANLARI</span> Temel Açıklamalar
         </div>
 
-        <ul style="font-size: 0.83em; line-height: 1.48; margin-bottom: 0;">
-          <li><strong>Preamble &amp; SFD (8B):</strong> Saat senkronizasyonu (Clock synchronization) ve Start-of-Frame (Çerçeve Başlangıcı) sınırlayıcısı (delimiter).</li>
-          <li><strong>Hedef (Destination) MAC (6B):</strong> Alan ağ arayüzünün 48-bit fiziksel adresi.</li>
-          <li><strong>Kaynak (Source) MAC (6B):</strong> Gönderen ağ arayüzünün 48-bit fiziksel adresi.</li>
-          <li><strong>Tür (Type) / Uzunluk (Length) (2B):</strong> Üst Layer 3 protokolünü tanımlar (ör. IPv4 için 0x0800, IPv6 için 0x86DD).</li>
-          <li><strong>FCS Trailer (Kuyruk) (4B):</strong> Frame Check Sequence hata tespiti için 32-bit CRC sağlama toplamı (checksum).</li>
+        <ul>
+          <li><strong>Preamble &amp; SFD (8B):</strong> Senkronizasyon ve çerçeve başlangıç işareti.</li>
+          <li><strong>Hedef MAC (6B):</strong> Alıcı cihazın 48-bit fiziksel adresi.</li>
+          <li><strong>Kaynak MAC (6B):</strong> Gönderen cihazın 48-bit fiziksel adresi.</li>
+          <li><strong>EtherType (2B):</strong> Üst katman protokolü (IPv4: 0x0800, IPv6: 0x86DD).</li>
+          <li><strong>FCS Kuyruğu (4B):</strong> Hata tespiti için 32-bit CRC sağlama toplamı.</li>
         </ul>
       </div>
 
@@ -1606,21 +1602,20 @@
     <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <div class="card-title">
-          <span class="cyber-badge badge-cyan">ARP ALANLARI</span> Kısa Alan Dağılımı (Field Breakdown)
+          <span class="cyber-badge badge-cyan">ARP ALANLARI</span> Temel Açıklamalar
         </div>
 
-        <ul style="font-size: 0.82em; line-height: 1.48; margin-bottom: 0;">
-          <li><strong>Donanım Türü (Hardware Type - 2B):</strong> Ağ protokolü türü (ör. Ethernet için <code>1</code>).</li>
-          <li><strong>Protokol Türü (Protocol Type - 2B):</strong> Üst protokol türü (ör. IPv4 için <code>0x0800</code>).</li>
-          <li><strong>Donanım Boyutu (Hardware Size - 1B):</strong> Bayt cinsinden MAC adresi uzunluğu (Ethernet için <code>6</code>).</li>
-          <li><strong>Protokol Boyutu (Protocol Size - 1B):</strong> Bayt cinsinden IP adresi uzunluğu (IPv4 için <code>4</code>).</li>
-          <li><strong>İşlem Kodu (Opcode - 2B):</strong> İşlem kodu (İstek/Request için <code>1</code>, Yanıt/Reply için <code>2</code>).</li>
-          <li><strong>Gönderici (Sender) / Hedef (Target) Adresleri:</strong> Gönderici MAC (6B) &amp; IP (4B), Hedef MAC (6B) &amp; IP (4B).</li>
+        <ul>
+          <li><strong>Hardware &amp; Protocol Type (4B):</strong> Ethernet (1) ve IPv4 (0x0800) tanımı.</li>
+          <li><strong>Hardware &amp; Protocol Size (2B):</strong> MAC (6B) ve IP (4B) adres uzunlukları.</li>
+          <li><strong>Opcode (2B):</strong> İşlem türü (1 = İstek/Request, 2 = Yanıt/Reply).</li>
+          <li><strong>Sender Addresses (10B):</strong> Gönderen MAC (6B) ve IP (4B) adresleri.</li>
+          <li><strong>Target Addresses (10B):</strong> Hedef MAC (6B) ve IP (4B) adresleri.</li>
         </ul>
       </div>
 
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.4rem;">
-        <i class="fa-solid fa-microchip highlight-cyan"></i> IPv4'ten Ethernet'e çözümleme (resolution) için sabit 28 byte'lık paket yapısı.
+        <i class="fa-solid fa-microchip highlight-cyan"></i> IPv4'ten Ethernet'e çözümleme için 28 byte paket yapısı.
       </div>
     </div>
   </div>

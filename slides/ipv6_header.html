@@ -18,18 +18,18 @@
           <span class="cyber-badge badge-purple">IPV6 ALANLARI</span> Temel Açıklamalar
         </div>
 
-        <ul style="font-size: 0.83em; line-height: 1.48; margin-bottom: 0;">
-          <li><strong>Versiyon (Version - 4b):</strong> IP versiyonunu tanımlar (IPv6 için <code>6</code> olarak ayarlanır).</li>
-          <li><strong>Traffic Class (Trafik Sınıfı - 8b):</strong> QoS paket önceliklendirmesi için IPv4 ToS/DSCP'ye eşdeğerdir.</li>
-          <li><strong>Flow Label (Akış Etiketi - 20b):</strong> Özel router işlemi (handling) gerektiren belirli paket akışlarını (streams) etiketler (ör. gerçek zamanlı medya).</li>
-          <li><strong>Payload Length (Veri Yükü Uzunluğu - 16b):</strong> Bayt cinsinden payload + eklenti başlıklarının (extension headers) boyutu (40B temel başlık hariç).</li>
-          <li><strong>Next Header (Sonraki Başlık - 8b):</strong> Payload türünü (TCP/UDP) veya zincirlenmiş IPv6 Eklenti Başlığını (Extension Header) belirtir.</li>
-          <li><strong>Hop Limit (Atlama Sınırı - 8b):</strong> IPv4 TTL'nin yerini alır; her router tarafından 1 azaltılır (0 olduğunda paketi düşürür - drops packet).</li>
+        <ul>
+          <li><strong>Version (4b):</strong> IP sürüm kimliği (IPv6 için 6).</li>
+          <li><strong>Traffic Class &amp; Flow Label (28b):</strong> Paket önceliği (QoS) ve akış etiketleme.</li>
+          <li><strong>Payload Length (16b):</strong> 40B başlık hariç veri boyutu.</li>
+          <li><strong>Next Header (8b):</strong> Üst katman protokol türü veya eklenti başlığı.</li>
+          <li><strong>Hop Limit (8b):</strong> Router atlama sınırı (IPv4 TTL karşılığı).</li>
+          <li><strong>IP Adresleri (256b):</strong> Kaynak ve hedef IPv6 adresleri (128 bit her biri).</li>
         </ul>
       </div>
 
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.4rem;">
-        <i class="fa-solid fa-bolt highlight-purple"></i> Sabit 40B boyut ve checksum (sağlama toplamı) olmaması, daha hızlı donanım (hardware) işlemesi sağlar!
+        <i class="fa-solid fa-bolt highlight-purple"></i> Sabit 40B başlık ve checksum olmaması donanım hızını artırır!
       </div>
     </div>
   </div>

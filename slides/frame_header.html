@@ -15,15 +15,15 @@
     <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <div class="card-title">
-          <span class="cyber-badge badge-purple">ALAN DAĞILIMI (FIELD BREAKDOWN)</span> Temel Açıklamalar
+          <span class="cyber-badge badge-purple">FRAME ALANLARI</span> Temel Açıklamalar
         </div>
 
-        <ul style="font-size: 0.83em; line-height: 1.48; margin-bottom: 0;">
-          <li><strong>Preamble &amp; SFD (8B):</strong> Saat senkronizasyonu (Clock synchronization) ve Start-of-Frame (Çerçeve Başlangıcı) sınırlayıcısı (delimiter).</li>
-          <li><strong>Hedef (Destination) MAC (6B):</strong> Alan ağ arayüzünün 48-bit fiziksel adresi.</li>
-          <li><strong>Kaynak (Source) MAC (6B):</strong> Gönderen ağ arayüzünün 48-bit fiziksel adresi.</li>
-          <li><strong>Tür (Type) / Uzunluk (Length) (2B):</strong> Üst Layer 3 protokolünü tanımlar (ör. IPv4 için 0x0800, IPv6 için 0x86DD).</li>
-          <li><strong>FCS Trailer (Kuyruk) (4B):</strong> Frame Check Sequence hata tespiti için 32-bit CRC sağlama toplamı (checksum).</li>
+        <ul>
+          <li><strong>Preamble &amp; SFD (8B):</strong> Senkronizasyon ve çerçeve başlangıç işareti.</li>
+          <li><strong>Hedef MAC (6B):</strong> Alıcı cihazın 48-bit fiziksel adresi.</li>
+          <li><strong>Kaynak MAC (6B):</strong> Gönderen cihazın 48-bit fiziksel adresi.</li>
+          <li><strong>EtherType (2B):</strong> Üst katman protokolü (IPv4: 0x0800, IPv6: 0x86DD).</li>
+          <li><strong>FCS Kuyruğu (4B):</strong> Hata tespiti için 32-bit CRC sağlama toplamı.</li>
         </ul>
       </div>
 

@@ -15,21 +15,20 @@
     <div class="cyber-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <div class="card-title">
-          <span class="cyber-badge badge-cyan">ARP ALANLARI</span> Kısa Alan Dağılımı (Field Breakdown)
+          <span class="cyber-badge badge-cyan">ARP ALANLARI</span> Temel Açıklamalar
         </div>
 
-        <ul style="font-size: 0.82em; line-height: 1.48; margin-bottom: 0;">
-          <li><strong>Donanım Türü (Hardware Type - 2B):</strong> Ağ protokolü türü (ör. Ethernet için <code>1</code>).</li>
-          <li><strong>Protokol Türü (Protocol Type - 2B):</strong> Üst protokol türü (ör. IPv4 için <code>0x0800</code>).</li>
-          <li><strong>Donanım Boyutu (Hardware Size - 1B):</strong> Bayt cinsinden MAC adresi uzunluğu (Ethernet için <code>6</code>).</li>
-          <li><strong>Protokol Boyutu (Protocol Size - 1B):</strong> Bayt cinsinden IP adresi uzunluğu (IPv4 için <code>4</code>).</li>
-          <li><strong>İşlem Kodu (Opcode - 2B):</strong> İşlem kodu (İstek/Request için <code>1</code>, Yanıt/Reply için <code>2</code>).</li>
-          <li><strong>Gönderici (Sender) / Hedef (Target) Adresleri:</strong> Gönderici MAC (6B) &amp; IP (4B), Hedef MAC (6B) &amp; IP (4B).</li>
+        <ul>
+          <li><strong>Hardware &amp; Protocol Type (4B):</strong> Ethernet (1) ve IPv4 (0x0800) tanımı.</li>
+          <li><strong>Hardware &amp; Protocol Size (2B):</strong> MAC (6B) ve IP (4B) adres uzunlukları.</li>
+          <li><strong>Opcode (2B):</strong> İşlem türü (1 = İstek/Request, 2 = Yanıt/Reply).</li>
+          <li><strong>Sender Addresses (10B):</strong> Gönderen MAC (6B) ve IP (4B) adresleri.</li>
+          <li><strong>Target Addresses (10B):</strong> Hedef MAC (6B) ve IP (4B) adresleri.</li>
         </ul>
       </div>
 
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.4rem;">
-        <i class="fa-solid fa-microchip highlight-cyan"></i> IPv4'ten Ethernet'e çözümleme (resolution) için sabit 28 byte'lık paket yapısı.
+        <i class="fa-solid fa-microchip highlight-cyan"></i> IPv4'ten Ethernet'e çözümleme için 28 byte paket yapısı.
       </div>
     </div>
   </div>

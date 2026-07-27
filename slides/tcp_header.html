@@ -18,19 +18,18 @@
           <span class="cyber-badge badge-purple">HEADER ALANLARI</span> Temel Açıklamalar
         </div>
         
-        <ul style="font-size: 0.84em; line-height: 1.45; margin-bottom: 0;">
-          <li><strong>Kaynak (Source) &amp; Hedef (Dest) Portları (16b):</strong> Gönderen ve alan uygulama süreçlerini tanımlar.</li>
-          <li><strong>Sequence Number (Sıra Numarası - 32b):</strong> Bayt sıralamasını takip eder ve veri akışındaki (data stream) eksik baytları tespit eder.</li>
-          <li><strong>Acknowledgment Number (Onay Numarası - 32b):</strong> Güvenilirlik için uzak host'tan beklenen bir sonraki baytı belirtir.</li>
-          <li><strong>Data Offset (4b):</strong> Toplam TCP başlık uzunluğunu 32 bitlik kelimeler halinde belirtir.</li>
-          <li><strong>Control Flags (Kontrol Bayrakları - 9b):</strong> Oturum yönetimi bitleri (SYN, ACK, FIN, RST, PSH, URG).</li>
-          <li><strong>Window Size (Pencere Boyutu - 16b):</strong> Alıcı tarafından bildirilen akış kontrolü (flow control) buffer alanı.</li>
-          <li><strong>Checksum (16b):</strong> Başlığın (header) ve veri yükünün (payload) bit düzeyinde bütünlüğünü sağlar.</li>
+        <ul>
+          <li><strong>Portlar (16b + 16b):</strong> Gönderen ve alıcı uygulama süreçlerini eşler.</li>
+          <li><strong>Sequence No (32b):</strong> Veri paketlerinin sırasını ve eksik baytları takip eder.</li>
+          <li><strong>Ack No (32b):</strong> Güvenilir iletim için beklenen sonraki baytı bildirir.</li>
+          <li><strong>Control Flags (9b):</strong> Oturum yönetimi bitleri (SYN, ACK, FIN, RST).</li>
+          <li><strong>Window Size (16b):</strong> Akış kontrolü (flow control) için buffer alanını yönetir.</li>
+          <li><strong>Checksum (16b):</strong> Başlık ve verinin bit düzeyinde bütünlüğünü doğrular.</li>
         </ul>
       </div>
 
       <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-muted); margin-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem;">
-        <i class="fa-solid fa-info-circle highlight-purple"></i> Minimum boyut: 20 byte (options yok). Maksimum: 60 byte.
+        <i class="fa-solid fa-info-circle highlight-purple"></i> Minimum boyut: 20 byte. Maksimum: 60 byte.
       </div>
     </div>
   </div>

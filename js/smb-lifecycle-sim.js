@@ -108,7 +108,7 @@ class SMBLifecycleSimulator {
             <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #00f5d4; margin-top: 0.3rem;">Durum: <span class="cyber-badge badge-htb">CLOSED &amp; FLUSHED</span></div>
           </div>
         `,
-        osDetails: 'Server, kernel FILE_OBJECT kilitlerini (locks) serbest bırakır, değiştirilmiş veri tamponlarını (buffers) depolama diskine (storage disk) yazar (flush) ve File ID belleğini boşaltır.'
+        osDetails: 'Server, kernel FILE_OBJECT kilitlerini (locks) serbest bırakır, değiştirilmiş veri buffer\'larını depolama diskine (storage disk) yazar (flush) ve File ID belleğini boşaltır.'
       }
     ];
   }
