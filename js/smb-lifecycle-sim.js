@@ -126,14 +126,14 @@ class SMBLifecycleSimulator {
 
     // Highlight Sequence Diagram SVG lines & step buttons
     for (let i = 0; i < this.steps.length; i++) {
-      const btn = document.getElementById(\`smb-step-btn-\${i}\`);
-      const lineGroup = document.getElementById(\`smb-svg-step-\${i}\`);
+      const btn = document.getElementById(`smb-step-btn-${i}`);
+      const lineGroup = document.getElementById(`smb-svg-step-${i}`);
       
       if (btn) {
         if (i === this.currentStep) {
           btn.style.background = step.color;
           btn.style.color = '#000000';
-          btn.style.boxShadow = \`0 0 14px \${step.color}\`;
+          btn.style.boxShadow = `0 0 14px ${step.color}`;
           btn.style.borderColor = step.color;
         } else {
           btn.style.background = 'var(--htb-bg-card)';
@@ -146,7 +146,7 @@ class SMBLifecycleSimulator {
       if (lineGroup) {
         if (i === this.currentStep) {
           lineGroup.style.opacity = '1';
-          lineGroup.style.filter = \`drop-shadow(0 0 6px \${step.color})\`;
+          lineGroup.style.filter = `drop-shadow(0 0 6px ${step.color})`;
         } else {
           lineGroup.style.opacity = '0.35';
           lineGroup.style.filter = 'none';
