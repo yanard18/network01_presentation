@@ -243,7 +243,7 @@ class ProtocolSimulator {
       }
 
       if (p.element) {
-        p.element.style.left = \`\${p.pos}%\`;
+        p.element.style.left = `${p.pos}%`;
       }
     }
 
@@ -264,7 +264,7 @@ class ProtocolSimulator {
         const p = this.h2Packets[i];
         p.pos += this.speed * 0.4;
         if (p.element) {
-          p.element.style.left = \`\${p.pos}%\`;
+          p.element.style.left = `${p.pos}%`;
         }
         if (p.pos >= 92) {
           p.element && p.element.remove();
