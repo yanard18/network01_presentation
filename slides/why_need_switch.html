@@ -1,39 +1,10 @@
-<!-- SLIDE: Why Do We Need a Network Switch? (Versus VS Comparison Matrix) -->
+<!-- SLIDE: Switch Core Concept (Clean Centered Text, No Card) -->
 <section>
-  <h2><i class="fa-solid fa-server highlight-htb"></i> Neden Bir Network Switch'e İhtiyacımız Var?</h2>
-  
-  <div style="position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 0.5rem; text-align: left;">
-    <!-- Central Glowing VS Badge -->
-    <div style="position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); z-index: 10; background: var(--htb-bg-main); border: 2px solid var(--htb-green); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 900; font-size: 0.9rem; color: var(--htb-green); box-shadow: 0 0 15px var(--htb-green-glow);">
-      VS
-    </div>
+  <h2><i class="fa-solid fa-server highlight-htb"></i>Switch</h2>
 
-    <!-- Left Column: Legacy Bridges (Red Accent) -->
-    <div style="background: rgba(255,46,99,0.05); border: 1px solid var(--accent-red); border-radius: 10px; padding: 1.2rem;">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
-        <strong style="color: var(--accent-red); font-size: 1.15em;"><i class="fa-solid fa-filter"></i> BRIDGES (Eski/Miras)</strong>
-        <span class="cyber-badge badge-red">YAZILIM (SOFTWARE)</span>
-      </div>
-
-      <ul class="threat-list" style="font-size: 0.88em;">
-        <li style="margin-bottom: 0.8rem;"><strong>Yazılımsal CPU İşleme:</strong> Frame (çerçeve) incelemesi yazılım kodu ile yapılarak paket gecikmesine (latency) neden olur.</li>
-        <li style="margin-bottom: 0.8rem;"><strong>2–4 Port Sınırı:</strong> Düşük port yoğunluğu, her portun arkasındaki bilgisayar kümelerini bağlamak için hub'ların kullanılmasına neden olurdu.</li>
-        <li><strong>Half-Duplex Paylaşılan Bağlantılar (Shared Links):</strong> Bridge portlarına bağlı hub'ların içinde çarpışma (collision) riski devam ediyordu.</li>
-      </ul>
-    </div>
-
-    <!-- Right Column: Modern Switches (Green Accent) -->
-    <div style="background: rgba(159,239,0,0.05); border: 1px solid var(--htb-green); border-radius: 10px; padding: 1.2rem;">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
-        <strong style="color: var(--htb-green); font-size: 1.15em;"><i class="fa-solid fa-server"></i> SWITCHES (Modern)</strong>
-        <span class="cyber-badge badge-htb">ASIC SİLİKON</span>
-      </div>
-
-      <ul class="secure-list" style="font-size: 0.88em;">
-        <li style="margin-bottom: 0.8rem;"><strong>Donanımsal ASIC'ler:</strong> MAC tablosu aramalarını özel silikon çiplerde tam tel hızında (full wire speed) gerçekleştirir.</li>
-        <li style="margin-bottom: 0.8rem;"><strong>Micro-Segmentation (Mikro-Segmentasyon):</strong> Her bir port kendi özel çarpışma alanı (collision domain) haline gelir.</li>
-        <li><strong>Full-Duplex İletim:</strong> Her portta SIFIR çarpışma (collision) ile eşzamanlı (simultaneous) gönderme ve alma işlemleri yapar.</li>
-      </ul>
-    </div>
+  <div style="display: flex; justify-content: center; align-items: center; min-height: 380px; max-width: 850px; margin: 0 auto; text-align: center;">
+    <p style="font-size: 1.45em; line-height: 1.7; color: #ffffff; margin: 0; font-weight: 500;">
+      <strong>Switch</strong>, temel olarak bir <em>Hub</em> gibi cihazları birbirine bağlar; ancak sinyalleri <strong>MAC adreslerine göre filtreleyerek</strong> çarpışma alanlarını (collision domain) ve kablolama karmaşasını ortadan kaldırır.
+    </p>
   </div>
 </section>

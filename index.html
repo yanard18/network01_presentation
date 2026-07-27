@@ -311,88 +311,69 @@
 <section>
   <h2><i class="fa-solid fa-filter highlight-cyan"></i> Network Bridge Nedir?</h2>
   
-  <div style="display: grid; grid-template-columns: 4fr 5fr; gap: 1.2rem; align-items: center; margin-top: 0.4rem; text-align: left;">
-    <!-- Left Column (40%): Vertical Diagram Stack -->
-    <div style="display: flex; flex-direction: column; gap: 0.8rem; text-align: center;">
-      <div style="background: rgba(255, 255, 255, 0.95); padding: 12px; border-radius: 10px; border: 1px solid var(--htb-border); box-shadow: 0 0 20px rgba(45,226,230,0.3);">
-        <img src="media/network-bridge.svg" alt="Network Bridge Segment Divider" style="max-height: 165px; width: 100%; object-fit: contain;">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; margin-top: 0.8rem; text-align: left;">
+    <!-- Left Column: Diagrams Showcase -->
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <div style="background: rgba(255, 255, 255, 0.95); padding: 15px; border-radius: 12px; border: 1px solid var(--htb-border); box-shadow: 0 0 25px rgba(45,226,230,0.25); text-align: center;">
+        <img src="media/network-bridge.svg" alt="Network Bridge Segment Divider" style="max-height: 220px; width: 100%; object-fit: contain;">
       </div>
-      <div style="background: rgba(255, 255, 255, 0.95); padding: 10px; border-radius: 10px; border: 1px solid var(--htb-border);">
-        <img src="media/network-bridge-osi-model.svg" alt="Network Bridge OSI Layer 2 Position" style="max-height: 110px; width: 100%; object-fit: contain;">
+      <div style="background: rgba(255, 255, 255, 0.95); padding: 12px; border-radius: 12px; border: 1px solid var(--htb-border); text-align: center;">
+        <img src="media/network-bridge-osi-model.svg" alt="Network Bridge OSI Layer 2 Position" style="max-height: 120px; width: 100%; object-fit: contain;">
       </div>
     </div>
 
-    <!-- Right Column (60%): Inspection Console & Deep Dive -->
-    <div>
-      <div style="margin-bottom: 0.6rem;">
-        <span class="cyber-badge badge-cyan">LAYER 2 DATA LINK</span>
-        <span class="cyber-badge badge-htb" style="margin-left: 0.4rem;">SEGMENT İZOLASYONU</span>
+    <!-- Right Column: Explanatory Cyber Cards -->
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <div style="background: var(--htb-bg-card); border: 1px solid var(--accent-cyan); border-radius: 10px; padding: 1.1rem; box-shadow: 0 0 15px rgba(0,0,0,0.5);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span class="cyber-badge badge-cyan">LAYER 2 DATA LINK</span>
+          <span class="cyber-badge badge-htb">SEGMENT İZOLASYONU</span>
+        </div>
+        <h3 style="font-size: 1.25em; color: #fff; margin-bottom: 0.5rem;">Yazılımsal MAC Adresi Filtreleme</h3>
+        <p style="font-size: 0.88em; color: #e2e8f0; margin: 0; line-height: 1.5;">
+          Bir <strong>Bridge (Köprü)</strong>, büyük ve yoğun bir çarpışma alanını (collision domain) iki daha küçük, izole edilmiş segmente ayırmak için Layer 2'de çalışır.
+        </p>
       </div>
-      <h3 style="font-size: 1.3em; color: #fff; margin-bottom: 0.6rem;">Yazılımsal MAC Adresi Filtreleme</h3>
-      <p style="font-size: 0.88em; color: #e2e8f0; margin-bottom: 0.8rem;">
-        Bir <strong>Bridge</strong> (Köprü), büyük ve yoğun bir çarpışma alanını (collision domain) iki daha küçük, izole edilmiş segmente ayırmak için Layer 2'de çalışır.
-      </p>
 
-      <!-- Terminal Inspection Snippet -->
-      <div class="terminal-header" style="padding: 0.35rem 0.8rem;">
-        <span class="terminal-dot dot-red"></span>
-        <span class="terminal-dot dot-yellow"></span>
-        <span class="terminal-dot dot-green"></span>
-        <span class="terminal-title" style="font-size: 0.75rem;">bridge-mac-table --inspect</span>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+        <div style="background: rgba(45, 226, 230, 0.06); border: 1px solid var(--accent-cyan); border-radius: 8px; padding: 0.9rem;">
+          <div style="color: var(--accent-cyan); font-family: var(--font-mono); font-weight: 700; font-size: 0.85em; margin-bottom: 0.3rem;">
+            <i class="fa-solid fa-microchip"></i> MAC Adresi Öğrenme
+          </div>
+          <p style="font-size: 0.78em; color: var(--text-muted); margin: 0; line-height: 1.4;">
+            Gelen paketlerin kaynak MAC adreslerini tablosuna kaydeder ve cihazların hangi segmentte olduğunu öğrenir.
+          </p>
+        </div>
+
+        <div style="background: rgba(159, 239, 0, 0.06); border: 1px solid var(--htb-green); border-radius: 8px; padding: 0.9rem;">
+          <div style="color: var(--htb-green); font-family: var(--font-mono); font-weight: 700; font-size: 0.85em; margin-bottom: 0.3rem;">
+            <i class="fa-solid fa-traffic-light"></i> Akıllı Trafik İletimi
+          </div>
+          <p style="font-size: 0.78em; color: var(--text-muted); margin: 0; line-height: 1.4;">
+            Aynı segmentteki trafiği diğer tarafa geçirmeyerek (filter) gereksiz ağ gürültüsünü ve çarpışmaları engeller.
+          </p>
+        </div>
       </div>
-      <pre style="margin: 0; border-top-left-radius: 0; border-top-right-radius: 0; border: 1px solid var(--htb-border); border-top: none;"><code class="language-text" style="font-size: 0.81em; padding: 0.7rem 0.9rem; color: var(--accent-cyan); font-family: var(--font-mono);">[Bridge Logic] Port 1'den Ingress (Gelen) Frame
-Hedef (Destination) MAC: 00:11:22:AA:BB (Segment 1)
-Aksiyon: FİLTRELE (FILTER) (Segment 2'ye iletme)
-✔ Segment 2 trafiği %100 yerel gürültüden (local noise) uzak tutuldu!</code></pre>
     </div>
   </div>
 </section>
 
       <!-- Loaded from slides/why_need_switch.html -->
-<!-- SLIDE: Why Do We Need a Network Switch? (Versus VS Comparison Matrix) -->
+<!-- SLIDE: Switch Core Concept (Clean Centered Text, No Card) -->
 <section>
-  <h2><i class="fa-solid fa-server highlight-htb"></i> Neden Bir Network Switch'e İhtiyacımız Var?</h2>
-  
-  <div style="position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 0.5rem; text-align: left;">
-    <!-- Central Glowing VS Badge -->
-    <div style="position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); z-index: 10; background: var(--htb-bg-main); border: 2px solid var(--htb-green); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 900; font-size: 0.9rem; color: var(--htb-green); box-shadow: 0 0 15px var(--htb-green-glow);">
-      VS
-    </div>
+  <h2><i class="fa-solid fa-server highlight-htb"></i>Switch</h2>
 
-    <!-- Left Column: Legacy Bridges (Red Accent) -->
-    <div style="background: rgba(255,46,99,0.05); border: 1px solid var(--accent-red); border-radius: 10px; padding: 1.2rem;">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
-        <strong style="color: var(--accent-red); font-size: 1.15em;"><i class="fa-solid fa-filter"></i> BRIDGES (Eski/Miras)</strong>
-        <span class="cyber-badge badge-red">YAZILIM (SOFTWARE)</span>
-      </div>
-
-      <ul class="threat-list" style="font-size: 0.88em;">
-        <li style="margin-bottom: 0.8rem;"><strong>Yazılımsal CPU İşleme:</strong> Frame (çerçeve) incelemesi yazılım kodu ile yapılarak paket gecikmesine (latency) neden olur.</li>
-        <li style="margin-bottom: 0.8rem;"><strong>2–4 Port Sınırı:</strong> Düşük port yoğunluğu, her portun arkasındaki bilgisayar kümelerini bağlamak için hub'ların kullanılmasına neden olurdu.</li>
-        <li><strong>Half-Duplex Paylaşılan Bağlantılar (Shared Links):</strong> Bridge portlarına bağlı hub'ların içinde çarpışma (collision) riski devam ediyordu.</li>
-      </ul>
-    </div>
-
-    <!-- Right Column: Modern Switches (Green Accent) -->
-    <div style="background: rgba(159,239,0,0.05); border: 1px solid var(--htb-green); border-radius: 10px; padding: 1.2rem;">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
-        <strong style="color: var(--htb-green); font-size: 1.15em;"><i class="fa-solid fa-server"></i> SWITCHES (Modern)</strong>
-        <span class="cyber-badge badge-htb">ASIC SİLİKON</span>
-      </div>
-
-      <ul class="secure-list" style="font-size: 0.88em;">
-        <li style="margin-bottom: 0.8rem;"><strong>Donanımsal ASIC'ler:</strong> MAC tablosu aramalarını özel silikon çiplerde tam tel hızında (full wire speed) gerçekleştirir.</li>
-        <li style="margin-bottom: 0.8rem;"><strong>Micro-Segmentation (Mikro-Segmentasyon):</strong> Her bir port kendi özel çarpışma alanı (collision domain) haline gelir.</li>
-        <li><strong>Full-Duplex İletim:</strong> Her portta SIFIR çarpışma (collision) ile eşzamanlı (simultaneous) gönderme ve alma işlemleri yapar.</li>
-      </ul>
-    </div>
+  <div style="display: flex; justify-content: center; align-items: center; min-height: 380px; max-width: 850px; margin: 0 auto; text-align: center;">
+    <p style="font-size: 1.45em; line-height: 1.7; color: #ffffff; margin: 0; font-weight: 500;">
+      <strong>Switch</strong>, temel olarak bir <em>Hub</em> gibi cihazları birbirine bağlar; ancak sinyalleri <strong>MAC adreslerine göre filtreleyerek</strong> çarpışma alanlarını (collision domain) ve kablolama karmaşasını ortadan kaldırır.
+    </p>
   </div>
 </section>
 
       <!-- Loaded from slides/device_hub.html -->
 <!-- SLIDE: Hub (Layer 1 Physical Device) -->
 <section>
-  <h2><i class="fa-solid fa-microchip highlight-red"></i> Hub — "Akılsız" (Dumb) Tekrarlayıcı (Repeater)</h2>
+  <h2><i class="fa-solid fa-microchip highlight-red"></i> Hub — Tekrarlayıcı (Repeater)</h2>
   
   <div class="grid-2">
     <!-- Left Half: Theory & Architecture -->
@@ -402,13 +383,13 @@ Aksiyon: FİLTRELE (FILTER) (Segment 2'ye iletme)
           <span class="cyber-badge badge-red">LAYER 1 FİZİKSEL</span>
           <span class="cyber-badge badge-htb">OBSOLETE</span>
         </div>
-        <p style="margin-bottom: 0.6rem;">
-          Bir <strong>Hub</strong>, <strong>Layer 1</strong>'de çalışır ve sıfır zekaya (zero intelligence) sahiptir. Bir porttan elektriksel bitleri aldığında, bu sinyali basitçe kopyalar/yükseltir ve bağlı olan diğer tüm portlara iletir (repeats).
+        <p style="font-size: 0.98em; line-height: 1.6; margin-bottom: 0.8rem; color: #fff;">
+          <strong>Hub</strong>, Layer 1'de çalışan mantıksal zekası olmayan bir sinyal tekrarlayıcıdır (repeater). Bir porttan aldığı elektriksel sinyalleri kopyalayarak tüm portlara yayınlar (flooding).
         </p>
-        <ul class="threat-list" style="font-size: 0.9em;">
-          <li><strong>Nasıl Çalışır:</strong> Eğer Bilgisayar A, Bilgisayar B'ye veri gönderirse, C, D ve E bilgisayarları da bunu alır (ve bunu Layer 2'de manuel olarak yok saymaları gerekir).</li>
-          <li><strong>Dezavantaj:</strong> Tüm cihazlar elektriksel olarak tek bir kabloyu paylaşır (<strong>Single Collision Domain</strong>) — aynı anda sadece 1 cihaz çarpışma olmadan veri iletebilir (transmit).</li>
-          <li><strong>Durum:</strong> Modern ağlarda kullanımdan kalkmıştır (Obsolete).</li>
+        <ul class="threat-list" style="font-size: 0.95em; line-height: 1.6;">
+          <li style="margin-bottom: 0.6rem;"><strong>Çalışma Mantığı:</strong> A cihazı B'ye veri gönderdiğinde C ve D cihazları da bu veriyi alır.</li>
+          <li style="margin-bottom: 0.6rem;"><strong>Dezavantaj:</strong> Tüm cihazlar tek bir <strong>Çarpışma Alanı (Collision Domain)</strong> paylaşır; aynı anda sadece 1 cihaz iletim yapabilir.</li>
+          <li><strong>Durum:</strong> Çarpışma riski ve düşük performans nedeniyle modern ağlarda kullanımdan kalkmıştır.</li>
         </ul>
       </div>
     </div>
@@ -479,7 +460,7 @@ Aksiyon: FİLTRELE (FILTER) (Segment 2'ye iletme)
       <!-- Loaded from slides/device_bridge.html -->
 <!-- SLIDE: Bridge (Layer 2 Data Link Device) -->
 <section>
-  <h2><i class="fa-solid fa-filter highlight-cyan"></i> Bridge — İki Portlu Trafik Polisi</h2>
+  <h2><i class="fa-solid fa-filter highlight-cyan"></i> Bridge — Trafik Polisi</h2>
   
   <div class="grid-2">
     <!-- Left Half: Theory & Architecture -->
@@ -489,12 +470,13 @@ Aksiyon: FİLTRELE (FILTER) (Segment 2'ye iletme)
           <span class="cyber-badge badge-cyan">LAYER 2 DATA LINK</span>
           <span class="cyber-badge badge-htb">GEÇİŞ (TRANSITIONAL)</span>
         </div>
-        <p style="margin-bottom: 0.6rem;">
-          Bir <strong>Bridge</strong> (Köprü), <strong>Layer 2</strong>'de çalışır ve büyük, yoğun (congested) bir hub ağını iki daha küçük çarpışma alanına (collision segments) bölmek için icat edilmiştir.
+        <p style="font-size: 0.98em; line-height: 1.6; margin-bottom: 0.8rem; color: #fff;">
+          <strong>Bridge (Köprü)</strong>, Layer 2'de çalışarak büyük bir Hub ağını iki izole çarpışma alanına (collision domain) bölmek için geliştirilmiştir.
         </p>
-        <ul style="font-size: 0.9em;">
-          <li><strong>Nasıl Çalışır:</strong> Hedef MAC adresini yazılım (software) üzerinden okur. Eğer hedef cihaz aynı taraftaysa (same side), frame'in karşı tarafa geçmesini engeller (blocks); farklı taraftaysa, iletir (forwards).</li>
-          <li><strong>Temel Sınırlama (Limitation):</strong> Genellikle yazılım tabanlıdır ve çok az porta sahiptir (genelde 2 ila 4). Yüksek portlu switch'ler yerini almadan önce bir geçiş teknolojisi (transitional technology) olarak hizmet etmiştir.</li>
+        <ul style="font-size: 0.95em; line-height: 1.6;">
+          <li style="margin-bottom: 0.6rem;"><strong>Çalışma Mantığı:</strong> Gelen paketin hedef MAC adresini okur. Alıcı aynı segmentteyse paketi engeller (filter), karşı taraftaysa iletir (forward).</li>
+          <li style="margin-bottom: 0.6rem;"><strong>Sınırlama:</strong> Kontroller yazılımla yapıldığı için yavaştır ve az sayıda porta sahiptir (2-4 port).</li>
+          <li><strong>Rolü:</strong> Switch teknolojisine geçişi sağlayan tarihsel bir köprüdür.</li>
         </ul>
       </div>
     </div>
@@ -570,7 +552,7 @@ Aksiyon: FİLTRELE (FILTER) (Segment 2'ye iletme)
       <!-- Loaded from slides/device_switch.html -->
 <!-- SLIDE: Switch (Layer 2 Data Link Device) -->
 <section>
-  <h2><i class="fa-solid fa-server highlight-htb"></i> Switch — Çok Portlu (Multi-Port) Otoyol</h2>
+  <h2><i class="fa-solid fa-server highlight-htb"></i> Switch — Otoyol</h2>
   
   <div class="grid-2">
     <!-- Left Half: Theory & Architecture -->
@@ -580,12 +562,13 @@ Aksiyon: FİLTRELE (FILTER) (Segment 2'ye iletme)
           <span class="cyber-badge badge-htb">LAYER 2 DATA LINK</span>
           <span class="cyber-badge badge-cyan">HARDWARE ASIC</span>
         </div>
-        <p style="margin-bottom: 0.6rem;">
-          Bir <strong>Switch</strong>, <strong>Layer 2</strong>'de çalışan gelişmiş, donanım hızlandırmalı (hardware-accelerated), çok portlu (multi-port) bir bridge'dir (köprü).
+        <p style="font-size: 0.98em; line-height: 1.6; margin-bottom: 0.8rem; color: #fff;">
+          <strong>Switch</strong>, Layer 2'de çalışan donanım hızlandırmalı (ASIC) çok portlu gelişmiş bir köprüdür.
         </p>
-        <ul class="secure-list" style="font-size: 0.9em;">
-          <li><strong>Nasıl Çalışır:</strong> Özel donanımlarda (ASIC'ler) bir MAC adres tablosu tutar. Comp A, Comp B'ye veri gönderdiğinde, frame'i <em>yalnızca</em> Comp B'nin portuna teslim eder.</li>
-          <li><strong>Temel Avantaj (Key Advantage):</strong> Her bir port kendi özel bant genişliğine (dedicated bandwidth) ve çarpışma alanına (collision domain) sahip olur, bu da <strong>Full-Duplex</strong> iletişime (eşzamanlı gönderme/alma) olanak tanır.</li>
+        <ul class="secure-list" style="font-size: 0.95em; line-height: 1.6;">
+          <li style="margin-bottom: 0.6rem;"><strong>Çalışma Mantığı:</strong> Özel çiplerde (ASIC) tuttuğu MAC tablosu sayesinde veriyi <em>yalnızca</em> hedef porttaki cihaza teslim eder.</li>
+          <li style="margin-bottom: 0.6rem;"><strong>Temel Avantaj:</strong> Her port kendi izole çarpışma alanına sahiptir; çarpışma (collision) riskini sıfıra indirir.</li>
+          <li><strong>İletişim Modu:</strong> <strong>Full-Duplex</strong> desteği ile aynı anda kesintisiz veri gönderme ve alma sağlar.</li>
         </ul>
       </div>
     </div>

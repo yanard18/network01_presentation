@@ -1,6 +1,6 @@
 <!-- SLIDE: Hub (Layer 1 Physical Device) -->
 <section>
-  <h2><i class="fa-solid fa-microchip highlight-red"></i> Hub — "Akılsız" (Dumb) Tekrarlayıcı (Repeater)</h2>
+  <h2><i class="fa-solid fa-microchip highlight-red"></i> Hub — Tekrarlayıcı (Repeater)</h2>
   
   <div class="grid-2">
     <!-- Left Half: Theory & Architecture -->
@@ -10,13 +10,13 @@
           <span class="cyber-badge badge-red">LAYER 1 FİZİKSEL</span>
           <span class="cyber-badge badge-htb">OBSOLETE</span>
         </div>
-        <p style="margin-bottom: 0.6rem;">
-          Bir <strong>Hub</strong>, <strong>Layer 1</strong>'de çalışır ve sıfır zekaya (zero intelligence) sahiptir. Bir porttan elektriksel bitleri aldığında, bu sinyali basitçe kopyalar/yükseltir ve bağlı olan diğer tüm portlara iletir (repeats).
+        <p style="font-size: 0.98em; line-height: 1.6; margin-bottom: 0.8rem; color: #fff;">
+          <strong>Hub</strong>, Layer 1'de çalışan mantıksal zekası olmayan bir sinyal tekrarlayıcıdır (repeater). Bir porttan aldığı elektriksel sinyalleri kopyalayarak tüm portlara yayınlar (flooding).
         </p>
-        <ul class="threat-list" style="font-size: 0.9em;">
-          <li><strong>Nasıl Çalışır:</strong> Eğer Bilgisayar A, Bilgisayar B'ye veri gönderirse, C, D ve E bilgisayarları da bunu alır (ve bunu Layer 2'de manuel olarak yok saymaları gerekir).</li>
-          <li><strong>Dezavantaj:</strong> Tüm cihazlar elektriksel olarak tek bir kabloyu paylaşır (<strong>Single Collision Domain</strong>) — aynı anda sadece 1 cihaz çarpışma olmadan veri iletebilir (transmit).</li>
-          <li><strong>Durum:</strong> Modern ağlarda kullanımdan kalkmıştır (Obsolete).</li>
+        <ul class="threat-list" style="font-size: 0.95em; line-height: 1.6;">
+          <li style="margin-bottom: 0.6rem;"><strong>Çalışma Mantığı:</strong> A cihazı B'ye veri gönderdiğinde C ve D cihazları da bu veriyi alır.</li>
+          <li style="margin-bottom: 0.6rem;"><strong>Dezavantaj:</strong> Tüm cihazlar tek bir <strong>Çarpışma Alanı (Collision Domain)</strong> paylaşır; aynı anda sadece 1 cihaz iletim yapabilir.</li>
+          <li><strong>Durum:</strong> Çarpışma riski ve düşük performans nedeniyle modern ağlarda kullanımdan kalkmıştır.</li>
         </ul>
       </div>
     </div>

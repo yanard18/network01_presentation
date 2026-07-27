@@ -2,39 +2,49 @@
 <section>
   <h2><i class="fa-solid fa-filter highlight-cyan"></i> Network Bridge Nedir?</h2>
   
-  <div style="display: grid; grid-template-columns: 4fr 5fr; gap: 1.2rem; align-items: center; margin-top: 0.4rem; text-align: left;">
-    <!-- Left Column (40%): Vertical Diagram Stack -->
-    <div style="display: flex; flex-direction: column; gap: 0.8rem; text-align: center;">
-      <div style="background: rgba(255, 255, 255, 0.95); padding: 12px; border-radius: 10px; border: 1px solid var(--htb-border); box-shadow: 0 0 20px rgba(45,226,230,0.3);">
-        <img src="media/network-bridge.svg" alt="Network Bridge Segment Divider" style="max-height: 165px; width: 100%; object-fit: contain;">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; margin-top: 0.8rem; text-align: left;">
+    <!-- Left Column: Diagrams Showcase -->
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <div style="background: rgba(255, 255, 255, 0.95); padding: 15px; border-radius: 12px; border: 1px solid var(--htb-border); box-shadow: 0 0 25px rgba(45,226,230,0.25); text-align: center;">
+        <img src="media/network-bridge.svg" alt="Network Bridge Segment Divider" style="max-height: 220px; width: 100%; object-fit: contain;">
       </div>
-      <div style="background: rgba(255, 255, 255, 0.95); padding: 10px; border-radius: 10px; border: 1px solid var(--htb-border);">
-        <img src="media/network-bridge-osi-model.svg" alt="Network Bridge OSI Layer 2 Position" style="max-height: 110px; width: 100%; object-fit: contain;">
+      <div style="background: rgba(255, 255, 255, 0.95); padding: 12px; border-radius: 12px; border: 1px solid var(--htb-border); text-align: center;">
+        <img src="media/network-bridge-osi-model.svg" alt="Network Bridge OSI Layer 2 Position" style="max-height: 120px; width: 100%; object-fit: contain;">
       </div>
     </div>
 
-    <!-- Right Column (60%): Inspection Console & Deep Dive -->
-    <div>
-      <div style="margin-bottom: 0.6rem;">
-        <span class="cyber-badge badge-cyan">LAYER 2 DATA LINK</span>
-        <span class="cyber-badge badge-htb" style="margin-left: 0.4rem;">SEGMENT İZOLASYONU</span>
+    <!-- Right Column: Explanatory Cyber Cards -->
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <div style="background: var(--htb-bg-card); border: 1px solid var(--accent-cyan); border-radius: 10px; padding: 1.1rem; box-shadow: 0 0 15px rgba(0,0,0,0.5);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span class="cyber-badge badge-cyan">LAYER 2 DATA LINK</span>
+          <span class="cyber-badge badge-htb">SEGMENT İZOLASYONU</span>
+        </div>
+        <h3 style="font-size: 1.25em; color: #fff; margin-bottom: 0.5rem;">Yazılımsal MAC Adresi Filtreleme</h3>
+        <p style="font-size: 0.88em; color: #e2e8f0; margin: 0; line-height: 1.5;">
+          Bir <strong>Bridge (Köprü)</strong>, büyük ve yoğun bir çarpışma alanını (collision domain) iki daha küçük, izole edilmiş segmente ayırmak için Layer 2'de çalışır.
+        </p>
       </div>
-      <h3 style="font-size: 1.3em; color: #fff; margin-bottom: 0.6rem;">Yazılımsal MAC Adresi Filtreleme</h3>
-      <p style="font-size: 0.88em; color: #e2e8f0; margin-bottom: 0.8rem;">
-        Bir <strong>Bridge</strong> (Köprü), büyük ve yoğun bir çarpışma alanını (collision domain) iki daha küçük, izole edilmiş segmente ayırmak için Layer 2'de çalışır.
-      </p>
 
-      <!-- Terminal Inspection Snippet -->
-      <div class="terminal-header" style="padding: 0.35rem 0.8rem;">
-        <span class="terminal-dot dot-red"></span>
-        <span class="terminal-dot dot-yellow"></span>
-        <span class="terminal-dot dot-green"></span>
-        <span class="terminal-title" style="font-size: 0.75rem;">bridge-mac-table --inspect</span>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+        <div style="background: rgba(45, 226, 230, 0.06); border: 1px solid var(--accent-cyan); border-radius: 8px; padding: 0.9rem;">
+          <div style="color: var(--accent-cyan); font-family: var(--font-mono); font-weight: 700; font-size: 0.85em; margin-bottom: 0.3rem;">
+            <i class="fa-solid fa-microchip"></i> MAC Adresi Öğrenme
+          </div>
+          <p style="font-size: 0.78em; color: var(--text-muted); margin: 0; line-height: 1.4;">
+            Gelen paketlerin kaynak MAC adreslerini tablosuna kaydeder ve cihazların hangi segmentte olduğunu öğrenir.
+          </p>
+        </div>
+
+        <div style="background: rgba(159, 239, 0, 0.06); border: 1px solid var(--htb-green); border-radius: 8px; padding: 0.9rem;">
+          <div style="color: var(--htb-green); font-family: var(--font-mono); font-weight: 700; font-size: 0.85em; margin-bottom: 0.3rem;">
+            <i class="fa-solid fa-traffic-light"></i> Akıllı Trafik İletimi
+          </div>
+          <p style="font-size: 0.78em; color: var(--text-muted); margin: 0; line-height: 1.4;">
+            Aynı segmentteki trafiği diğer tarafa geçirmeyerek (filter) gereksiz ağ gürültüsünü ve çarpışmaları engeller.
+          </p>
+        </div>
       </div>
-      <pre style="margin: 0; border-top-left-radius: 0; border-top-right-radius: 0; border: 1px solid var(--htb-border); border-top: none;"><code class="language-text" style="font-size: 0.81em; padding: 0.7rem 0.9rem; color: var(--accent-cyan); font-family: var(--font-mono);">[Bridge Logic] Port 1'den Ingress (Gelen) Frame
-Hedef (Destination) MAC: 00:11:22:AA:BB (Segment 1)
-Aksiyon: FİLTRELE (FILTER) (Segment 2'ye iletme)
-✔ Segment 2 trafiği %100 yerel gürültüden (local noise) uzak tutuldu!</code></pre>
     </div>
   </div>
 </section>
