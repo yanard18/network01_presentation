@@ -1362,45 +1362,32 @@
 <section>
   <h2><i class="fa-solid fa-link highlight-htb"></i> Data Link Layer (Veri Bağı Katmanı) Genel Bakış</h2>
 
-  <!-- Top Hero Banner Card -->
-  <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 8px; padding: 0.9rem 1.2rem; margin-bottom: 1rem; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
-    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
-      <span class="cyber-badge badge-htb">OSI LAYER 2</span>
-      <strong style="color: var(--text-white); font-size: 1.05em;">Doğrudan Node-to-Node (Düğümden Düğüme) İletişim</strong>
-    </div>
-    <p style="font-size: 0.92em; color: var(--text-main); margin: 0; line-height: 1.5;">
-      Bu derste, OSI modelinin <strong>Data Link Layer</strong> adı verilen 2. katmanını inceleyeceğiz. Temel görevi, fiziksel katmanda doğrudan birbirine bağlı olan iki cihaz arasında veriyi taşımaktır.
-    </p>
-  </div>
-
-  <!-- Bottom 2-Column Split: Key Tasks Card vs OSI Diagram -->
-  <div class="grid-2" style="grid-template-columns: 1fr 1fr; gap: 1.1rem; align-items: stretch;">
-    <!-- Left Card: Core Tasks -->
-    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.1rem 1.3rem;">
-      <div>
-        <div class="card-title">
-          <span class="cyber-badge badge-cyan">TEMEL GÖREVLER</span> Birincil Sorumluluklar
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; margin-top: 1.2rem; text-align: left;">
+    <!-- Left Column: Core Responsibilities -->
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <div style="background: rgba(159, 239, 0, 0.08); border: 1px solid var(--htb-green); border-radius: 10px; padding: 1.2rem; box-shadow: 0 0 20px rgba(0,0,0,0.4);">
+        <div style="color: var(--htb-green); font-family: var(--font-mono); font-weight: 700; font-size: 0.95em; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i class="fa-solid fa-box"></i> Çerçeveleme (Framing) &amp; Adresleme
         </div>
-        
-        <div style="display: flex; flex-direction: column; gap: 0.7rem; margin-top: 0.6rem; font-size: 0.88em; line-height: 1.45;">
-          <div style="background: rgba(159,239,0,0.1); border: 1px solid var(--htb-green); border-radius: 6px; padding: 0.6rem 0.8rem;">
-            <strong style="color: var(--htb-green);"><i class="fa-solid fa-box"></i> Çerçeveleme (Framing) &amp; Adresleme:</strong> Layer 3 IP paketlerini fiziksel MAC adreslerine sahip frame'lere (çerçevelere) kapsüller (encapsulates).
-          </div>
-          <div style="background: rgba(45,226,230,0.1); border: 1px solid var(--accent-cyan); border-radius: 6px; padding: 0.6rem 0.8rem;">
-            <strong style="color: var(--accent-cyan);"><i class="fa-solid fa-bolt"></i> Ortam İletimi (Medium Transmission):</strong> Fiziksel katmanın veriyi ortam (kablo vb.) üzerinde elektriksel, optik veya radyo sinyallerine dönüştürebilmesi için frame'leri hazırlar.
-          </div>
-        </div>
+        <p style="font-size: 0.98em; line-height: 1.6; color: #e2e8f0; margin: 0;">
+          Layer 3 IP paketlerini fiziksel MAC adreslerine sahip frame'lere (çerçevelere) kapsüller (encapsulates).
+        </p>
       </div>
 
-      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; margin-top: 0.6rem;">
-        <i class="fa-solid fa-microchip highlight-htb"></i> Hata Tespiti (Error Detection) &amp; Media Access Control (MAC)
+      <div style="background: rgba(45, 226, 230, 0.08); border: 1px solid var(--accent-cyan); border-radius: 10px; padding: 1.2rem; box-shadow: 0 0 20px rgba(0,0,0,0.4);">
+        <div style="color: var(--accent-cyan); font-family: var(--font-mono); font-weight: 700; font-size: 0.95em; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i class="fa-solid fa-bolt"></i> Ortam İletimi (Medium Transmission)
+        </div>
+        <p style="font-size: 0.98em; line-height: 1.6; color: #e2e8f0; margin: 0;">
+          Fiziksel katmanın veriyi ortam (kablo vb.) üzerinde elektriksel, optik veya radyo sinyallerine dönüştürebilmesi için frame'leri hazırlar.
+        </p>
       </div>
     </div>
 
-    <!-- Right Image: Layer 2 OSI Diagram -->
-    <div style="background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid var(--htb-border); box-shadow: 0 0 25px var(--htb-green-glow); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-      <img src="media/the-data-link-layer-osi-model.svg" alt="The Data Link Layer OSI Model" style="max-height: 240px; width: 100%; object-fit: contain; display: block;">
-      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: #070e1b; font-weight: 700; margin-top: 0.4rem;">
+    <!-- Right Column: Diagram Image -->
+    <div style="background: rgba(255, 255, 255, 0.98); padding: 15px; border-radius: 12px; border: 1px solid var(--htb-border); box-shadow: 0 0 25px var(--htb-green-glow); text-align: center;">
+      <img src="media/the-data-link-layer-osi-model.svg" alt="The Data Link Layer OSI Model" style="max-height: 320px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.78rem; color: #070e1b; font-weight: 700; margin-top: 0.5rem;">
         <i class="fa-solid fa-diagram-project highlight-htb"></i> Şekil: OSI Yığınında (Stack) Data Link Layer
       </div>
     </div>
