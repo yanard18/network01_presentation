@@ -1,44 +1,42 @@
 <!-- SLIDE: DNS Resolution Order -->
 <section>
-  <h2><i class="fa-solid fa-list-check highlight-cyan"></i> DNS Çözümleme (Resolution) Sırası</h2>
+  <h2><i class="fa-solid fa-list-check highlight-cyan"></i> DNS Çözümleme Sırası</h2>
 
   <div style="max-width: 850px; margin: 1.5rem auto 0 auto; text-align: center;">
     <!-- Top Cyber Badges Flow Row -->
-    <div style="font-size: 1.05em; line-height: 1.8; color: var(--text-main);">
-      <div style="display: flex; justify-content: center; gap: 0.8rem; margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.9em; flex-wrap: wrap; align-items: center;">
-        <span class="cyber-badge badge-cyan" style="padding: 0.4rem 0.8rem;"><i class="fa-solid fa-memory"></i> 1. OS Cache (Önbellek)</span>
-        <span style="color: var(--text-muted);">➔</span>
-        <span class="cyber-badge badge-htb" style="padding: 0.4rem 0.8rem;"><i class="fa-solid fa-file-lines"></i> 2. /etc/hosts</span>
-        <span style="color: var(--text-muted);">➔</span>
-        <span class="cyber-badge badge-yellow" style="padding: 0.4rem 0.8rem; border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);"><i class="fa-solid fa-network-wired"></i> 3. Dahili (Internal) DNS</span>
-        <span style="color: var(--text-muted);">➔</span>
-        <span class="cyber-badge badge-purple" style="padding: 0.4rem 0.8rem;"><i class="fa-solid fa-globe"></i> 4. Harici (External) / ISP</span>
+    <div style="display: flex; justify-content: center; gap: 0.8rem; margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.9em; flex-wrap: wrap; align-items: center;">
+      <span class="cyber-badge badge-cyan" style="padding: 0.4rem 0.8rem;"><i class="fa-solid fa-memory"></i> 1. OS Cache</span>
+      <span style="color: var(--text-muted);">➔</span>
+      <span class="cyber-badge badge-htb" style="padding: 0.4rem 0.8rem;"><i class="fa-solid fa-file-lines"></i> 2. /etc/hosts</span>
+      <span style="color: var(--text-muted);">➔</span>
+      <span class="cyber-badge badge-yellow" style="padding: 0.4rem 0.8rem; border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(255,183,3,0.15);"><i class="fa-solid fa-network-wired"></i> 3. Local DNS</span>
+      <span style="color: var(--text-muted);">➔</span>
+      <span class="cyber-badge badge-purple" style="padding: 0.4rem 0.8rem;"><i class="fa-solid fa-globe"></i> 4. Public DNS</span>
+    </div>
+
+    <!-- Clean Bordered List Items -->
+    <div style="display: flex; flex-direction: column; gap: 1rem; text-align: left; font-size: 0.95em; max-width: 800px; margin: 0 auto;">
+      
+      <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
+        <strong style="color: #fff;">1. OS &amp; Tarayıcı Cache:</strong> Tarayıcı ve işletim sistemi önbelleğindeki kayıtları kontrol eder.
       </div>
 
-      <!-- Clean Bordered List Items (Exact match to IPv4 vs IPv6 style) -->
-      <div style="display: flex; flex-direction: column; gap: 1rem; text-align: left; font-size: 0.92em; max-width: 800px; margin: 0 auto;">
-        
-        <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
-          <strong style="color: #fff;">1. OS &amp; Tarayıcı (Browser) Cache:</strong> <span style="color: var(--accent-cyan);">Anında Bellek (Memory) Taraması.</span> Yerel RAM'i (<code>systemd-resolved</code>, tarayıcı önbelleği) kontrol eder. Bulunursa IP'yi hemen döndürür.
-        </div>
-
-        <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
-          <strong style="color: #fff;">2. Statik Dosyalar (<code>/etc/hosts</code>):</strong> <span style="color: var(--htb-green);">Sıfır Ağ Trafiği.</span> <code>/etc/nsswitch.conf</code> (<code>hosts: files dns</code>) tarafından yönetilir. Domain eşleşmeleri (mappings) için yerel statik dosyayı inceler (ör. <code>10.10.11.23 target.htb</code>).
-        </div>
-
-        <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
-          <strong style="color: #fff;">3. Dahili (Internal) DNS Sunucusu:</strong> <span style="color: var(--accent-yellow);">Yerel Ağ Sorgusu (UDP 53).</span> İstemci (Client), yerel ağ bölgelerini (zones) kontrol etmek için yerel router/kurumsal DNS'e (<code>192.168.1.1</code> veya <code>10.0.0.2</code>) recursive sorgu gönderir.
-        </div>
-
-        <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
-          <strong style="color: #fff;">4. Harici (External) / ISP DNS Yönlendirmesi (Forwarding):</strong> <span style="color: var(--accent-purple);">Upstream Küresel Tarama.</span> Domain halka açık (public) ise (ör. <code>google.com</code>), Dahili DNS sorguyu ISP / Public DNS'e (<code>8.8.8.8</code>) yönlendirerek (forwards) Root ➔ TLD ➔ Authoritative iteratif taramasını gerçekleştirir.
-        </div>
-
-        <div>
-          <strong style="color: #fff;">5. Çözümlenemeyen (Unresolved) Domain İşlemi:</strong> <span style="color: var(--accent-red);">NXDOMAIN Hatası.</span> Hiçbir sunucuda kayıt (record) yoksa, Authoritative sunucu <code>NXDOMAIN</code> (Mevcut Olmayan Domain) döndürerek geriye doğru yayılır ve ekranda <code>ERR_NAME_NOT_RESOLVED</code> gösterilmesini sağlar.
-        </div>
-
+      <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
+        <strong style="color: #fff;">2. Hosts Dosyası (<code>/etc/hosts</code>):</strong> Yerel statik IP-domain eşleşmelerini kontrol eder.
       </div>
+
+      <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
+        <strong style="color: #fff;">3. Yerel DNS Sunucusu:</strong> Ağdaki lokal DNS sunucusuna (router / kurumsal DNS) sorgu gönderir.
+      </div>
+
+      <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem;">
+        <strong style="color: #fff;">4. Kamu (Public) DNS Hiyerarşisi:</strong> Kayıt yerelde yoksa küresel sunuculara (Root ➔ TLD ➔ Authoritative) başvurur.
+      </div>
+
+      <div>
+        <strong style="color: #fff;">5. Sonuç:</strong> Bulunursa IP adresi döndürülür, bulunamazsa <code>NXDOMAIN</code> hatası verilir.
+      </div>
+
     </div>
   </div>
 </section>

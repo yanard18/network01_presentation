@@ -6,50 +6,35 @@
     <strong>ARP (Layer 2.5)</strong>, yerel teslimat (local delivery) için bilinen 32-bit IPv4 adreslerini 48-bit fiziksel Ethernet MAC adreslerine çözümler (resolves).
   </div>
 
-  <div class="grid-3" style="gap: 1rem; align-items: stretch; text-align: left;">
+  <div class="grid-3" style="gap: 1.2rem; align-items: stretch; text-align: left;">
     <!-- Card 1: Layer 2.5 ARP Envelope -->
-    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-      <div>
-        <div class="card-title">
-          <span class="cyber-badge badge-htb">LAYER 2.5</span> ARP Zarfı (Envelope)
-        </div>
-        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
-          Layer 2 fiziksel çerçeveleme (framing) ile Layer 3 IP yönlendirme (routing) arasında köprü kurar.
-        </p>
-        <div style="background: rgba(159,239,0,0.1); border: 1px solid var(--htb-green); border-radius: 6px; padding: 0.6rem; font-size: 0.8em; line-height: 1.45;">
-          <strong style="color: var(--htb-green);"><i class="fa-solid fa-triangle-exclamation"></i> Peer (Eş) Kimlik Tespiti:</strong> Bir MAC veya IP adresinin sızdırılması (leaking), belirli ağ davranışlarını laboratuvardaki tanımlanabilir bir eşe (peer) bağlayabilir.
-        </div>
+    <div class="cyber-card">
+      <div class="card-title">
+        <span class="cyber-badge badge-htb">LAYER 2.5</span> ARP Zarfı (Envelope)
       </div>
+      <p style="color: var(--text-main);">
+        Layer 2 fiziksel çerçeveleme (framing) ile Layer 3 IP yönlendirme (routing) arasında köprü kurar.
+      </p>
     </div>
 
     <!-- Card 2: Broadcast Mechanism -->
-    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-      <div>
-        <div class="card-title">
-          <span class="cyber-badge badge-cyan">BROADCAST</span> Çözümleme Mekanizması
-        </div>
-        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
-          ARP İstekleri (Requests), bilinmeyen MAC adreslerini keşfetmek için Ethernet broadcast (<code>FF:FF:FF:FF:FF:FF</code>) kullanır.
-        </p>
-        <div style="background: rgba(45,226,230,0.1); border: 1px solid var(--accent-cyan); border-radius: 6px; padding: 0.6rem; font-size: 0.8em; line-height: 1.45;">
-          <strong style="color: var(--accent-cyan);"><i class="fa-solid fa-bullhorn"></i> Subnet Görünürlüğü (Visibility):</strong> Broadcast trafiği, MAC ve IP eşleşmelerini tüm yerel broadcast etki alanında (domain) açığa çıkarır.
-        </div>
+    <div class="cyber-card">
+      <div class="card-title">
+        <span class="cyber-badge badge-cyan">BROADCAST</span> Çözümleme Mekanizması
       </div>
+      <p style="color: var(--text-main);">
+        ARP İstekleri (Requests), bilinmeyen MAC adreslerini keşfetmek için Ethernet broadcast (<code>FF:FF:FF:FF:FF:FF</code>) kullanır.
+      </p>
     </div>
 
     <!-- Card 3: Security & Utility -->
-    <div class="cyber-card threat" style="display: flex; flex-direction: column; justify-content: space-between;">
-      <div>
-        <div class="card-title">
-          <span class="cyber-badge badge-red">GÜVENLİK ETKİSİ</span> Risk Maruziyeti (Exposure)
-        </div>
-        <p style="font-size: 0.86em; line-height: 1.5; color: var(--text-main); margin-bottom: 0.6rem;">
-          Bu bilgi bir saldırgan (attacker) için nasıl faydalı olabilir?
-        </p>
-        <div style="background: rgba(255,46,99,0.12); border: 1px solid var(--accent-red); border-radius: 6px; padding: 0.6rem; font-size: 0.8em; line-height: 1.45;">
-          <strong style="color: var(--accent-red);"><i class="fa-solid fa-shield-virus"></i> Ağ Riski (Network Risk):</strong> Ağ geçidi (gateway) veya dahili DNS yapılandırmalarının açığa çıkması, yerel ağ altyapısı için bir güvenlik riski oluşturabilir.
-        </div>
+    <div class="cyber-card threat">
+      <div class="card-title">
+        <span class="cyber-badge badge-red">GÜVENLİK</span> ARP Spoofing &amp; Zehirlenme
       </div>
+      <p style="color: var(--text-main);">
+        Doğrulama (authentication) mekanizması olmadığı için ARP tabloları sahte yanıtlarla (ARP Poisoning) manipüle edilebilir.
+      </p>
     </div>
   </div>
 </section>
