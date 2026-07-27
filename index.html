@@ -50,12 +50,11 @@
   <div class="grid-3" style="align-items: stretch; text-align: left;">
     <!-- PART 1 -->
     <div class="cyber-card">
-      <div class="card-title"><span class="cyber-badge badge-htb">BLOK 1</span> Temel & Taşıma Katmanı</div>
+      <div class="card-title"><span class="cyber-badge badge-htb">BLOK 1</span> Mimari & Ağ Cihazları</div>
       <ul style="margin-bottom: 0;">
-        <li><strong>OSI & TCP/IP Modelleri</strong></li>
-        <li><strong>Link (Bağlantı) Katmanı:</strong> Ethernet & MAC</li>
-        <li><strong>IP Katmanı:</strong> Adresleme & Paket Yapısı</li>
-        <li><strong>TCP & UDP:</strong> Güvenli vs Hızlı Taşıma</li>
+        <li><strong>OSI & TCP/IP Modelleri:</strong> Katmanlı Mimari & Sarmalama</li>
+        <li><strong>Ağ Cihazları:</strong> Hub, Bridge, Switch & Router Evrimi</li>
+        <li><strong>Taşıma & IP Katmanı:</strong> TCP, UDP & Adresleme (IPv4/IPv6)</li>
       </ul>
     </div>
 
@@ -64,8 +63,8 @@
       <div class="card-title"><span class="cyber-badge badge-cyan">BLOK 2</span> Ağ & Keşif Servisleri</div>
       <ul style="margin-bottom: 0;">
         <li><strong>ARP:</strong> IP - MAC Adres Çözümleme</li>
-        <li><strong>DHCP:</strong> Otomatik IP Yapılandırma</li>
-        <li><strong>DNS:</strong> Alan Adı - IP Çözümleme</li>
+        <li><strong>DHCP:</strong> Otomatik IP Yapılandırma & DORA</li>
+        <li><strong>DNS:</strong> Alan Adı Hiyerarşisi & Çözümleme</li>
       </ul>
     </div>
 
@@ -73,9 +72,9 @@
     <div class="cyber-card">
       <div class="card-title"><span class="cyber-badge badge-purple">BLOK 3</span> Uygulama Katmanı</div>
       <ul style="margin-bottom: 0;">
-        <li><strong>HTTP:</strong> Web Veri İletimi</li>
-        <li><strong>SSH:</strong> Güvenli Uzak Erişim & Shell</li>
-        <li><strong>SMB:</strong> Ağ Dosya & Kaynak Paylaşımı</li>
+        <li><strong>SMB:</strong> Ağ Dosya Paylaşımı & Yaşam Döngüsü</li>
+        <li><strong>HTTP:</strong> Web Veri İletimi & Protokol Evrimi</li>
+        <li><strong>SSH:</strong> Güvenli Uzak Erişim & El Sıkışma</li>
       </ul>
     </div>
   </div>
@@ -114,7 +113,7 @@
       <!-- Loaded from slides/osi_encapsulation.html -->
 <!-- SLIDE: Interactive OSI Encapsulation Simulator -->
 <section>
-  <h2><i class="fa-solid fa-box-archive highlight-htb"></i> İnteraktif Veri Kapsülleme (OSI Encapsulation)</h2>
+  <h2><i class="fa-solid fa-box-archive highlight-htb"></i>OSI Encapsulation</h2>
   
   <div style="display: flex; gap: 0.8rem; margin-bottom: 0.6rem; justify-content: flex-start;">
     <button class="sim-btn" onclick="window.osiEncSim.prevStep()">
@@ -248,7 +247,7 @@
         <strong style="color: #fff; font-size: 1.1em;">HUB ile Merkezi Yıldız (Star) Topolojisi</strong>
       </div>
       <p style="margin: 0; font-size: 0.9em; color: #e2e8f0; line-height: 1.5;">
-        \(N\) adet cihazı doğrudan birbirine bağlamak \(\frac{N(N-1)}{2}\) kablo ve her bilgisayar için birden fazla NIC gerektirir. 
+        N adet cihazı doğrudan birbirine bağlamak N(N-1)/2 kablo ve her bilgisayar için birden fazla NIC gerektirir. 
         Bir <strong>HUB</strong>, tek bir merkezi bağlantı noktası (junction) görevi görerek bu kablolama kabusunu çözer ve her bilgisayarın ağa sadece <strong>1 kablo</strong> kullanarak katılmasına olanak tanır!
       </p>
     </div>
@@ -260,48 +259,12 @@
 <section>
   <h2><i class="fa-solid fa-microchip highlight-red"></i> Network Hub (Repeater) Nedir?</h2>
   
-  <div style="display: flex; flex-direction: column; gap: 0.9rem; margin-top: 0.4rem;">
-    <!-- 3 Horizontal Process Step Pills -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; text-align: left;">
-      <div style="background: rgba(255,46,99,0.08); border: 1px solid var(--accent-red); border-radius: 8px; padding: 0.8rem;">
-        <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-red); font-weight: 700; margin-bottom: 0.3rem;">
-          01. PORT GİRİŞİ (INGRESS)
-        </div>
-        <div style="font-size: 0.88em; color: #fff; font-weight: 600;">Elektriksel Bit Gelişi</div>
-        <p style="font-size: 0.8em; color: var(--text-muted); margin: 0.3rem 0 0 0;">
-          Ham elektriksel sinyaller (pulses) Host A'dan tek bir fiziksel porta girer.
-        </p>
-      </div>
-
-      <div style="background: rgba(255,183,3,0.08); border: 1px solid var(--accent-yellow); border-radius: 8px; padding: 0.8rem;">
-        <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-yellow); font-weight: 700; margin-bottom: 0.3rem;">
-          02. SİNYAL TEKRARLAYICI (REPEATER)
-        </div>
-        <div style="font-size: 0.88em; color: #fff; font-weight: 600;">Layer 1 Yükseltme (Amplification)</div>
-        <p style="font-size: 0.8em; color: var(--text-muted); margin: 0.3rem 0 0 0;">
-          Hub, MAC adreslerini veya IP başlıklarını (headers) incelemeden sinyal voltajını yükseltir.
-        </p>
-      </div>
-
-      <div style="background: rgba(159,239,0,0.08); border: 1px solid var(--htb-green); border-radius: 8px; padding: 0.8rem;">
-        <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--htb-green); font-weight: 700; margin-bottom: 0.3rem;">
-          03. TÜM PORTLARA YAYIN (BROADCAST)
-        </div>
-        <div style="font-size: 0.88em; color: #fff; font-weight: 600;">Multiport Flooding</div>
-        <p style="font-size: 0.8em; color: var(--text-muted); margin: 0.3rem 0 0 0;">
-          Sinyal aynı anda diğer tüm portlara kopyalanarak basılır (floods out) (Host B, C, D).
-        </p>
-      </div>
+  <div style="display: flex; justify-content: center; align-items: center; gap: 1.2rem; margin-top: 1.2rem;">
+    <div style="background: rgba(255, 255, 255, 0.95); padding: 15px; border-radius: 10px; border: 1px solid var(--htb-border); text-align: center; flex: 2; box-shadow: 0 0 20px rgba(0,0,0,0.4);">
+      <img src="media/hub-connecting-multiple-devices.svg" alt="Hub Connecting Devices" style="max-height: 380px; width: 100%; object-fit: contain;">
     </div>
-
-    <!-- Bottom Showcase: Layer 1 Diagram Stack -->
-    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 0.8rem; align-items: center;">
-      <div style="background: rgba(255, 255, 255, 0.95); padding: 10px; border-radius: 8px; border: 1px solid var(--htb-border); text-align: center;">
-        <img src="media/hub-connecting-multiple-devices.svg" alt="Hub Connecting Devices" style="max-height: 160px; width: 100%; object-fit: contain;">
-      </div>
-      <div style="background: rgba(255, 255, 255, 0.95); padding: 10px; border-radius: 8px; border: 1px solid var(--htb-border); text-align: center;">
-        <img src="media/network-hub-osi-model.svg" alt="Hub OSI L1 Position" style="max-height: 160px; width: 100%; object-fit: contain;">
-      </div>
+    <div style="background: rgba(255, 255, 255, 0.95); padding: 15px; border-radius: 10px; border: 1px solid var(--htb-border); text-align: center; flex: 1; box-shadow: 0 0 20px rgba(0,0,0,0.4);">
+      <img src="media/network-hub-osi-model.svg" alt="Hub OSI L1 Position" style="max-height: 380px; width: 100%; object-fit: contain;">
     </div>
   </div>
 </section>
@@ -753,7 +716,7 @@ Aksiyon: FİLTRELE (FILTER) (Segment 2'ye iletme)
       <div style="background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 6px; padding: 0.7rem 0.9rem;">
         <span class="cyber-badge badge-cyan" style="margin-bottom: 0.3rem;">02. ROUTING TABLE</span>
         <div style="font-size: 0.81em; color: #e2e8f0; line-height: 1.4;">
-          Hedef subnet'i \(\rightarrow\) next hop (sonraki sekme) / çıkış arayüzüne (exit interface) \(\rightarrow\) metriğe (metric) eşler. (Statik veya Dinamik OSPF/BGP).
+          Hedef subnet'i → next hop (sonraki sekme) / çıkış arayüzüne (exit interface) → metriğe (metric) eşler. (Statik veya Dinamik OSPF/BGP).
         </div>
       </div>
 
@@ -783,7 +746,7 @@ Aksiyon: FİLTRELE (FILTER) (Segment 2'ye iletme)
         <img src="media/ip_forwarding_table.png" alt="IP Forwarding Table Lookup Diagram" style="max-height: 210px; width: auto; max-width: 100%; object-fit: contain; filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));">
       </div>
       <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); margin-top: 0.4rem;">
-        Hedef (Destination) IP \(D = 192.168.1.50\) Forwarding Table Araması ve Mask Hesaplaması
+        Hedef (Destination) IP D = 192.168.1.50 Forwarding Table Araması ve Mask Hesaplaması
       </div>
     </div>
 
@@ -810,7 +773,7 @@ Aksiyon: FİLTRELE (FILTER) (Segment 2'ye iletme)
         </div>
         <p style="font-size: 0.82em; color: #e2e8f0; margin: 0; line-height: 1.45;">
           Her üç kayıt da eşleşir, bu nedenle router eşleşen bit sayılarını karşılaştırır: 
-          <strong style="color: var(--htb-green);">24 bit (\(m_3\)) > 16 bit (\(m_2\)) > 0 bit (\(m_1\))</strong>.
+          <strong style="color: var(--htb-green);">24 bit (m₃) > 16 bit (m₂) > 0 bit (m₁)</strong>.
           <br>
           ✔ <strong>Kazanan Route:</strong> Entry 3 (<code>192.168.1.0/24</code>) en spesifik ağ maskesine (network mask) sahip olduğu için seçilir!
         </p>
@@ -855,7 +818,7 @@ Aksiyon: FİLTRELE (FILTER) (Segment 2'ye iletme)
           <span class="cyber-badge badge-purple">DEFAULT GATEWAY</span>
         </div>
         <p style="font-size: 0.82em; color: #fff; margin: 0; line-height: 1.4;">
-          Hedef, yerel LAN'ın dışındadır \(\rightarrow\) Host, paketi <strong>Default Gateway (Varsayılan Ağ Geçidi) Router'a (10.1.1.1)</strong> gönderir. Host, Ethernet <strong>Hedef (Destination) MAC = Router R1 MAC (CCC)</strong> olarak ayarlar!
+          Hedef, yerel LAN'ın dışındadır → Host, paketi <strong>Default Gateway (Varsayılan Ağ Geçidi) Router'a (10.1.1.1)</strong> gönderir. Host, Ethernet <strong>Hedef (Destination) MAC = Router R1 MAC (CCC)</strong> olarak ayarlar!
         </p>
       </div>
     </div>
