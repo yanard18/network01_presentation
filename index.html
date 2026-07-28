@@ -2697,44 +2697,47 @@
 <section>
   <h2><i class="fa-solid fa-folder-tree highlight-htb"></i> Server Message Block (SMB)</h2>
 
-  <div style="text-align: left; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.95em;">
+  <div style="text-align: left; margin-bottom: 0.8rem; color: var(--text-muted); font-size: 0.92em;">
     <strong style="color: var(--htb-green);">SMB Protokolü</strong> (Server Message Block), istemcilerin TCP/IP veya diğer katmanlar üzerinde ağ genelindeki dosyalara okuma ve yazma erişimi yapmasını sağlayan bir <strong>network file sharing protocol</strong>'üdür.
   </div>
 
-  <div class="grid-2" style="grid-template-columns: 1.1fr 0.9fr; gap: 1.2rem; align-items: center;">
-    <!-- Left Column: What is SMB Infographic -->
-    <div style="display: flex; align-items: center; justify-content: center;">
-      <img src="media/what_is_smb.jpg" alt="SMB: Server Message Block Diyagramı" style="max-height: 380px; width: 100%; object-fit: contain; display: block; border-radius: 8px;">
+  <div class="grid-2" style="grid-template-columns: 1.05fr 0.95fr; gap: 1.1rem; align-items: center;">
+    <!-- Left Column: Image Diagram -->
+    <div style="background: #ffffff; padding: 10px; border-radius: 8px; border: 1px solid var(--htb-border); box-shadow: 0 0 20px var(--htb-green-glow); text-align: center;">
+      <img src="media/what_is_smb.jpg" alt="SMB: Server Message Block Diyagramı" style="max-height: 350px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: #070e1b; font-weight: 700; margin-top: 0.3rem;">
+        <i class="fa-solid fa-diagram-project highlight-htb"></i> Şekil: SMB İstemci - Sunucu Mimarisi
+      </div>
     </div>
 
-    <!-- Right Column: Key Characteristics & Functions -->
-    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-      <div class="cyber-card">
-        <div class="card-title">
+    <!-- Right Column: 3 Stacked Cards with Compact Font Override -->
+    <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+      <div class="cyber-card" style="padding: 0.7rem 0.9rem;">
+        <div class="card-title" style="font-size: 1.05em !important; margin-bottom: 0.4rem;">
           <span class="cyber-badge badge-htb">CORE FUNCTION</span> Uzaktan Dosya Erişimi
         </div>
-        <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
+        <p style="font-size: 0.84em !important; line-height: 1.45 !important; color: var(--text-main); margin-bottom: 0;">
           Uzak paylaşılan dizinleri (ör. <code>\\SERVER\SHARE</code>) yerel sürücü harflerine (ör. <code>Z:</code>) şeffaf biçimde eşleyerek doğrudan okuma ve yazma işlemlerini sağlar.
         </p>
       </div>
 
-      <div class="cyber-card">
-        <div class="card-title">
+      <div class="cyber-card" style="padding: 0.7rem 0.9rem;">
+        <div class="card-title" style="font-size: 1.05em !important; margin-bottom: 0.4rem;">
           <span class="cyber-badge badge-cyan">TRANSPORT</span> TCP/IP Üzerinde Layer 7
         </div>
-        <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
+        <p style="font-size: 0.84em !important; line-height: 1.45 !important; color: var(--text-main); margin-bottom: 0;">
           Modern ağlarda güvenilir veri iletimi için doğrudan <strong>TCP Port 445</strong> (veya legacy NetBIOS over TCP/IP ile Port 139) üzerinde çalışır.
         </p>
       </div>
 
-      <div class="cyber-card">
-        <div class="card-title">
+      <div class="cyber-card" style="padding: 0.7rem 0.9rem;">
+        <div class="card-title" style="font-size: 1.05em !important; margin-bottom: 0.4rem;">
           <span class="cyber-badge badge-purple">CAPABILITIES</span> Paylaşılan Kaynaklar
         </div>
-        <ul style="font-size: 0.82em; line-height: 1.4; margin-bottom: 0;">
-          <li><strong>Dosya İşlemleri:</strong> Uzak dosyaları açma, okuma, yazma, lock (kilitleme) ve silme.</li>
-          <li><strong>Cihaz Paylaşımı:</strong> Network Printer paylaşımı ve seri port erişimi.</li>
-          <li><strong>IPC İletişimi:</strong> Named Pipes aracılığıyla Inter-Process Communication.</li>
+        <ul style="font-size: 0.82em !important; line-height: 1.4 !important; margin-bottom: 0;">
+          <li style="font-size: 1em !important; margin-bottom: 0.3rem;"><strong>Dosya İşlemleri:</strong> Uzak dosyaları açma, okuma, yazma, kilitleme ve silme.</li>
+          <li style="font-size: 1em !important; margin-bottom: 0.3rem;"><strong>Cihaz Paylaşımı:</strong> Network Printer paylaşımı ve seri port erişimi.</li>
+          <li style="font-size: 1em !important; margin-bottom: 0;"><strong>IPC İletişimi:</strong> Named Pipes aracılığıyla Inter-Process Communication.</li>
         </ul>
       </div>
     </div>
@@ -4176,6 +4179,176 @@
       <p style="font-size: 0.84em; color: var(--text-muted); margin: 0.2rem 0 0 0;">
         ⚡ <strong>Bağımsız Akışlar (Independent Streams):</strong> Stream 2 üzerindeki bir paket kaybı (drop), yalnızca o şeritte bağımsız olarak retransmit yapar; Stream 1 &amp; 3 akışına devam eder!
       </p>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/https_overview.html -->
+<!-- SLIDE: HTTPS Overview -->
+<section>
+  <h2><i class="fa-solid fa-lock highlight-htb"></i> HTTPS — Güvenli İletişim (HTTP + TLS/SSL)</h2>
+
+  <div style="text-align: left; margin-bottom: 1.1rem; color: var(--text-muted); font-size: 0.95em;">
+    <strong style="color: var(--htb-green);">HTTPS</strong> (Hypertext Transfer Protocol Secure), standart HTTP trafiğini bir <strong>TLS/SSL</strong> şifreleme katmanı içerisine kapsülleyerek <strong>TCP Port 443</strong> üzerinden güvenli iletim sağlar.
+  </div>
+
+  <div class="grid-3" style="gap: 1.1rem; align-items: stretch; text-align: left;">
+    <!-- Card 1: Encryption & Confidentiality -->
+    <div class="cyber-card secure" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">GİZLİLİK</span> TLS/SSL Şifreleme
+        </div>
+        <p style="color: var(--text-main);">
+          İstemci ve sunucu arasındaki veri akışını simetrik (ör. AES) ve asimetrik (ör. ECDHE, RSA) kriptografi ile şifreler. Ortadaki Adam (MITM) dinlemelerini engeller.
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.5rem;">
+        <i class="fa-solid fa-key highlight-htb"></i> Veri Gizliliği (Data Confidentiality)
+      </div>
+    </div>
+
+    <!-- Card 2: Authentication & Integrity -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">KİMLİK &amp; BÜTÜNLÜK</span> X.509 Sertifikaları
+        </div>
+        <p style="color: var(--text-main);">
+          Güvenilir Sertifika Otoriteleri (CA) tarafından imzalanan dijital sertifikalar ile alan adı kimliği doğrulanır ve paketlerin yolda değiştirilmesi (tampering) önlenir.
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.5rem;">
+        <i class="fa-solid fa-certificate highlight-cyan"></i> Güvenli Bağlantı &amp; CA Doğrulama
+      </div>
+    </div>
+
+    <!-- Card 3: HTTP vs HTTPS -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">PORT 80 VS 443</span> HTTP vs HTTPS
+        </div>
+        <ul style="margin-bottom: 0;">
+          <li><strong>HTTP (Port 80):</strong> Açık metin (Plaintext) iletim. Paketler dinlenebilir ve değiştirilebilir.</li>
+          <li><strong>HTTPS (Port 443):</strong> TLS El Sıkışması (Handshake) sonrası tam uçtan uca şifreli iletişim.</li>
+        </ul>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.5rem;">
+        <i class="fa-solid fa-shield-halved highlight-purple"></i> Web Güvenliği Standart Protokolü
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/ssl2.html -->
+<!-- SLIDE: SSL 2.0 -->
+<section>
+  <h2><i class="fa-solid fa-triangle-exclamation highlight-red"></i> SSL 2.0 (1995) — Temel Tasarım Hataları</h2>
+
+  <div style="max-width: 780px; margin: 2rem auto 0 auto; text-align: left; font-size: 1.05em; line-height: 1.7;">
+    <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
+      <strong style="color: var(--accent-red);">• Anahtar Bütünlüğü Eksikliği:</strong> Handshake mesajları kimlik doğrulamasına tabi tutulmadığı için Ortadaki Adam (MITM) sürüm düşürme (downgrade) saldırılarına açıktı.
+    </div>
+
+    <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
+      <strong style="color: var(--accent-red);">• Tek Yönlü Anahtar:</strong> Gönderim ve alım işlemleri için aynı kriptografik anahtarı kullanıyordu.
+    </div>
+
+    <div>
+      <strong style="color: var(--accent-red);">• Zayıf MAC:</strong> Veri bütünlüğü denetimi (MAC) kırılabilir MD5 algoritmasına dayanıyordu.
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/ssl3.html -->
+<!-- SLIDE: SSL 3.0 -->
+<section>
+  <h2><i class="fa-solid fa-bug highlight-red"></i> SSL 3.0 (1996) — POODLE Saldırısı &amp; Zayıf Karmalar</h2>
+
+  <div style="max-width: 780px; margin: 2rem auto 0 auto; text-align: left; font-size: 1.05em; line-height: 1.7;">
+    <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
+      <strong style="color: var(--accent-red);">• POODLE Saldırısı (CVE-2014-3566):</strong> CBC modundaki dolgu (padding) hatasını kötüye kullanarak şifreli HTTP oturum çerezlerinin çözülmesine yol açtı.
+    </div>
+
+    <div>
+      <strong style="color: var(--accent-red);">• Zayıf Hash Algoritmaları:</strong> Güvenliği kırılmış MD5 ve SHA-1 algoritmalarına bağımlıydı.
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/tls10.html -->
+<!-- SLIDE: TLS 1.0 -->
+<section>
+  <h2><i class="fa-solid fa-user-ninja highlight-yellow"></i> TLS 1.0 (1999) — BEAST &amp; Sıkıştırma Zafiyetleri</h2>
+
+  <div style="max-width: 780px; margin: 2rem auto 0 auto; text-align: left; font-size: 1.05em; line-height: 1.7;">
+    <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
+      <strong style="color: var(--accent-yellow);">• BEAST Saldırısı (CVE-2011-3389):</strong> Tahmin edilebilir İlkleme Vektörleri (IV) kullanarak CBC modundaki şifreli trafiğin deşifre edilmesini sağladı.
+    </div>
+
+    <div>
+      <strong style="color: var(--accent-yellow);">• CRIME &amp; TIME Saldırıları:</strong> TLS seviyesindeki veri sıkıştırma özelliğini kötüye kullanarak gizli HTTP başlıklarını sızdırdı.
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/tls11.html -->
+<!-- SLIDE: TLS 1.1 -->
+<section>
+  <h2><i class="fa-solid fa-ban highlight-purple"></i> TLS 1.1 (2006) — İlkel Kriptografi &amp; AEAD Eksikliği</h2>
+
+  <div style="max-width: 780px; margin: 2rem auto 0 auto; text-align: left; font-size: 1.05em; line-height: 1.7;">
+    <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
+      <strong style="color: var(--accent-purple);">• Kırılmış Şifre Süitleri:</strong> SHA-1, MD5 ve RC4/3DES gibi zayıf algoritmaları desteklemeye devam etti.
+    </div>
+
+    <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
+      <strong style="color: var(--accent-purple);">• AEAD Eksikliği:</strong> Modern ve güvenli AEAD (ör. AES-GCM) şifreleme modlarını desteklemiyordu.
+    </div>
+
+    <div>
+      <strong style="color: var(--accent-purple);">• Forward Secrecy Yokluğu:</strong> Statik RSA kullanımı nedeniyle sunucu private key'i ele geçirilirse geçmiş tüm trafik çözülebiliyordu.
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/tls12.html -->
+<!-- SLIDE: TLS 1.2 -->
+<section>
+  <h2><i class="fa-solid fa-lock highlight-cyan"></i> TLS 1.2 (2008) — Modern Şifreleme &amp; AEAD Desteği</h2>
+
+  <div style="max-width: 780px; margin: 2rem auto 0 auto; text-align: left; font-size: 1.05em; line-height: 1.7;">
+    <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
+      <strong style="color: var(--accent-cyan);">• AEAD &amp; Güçlü Karmalar:</strong> Zayıf MD5/SHA-1 yerine <code>AES-GCM</code> ve <code>SHA-256 HMAC</code> ile veri bütünlüğü ve kimlik doğrulaması sağlandı.
+    </div>
+
+    <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
+      <strong style="color: var(--accent-cyan);">• Esnek Ciphersuite Müzakeresi:</strong> İstemci ve sunucunun desteklediği şifreleme algoritmalarını dinamik olarak seçmesine imkan tanındı.
+    </div>
+
+    <div>
+      <strong style="color: var(--accent-cyan);">• 2-RTT Handshake:</strong> İletim başlamadan önce 2 turda (Round-Trip Time) anahtar değişimi ve kimlik doğrulaması yapıldı.
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/tls13.html -->
+<!-- SLIDE: TLS 1.3 -->
+<section>
+  <h2><i class="fa-solid fa-shield-halved highlight-htb"></i> TLS 1.3 (2018) — Hızlı Handshake &amp; Temizlenmiş Güvenlik</h2>
+
+  <div style="max-width: 780px; margin: 2rem auto 0 auto; text-align: left; font-size: 1.05em; line-height: 1.7;">
+    <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
+      <strong style="color: var(--htb-green);">• 1-RTT &amp; 0-RTT Handshake:</strong> El sıkışma süresi 1 tura düşürüldü; tekrar eden bağlantılarda sıfır gecikmeli (0-RTT) veri iletimi sağlandı.
+    </div>
+
+    <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
+      <strong style="color: var(--htb-green);">• Zayıf Algoritmaların Temizliği:</strong> Eski ve güvensiz RC4, SHA-1, Static RSA, Static DH ve CBC modları protokol seviyesinde tamamen kaldırıldı.
+    </div>
+
+    <div>
+      <strong style="color: var(--htb-green);">• Şifreli Handshake:</strong> Sunucu sertifikası da dahil olmak üzere el sıkışma mesajları şifrelenerek dinleme (eavesdropping) önlendi.
     </div>
   </div>
 </section>

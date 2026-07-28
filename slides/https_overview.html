@@ -1,0 +1,56 @@
+<!-- SLIDE: HTTPS Overview -->
+<section>
+  <h2><i class="fa-solid fa-lock highlight-htb"></i> HTTPS — Güvenli İletişim (HTTP + TLS/SSL)</h2>
+
+  <div style="text-align: left; margin-bottom: 1.1rem; color: var(--text-muted); font-size: 0.95em;">
+    <strong style="color: var(--htb-green);">HTTPS</strong> (Hypertext Transfer Protocol Secure), standart HTTP trafiğini bir <strong>TLS/SSL</strong> şifreleme katmanı içerisine kapsülleyerek <strong>TCP Port 443</strong> üzerinden güvenli iletim sağlar.
+  </div>
+
+  <div class="grid-3" style="gap: 1.1rem; align-items: stretch; text-align: left;">
+    <!-- Card 1: Encryption & Confidentiality -->
+    <div class="cyber-card secure" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-htb">GİZLİLİK</span> TLS/SSL Şifreleme
+        </div>
+        <p style="color: var(--text-main);">
+          İstemci ve sunucu arasındaki veri akışını simetrik (ör. AES) ve asimetrik (ör. ECDHE, RSA) kriptografi ile şifreler. Ortadaki Adam (MITM) dinlemelerini engeller.
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--htb-green); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.5rem;">
+        <i class="fa-solid fa-key highlight-htb"></i> Veri Gizliliği (Data Confidentiality)
+      </div>
+    </div>
+
+    <!-- Card 2: Authentication & Integrity -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-cyan">KİMLİK &amp; BÜTÜNLÜK</span> X.509 Sertifikaları
+        </div>
+        <p style="color: var(--text-main);">
+          Güvenilir Sertifika Otoriteleri (CA) tarafından imzalanan dijital sertifikalar ile alan adı kimliği doğrulanır ve paketlerin yolda değiştirilmesi (tampering) önlenir.
+        </p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.5rem;">
+        <i class="fa-solid fa-certificate highlight-cyan"></i> Güvenli Bağlantı &amp; CA Doğrulama
+      </div>
+    </div>
+
+    <!-- Card 3: HTTP vs HTTPS -->
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="card-title">
+          <span class="cyber-badge badge-purple">PORT 80 VS 443</span> HTTP vs HTTPS
+        </div>
+        <ul style="margin-bottom: 0;">
+          <li><strong>HTTP (Port 80):</strong> Açık metin (Plaintext) iletim. Paketler dinlenebilir ve değiştirilebilir.</li>
+          <li><strong>HTTPS (Port 443):</strong> TLS El Sıkışması (Handshake) sonrası tam uçtan uca şifreli iletişim.</li>
+        </ul>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-purple); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.4rem; margin-top: 0.5rem;">
+        <i class="fa-solid fa-shield-halved highlight-purple"></i> Web Güvenliği Standart Protokolü
+      </div>
+    </div>
+  </div>
+</section>

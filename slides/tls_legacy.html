@@ -1,0 +1,30 @@
+<!-- SLIDE: SSL & TLS Legacy -->
+<section>
+  <h2><i class="fa-solid fa-shield-virus highlight-red"></i> SSL &amp; Erken TLS (Legacy) — Tarihsel Süreç &amp; Zafiyetler</h2>
+
+  <div class="grid-2">
+    <!-- Left Column: History & Features -->
+    <div class="cyber-card">
+      <div class="card-title">
+        <span class="cyber-badge badge-htb">TARIHÇE</span> SSL 2.0/3.0 &amp; TLS 1.0/1.1
+      </div>
+      <ul>
+        <li><strong>Netscape SSL (1995-1996):</strong> İnternet trafiğini şifrelemek için ilk olarak SSL 2.0 ve SSL 3.0 geliştirildi.</li>
+        <li><strong>IETF TLS Standardı (1999-2006):</strong> SSL 3.0 taban alınarak <strong>TLS 1.0</strong> (RFC 2246) ve <strong>TLS 1.1</strong> (RFC 4346) yayınlandı.</li>
+        <li><strong>Eski Kriptografi:</strong> MD5, SHA-1, RC4 ve DES/3DES gibi günümüzde zayıf kabul edilen algoritmaları kullanıyordu.</li>
+      </ul>
+    </div>
+
+    <!-- Right Column: Cybersecurity Context & Vulnerabilities -->
+    <div class="cyber-card threat">
+      <div class="card-title">
+        <i class="fa-solid fa-triangle-exclamation highlight-red"></i> Siber Güvenlik Bağlamı &amp; Saldırılar
+      </div>
+      <ul class="threat-list">
+        <li><strong>POODLE Saldırısı (2014):</strong> SSL 3.0 CBC blok şifreleme zafiyetini sömürerek oturum çerezlerini (cookies) ele geçirdi.</li>
+        <li><strong>BEAST &amp; CRIME:</strong> TLS 1.0 CBC ilkleme vektörü (IV) zafiyeti ve TLS sıkıştırma katmanı açıklıkları.</li>
+        <li><strong>Tamamen Yasaklandı (Deprecated):</strong> SSL 2.0/3.0, TLS 1.0 ve TLS 1.1 tüm modern tarayıcılar ve PCI-DSS standartları tarafından yürürlükten kaldırılmıştır.</li>
+      </ul>
+    </div>
+  </div>
+</section>

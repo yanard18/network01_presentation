@@ -2,44 +2,47 @@
 <section>
   <h2><i class="fa-solid fa-folder-tree highlight-htb"></i> Server Message Block (SMB)</h2>
 
-  <div style="text-align: left; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.95em;">
+  <div style="text-align: left; margin-bottom: 0.8rem; color: var(--text-muted); font-size: 0.92em;">
     <strong style="color: var(--htb-green);">SMB Protokolü</strong> (Server Message Block), istemcilerin TCP/IP veya diğer katmanlar üzerinde ağ genelindeki dosyalara okuma ve yazma erişimi yapmasını sağlayan bir <strong>network file sharing protocol</strong>'üdür.
   </div>
 
-  <div class="grid-2" style="grid-template-columns: 1.1fr 0.9fr; gap: 1.2rem; align-items: center;">
-    <!-- Left Column: What is SMB Infographic -->
-    <div style="display: flex; align-items: center; justify-content: center;">
-      <img src="media/what_is_smb.jpg" alt="SMB: Server Message Block Diyagramı" style="max-height: 380px; width: 100%; object-fit: contain; display: block; border-radius: 8px;">
+  <div class="grid-2" style="grid-template-columns: 1.05fr 0.95fr; gap: 1.1rem; align-items: center;">
+    <!-- Left Column: Image Diagram -->
+    <div style="background: #ffffff; padding: 10px; border-radius: 8px; border: 1px solid var(--htb-border); box-shadow: 0 0 20px var(--htb-green-glow); text-align: center;">
+      <img src="media/what_is_smb.jpg" alt="SMB: Server Message Block Diyagramı" style="max-height: 350px; width: 100%; object-fit: contain; display: block;">
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: #070e1b; font-weight: 700; margin-top: 0.3rem;">
+        <i class="fa-solid fa-diagram-project highlight-htb"></i> Şekil: SMB İstemci - Sunucu Mimarisi
+      </div>
     </div>
 
-    <!-- Right Column: Key Characteristics & Functions -->
-    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-      <div class="cyber-card">
-        <div class="card-title">
+    <!-- Right Column: 3 Stacked Cards with Compact Font Override -->
+    <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+      <div class="cyber-card" style="padding: 0.7rem 0.9rem;">
+        <div class="card-title" style="font-size: 1.05em !important; margin-bottom: 0.4rem;">
           <span class="cyber-badge badge-htb">CORE FUNCTION</span> Uzaktan Dosya Erişimi
         </div>
-        <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
+        <p style="font-size: 0.84em !important; line-height: 1.45 !important; color: var(--text-main); margin-bottom: 0;">
           Uzak paylaşılan dizinleri (ör. <code>\\SERVER\SHARE</code>) yerel sürücü harflerine (ör. <code>Z:</code>) şeffaf biçimde eşleyerek doğrudan okuma ve yazma işlemlerini sağlar.
         </p>
       </div>
 
-      <div class="cyber-card">
-        <div class="card-title">
+      <div class="cyber-card" style="padding: 0.7rem 0.9rem;">
+        <div class="card-title" style="font-size: 1.05em !important; margin-bottom: 0.4rem;">
           <span class="cyber-badge badge-cyan">TRANSPORT</span> TCP/IP Üzerinde Layer 7
         </div>
-        <p style="font-size: 0.85em; line-height: 1.48; color: var(--text-main); margin-bottom: 0;">
+        <p style="font-size: 0.84em !important; line-height: 1.45 !important; color: var(--text-main); margin-bottom: 0;">
           Modern ağlarda güvenilir veri iletimi için doğrudan <strong>TCP Port 445</strong> (veya legacy NetBIOS over TCP/IP ile Port 139) üzerinde çalışır.
         </p>
       </div>
 
-      <div class="cyber-card">
-        <div class="card-title">
+      <div class="cyber-card" style="padding: 0.7rem 0.9rem;">
+        <div class="card-title" style="font-size: 1.05em !important; margin-bottom: 0.4rem;">
           <span class="cyber-badge badge-purple">CAPABILITIES</span> Paylaşılan Kaynaklar
         </div>
-        <ul style="font-size: 0.82em; line-height: 1.4; margin-bottom: 0;">
-          <li><strong>Dosya İşlemleri:</strong> Uzak dosyaları açma, okuma, yazma, lock (kilitleme) ve silme.</li>
-          <li><strong>Cihaz Paylaşımı:</strong> Network Printer paylaşımı ve seri port erişimi.</li>
-          <li><strong>IPC İletişimi:</strong> Named Pipes aracılığıyla Inter-Process Communication.</li>
+        <ul style="font-size: 0.82em !important; line-height: 1.4 !important; margin-bottom: 0;">
+          <li style="font-size: 1em !important; margin-bottom: 0.3rem;"><strong>Dosya İşlemleri:</strong> Uzak dosyaları açma, okuma, yazma, kilitleme ve silme.</li>
+          <li style="font-size: 1em !important; margin-bottom: 0.3rem;"><strong>Cihaz Paylaşımı:</strong> Network Printer paylaşımı ve seri port erişimi.</li>
+          <li style="font-size: 1em !important; margin-bottom: 0;"><strong>IPC İletişimi:</strong> Named Pipes aracılığıyla Inter-Process Communication.</li>
         </ul>
       </div>
     </div>

@@ -1,0 +1,18 @@
+<!-- SLIDE: SSL 2.0 -->
+<section>
+  <h2><i class="fa-solid fa-triangle-exclamation highlight-red"></i> SSL 2.0 (1995) — Temel Tasarım Hataları</h2>
+
+  <div style="max-width: 780px; margin: 2rem auto 0 auto; text-align: left; font-size: 1.05em; line-height: 1.7;">
+    <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
+      <strong style="color: var(--accent-red);">• Anahtar Bütünlüğü Eksikliği:</strong> Handshake mesajları kimlik doğrulamasına tabi tutulmadığı için Ortadaki Adam (MITM) sürüm düşürme (downgrade) saldırılarına açıktı.
+    </div>
+
+    <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
+      <strong style="color: var(--accent-red);">• Tek Yönlü Anahtar:</strong> Gönderim ve alım işlemleri için aynı kriptografik anahtarı kullanıyordu.
+    </div>
+
+    <div>
+      <strong style="color: var(--accent-red);">• Zayıf MAC:</strong> Veri bütünlüğü denetimi (MAC) kırılabilir MD5 algoritmasına dayanıyordu.
+    </div>
+  </div>
+</section>
