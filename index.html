@@ -1955,204 +1955,8 @@
     <!-- Clean Execution Step Details (No Heavy Border Cards) -->
     <div id="dns-card-detail" style="text-align: left; max-width: 820px; margin: 0 auto; min-height: 110px; font-size: 0.88rem;">
       <!-- Content populated dynamically via JavaScript -->
-    </div>
-
   </div>
 </section>
-
-<!-- Embedded Interactive Logic -->
-<script>
-(function() {
-  const dnsSteps = [
-    {
-      step: 0,
-      badge: "RECURSIVE SORGU",
-      badgeClass: "badge-cyan",
-      highlight: "all",
-      focusText: "Odak: İstemci Tarafından İstenen Tam FQDN ➔ Recursive Resolver'a (Çözümleyici) Gönderildi",
-      server: "İstemci ➔ Yerel Recursive Resolver (ör. 8.8.8.8)",
-      query: "www.example.net NEREDE?",
-      response: "Recursive Resolver işi kabul eder & Root'tan (.) başlayarak Sağdan Sola iteratif sorguları başlatır",
-      note: "<strong>Recursive Sorgu (Query):</strong> İstemci (client), tüm çözümleme (resolution) görevini yerel resolver'a devreder."
-    },
-    {
-      step: 1,
-      badge: "ROOT SUNUCU (.)",
-      badgeClass: "badge-red",
-      highlight: "root",
-      focusText: "Odak: Sondaki Kök Nokta [ . ] ➔ Root İsim Sunucusu Sorgulanıyor",
-      server: "Recursive Resolver ➔ Root Sunucu (.)",
-      query: "www.example.net Nerede?",
-      response: "Yönlendirme (Referral): 'IP'yi bilmiyorum, ancak işte .net TLD sunucusu için IP (192.5.6.30)'",
-      note: "<strong>Root Zone (.):</strong> DNS hiyerarşisinin en üstü (küresel çapta 13 root sunucu kümesi). TLD yönlendirmelerini (referrals) döndürür."
-    },
-    {
-      step: 2,
-      badge: "TLD SUNUCU (.net)",
-      badgeClass: "badge-purple",
-      highlight: "tld",
-      focusText: "Odak: Top-Level Domain [ .net ] ➔ TLD İsim Sunucusu Sorgulanıyor",
-      server: "Recursive Resolver ➔ TLD Sunucu (.net)",
-      query: "www.example.net Nerede?",
-      response: "Yönlendirme (Referral): 'IP'yi bilmiyorum, ancak işte example.net Authoritative sunucusu (192.0.2.1)'",
-      note: "<strong>TLD Sunucu (.net):</strong> Alan adı (domain) uzantılarını (.net, .com, .org) yönetir. Authoritative yönlendirmeleri döndürür."
-    },
-    {
-      step: 3,
-      badge: "AUTHORITATIVE SUNUCU",
-      badgeClass: "badge-htb",
-      highlight: "sld",
-      focusText: "Odak: Second-Level Domain [ example ] ➔ Authoritative İsim Sunucusu Sorgulanıyor",
-      server: "Recursive Resolver ➔ Authoritative Sunucu (example.net)",
-      query: "Host kaydı 'www' için IP adresi nedir?",
-      response: "Yanıt (Answer): 'A Kaydı (Record) bulundu: www.example.net = 93.184.216.34'",
-      note: "<strong>Authoritative Sunucu:</strong> Domain (alan adı) için resmi DNS bölge (zone) kayıtlarını tutar. Nihai yanıtı sağlar."
-    },
-    {
-      step: 4,
-      badge: "HOST ÇÖZÜMLENDİ (93.184.216.34)",
-      badgeClass: "badge-cyan",
-      highlight: "www",
-      focusText: "Odak: Subdomain / Host [ www ] ➔ Nihai IP Döndürüldü ve Önbelleğe (Cached) Alındı",
-      server: "Yerel Recursive Resolver ➔ İstemci Tarayıcı",
-      query: "Nihai A Kaydı (Record) Yanıtı İstemciye teslim edildi",
-      response: "BAŞARILI: www.example.net ➔ 93.184.216.34 (Resolver'da TTL 3600s önbelleğe alındı / cached)",
-      note: "<strong>Tamamlama (Completion):</strong> İstemci tarayıcı 93.184.216.34 IP adresini alır ve HTTP/TCP oturumu (session) kurar!"
-    }
-  ];
-
-  let currentStep = 0;
-  let autoTimer = null;
-
-  function updateUI() {
-    const data = dnsSteps[currentStep];
-
-    const slider = document.getElementById('dns-slider');
-    if (slider) slider.value = currentStep;
-
-    const pills = {
-      root: document.getElementById('dns-part-root'),
-      tld: document.getElementById('dns-part-tld'),
-      sld: document.getElementById('dns-part-sld'),
-      www: document.getElementById('dns-part-www')
-    };
-
-    Object.keys(pills).forEach(key => {
-      const el = pills[key];
-      if (!el) return;
-      el.style.transform = 'scale(1)';
-      el.style.boxShadow = 'none';
-      el.style.opacity = '0.45';
-      el.style.border = '1px solid transparent';
-      el.style.background = 'transparent';
-      el.style.color = 'var(--text-main)';
-    });
-
-    if (data.highlight === 'all') {
-      Object.keys(pills).forEach(key => {
-        if (pills[key]) pills[key].style.opacity = '1';
-      });
-      if (pills.root) pills.root.style.color = 'var(--accent-yellow)';
-    } else if (pills[data.highlight]) {
-      const activeEl = pills[data.highlight];
-      activeEl.style.opacity = '1';
-      activeEl.style.transform = 'scale(1.22)';
-      
-      if (data.highlight === 'root') {
-        activeEl.style.background = 'rgba(255, 46, 99, 0.25)';
-        activeEl.style.borderColor = 'var(--accent-red)';
-        activeEl.style.color = '#fff';
-        activeEl.style.boxShadow = '0 0 20px var(--accent-red)';
-      } else if (data.highlight === 'tld') {
-        activeEl.style.background = 'rgba(189, 0, 255, 0.25)';
-        activeEl.style.borderColor = 'var(--accent-purple)';
-        activeEl.style.color = '#fff';
-        activeEl.style.boxShadow = '0 0 20px var(--accent-purple)';
-      } else if (data.highlight === 'sld') {
-        activeEl.style.background = 'rgba(159, 239, 0, 0.25)';
-        activeEl.style.borderColor = 'var(--htb-green)';
-        activeEl.style.color = '#fff';
-        activeEl.style.boxShadow = '0 0 20px var(--htb-green-glow)';
-      } else if (data.highlight === 'www') {
-        activeEl.style.background = 'rgba(45, 226, 230, 0.25)';
-        activeEl.style.borderColor = 'var(--accent-cyan)';
-        activeEl.style.color = '#fff';
-        activeEl.style.boxShadow = '0 0 20px var(--accent-cyan)';
-      }
-    }
-
-    const focusLabel = document.getElementById('dns-arrow-indicator');
-    if (focusLabel) {
-      focusLabel.innerHTML = `<i class="fa-solid fa-magnifying-glass highlight-cyan"></i> ${data.focusText}`;
-    }
-
-    for (let i = 0; i <= 4; i++) {
-      const btn = document.getElementById(`dns-btn-${i}`);
-      if (btn) {
-        if (i === currentStep) {
-          btn.style.borderColor = 'var(--accent-cyan)';
-          btn.style.background = 'rgba(45, 226, 230, 0.2)';
-          btn.style.color = 'var(--accent-cyan)';
-        } else {
-          btn.style.borderColor = 'rgba(255,255,255,0.15)';
-          btn.style.background = 'transparent';
-          btn.style.color = 'var(--text-muted)';
-        }
-      }
-    }
-
-    const cardDetail = document.getElementById('dns-card-detail');
-    if (cardDetail) {
-      cardDetail.innerHTML = `
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.4rem;">
-          <div style="font-weight: 700; font-family: var(--font-mono); color: var(--text-main); font-size: 0.95rem;">
-            <i class="fa-solid fa-server highlight-cyan"></i> ${data.server}
-          </div>
-          <span class="cyber-badge ${data.badgeClass}">${data.badge}</span>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 0.35rem; font-family: var(--font-mono);">
-          <div style="color: var(--accent-yellow);"><strong style="color: var(--text-muted);">Gönderilen Sorgu:</strong> ${data.query}</div>
-          <div style="color: var(--htb-green);"><strong style="color: var(--text-muted);">Yanıt:</strong> ${data.response}</div>
-          <div style="margin-top: 0.3rem; padding-top: 0.3rem; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-main); font-family: var(--font-sans); font-size: 0.88em;">
-            <i class="fa-solid fa-circle-info highlight-cyan"></i> ${data.note}
-          </div>
-        </div>
-      `;
-    }
-  }
-
-  window.dnsSim = {
-    setStep: function(stepIndex) {
-      currentStep = Math.max(0, Math.min(4, stepIndex));
-      updateUI();
-    },
-    nextStep: function() {
-      currentStep = (currentStep + 1) % 5;
-      updateUI();
-    },
-    prevStep: function() {
-      currentStep = (currentStep - 1 + 5) % 5;
-      updateUI();
-    },
-    togglePlay: function() {
-      const playBtn = document.getElementById('dns-play-btn');
-      if (autoTimer) {
-        clearInterval(autoTimer);
-        autoTimer = null;
-        if (playBtn) playBtn.innerHTML = '<i class="fa-solid fa-play"></i> Auto Play';
-      } else {
-        if (playBtn) playBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Pause';
-        autoTimer = setInterval(() => {
-          currentStep = (currentStep + 1) % 5;
-          updateUI();
-        }, 2600);
-      }
-    }
-  };
-
-  setTimeout(updateUI, 100);
-})();
-</script>
 
       <!-- Loaded from slides/dns_hierarchy_star.html -->
 <!-- SLIDE: DNS Hierarchy & Right-to-Left Resolution (Star Topology Version) -->
@@ -2272,273 +2076,6 @@
 
   </div>
 </section>
-
-<!-- Embedded Interactive Logic for Star Slide -->
-<script>
-(function() {
-  const dnsSteps = [
-    {
-      step: 0,
-      badge: "RECURSIVE SORGU",
-      badgeClass: "badge-cyan",
-      highlight: "all",
-      focusText: "Odak: Tam FQDN İsteniyor ➔ İstemci Resolver'a Recursive Sorgu Gönderir",
-      activeNode: "client-res",
-      activeLine: "dns2-line-client",
-      lineColor: "var(--accent-cyan)",
-      server: "İstemci ➔ Yerel Recursive Resolver (ör. 8.8.8.8)",
-      query: "www.example.net NEREDE?",
-      response: "Recursive Resolver işi kabul eder & Root'tan (.) başlayarak Sağdan Sola iteratif sorguları başlatır",
-      note: "<strong>Recursive Sorgu (Query):</strong> İstemci tam çözümlemeyi yerel resolver'a devreder."
-    },
-    {
-      step: 1,
-      badge: "ROOT SUNUCU (.)",
-      badgeClass: "badge-red",
-      highlight: "root",
-      focusText: "Odak: Sondaki Kök Nokta [ . ] ➔ Resolver, .net TLD için Root Sunucuyu sorgular",
-      activeNode: "res-root",
-      activeLine: "dns2-line-root",
-      lineColor: "var(--accent-red)",
-      server: "Recursive Resolver ➔ Root Sunucu (.)",
-      query: "www.example.net Nerede?",
-      response: "Yönlendirme (Referral): 'IP'yi bilmiyorum, ancak işte .net TLD sunucusu için IP (192.5.6.30)'",
-      note: "<strong>Root Zone (.):</strong> DNS hiyerarşisinin en üstü. .net TLD sunucu yönlendirmesini döndürür."
-    },
-    {
-      step: 2,
-      badge: "TLD SUNUCU (.net)",
-      badgeClass: "badge-purple",
-      highlight: "tld",
-      focusText: "Odak: Top-Level Domain [ .net ] ➔ Resolver, example.net için TLD Sunucuyu sorgular",
-      activeNode: "res-tld",
-      activeLine: "dns2-line-tld",
-      lineColor: "var(--accent-purple)",
-      server: "Recursive Resolver ➔ TLD Sunucu (.net)",
-      query: "www.example.net Nerede?",
-      response: "Yönlendirme (Referral): 'IP'yi bilmiyorum, ancak işte example.net Authoritative sunucusu (192.0.2.1)'",
-      note: "<strong>TLD Sunucu (.net):</strong> .net alan adlarını yönetir. Authoritative sunucu yönlendirmesini döndürür."
-    },
-    {
-      step: 3,
-      badge: "AUTHORITATIVE SUNUCU",
-      badgeClass: "badge-htb",
-      highlight: "sld",
-      focusText: "Odak: Second-Level Domain [ example ] ➔ Resolver, www host'u için Auth Sunucuyu sorgular",
-      activeNode: "res-auth",
-      activeLine: "dns2-line-auth",
-      lineColor: "var(--accent-yellow)",
-      server: "Recursive Resolver ➔ Authoritative Sunucu (example.net)",
-      query: "Host kaydı 'www' için IP adresi nedir?",
-      response: "Yanıt (Answer): 'A Kaydı (Record) bulundu: www.example.net = 93.184.216.34'",
-      note: "<strong>Authoritative Sunucu:</strong> Resmi DNS bölge (zone) kayıtlarını tutar. Nihai A Kaydını döndürür."
-    },
-    {
-      step: 4,
-      badge: "HOST ÇÖZÜMLENDİ (93.184.216.34)",
-      badgeClass: "badge-cyan",
-      highlight: "www",
-      focusText: "Odak: Subdomain / Host [ www ] ➔ Nihai IP İstemci Tarayıcıya döndürüldü",
-      activeNode: "res-client-reply",
-      activeLine: "dns2-line-client",
-      lineColor: "var(--accent-cyan)",
-      server: "Yerel Recursive Resolver ➔ İstemci Tarayıcı",
-      query: "Nihai A Kaydı Yanıtı İstemciye teslim edildi",
-      response: "BAŞARILI: www.example.net ➔ 93.184.216.34 (Resolver'da TTL 3600s önbelleğe alındı / cached)",
-      note: "<strong>Tamamlama (Completion):</strong> İstemci 93.184.216.34 IP adresini alır ve HTTP/TCP üzerinden bağlanır!"
-    }
-  ];
-
-  let currentStep = 0;
-  let autoTimer = null;
-
-  function updateUI() {
-    const data = dnsSteps[currentStep];
-
-    const slider = document.getElementById('dns2-slider');
-    if (slider) slider.value = currentStep;
-
-    const pills = {
-      root: document.getElementById('dns2-part-root'),
-      tld: document.getElementById('dns2-part-tld'),
-      sld: document.getElementById('dns2-part-sld'),
-      www: document.getElementById('dns2-part-www')
-    };
-
-    Object.keys(pills).forEach(key => {
-      const el = pills[key];
-      if (!el) return;
-      el.style.transform = 'scale(1)';
-      el.style.boxShadow = 'none';
-      el.style.opacity = '0.45';
-      el.style.border = '1px solid transparent';
-      el.style.background = 'transparent';
-      el.style.color = 'var(--text-main)';
-    });
-
-    if (data.highlight === 'all') {
-      Object.keys(pills).forEach(key => {
-        if (pills[key]) pills[key].style.opacity = '1';
-      });
-      if (pills.root) pills.root.style.color = 'var(--accent-yellow)';
-    } else if (pills[data.highlight]) {
-      const activeEl = pills[data.highlight];
-      activeEl.style.opacity = '1';
-      activeEl.style.transform = 'scale(1.22)';
-      
-      if (data.highlight === 'root') {
-        activeEl.style.background = 'rgba(255, 46, 99, 0.25)';
-        activeEl.style.borderColor = 'var(--accent-red)';
-        activeEl.style.color = '#fff';
-        activeEl.style.boxShadow = '0 0 20px var(--accent-red)';
-      } else if (data.highlight === 'tld') {
-        activeEl.style.background = 'rgba(189, 0, 255, 0.25)';
-        activeEl.style.borderColor = 'var(--accent-purple)';
-        activeEl.style.color = '#fff';
-        activeEl.style.boxShadow = '0 0 20px var(--accent-purple)';
-      } else if (data.highlight === 'sld') {
-        activeEl.style.background = 'rgba(159, 239, 0, 0.25)';
-        activeEl.style.borderColor = 'var(--htb-green)';
-        activeEl.style.color = '#fff';
-        activeEl.style.boxShadow = '0 0 20px var(--htb-green-glow)';
-      } else if (data.highlight === 'www') {
-        activeEl.style.background = 'rgba(45, 226, 230, 0.25)';
-        activeEl.style.borderColor = 'var(--accent-cyan)';
-        activeEl.style.color = '#fff';
-        activeEl.style.boxShadow = '0 0 20px var(--accent-cyan)';
-      }
-    }
-
-    const focusLabel = document.getElementById('dns2-arrow-indicator');
-    if (focusLabel) {
-      focusLabel.innerHTML = `<i class="fa-solid fa-magnifying-glass highlight-cyan"></i> ${data.focusText}`;
-    }
-
-    const nodes = {
-      client: document.getElementById('dns2-node-client'),
-      resolver: document.getElementById('dns2-node-resolver'),
-      root: document.getElementById('dns2-node-root'),
-      tld: document.getElementById('dns2-node-tld'),
-      auth: document.getElementById('dns2-node-auth')
-    };
-
-    const lines = {
-      'dns2-line-client': document.getElementById('dns2-line-client'),
-      'dns2-line-root': document.getElementById('dns2-line-root'),
-      'dns2-line-tld': document.getElementById('dns2-line-tld'),
-      'dns2-line-auth': document.getElementById('dns2-line-auth')
-    };
-
-    Object.keys(nodes).forEach(k => {
-      if (nodes[k]) {
-        nodes[k].style.borderColor = 'rgba(255,255,255,0.15)';
-        nodes[k].style.background = 'rgba(255,255,255,0.03)';
-        nodes[k].style.boxShadow = 'none';
-      }
-    });
-    if (nodes.resolver) {
-      nodes.resolver.style.borderColor = 'var(--htb-green)';
-      nodes.resolver.style.background = 'rgba(159, 239, 0, 0.08)';
-    }
-
-    Object.keys(lines).forEach(k => {
-      if (lines[k]) {
-        lines[k].setAttribute('stroke', 'rgba(255,255,255,0.12)');
-        lines[k].setAttribute('stroke-width', '2');
-      }
-    });
-
-    if (lines[data.activeLine]) {
-      lines[data.activeLine].setAttribute('stroke', data.lineColor);
-      lines[data.activeLine].setAttribute('stroke-width', '3.5');
-    }
-
-    if (data.activeNode === 'client-res' || data.activeNode === 'res-client-reply') {
-      if (nodes.client) { nodes.client.style.borderColor = 'var(--accent-cyan)'; nodes.client.style.boxShadow = '0 0 16px var(--accent-cyan)'; }
-      if (nodes.resolver) { nodes.resolver.style.boxShadow = '0 0 16px var(--accent-cyan)'; }
-    } else if (data.activeNode === 'res-root') {
-      if (nodes.root) { nodes.root.style.borderColor = 'var(--accent-red)'; nodes.root.style.boxShadow = '0 0 18px var(--accent-red)'; }
-      if (nodes.resolver) { nodes.resolver.style.boxShadow = '0 0 16px var(--accent-red)'; }
-    } else if (data.activeNode === 'res-tld') {
-      if (nodes.tld) { nodes.tld.style.borderColor = 'var(--accent-purple)'; nodes.tld.style.boxShadow = '0 0 18px var(--accent-purple)'; }
-      if (nodes.resolver) { nodes.resolver.style.boxShadow = '0 0 16px var(--accent-purple)'; }
-    } else if (data.activeNode === 'res-auth') {
-      if (nodes.auth) { nodes.auth.style.borderColor = 'var(--accent-yellow)'; nodes.auth.style.boxShadow = '0 0 18px var(--accent-yellow)'; }
-      if (nodes.resolver) { nodes.resolver.style.boxShadow = '0 0 16px var(--accent-yellow)'; }
-    }
-
-    const starBadge = document.getElementById('dns2-star-badge');
-    if (starBadge) {
-      starBadge.innerHTML = `<span class="cyber-badge ${data.badgeClass}">${data.badge}</span>`;
-    }
-
-    for (let i = 0; i <= 4; i++) {
-      const btn = document.getElementById(`dns2-btn-${i}`);
-      if (btn) {
-        if (i === currentStep) {
-          btn.style.borderColor = 'var(--accent-cyan)';
-          btn.style.background = 'rgba(45, 226, 230, 0.2)';
-          btn.style.color = 'var(--accent-cyan)';
-        } else {
-          btn.style.borderColor = 'rgba(255,255,255,0.15)';
-          btn.style.background = 'transparent';
-          btn.style.color = 'var(--text-muted)';
-        }
-      }
-    }
-
-    const cardDetail = document.getElementById('dns2-card-detail');
-    if (cardDetail) {
-      cardDetail.innerHTML = `
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.35rem;">
-          <div style="font-weight: 700; font-family: var(--font-mono); color: var(--text-main); font-size: 0.92rem;">
-            <i class="fa-solid fa-network-wired highlight-cyan"></i> ${data.server}
-          </div>
-          <span class="cyber-badge ${data.badgeClass}">${data.badge}</span>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--font-mono);">
-          <div style="color: var(--accent-yellow);"><strong style="color: var(--text-muted);">Gönderilen Sorgu:</strong> ${data.query}</div>
-          <div style="color: var(--htb-green);"><strong style="color: var(--text-muted);">Yanıt:</strong> ${data.response}</div>
-          <div style="margin-top: 0.25rem; padding-top: 0.25rem; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-main); font-family: var(--font-sans); font-size: 0.86em;">
-            <i class="fa-solid fa-circle-info highlight-cyan"></i> ${data.note}
-          </div>
-        </div>
-      `;
-    }
-  }
-
-  window.dnsSimStar = {
-    setStep: function(stepIndex) {
-      currentStep = Math.max(0, Math.min(4, stepIndex));
-      updateUI();
-    },
-    nextStep: function() {
-      currentStep = (currentStep + 1) % 5;
-      updateUI();
-    },
-    prevStep: function() {
-      currentStep = (currentStep - 1 + 5) % 5;
-      updateUI();
-    },
-    togglePlay: function() {
-      const playBtn = document.getElementById('dns2-play-btn');
-      if (autoTimer) {
-        clearInterval(autoTimer);
-        autoTimer = null;
-        if (playBtn) playBtn.innerHTML = '<i class="fa-solid fa-play"></i> Auto Play';
-      } else {
-        if (playBtn) playBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Pause';
-        autoTimer = setInterval(() => {
-          currentStep = (currentStep + 1) % 5;
-          updateUI();
-        }, 2600);
-      }
-    }
-  };
-
-  setTimeout(updateUI, 100);
-})();
-</script>
 
       <!-- Loaded from slides/dns_local_resolution.html -->
 <!-- SLIDE: DNS Resolution Order -->
@@ -3360,9 +2897,6 @@
   </div>
 </section>
 
-<!-- Include Interactive Simulator Logic -->
-<script src="js/smb-lifecycle-sim.js"></script>
-
       <!-- Loaded from slides/smb_data_operations.html -->
 <!-- SLIDE: SMB Data Operations & File Management -->
 <section>
@@ -3702,6 +3236,352 @@
 |   Accounts:
 |     administrator:Password123! => Valid Credentials (STATUS_SUCCESS)
 |_    guest:guest => Account Disabled (STATUS_ACCOUNT_DISABLED)</code></pre>
+</section>
+
+      <!-- Loaded from slides/smb_signing_overview.html -->
+<!-- SLIDE: SMB Signing Overview & Security Basics -->
+<section>
+  <h2><i class="fa-solid fa-file-signature highlight-htb"></i> SMB Signing Nedir &amp; Güvenlik Temelleri</h2>
+
+  <div style="text-align: left; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.94em; max-width: 960px;">
+    <strong style="color: var(--htb-green);">SMB Signing</strong> (Sunucu Mesaj Bloğu İmzalaması), her bir SMB paketine HMAC tabanlı bir dijital imza (digital signature) ekleyerek paket bütünlüğünü ve gönderici/alıcı kimliğini doğrulayan temel güvenlik mekanizmasıdır.
+  </div>
+
+  <div class="grid-2" style="grid-template-columns: 1.05fr 0.95fr; gap: 1.1rem; align-items: stretch; text-align: left;">
+    <!-- Left Column: Core Security Checks -->
+    <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+      <div class="cyber-card secure" style="padding: 0.8rem 1rem;">
+        <div class="card-title" style="font-size: 1em !important; margin-bottom: 0.35rem;">
+          <span class="cyber-badge badge-htb">AUTHENTICATION</span> Kimlik Doğrulama Kontrolü
+        </div>
+        <p style="font-size: 0.83em !important; line-height: 1.45 !important; margin-bottom: 0;">
+          Gelen paketin gerçekten iddia edilen yetkili kaynaktan (sender identity) gelip gelmediğini teyit eder. Spoofing girişimlerini engeller.
+        </p>
+      </div>
+
+      <div class="cyber-card secure" style="padding: 0.8rem 1rem;">
+        <div class="card-title" style="font-size: 1em !important; margin-bottom: 0.35rem;">
+          <span class="cyber-badge badge-cyan">INTEGRITY</span> Bütünlük Doğrulaması
+        </div>
+        <p style="font-size: 0.83em !important; line-height: 1.45 !important; margin-bottom: 0;">
+          İletim (transmission) sırasında verinin aradaki bir saldırgan (MITM) tarafından değiştirilmesini önler. Hash eşleşmezse paket derhal reddedilir.
+        </p>
+      </div>
+
+      <div class="cyber-card secure" style="padding: 0.8rem 1rem;">
+        <div class="card-title" style="font-size: 1em !important; margin-bottom: 0.35rem;">
+          <span class="cyber-badge badge-purple">ANTI-RELAY</span> Replay &amp; Relay Önleme
+        </div>
+        <p style="font-size: 0.83em !important; line-height: 1.45 !important; margin-bottom: 0;">
+          Oturum imzası hem gönderici hem alıcı kimliklerini gömdüğü için, ele geçirilen paketlerin başka bir hedef sunucuya aktarılmasını (NTLM Relay) imkansız kılar.
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Column: Threat Vectors If Disabled -->
+    <div class="cyber-card threat" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1rem 1.1rem;">
+      <div>
+        <div class="card-title" style="font-size: 1.05em !important; margin-bottom: 0.6rem;">
+          <span class="cyber-badge badge-red">RISK ANALYSIS</span> İmzalama Devre Dışı İse Riskler
+        </div>
+        <p style="font-size: 0.85em !important; line-height: 1.45 !important; color: var(--text-main); margin-bottom: 0.8rem;">
+          Sunucu veya istemcide <strong>SMB Signing disabled</strong> (kapalı) veya <strong>not required</strong> (zorunlu değil) olduğunda ağ aşağıdaki kritik saldırılara açık hale gelir:
+        </p>
+        <ul class="threat-list" style="font-size: 0.83em !important; line-height: 1.45 !important; margin-bottom: 0;">
+          <li style="margin-bottom: 0.5rem;">
+            <strong>LLMNR / NBT-NS Poisoning:</strong> Ağdaki multicast isim çözünürlükleri zehirlenerek kurbanın NTLM hash'leri ele geçirilebilir.
+          </li>
+          <li style="margin-bottom: 0.5rem;">
+            <strong>NTLM Relay Saldırıları:</strong> Ele geçirilen kimlik doğrulama istekleri imzasız hedef SMB sunucularına iletilerek yetkisiz komut/SAM dump çalıştırılabilir.
+          </li>
+          <li>
+            <strong>MITM Paket Manipülasyonu:</strong> İletim sırasındaki SMB verisi (dosya içeriği veya komutlar) fark edilmeden değiştirilebilir.
+          </li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-red); background: rgba(255, 46, 99, 0.1); border: 1px dashed var(--accent-red); border-radius: 4px; padding: 0.45rem 0.7rem; margin-top: 0.8rem;">
+        <i class="fa-solid fa-triangle-exclamation"></i> <strong>Hardening Rule:</strong> Tüm Domain Controller ve SMB sunucularında <code>RequireSecuritySignature = 1</code> yapılmalıdır.
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_signing_algorithms.html -->
+<!-- SLIDE: SMB Signing Algorithms & Kerberos vs NTLM -->
+<section>
+  <h2><i class="fa-solid fa-key-skeleton highlight-htb"></i> SMB Signing Algoritmaları &amp; Kerberos vs NTLM</h2>
+
+  <div style="text-align: left; margin-bottom: 0.9rem; color: var(--text-muted); font-size: 0.94em; max-width: 960px;">
+    SMB protokolünün tarihsel gelişimi boyunca dijital imzalama algoritmaları güçlendirilmiş, kriptografik zafiyetler ve performans darboğazları giderilmiştir.
+  </div>
+
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr; gap: 1.2rem; align-items: stretch; text-align: left;">
+    
+    <!-- Left Column: Algorithm Evolution Timeline/Cards -->
+    <div style="display: flex; flex-direction: column; gap: 0.55rem;">
+      <div style="font-family: var(--font-heading); font-size: 0.98rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem;">
+        <i class="fa-solid fa-timeline highlight-htb"></i> Dialect Bazlı İmzalama Algoritmaları
+      </div>
+
+      <!-- SMB 1.0 -->
+      <div class="cyber-card threat" style="padding: 0.65rem 0.85rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+          <span style="font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; color: #fff;">SMB 1.0</span>
+          <span class="cyber-badge badge-red" style="font-size: 0.72rem;">MD5 (DEPRECATED)</span>
+        </div>
+        <p style="font-size: 0.78em !important; line-height: 1.4 !important; color: var(--text-muted); margin: 0;">
+          Eski <strong>MD5</strong> algoritmasını kullanır. Kriptografik çarpışma (collision) ve zayıf karma karmaşıklığı nedeniyle tamamen güvensizdir.
+        </p>
+      </div>
+
+      <!-- SMB 2.02 -->
+      <div class="cyber-card" style="padding: 0.65rem 0.85rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+          <span style="font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; color: #fff;">SMB 2.02</span>
+          <span class="cyber-badge badge-cyan" style="font-size: 0.72rem;">HMAC-SHA-256</span>
+        </div>
+        <p style="font-size: 0.78em !important; line-height: 1.4 !important; color: var(--text-muted); margin: 0;">
+          Kriptografiyi <strong>HMAC-SHA-256</strong> standartlarına yükselterek imza bütünlüğü doğrulamasına yüksek direnç kazandırdı.
+        </p>
+      </div>
+
+      <!-- SMB 3.0 -->
+      <div class="cyber-card" style="padding: 0.65rem 0.85rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+          <span style="font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; color: #fff;">SMB 3.0</span>
+          <span class="cyber-badge badge-purple" style="font-size: 0.72rem;">AES-CMAC</span>
+        </div>
+        <p style="font-size: 0.78em !important; line-height: 1.4 !important; color: var(--text-muted); margin: 0;">
+          <strong>AES-CMAC</strong> (Cipher-based MAC) entegre edilerek hem daha güçlü hem de daha verimli bir imzalama hızı sağlandı.
+        </p>
+      </div>
+
+      <!-- SMB 3.1.1 -->
+      <div class="cyber-card secure" style="padding: 0.65rem 0.85rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+          <span style="font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; color: #fff;">SMB 3.1.1</span>
+          <span class="cyber-badge badge-htb" style="font-size: 0.72rem;">AES-128-GMAC</span>
+        </div>
+        <p style="font-size: 0.78em !important; line-height: 1.4 !important; color: var(--text-muted); margin: 0;">
+          <strong>AES-128-GMAC</strong> desteği eklendi. Galois Counter Mode ile donanım seviyesinde şifrelemeli imzalama performansı sunar.
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Column: Kerberos vs NTLMv2 & IP / CNAME Trap -->
+    <div style="display: flex; flex-direction: column; justify-content: space-between; background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 8px; padding: 1.1rem;">
+      <div>
+        <div class="card-title" style="font-size: 1.02em !important; margin-bottom: 0.6rem;">
+          <span class="cyber-badge badge-htb">AUTHENTICATION STRATEGY</span> Kerberos vs. NTLMv2
+        </div>
+        <p style="font-size: 0.84em !important; line-height: 1.48 !important; color: var(--text-main); margin-bottom: 0.8rem;">
+          SMB imzalama anahtarının (Session Key) güçlü türetilmesi için kimlik doğrulamasında <strong>NTLMv2 yerine Kerberos</strong> tercih edilmelidir.
+        </p>
+
+        <!-- Warning Trap Box -->
+        <div style="background: rgba(255, 183, 3, 0.1); border: 1px solid var(--accent-yellow); border-radius: 6px; padding: 0.75rem 0.85rem; margin-bottom: 0.8rem;">
+          <div style="font-family: var(--font-mono); font-weight: 700; font-size: 0.8rem; color: var(--accent-yellow); margin-bottom: 0.3rem;">
+            <i class="fa-solid fa-triangle-exclamation"></i> CRITICAL CONFIGURATION TRAP:
+          </div>
+          <p style="font-size: 0.79em !important; line-height: 1.45 !important; color: var(--text-main); margin: 0;">
+            Paylaşımlara (Share) <strong>IP Adresi</strong> (ör. <code>\\192.168.1.50\share</code>) veya <strong>CNAME kaydı</strong> ile bağlanırsanız, Kerberos SPN eşleşmesi başarısız olur ve protokol otomatik olarak <strong>NTLM'e düşer (fallback)</strong>!
+          </p>
+        </div>
+
+        <ul class="secure-list" style="font-size: 0.81em !important; line-height: 1.45 !important; margin-bottom: 0;">
+          <li style="margin-bottom: 0.4rem;">
+            <strong>FQDN Kullanımı:</strong> Bağlantıların daima tam etki alanı adı (ör. <code>\\dc01.htb.local\share</code>) ile yapılması Kerberos zorunluluğunu korur.
+          </li>
+          <li>
+            <strong>Session Key Dayanıklılığı:</strong> Kerberos bileşeni (KDC ticket), NTLM challenge-response zayıflıklarına takılmadan Session Key türetir.
+          </li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.5rem; margin-top: 0.6rem;">
+        <i class="fa-solid fa-shield-halved"></i> <strong>Best Practice:</strong> Always use FQDN to enforce Kerberos session key derivation.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_signing_lifecycle.html -->
+<!-- SLIDE: SMB Signing Data Structure & Session Key Lifecycle -->
+<section>
+  <h2><i class="fa-solid fa-shield-halved highlight-htb"></i> İmzalama Veri Yapısı &amp; Anahtar Yaşam Döngüsü</h2>
+
+  <div style="text-align: left; margin-bottom: 0.9rem; color: var(--text-muted); font-size: 0.93em; max-width: 960px;">
+    SMB paketlerinin dijital imzalama süreci, doğrulanmış kullanıcının parolasından türetilen <strong>Session Key</strong> ve paket üstverilerinin (metadata) birleştirilerek hash'lenmesiyle çalışır.
+  </div>
+
+  <!-- Top 3 Data Components -->
+  <div class="grid-3" style="gap: 0.8rem; margin-bottom: 0.9rem; text-align: left;">
+    <div class="cyber-card" style="padding: 0.75rem 0.9rem;">
+      <div style="font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; color: var(--htb-green); margin-bottom: 0.3rem;">
+        <i class="fa-solid fa-key"></i> 1. SESSION KEY (K_session)
+      </div>
+      <p style="font-size: 0.79em !important; line-height: 1.4 !important; color: var(--text-main); margin: 0;">
+        Kullanıcının doğrulanmış parolasından/hash'inden türetilen <strong>128-bit gizli oturum anahtarı</strong>.
+      </p>
+    </div>
+
+    <div class="cyber-card" style="padding: 0.75rem 0.9rem;">
+      <div style="font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; color: var(--accent-cyan); margin-bottom: 0.3rem;">
+        <i class="fa-solid fa-cube"></i> 2. MESSAGE BLOCK
+      </div>
+      <p style="font-size: 0.79em !important; line-height: 1.4 !important; color: var(--text-main); margin: 0;">
+        Gönderilen paketteki tüm SMB başlık ve veri yükü (payload). Değiştirilmeye karşı checksum gibi hash'lenir.
+      </p>
+    </div>
+
+    <div class="cyber-card" style="padding: 0.75rem 0.9rem;">
+      <div style="font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; color: var(--accent-purple); margin-bottom: 0.3rem;">
+        <i class="fa-solid fa-address-card"></i> 3. IDENTITIES (IDs)
+      </div>
+      <p style="font-size: 0.79em !important; line-height: 1.4 !important; color: var(--text-main); margin: 0;">
+        Orijinal <strong>gönderici (sender)</strong> ve hedeflenen <strong>alıcı (recipient)</strong> kimlik bilgileri hash içerisine gömülür.
+      </p>
+    </div>
+  </div>
+
+  <!-- Bottom: 5-Step Lifecycle Timeline & Auth Failure Case -->
+  <div class="grid-2" style="grid-template-columns: 1.15fr 0.85fr; gap: 1.1rem; align-items: stretch; text-align: left;">
+    
+    <!-- Left Column: 5-Step Lifecycle Sequence -->
+    <div style="background: var(--htb-bg-terminal); border: 1px solid var(--htb-border); border-radius: 8px; padding: 0.85rem 0.95rem; font-family: var(--font-mono);">
+      <div style="font-size: 0.82rem; font-weight: 700; color: var(--htb-green); border-bottom: 1px solid rgba(159,239,0,0.2); padding-bottom: 0.4rem; margin-bottom: 0.6rem;">
+        <i class="fa-solid fa-list-ol"></i> SMB Signing Aktivasyon Adımları
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.75rem;">
+        <div style="display: flex; gap: 0.6rem; align-items: center; background: rgba(255,255,255,0.03); padding: 0.35rem 0.6rem; border-radius: 4px;">
+          <span class="cyber-badge badge-cyan" style="font-size: 0.68rem;">1. NEGOTIATE</span>
+          <span style="color: var(--text-muted);"> SMB Diyalekti &amp; Güvenlik Modu Müzakeresi <strong style="color: var(--accent-red);">(İmzasız)</strong></span>
+        </div>
+
+        <div style="display: flex; gap: 0.6rem; align-items: center; background: rgba(255,255,255,0.03); padding: 0.35rem 0.6rem; border-radius: 4px;">
+          <span class="cyber-badge badge-cyan" style="font-size: 0.68rem;">2. CHALLENGE</span>
+          <span style="color: var(--text-muted);"> Sunucudan NTLMSSP Challenge Yanıtı Alınır <strong style="color: var(--accent-red);">(İmzasız)</strong></span>
+        </div>
+
+        <div style="display: flex; gap: 0.6rem; align-items: center; background: rgba(255,255,255,0.03); padding: 0.35rem 0.6rem; border-radius: 4px;">
+          <span class="cyber-badge badge-cyan" style="font-size: 0.68rem;">3. AUTH REQ</span>
+          <span style="color: var(--text-muted);"> NTLMSSP_AUTH İsteği Gönderilir <strong style="color: var(--accent-red);">(İmzasız)</strong></span>
+        </div>
+
+        <div style="display: flex; gap: 0.6rem; align-items: center; background: rgba(159, 239, 0, 0.08); border: 1px solid var(--htb-green); padding: 0.35rem 0.6rem; border-radius: 4px;">
+          <span class="cyber-badge badge-htb" style="font-size: 0.68rem;">4. SESSION KEY</span>
+          <span style="color: #fff;"> <code>STATUS_SUCCESS</code> yanıtında <strong>128-bit Session Key</strong> türetilir!</span>
+        </div>
+
+        <div style="display: flex; gap: 0.6rem; align-items: center; background: rgba(45, 226, 230, 0.08); border: 1px solid var(--accent-cyan); padding: 0.35rem 0.6rem; border-radius: 4px;">
+          <span class="cyber-badge badge-htb" style="font-size: 0.68rem; background: var(--htb-green); color: #000;">5. ACTIVE SIGN</span>
+          <span style="color: var(--accent-cyan);"> Adım 4 sonrası <strong>TÜM PAKETLER SESSION KEY İLE İMZALANIR</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Authentication Failure Scenario -->
+    <div class="cyber-card threat" style="display: flex; flex-direction: column; justify-content: space-between; padding: 0.9rem 1rem;">
+      <div>
+        <div class="card-title" style="font-size: 0.95em !important; margin-bottom: 0.4rem; color: var(--accent-red);">
+          <i class="fa-solid fa-user-xmark"></i> Hatalı Parola (Auth Failure)
+        </div>
+        <p style="font-size: 0.81em !important; line-height: 1.45 !important; color: var(--text-main); margin-bottom: 0.5rem;">
+          İstemci <code>NTLMSSP_AUTH</code> aşamasında yanlış parola veya hatalı NT Hash sunarsa:
+        </p>
+        <ul class="threat-list" style="font-size: 0.78em !important; line-height: 1.4 !important; margin-bottom: 0;">
+          <li style="margin-bottom: 0.4rem;">
+            Sunucu <code>LOGON_FAILURE</code> hatası döndürür.
+          </li>
+          <li style="margin-bottom: 0.4rem;">
+            Sunucu istemciye <strong>Session.SessionKey (K_session)</strong> vermez!
+          </li>
+          <li>
+            <strong>Oturum Anahtarı Yoksa = İmzalama İmkansızdır!</strong> Hiçbir imzalama işlemi başlatılamaz.
+          </li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-red); background: rgba(0,0,0,0.3); padding: 0.4rem 0.6rem; border-radius: 4px; margin-top: 0.6rem;">
+        <code>STATUS_LOGON_FAILURE -> No K_session -> Signing Aborted</code>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+      <!-- Loaded from slides/smb_signing_enum.html -->
+<!-- SLIDE: SMB Signing Enumeration & Reconnaissance -->
+<section>
+  <h2><i class="fa-solid fa-terminal highlight-htb"></i> SMB Signing Enum &amp; Keşif Komutları</h2>
+
+  <div style="text-align: left; margin-bottom: 0.9rem; color: var(--text-muted); font-size: 0.94em; max-width: 960px;">
+    Sızma testlerinde (Pentest) bir ağdaki SMB sunucularının <strong>Signing durumunu (Required / Enabled / Disabled)</strong> tespit etmek, NTLM Relay zafiyet noktalarını haritalandırmak için ilk adımdır.
+  </div>
+
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr; gap: 1.1rem; align-items: stretch; text-align: left;">
+    
+    <!-- Left Column: Nmap SMB2 Security Mode -->
+    <div style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;">
+          <span class="cyber-badge badge-htb">METHOD 1</span> Nmap NSE Scripting Engine
+        </div>
+
+        <div class="terminal-header">
+          <span class="terminal-dot dot-red"></span>
+          <span class="terminal-dot dot-yellow"></span>
+          <span class="terminal-dot dot-green"></span>
+          <span class="terminal-title">root@htb:~# nmap --script smb2-security-mode -p445 192.168.1.50</span>
+        </div>
+        <pre style="margin-top: 0;"><code class="language-text">PORT    STATE SERVICE
+445/tcp open  microsoft-ds
+| smb2-security-mode:
+|   3.1.1:
+|_    Message signing enabled but not required</code></pre>
+      </div>
+
+      <div class="cyber-card threat" style="padding: 0.65rem 0.85rem; margin-top: 0.5rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-red); font-weight: 700; margin-bottom: 0.2rem;">
+          <i class="fa-solid fa-triangle-exclamation"></i> NMAP ANALİZİ
+        </div>
+        <p style="font-size: 0.77em !important; line-height: 1.4 !important; color: var(--text-main); margin: 0;">
+          <code>enabled but not required</code> çıktısı, sunucunun imzalamayı desteklediğini ancak zorunlu kılmadığını gösterir. <strong>NTLM Relay saldırısına AÇIKTIR!</strong>
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Column: NetExec SMB Enumeration -->
+    <div style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;">
+          <span class="cyber-badge badge-cyan">METHOD 2</span> NetExec (nexec) Fast Enum
+        </div>
+
+        <div class="terminal-header">
+          <span class="terminal-dot dot-red"></span>
+          <span class="terminal-dot dot-yellow"></span>
+          <span class="terminal-dot dot-green"></span>
+          <span class="terminal-title">root@htb:~# netexec smb 192.168.1.50</span>
+        </div>
+        <pre style="margin-top: 0;"><code class="language-text">SMB  192.168.1.50  445  DC01  [*] Windows 10 / Server 2019 x64
+     (name:DC01) (domain:htb.local) (signing:False) (SMBv1:false)</code></pre>
+      </div>
+
+      <div class="cyber-card threat" style="padding: 0.65rem 0.85rem; margin-top: 0.5rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-red); font-weight: 700; margin-bottom: 0.2rem;">
+          <i class="fa-solid fa-skull"></i> NETEXEC ANALİZİ
+        </div>
+        <p style="font-size: 0.77em !important; line-height: 1.4 !important; color: var(--text-main); margin: 0;">
+          <code>(signing:False)</code> bayrağı, imzalama zorunluluğunun olmadığını doğrudan belirtir. Responder + ntlmrelayx araçları ile yetki yükseltilebilir.
+        </p>
+      </div>
+    </div>
+
+  </div>
 </section>
 
       <!-- Loaded from slides/four_blocks.html -->
@@ -4629,9 +4509,6 @@
   </div>
 </section>
 
-<!-- Include Interactive Simulator Logic -->
-<script src="js/ssh-handshake-sim.js"></script>
-
       <!-- Loaded from slides/dh_color_analogy.html -->
 <!-- SLIDE: Interactive Diffie-Hellman Color Analogy Visualizer -->
 <section>
@@ -4684,9 +4561,6 @@
 
   </div>
 </section>
-
-<!-- Include Interactive Simulator Logic -->
-<script src="js/dh-color-sim.js"></script>
 
       <!-- Loaded from slides/ssh_vs_telnet.html -->
 <!-- SLIDE: SSH vs Telnet Comparison (Matching IPv4 vs IPv6 Design) -->
@@ -4760,6 +4634,10 @@
   <script src="js/http-simulator.js"></script>
   <script src="js/osi-encapsulation.js"></script>
   <script src="js/network-devices-sim.js"></script>
+  <script src="js/dh-color-sim.js"></script>
+  <script src="js/smb-lifecycle-sim.js"></script>
+  <script src="js/ssh-handshake-sim.js"></script>
+  <script src="js/dns-hierarchy-sim.js"></script>
   <script>
     // Initialize Reveal.js
     Reveal.initialize({

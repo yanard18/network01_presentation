@@ -1,0 +1,69 @@
+<!-- SLIDE: SMB Signing Enumeration & Reconnaissance -->
+<section>
+  <h2><i class="fa-solid fa-terminal highlight-htb"></i> SMB Signing Enum &amp; Keşif Komutları</h2>
+
+  <div style="text-align: left; margin-bottom: 0.9rem; color: var(--text-muted); font-size: 0.94em; max-width: 960px;">
+    Sızma testlerinde (Pentest) bir ağdaki SMB sunucularının <strong>Signing durumunu (Required / Enabled / Disabled)</strong> tespit etmek, NTLM Relay zafiyet noktalarını haritalandırmak için ilk adımdır.
+  </div>
+
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr; gap: 1.1rem; align-items: stretch; text-align: left;">
+    
+    <!-- Left Column: Nmap SMB2 Security Mode -->
+    <div style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;">
+          <span class="cyber-badge badge-htb">METHOD 1</span> Nmap NSE Scripting Engine
+        </div>
+
+        <div class="terminal-header">
+          <span class="terminal-dot dot-red"></span>
+          <span class="terminal-dot dot-yellow"></span>
+          <span class="terminal-dot dot-green"></span>
+          <span class="terminal-title">root@htb:~# nmap --script smb2-security-mode -p445 192.168.1.50</span>
+        </div>
+        <pre style="margin-top: 0;"><code class="language-text">PORT    STATE SERVICE
+445/tcp open  microsoft-ds
+| smb2-security-mode:
+|   3.1.1:
+|_    Message signing enabled but not required</code></pre>
+      </div>
+
+      <div class="cyber-card threat" style="padding: 0.65rem 0.85rem; margin-top: 0.5rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-red); font-weight: 700; margin-bottom: 0.2rem;">
+          <i class="fa-solid fa-triangle-exclamation"></i> NMAP ANALİZİ
+        </div>
+        <p style="font-size: 0.77em !important; line-height: 1.4 !important; color: var(--text-main); margin: 0;">
+          <code>enabled but not required</code> çıktısı, sunucunun imzalamayı desteklediğini ancak zorunlu kılmadığını gösterir. <strong>NTLM Relay saldırısına AÇIKTIR!</strong>
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Column: NetExec SMB Enumeration -->
+    <div style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;">
+          <span class="cyber-badge badge-cyan">METHOD 2</span> NetExec (nexec) Fast Enum
+        </div>
+
+        <div class="terminal-header">
+          <span class="terminal-dot dot-red"></span>
+          <span class="terminal-dot dot-yellow"></span>
+          <span class="terminal-dot dot-green"></span>
+          <span class="terminal-title">root@htb:~# netexec smb 192.168.1.50</span>
+        </div>
+        <pre style="margin-top: 0;"><code class="language-text">SMB  192.168.1.50  445  DC01  [*] Windows 10 / Server 2019 x64
+     (name:DC01) (domain:htb.local) (signing:False) (SMBv1:false)</code></pre>
+      </div>
+
+      <div class="cyber-card threat" style="padding: 0.65rem 0.85rem; margin-top: 0.5rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-red); font-weight: 700; margin-bottom: 0.2rem;">
+          <i class="fa-solid fa-skull"></i> NETEXEC ANALİZİ
+        </div>
+        <p style="font-size: 0.77em !important; line-height: 1.4 !important; color: var(--text-main); margin: 0;">
+          <code>(signing:False)</code> bayrağı, imzalama zorunluluğunun olmadığını doğrudan belirtir. Responder + ntlmrelayx araçları ile yetki yükseltilebilir.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>

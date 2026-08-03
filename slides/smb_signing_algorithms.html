@@ -1,0 +1,98 @@
+<!-- SLIDE: SMB Signing Algorithms & Kerberos vs NTLM -->
+<section>
+  <h2><i class="fa-solid fa-key-skeleton highlight-htb"></i> SMB Signing Algoritmaları &amp; Kerberos vs NTLM</h2>
+
+  <div style="text-align: left; margin-bottom: 0.9rem; color: var(--text-muted); font-size: 0.94em; max-width: 960px;">
+    SMB protokolünün tarihsel gelişimi boyunca dijital imzalama algoritmaları güçlendirilmiş, kriptografik zafiyetler ve performans darboğazları giderilmiştir.
+  </div>
+
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr; gap: 1.2rem; align-items: stretch; text-align: left;">
+    
+    <!-- Left Column: Algorithm Evolution Timeline/Cards -->
+    <div style="display: flex; flex-direction: column; gap: 0.55rem;">
+      <div style="font-family: var(--font-heading); font-size: 0.98rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem;">
+        <i class="fa-solid fa-timeline highlight-htb"></i> Dialect Bazlı İmzalama Algoritmaları
+      </div>
+
+      <!-- SMB 1.0 -->
+      <div class="cyber-card threat" style="padding: 0.65rem 0.85rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+          <span style="font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; color: #fff;">SMB 1.0</span>
+          <span class="cyber-badge badge-red" style="font-size: 0.72rem;">MD5 (DEPRECATED)</span>
+        </div>
+        <p style="font-size: 0.78em !important; line-height: 1.4 !important; color: var(--text-muted); margin: 0;">
+          Eski <strong>MD5</strong> algoritmasını kullanır. Kriptografik çarpışma (collision) ve zayıf karma karmaşıklığı nedeniyle tamamen güvensizdir.
+        </p>
+      </div>
+
+      <!-- SMB 2.02 -->
+      <div class="cyber-card" style="padding: 0.65rem 0.85rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+          <span style="font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; color: #fff;">SMB 2.02</span>
+          <span class="cyber-badge badge-cyan" style="font-size: 0.72rem;">HMAC-SHA-256</span>
+        </div>
+        <p style="font-size: 0.78em !important; line-height: 1.4 !important; color: var(--text-muted); margin: 0;">
+          Kriptografiyi <strong>HMAC-SHA-256</strong> standartlarına yükselterek imza bütünlüğü doğrulamasına yüksek direnç kazandırdı.
+        </p>
+      </div>
+
+      <!-- SMB 3.0 -->
+      <div class="cyber-card" style="padding: 0.65rem 0.85rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+          <span style="font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; color: #fff;">SMB 3.0</span>
+          <span class="cyber-badge badge-purple" style="font-size: 0.72rem;">AES-CMAC</span>
+        </div>
+        <p style="font-size: 0.78em !important; line-height: 1.4 !important; color: var(--text-muted); margin: 0;">
+          <strong>AES-CMAC</strong> (Cipher-based MAC) entegre edilerek hem daha güçlü hem de daha verimli bir imzalama hızı sağlandı.
+        </p>
+      </div>
+
+      <!-- SMB 3.1.1 -->
+      <div class="cyber-card secure" style="padding: 0.65rem 0.85rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+          <span style="font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; color: #fff;">SMB 3.1.1</span>
+          <span class="cyber-badge badge-htb" style="font-size: 0.72rem;">AES-128-GMAC</span>
+        </div>
+        <p style="font-size: 0.78em !important; line-height: 1.4 !important; color: var(--text-muted); margin: 0;">
+          <strong>AES-128-GMAC</strong> desteği eklendi. Galois Counter Mode ile donanım seviyesinde şifrelemeli imzalama performansı sunar.
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Column: Kerberos vs NTLMv2 & IP / CNAME Trap -->
+    <div style="display: flex; flex-direction: column; justify-content: space-between; background: var(--htb-bg-card); border: 1px solid var(--htb-border); border-radius: 8px; padding: 1.1rem;">
+      <div>
+        <div class="card-title" style="font-size: 1.02em !important; margin-bottom: 0.6rem;">
+          <span class="cyber-badge badge-htb">AUTHENTICATION STRATEGY</span> Kerberos vs. NTLMv2
+        </div>
+        <p style="font-size: 0.84em !important; line-height: 1.48 !important; color: var(--text-main); margin-bottom: 0.8rem;">
+          SMB imzalama anahtarının (Session Key) güçlü türetilmesi için kimlik doğrulamasında <strong>NTLMv2 yerine Kerberos</strong> tercih edilmelidir.
+        </p>
+
+        <!-- Warning Trap Box -->
+        <div style="background: rgba(255, 183, 3, 0.1); border: 1px solid var(--accent-yellow); border-radius: 6px; padding: 0.75rem 0.85rem; margin-bottom: 0.8rem;">
+          <div style="font-family: var(--font-mono); font-weight: 700; font-size: 0.8rem; color: var(--accent-yellow); margin-bottom: 0.3rem;">
+            <i class="fa-solid fa-triangle-exclamation"></i> CRITICAL CONFIGURATION TRAP:
+          </div>
+          <p style="font-size: 0.79em !important; line-height: 1.45 !important; color: var(--text-main); margin: 0;">
+            Paylaşımlara (Share) <strong>IP Adresi</strong> (ör. <code>\\192.168.1.50\share</code>) veya <strong>CNAME kaydı</strong> ile bağlanırsanız, Kerberos SPN eşleşmesi başarısız olur ve protokol otomatik olarak <strong>NTLM'e düşer (fallback)</strong>!
+          </p>
+        </div>
+
+        <ul class="secure-list" style="font-size: 0.81em !important; line-height: 1.45 !important; margin-bottom: 0;">
+          <li style="margin-bottom: 0.4rem;">
+            <strong>FQDN Kullanımı:</strong> Bağlantıların daima tam etki alanı adı (ör. <code>\\dc01.htb.local\share</code>) ile yapılması Kerberos zorunluluğunu korur.
+          </li>
+          <li>
+            <strong>Session Key Dayanıklılığı:</strong> Kerberos bileşeni (KDC ticket), NTLM challenge-response zayıflıklarına takılmadan Session Key türetir.
+          </li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-cyan); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.5rem; margin-top: 0.6rem;">
+        <i class="fa-solid fa-shield-halved"></i> <strong>Best Practice:</strong> Always use FQDN to enforce Kerberos session key derivation.
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,104 @@
+<!-- SLIDE: SMB Signing Data Structure & Session Key Lifecycle -->
+<section>
+  <h2><i class="fa-solid fa-shield-halved highlight-htb"></i> İmzalama Veri Yapısı &amp; Anahtar Yaşam Döngüsü</h2>
+
+  <div style="text-align: left; margin-bottom: 0.9rem; color: var(--text-muted); font-size: 0.93em; max-width: 960px;">
+    SMB paketlerinin dijital imzalama süreci, doğrulanmış kullanıcının parolasından türetilen <strong>Session Key</strong> ve paket üstverilerinin (metadata) birleştirilerek hash'lenmesiyle çalışır.
+  </div>
+
+  <!-- Top 3 Data Components -->
+  <div class="grid-3" style="gap: 0.8rem; margin-bottom: 0.9rem; text-align: left;">
+    <div class="cyber-card" style="padding: 0.75rem 0.9rem;">
+      <div style="font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; color: var(--htb-green); margin-bottom: 0.3rem;">
+        <i class="fa-solid fa-key"></i> 1. SESSION KEY (K_session)
+      </div>
+      <p style="font-size: 0.79em !important; line-height: 1.4 !important; color: var(--text-main); margin: 0;">
+        Kullanıcının doğrulanmış parolasından/hash'inden türetilen <strong>128-bit gizli oturum anahtarı</strong>.
+      </p>
+    </div>
+
+    <div class="cyber-card" style="padding: 0.75rem 0.9rem;">
+      <div style="font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; color: var(--accent-cyan); margin-bottom: 0.3rem;">
+        <i class="fa-solid fa-cube"></i> 2. MESSAGE BLOCK
+      </div>
+      <p style="font-size: 0.79em !important; line-height: 1.4 !important; color: var(--text-main); margin: 0;">
+        Gönderilen paketteki tüm SMB başlık ve veri yükü (payload). Değiştirilmeye karşı checksum gibi hash'lenir.
+      </p>
+    </div>
+
+    <div class="cyber-card" style="padding: 0.75rem 0.9rem;">
+      <div style="font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; color: var(--accent-purple); margin-bottom: 0.3rem;">
+        <i class="fa-solid fa-address-card"></i> 3. IDENTITIES (IDs)
+      </div>
+      <p style="font-size: 0.79em !important; line-height: 1.4 !important; color: var(--text-main); margin: 0;">
+        Orijinal <strong>gönderici (sender)</strong> ve hedeflenen <strong>alıcı (recipient)</strong> kimlik bilgileri hash içerisine gömülür.
+      </p>
+    </div>
+  </div>
+
+  <!-- Bottom: 5-Step Lifecycle Timeline & Auth Failure Case -->
+  <div class="grid-2" style="grid-template-columns: 1.15fr 0.85fr; gap: 1.1rem; align-items: stretch; text-align: left;">
+    
+    <!-- Left Column: 5-Step Lifecycle Sequence -->
+    <div style="background: var(--htb-bg-terminal); border: 1px solid var(--htb-border); border-radius: 8px; padding: 0.85rem 0.95rem; font-family: var(--font-mono);">
+      <div style="font-size: 0.82rem; font-weight: 700; color: var(--htb-green); border-bottom: 1px solid rgba(159,239,0,0.2); padding-bottom: 0.4rem; margin-bottom: 0.6rem;">
+        <i class="fa-solid fa-list-ol"></i> SMB Signing Aktivasyon Adımları
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.75rem;">
+        <div style="display: flex; gap: 0.6rem; align-items: center; background: rgba(255,255,255,0.03); padding: 0.35rem 0.6rem; border-radius: 4px;">
+          <span class="cyber-badge badge-cyan" style="font-size: 0.68rem;">1. NEGOTIATE</span>
+          <span style="color: var(--text-muted);"> SMB Diyalekti &amp; Güvenlik Modu Müzakeresi <strong style="color: var(--accent-red);">(İmzasız)</strong></span>
+        </div>
+
+        <div style="display: flex; gap: 0.6rem; align-items: center; background: rgba(255,255,255,0.03); padding: 0.35rem 0.6rem; border-radius: 4px;">
+          <span class="cyber-badge badge-cyan" style="font-size: 0.68rem;">2. CHALLENGE</span>
+          <span style="color: var(--text-muted);"> Sunucudan NTLMSSP Challenge Yanıtı Alınır <strong style="color: var(--accent-red);">(İmzasız)</strong></span>
+        </div>
+
+        <div style="display: flex; gap: 0.6rem; align-items: center; background: rgba(255,255,255,0.03); padding: 0.35rem 0.6rem; border-radius: 4px;">
+          <span class="cyber-badge badge-cyan" style="font-size: 0.68rem;">3. AUTH REQ</span>
+          <span style="color: var(--text-muted);"> NTLMSSP_AUTH İsteği Gönderilir <strong style="color: var(--accent-red);">(İmzasız)</strong></span>
+        </div>
+
+        <div style="display: flex; gap: 0.6rem; align-items: center; background: rgba(159, 239, 0, 0.08); border: 1px solid var(--htb-green); padding: 0.35rem 0.6rem; border-radius: 4px;">
+          <span class="cyber-badge badge-htb" style="font-size: 0.68rem;">4. SESSION KEY</span>
+          <span style="color: #fff;"> <code>STATUS_SUCCESS</code> yanıtında <strong>128-bit Session Key</strong> türetilir!</span>
+        </div>
+
+        <div style="display: flex; gap: 0.6rem; align-items: center; background: rgba(45, 226, 230, 0.08); border: 1px solid var(--accent-cyan); padding: 0.35rem 0.6rem; border-radius: 4px;">
+          <span class="cyber-badge badge-htb" style="font-size: 0.68rem; background: var(--htb-green); color: #000;">5. ACTIVE SIGN</span>
+          <span style="color: var(--accent-cyan);"> Adım 4 sonrası <strong>TÜM PAKETLER SESSION KEY İLE İMZALANIR</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Authentication Failure Scenario -->
+    <div class="cyber-card threat" style="display: flex; flex-direction: column; justify-content: space-between; padding: 0.9rem 1rem;">
+      <div>
+        <div class="card-title" style="font-size: 0.95em !important; margin-bottom: 0.4rem; color: var(--accent-red);">
+          <i class="fa-solid fa-user-xmark"></i> Hatalı Parola (Auth Failure)
+        </div>
+        <p style="font-size: 0.81em !important; line-height: 1.45 !important; color: var(--text-main); margin-bottom: 0.5rem;">
+          İstemci <code>NTLMSSP_AUTH</code> aşamasında yanlış parola veya hatalı NT Hash sunarsa:
+        </p>
+        <ul class="threat-list" style="font-size: 0.78em !important; line-height: 1.4 !important; margin-bottom: 0;">
+          <li style="margin-bottom: 0.4rem;">
+            Sunucu <code>LOGON_FAILURE</code> hatası döndürür.
+          </li>
+          <li style="margin-bottom: 0.4rem;">
+            Sunucu istemciye <strong>Session.SessionKey (K_session)</strong> vermez!
+          </li>
+          <li>
+            <strong>Oturum Anahtarı Yoksa = İmzalama İmkansızdır!</strong> Hiçbir imzalama işlemi başlatılamaz.
+          </li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-red); background: rgba(0,0,0,0.3); padding: 0.4rem 0.6rem; border-radius: 4px; margin-top: 0.6rem;">
+        <code>STATUS_LOGON_FAILURE -> No K_session -> Signing Aborted</code>
+      </div>
+    </div>
+
+  </div>
+</section>

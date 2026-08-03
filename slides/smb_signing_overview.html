@@ -1,0 +1,67 @@
+<!-- SLIDE: SMB Signing Overview & Security Basics -->
+<section>
+  <h2><i class="fa-solid fa-file-signature highlight-htb"></i> SMB Signing Nedir &amp; Güvenlik Temelleri</h2>
+
+  <div style="text-align: left; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.94em; max-width: 960px;">
+    <strong style="color: var(--htb-green);">SMB Signing</strong> (Sunucu Mesaj Bloğu İmzalaması), her bir SMB paketine HMAC tabanlı bir dijital imza (digital signature) ekleyerek paket bütünlüğünü ve gönderici/alıcı kimliğini doğrulayan temel güvenlik mekanizmasıdır.
+  </div>
+
+  <div class="grid-2" style="grid-template-columns: 1.05fr 0.95fr; gap: 1.1rem; align-items: stretch; text-align: left;">
+    <!-- Left Column: Core Security Checks -->
+    <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+      <div class="cyber-card secure" style="padding: 0.8rem 1rem;">
+        <div class="card-title" style="font-size: 1em !important; margin-bottom: 0.35rem;">
+          <span class="cyber-badge badge-htb">AUTHENTICATION</span> Kimlik Doğrulama Kontrolü
+        </div>
+        <p style="font-size: 0.83em !important; line-height: 1.45 !important; margin-bottom: 0;">
+          Gelen paketin gerçekten iddia edilen yetkili kaynaktan (sender identity) gelip gelmediğini teyit eder. Spoofing girişimlerini engeller.
+        </p>
+      </div>
+
+      <div class="cyber-card secure" style="padding: 0.8rem 1rem;">
+        <div class="card-title" style="font-size: 1em !important; margin-bottom: 0.35rem;">
+          <span class="cyber-badge badge-cyan">INTEGRITY</span> Bütünlük Doğrulaması
+        </div>
+        <p style="font-size: 0.83em !important; line-height: 1.45 !important; margin-bottom: 0;">
+          İletim (transmission) sırasında verinin aradaki bir saldırgan (MITM) tarafından değiştirilmesini önler. Hash eşleşmezse paket derhal reddedilir.
+        </p>
+      </div>
+
+      <div class="cyber-card secure" style="padding: 0.8rem 1rem;">
+        <div class="card-title" style="font-size: 1em !important; margin-bottom: 0.35rem;">
+          <span class="cyber-badge badge-purple">ANTI-RELAY</span> Replay &amp; Relay Önleme
+        </div>
+        <p style="font-size: 0.83em !important; line-height: 1.45 !important; margin-bottom: 0;">
+          Oturum imzası hem gönderici hem alıcı kimliklerini gömdüğü için, ele geçirilen paketlerin başka bir hedef sunucuya aktarılmasını (NTLM Relay) imkansız kılar.
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Column: Threat Vectors If Disabled -->
+    <div class="cyber-card threat" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1rem 1.1rem;">
+      <div>
+        <div class="card-title" style="font-size: 1.05em !important; margin-bottom: 0.6rem;">
+          <span class="cyber-badge badge-red">RISK ANALYSIS</span> İmzalama Devre Dışı İse Riskler
+        </div>
+        <p style="font-size: 0.85em !important; line-height: 1.45 !important; color: var(--text-main); margin-bottom: 0.8rem;">
+          Sunucu veya istemcide <strong>SMB Signing disabled</strong> (kapalı) veya <strong>not required</strong> (zorunlu değil) olduğunda ağ aşağıdaki kritik saldırılara açık hale gelir:
+        </p>
+        <ul class="threat-list" style="font-size: 0.83em !important; line-height: 1.45 !important; margin-bottom: 0;">
+          <li style="margin-bottom: 0.5rem;">
+            <strong>LLMNR / NBT-NS Poisoning:</strong> Ağdaki multicast isim çözünürlükleri zehirlenerek kurbanın NTLM hash'leri ele geçirilebilir.
+          </li>
+          <li style="margin-bottom: 0.5rem;">
+            <strong>NTLM Relay Saldırıları:</strong> Ele geçirilen kimlik doğrulama istekleri imzasız hedef SMB sunucularına iletilerek yetkisiz komut/SAM dump çalıştırılabilir.
+          </li>
+          <li>
+            <strong>MITM Paket Manipülasyonu:</strong> İletim sırasındaki SMB verisi (dosya içeriği veya komutlar) fark edilmeden değiştirilebilir.
+          </li>
+        </ul>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-red); background: rgba(255, 46, 99, 0.1); border: 1px dashed var(--accent-red); border-radius: 4px; padding: 0.45rem 0.7rem; margin-top: 0.8rem;">
+        <i class="fa-solid fa-triangle-exclamation"></i> <strong>Hardening Rule:</strong> Tüm Domain Controller ve SMB sunucularında <code>RequireSecuritySignature = 1</code> yapılmalıdır.
+      </div>
+    </div>
+  </div>
+</section>

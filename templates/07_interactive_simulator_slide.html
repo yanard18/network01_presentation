@@ -1,0 +1,46 @@
+<!-- TEMPLATE 7: Interactive JS Simulator Slide Template -->
+<section>
+  <h2><i class="fa-solid fa-flask highlight-cyan"></i> Interactive Simulation Slide</h2>
+
+  <!-- Status / Target Bar -->
+  <div class="badge-flex-row" style="font-size: 0.85em;">
+    <span class="cyber-badge badge-htb">STEP 1</span> Select Action
+    <span style="color: var(--text-muted);">➔</span>
+    <span class="cyber-badge badge-cyan">STEP 2</span> Observe Packet Animation
+    <span style="color: var(--text-muted);">➔</span>
+    <span class="cyber-badge badge-purple">STEP 3</span> Inspect Execution Log
+  </div>
+
+  <!-- Main Simulator Container -->
+  <div class="sim-container" style="max-width: 900px; margin: 0 auto;">
+    
+    <!-- Topo Canvas / Visual Workspace -->
+    <div class="topo-canvas" style="height: 240px;">
+      <!-- Place nodes, SVG connection lines, or animated packets here -->
+      <div class="topo-node" style="left: 50%; top: 50%;">
+        <div class="topo-node-icon" style="border-color: var(--htb-green);">
+          <i class="fa-solid fa-server"></i>
+        </div>
+        <div class="topo-node-label">Central Node</div>
+      </div>
+    </div>
+
+    <!-- Simulator Control Buttons -->
+    <div style="display: flex; gap: 0.8rem; justify-content: center; margin-bottom: 0.5rem;">
+      <button class="sim-btn" onclick="window.mySimInstance.triggerAction('A')">
+        <i class="fa-solid fa-play"></i> Test Action A
+      </button>
+      <button class="sim-btn btn-red" onclick="window.mySimInstance.triggerAction('B')">
+        <i class="fa-solid fa-rotate-left"></i> Reset
+      </button>
+    </div>
+
+    <!-- Output Log Console -->
+    <div id="my-sim-log" class="sim-log-box">
+      <div style="color: var(--text-muted);">
+        Click a button above to run live interactive simulation trace...
+      </div>
+    </div>
+
+  </div>
+</section>

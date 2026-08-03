@@ -780,3 +780,134 @@ body {
   stroke-dasharray: 4 4;
 }
 
+/* ==========================================================================
+   HTB Presentation Design System Utilities & Structural Layout Helpers
+   ========================================================================== */
+
+/* Centered Slide Layout Containers */
+.slide-center {
+  max-width: 920px;
+  margin: 1rem auto 0 auto;
+  text-align: center;
+}
+
+.slide-subtitle {
+  text-align: left;
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.98em;
+}
+
+/* Badge Flex Alignment */
+.badge-flex-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  margin: 1rem 0;
+}
+
+/* Asymmetric 2-Column Grid (60/40 Split) */
+.grid-2-asym {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1.2rem;
+  align-items: center;
+  text-align: left;
+}
+
+@media (max-width: 900px) {
+  .grid-2-asym {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Diagram & Image Showcase Box */
+.diagram-box {
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--htb-border);
+  box-shadow: 0 0 25px var(--htb-green-glow);
+  display: inline-block;
+  max-width: 90%;
+  text-align: center;
+}
+
+.diagram-box-cyan {
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--accent-cyan);
+  box-shadow: 0 0 25px rgba(45, 226, 230, 0.35);
+  display: inline-block;
+  max-width: 90%;
+  text-align: center;
+}
+
+.diagram-box-red {
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--accent-red);
+  box-shadow: 0 0 25px rgba(255, 46, 99, 0.35);
+  display: inline-block;
+  max-width: 90%;
+  text-align: center;
+}
+
+.diagram-img {
+  max-height: 480px;
+  width: auto;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.diagram-caption {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.8rem;
+  text-align: center;
+}
+
+/* Comparison Tables & Feature Rows */
+.comparison-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  font-size: 0.95em;
+  max-width: 820px;
+  margin: 1.2rem auto 0 auto;
+  font-family: var(--font-body);
+}
+
+.comparison-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.6rem;
+}
+
+.comparison-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Interactive Simulator Output Log Box */
+.sim-log-box {
+  background: var(--htb-bg-terminal);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 0.6rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  min-height: 75px;
+  text-align: left;
+}
+
+
